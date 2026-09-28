@@ -1,0 +1,108 @@
+# CineGuia
+
+Catálogo de filmes e séries para descobrir **onde assistir no Brasil**. O CineGuia não reproduz vídeos: ele mostra sinopse, trailer, elenco e em quais serviços de streaming, aluguel ou compra cada título está disponível.
+
+Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações de onde assistir vêm da [JustWatch](https://www.justwatch.com/br).
+
+## Funcionalidades
+
+- Listas **Em alta**, **Filmes** e **Séries**, com rolagem infinita
+- **Busca** por qualquer filme ou série
+- **Filtros** por gênero, época e nota mínima
+- **Detalhes** de cada título: sinopse, onde assistir, trailer, elenco, temporadas e episódios, e títulos semelhantes
+- **Link direto** para cada título (ex.: `http://localhost:3000/#serie/1396`)
+- **Minha lista** para salvar favoritos no navegador
+- **Tema claro e escuro**
+
+## Requisitos
+
+- [Node.js](https://nodejs.org/) **20.12 ou mais recente**
+- Uma chave gratuita da API do TMDB
+
+O projeto não tem dependências, então não é preciso rodar `npm install`.
+
+## Como rodar
+
+### 1. Obtenha a chave do TMDB
+
+1. Crie uma conta em [themoviedb.org](https://www.themoviedb.org/signup) e confirme o e-mail.
+2. Acesse **Configurações → API** ([link direto](https://www.themoviedb.org/settings/api)).
+3. Peça uma chave do tipo **Developer** e responda que o uso é **pessoal**.
+4. Copie a **Chave da API** ou o **Token de Leitura da API**. Qualquer um dos dois funciona.
+
+### 2. Configure a chave
+
+Na pasta do projeto, copie o arquivo de exemplo:
+
+```bash
+# Windows (PowerShell)
+Copy-Item .env.example .env
+
+# Linux / macOS
+cp .env.example .env
+```
+
+Abra o `.env` e cole a sua chave:
+
+```
+TMDB_API_KEY=sua_chave_aqui
+PORT=3000
+```
+
+O `.env` fica fora do Git (está no `.gitignore`). Nunca envie esse arquivo para o GitHub nem compartilhe a chave.
+
+### 3. Inicie o servidor
+
+```bash
+npm start
+```
+
+Depois abra **http://localhost:3000** no navegador.
+
+Para usar outra porta, mude `PORT` no `.env`.
+
+## Estrutura
+
+```
+filmes-series/
+├── server.js          # Servidor Node: entrega a página e consulta o TMDB
+├── public/
+│   ├── index.html     # Página
+│   ├── styles.css     # Visual, com os temas claro e escuro
+│   ├── app.js         # Lógica da interface
+│   ├── theme.js       # Aplica o tema salvo antes de a página aparecer
+│   └── favicon.svg
+├── .env.example       # Modelo de configuração
+└── package.json
+```
+
+O navegador nunca fala direto com o TMDB. Ele chama o `server.js`, que adiciona a chave e repassa o pedido. Assim a chave não fica exposta na página. O servidor também guarda as respostas em cache por 10 minutos para economizar requisições.
+
+### Rotas da API interna
+
+| Rota | O que retorna |
+|---|---|
+| `GET /api/list?category=trending\|movies\|series&page=N` | Lista de títulos. Filmes e séries aceitam `genre`, `from`, `to` e `rating` |
+| `GET /api/search?q=texto&page=N` | Resultado da busca |
+| `GET /api/genres/movie\|tv` | Lista de gêneros |
+| `GET /api/title/movie\|tv/ID` | Detalhes completos do título |
+| `GET /api/title/tv/ID/season/N` | Episódios de uma temporada |
+
+## Verificação de sintaxe
+
+```bash
+npm run check
+```
+
+## Problemas comuns
+
+| Mensagem | Solução |
+|---|---|
+| *Chave do TMDB não configurada* | Crie o arquivo `.env` com `TMDB_API_KEY` (passo 2) |
+| *Chave do TMDB inválida* | Confira se a chave foi copiada inteira, sem espaços |
+| `process.loadEnvFile is not a function` | Atualize o Node.js para a versão 20.12 ou mais recente |
+| `EADDRINUSE` | A porta já está em uso. Feche o outro servidor ou mude `PORT` no `.env` |
+
+## Termos de uso
+
+Este projeto usa a API do TMDB, mas não é endossado nem certificado pelo TMDB. A chave gratuita vale apenas para **uso não comercial**. Para ganhar dinheiro com o site (anúncios, assinaturas etc.), é preciso uma licença comercial do TMDB.
