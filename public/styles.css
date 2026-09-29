@@ -15,6 +15,11 @@
   --shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
   --radius: 12px;
   --gutter: clamp(16px, 4vw, 40px);
+  --max-width: 1680px;
+  /* Side padding: the gutter, grown to center content on very wide screens, never under the phone notch. */
+  --pad-left: max(var(--gutter), calc((100% - var(--max-width)) / 2), env(safe-area-inset-left));
+  --pad-right: max(var(--gutter), calc((100% - var(--max-width)) / 2), env(safe-area-inset-right));
+  --tap: 40px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -109,7 +114,7 @@ a {
   align-items: center;
   gap: 12px 20px;
   flex-wrap: wrap;
-  padding: 14px var(--gutter) 10px;
+  padding: max(14px, env(safe-area-inset-top)) var(--pad-right) 10px var(--pad-left);
 }
 
 .brand {
@@ -154,8 +159,9 @@ a {
 .icon-button {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  flex: 0 0 auto;
+  width: var(--tap);
+  height: var(--tap);
   border: 1px solid var(--border);
   border-radius: 50%;
   background: var(--surface);
@@ -170,8 +176,13 @@ a {
 .tabs {
   display: flex;
   gap: 8px;
-  padding: 0 var(--gutter) 12px;
+  padding: 0 var(--pad-right) 12px var(--pad-left);
   overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
@@ -199,7 +210,7 @@ a {
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 10px 16px;
-  padding: 0 var(--gutter) 14px;
+  padding: 0 var(--pad-right) 14px var(--pad-left);
 }
 
 .filters label {
@@ -234,7 +245,7 @@ a {
 /* Lista */
 
 .content {
-  padding: 24px var(--gutter) 48px;
+  padding: 24px var(--pad-right) 48px var(--pad-left);
 }
 
 .section-title {
@@ -290,10 +301,16 @@ a {
   transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
-.card-open:hover .card-poster,
 .card-open:focus-visible .card-poster {
-  transform: translateY(-4px);
   box-shadow: var(--shadow);
+}
+
+/* Touch screens have no real hover; the lift would stick after a tap. */
+@media (hover: hover) {
+  .card-open:hover .card-poster {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
 }
 
 .card-poster.placeholder {
@@ -362,7 +379,7 @@ a {
 /* Rodapé */
 
 .footer {
-  padding: 24px var(--gutter) 32px;
+  padding: 24px var(--pad-right) max(32px, env(safe-area-inset-bottom)) var(--pad-left);
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 13px;
@@ -377,7 +394,7 @@ a {
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
   z-index: 100;
   max-width: calc(100% - 32px);
   padding: 10px 18px;
@@ -572,6 +589,29 @@ a {
   border-radius: 8px;
 }
 
+.provider-link {
+  min-height: var(--tap);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.provider-link:hover {
+  border-color: var(--muted);
+  background: var(--surface);
+}
+
+.provider-arrow {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.providers-hint {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .providers-link {
   display: inline-block;
   margin-top: 16px;
@@ -742,41 +782,182 @@ a {
   padding-bottom: 28px;
 }
 
-@media (max-width: 600px) {
+/* ---------- Responsividade ---------- */
+
+/* Telas de toque: alvos com pelo menos 44px, como recomendam Apple e Google. */
+@media (pointer: coarse) {
+  :root {
+    --tap: 44px;
+  }
+
+  .tab,
+  .filters select,
+  .filters-clear,
+  .season-select,
+  .load-more,
+  .fav-button.full,
+  .action-button {
+    min-height: 44px;
+  }
+
+  .fav-button.icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Monitores grandes e TVs: pôsteres maiores em vez de dezenas de colunas. */
+@media (min-width: 1600px) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 20px 12px;
-  }
-
-  .filters select {
-    min-width: 0;
-    width: 100%;
-  }
-
-  .filters label {
-    flex: 1 1 calc(50% - 8px);
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 32px 20px;
   }
 
   .details {
+    width: min(1040px, calc(100% - 64px));
+  }
+}
+
+/* Tablets em pé e celulares deitados. */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+/* Celulares. */
+@media (max-width: 600px) {
+  .topbar-inner {
+    gap: 10px 12px;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  /* A busca ganha uma linha só dela; marca e botão de tema ficam na linha de cima. */
+  .search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+    gap: 20px 12px;
+  }
+
+  .card-meta {
+    font-size: 12px;
+  }
+
+  .filters {
+    gap: 10px;
+  }
+
+  .filters label {
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  .filters select {
     width: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    height: 100%;
-    border-radius: 0;
+    min-width: 0;
+  }
+
+  /* iOS dá zoom automático em campos com fonte menor que 16px. */
+  .search input,
+  .filters select,
+  .season-select {
+    font-size: 16px;
   }
 
   .details-hero {
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 72px;
+    gap: 16px;
+    padding: 72px 16px 20px;
   }
 
   .details-poster {
     width: 110px;
   }
 
+  .details-section {
+    padding: 8px 16px 16px;
+  }
+
+  .section-header .season-select {
+    width: 100%;
+  }
+
   .episode {
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: 112px 1fr;
+    gap: 10px;
+  }
+
+  .cast {
+    grid-auto-columns: 96px;
+  }
+
+  .recommendations {
+    grid-auto-columns: 112px;
+  }
+}
+
+/* Celulares pequenos (ex.: iPhone SE). */
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters label {
+    flex-basis: 100%;
+  }
+
+  .episode {
+    grid-template-columns: 1fr;
+  }
+
+  .episode-still {
+    max-height: 180px;
+  }
+}
+
+/* Detalhes em tela cheia nos celulares, em pé ou deitados. */
+@media (max-width: 600px), (max-height: 500px) {
+  .details {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    height: 100dvh;
+    max-height: 100%;
+    max-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .details-content {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .close-button {
+    top: max(12px, env(safe-area-inset-top));
+  }
+
+  /* Com pouca altura, o cabeçalho fixo tomaria metade da tela. */
+  .topbar {
+    position: static;
+  }
+}
+
+/* Celulares deitados: pouca altura, então o cabeçalho dos detalhes fica em linha. */
+@media (max-height: 500px) and (min-width: 601px) {
+  .details-hero {
+    padding-top: 56px;
+  }
+
+  .details-poster {
+    width: 96px;
   }
 }
 

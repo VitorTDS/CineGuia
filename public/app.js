@@ -531,7 +531,7 @@
         el('h3', { text: 'Sinopse' }),
         el('p', { className: 'overview', text: data.overview || 'Sinopse não disponível.' })
       ]),
-      renderProviders(data.providers),
+      renderProviders(data.providers, data.title),
       renderTrailer(data.trailer, data.title),
       renderCast(data.cast),
       renderSeasons(data),
@@ -553,7 +553,7 @@
     }
   }
 
-  function renderProviders(providers) {
+  function renderProviders(providers, title) {
     const section = el('section', { className: 'details-section' }, [el('h3', { text: 'Onde assistir no Brasil' })]);
     const groups = PROVIDER_GROUPS.filter(([key]) => providers[key].length);
 
@@ -566,10 +566,12 @@
       section.append(
         el('div', { className: 'provider-group' }, [
           el('h4', { text: label }),
-          el('ul', { className: 'providers' }, providers[key].map(renderProvider))
+          el('ul', { className: 'providers' }, providers[key].map((provider) => renderProvider(provider, title)))
         ])
       );
     }
+
+    section.append(el('p', { className: 'providers-hint', text: 'Toque em um serviço para abrir o título na plataforma. Alguns pedem login antes.' }));
 
     if (isSafeHttpsUrl(providers.link)) {
       section.append(
@@ -585,11 +587,25 @@
     return section;
   }
 
-  function renderProvider(provider) {
+  function renderProvider(provider, title) {
     const logo = imageUrl('w92', provider.logo);
-    return el('li', { className: 'provider' }, [
+    const content = [
       logo ? el('img', { src: logo, alt: '', width: '40', height: '40', loading: 'lazy' }) : null,
       el('span', { text: provider.name })
+    ];
+
+    if (!isSafeHttpsUrl(provider.url)) {
+      return el('li', {}, [el('span', { className: 'provider' }, content)]);
+    }
+
+    return el('li', {}, [
+      el('a', {
+        className: 'provider provider-link',
+        href: provider.url,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        'aria-label': `Ver ${title} em ${provider.name} (abre em nova aba)`
+      }, [...content, el('span', { className: 'provider-arrow', 'aria-hidden': 'true', text: '↗' })])
     ]);
   }
 

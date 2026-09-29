@@ -188,12 +188,31 @@ function pickTrailer(videos) {
   return trailer ? { key: trailer.key, name: trailer.name } : null;
 }
 
-function mapProviders(list) {
+// TMDB has no per-title deep links, so known platforms open their own search for the title.
+const PROVIDER_SEARCH_URLS = [
+  { match: /netflix/i, url: (q) => `https://www.netflix.com/search?q=${q}` },
+  { match: /prime video|amazon video/i, url: (q) => `https://www.primevideo.com/search?phrase=${q}` },
+  { match: /^apple tv/i, url: (q) => `https://tv.apple.com/br/search?term=${q}` },
+  { match: /google play/i, url: (q) => `https://play.google.com/store/search?q=${q}&c=movies` },
+  { match: /youtube/i, url: (q) => `https://www.youtube.com/results?search_query=${q}` },
+  { match: /crunchyroll/i, url: (q) => `https://www.crunchyroll.com/pt-br/search?q=${q}` }
+];
+
+function providerUrl(name, title, fallbackLink) {
+  const known = PROVIDER_SEARCH_URLS.find((entry) => entry.match.test(name));
+  return known ? known.url(encodeURIComponent(title)) : fallbackLink;
+}
+
+function mapProviders(list, title, fallbackLink) {
   const seen = new Set();
   return (list || [])
     .sort((a, b) => a.display_priority - b.display_priority)
     .filter((provider) => !seen.has(provider.provider_id) && seen.add(provider.provider_id))
-    .map((provider) => ({ name: provider.provider_name, logo: provider.logo_path || null }));
+    .map((provider) => ({
+      name: provider.provider_name,
+      logo: provider.logo_path || null,
+      url: providerUrl(provider.provider_name, title, fallbackLink)
+    }));
 }
 
 function mapCast(credits, type) {
@@ -246,17 +265,18 @@ async function handleTitle(type, id) {
   }
 
   const brazil = (data['watch/providers'] && data['watch/providers'].results && data['watch/providers'].results[REGION]) || {};
+  const title = data.title || data.name;
+  const watchLink = brazil.link || null;
 
   return {
     id: data.id,
     type,
-    title: data.title || data.name,
+    title,
     originalTitle: data.original_title || data.original_name,
     year: (data.release_date || data.first_air_date || '').slice(0, 4),
     overview: overview || '',
     genres: (data.genres || []).map((genre) => genre.name),
     runtime: type === 'movie' ? data.runtime || null : null,
-    seasons: type === 'tv' ? data.number_of_seasons || null : null,
     rating: typeof data.vote_average === 'number' ? data.vote_average : null,
     poster: data.poster_path || null,
     backdrop: data.backdrop_path || null,
@@ -268,11 +288,11 @@ async function handleTitle(type, id) {
       .slice(0, RECOMMENDATIONS_LIMIT)
       .map((item) => toSummary(item, item.media_type || type)),
     providers: {
-      link: brazil.link || null,
-      streaming: mapProviders(brazil.flatrate),
-      free: mapProviders([...(brazil.free || []), ...(brazil.ads || [])]),
-      rent: mapProviders(brazil.rent),
-      buy: mapProviders(brazil.buy)
+      link: watchLink,
+      streaming: mapProviders(brazil.flatrate, title, watchLink),
+      free: mapProviders([...(brazil.free || []), ...(brazil.ads || [])], title, watchLink),
+      rent: mapProviders(brazil.rent, title, watchLink),
+      buy: mapProviders(brazil.buy, title, watchLink)
     }
   };
 }
