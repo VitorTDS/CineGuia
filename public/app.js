@@ -9,6 +9,7 @@
   const THEME_KEY = 'cineguia-theme';
   const PLATFORM_KEY = 'cineguia-plataforma';
   const REMINDERS_KEY = 'cineguia-lembretes';
+  const WATCHED_KEY = 'cineguia-assistidos';
   const ALERTS_KEY = 'cineguia-avisos';
   const REMINDER_RECHECK_MS = 30 * 60 * 1000;
   const CINEMA_TITLES = { now_playing: 'Em cartaz nos cinemas', upcoming: 'Em breve nos cinemas' };
@@ -100,6 +101,7 @@
   let platformRequestId = 0;
   let favorites = loadFavorites();
   let reminders = loadStoredList(REMINDERS_KEY);
+  const watched = loadWatched();
   let alerts = loadStoredList(ALERTS_KEY);
   let lastReminderCheck = 0;
   let checkingReminders = false;
@@ -584,9 +586,14 @@
       meta: [formatCount(saga.movies, 'filme', 'filmes'), formatCount(saga.series, 'série', 'séries'), saga.years].join(' · '),
       badge: 'Filmes + séries'
     })));
-    els.sagaCollectionsTitle.textContent = 'Coleções de filmes';
-    els.sagaCollections.replaceChildren(...sagaList.featured.map((collection) =>
-      createSagaCard({ id: collection.id, name: collection.name, poster: collection.poster, meta: 'Coleção de filmes' })
+    els.sagaCollectionsTitle.textContent = 'Coleções de filmes por categoria';
+    els.sagaCollections.replaceChildren(...sagaList.featured.map((group) =>
+      el('section', { className: 'saga-category' }, [
+        el('h3', { className: 'saga-category-title', text: `${group.category} (${group.collections.length})` }),
+        el('div', { className: 'grid saga-grid' }, group.collections.map((collection) =>
+          createSagaCard({ id: collection.id, name: collection.name, poster: collection.poster, meta: 'Coleção de filmes' })
+        ))
+      ])
     ));
   }
 
@@ -606,9 +613,9 @@
       const data = await fetchJson(`/api/sagas/search?q=${encodeURIComponent(query)}`);
       if (requestId !== sagaRequestId) return;
       els.sagaStatus.textContent = data.results.length ? '' : `Nenhuma saga encontrada para "${query}".`;
-      els.sagaCollections.replaceChildren(...data.results.map((collection) =>
+      els.sagaCollections.replaceChildren(el('div', { className: 'grid saga-grid' }, data.results.map((collection) =>
         createSagaCard({ id: collection.id, name: collection.name, poster: collection.poster, meta: 'Coleção de filmes' })
-      ));
+      )));
     } catch (error) {
       if (requestId === sagaRequestId) els.sagaStatus.textContent = error.message;
     }
@@ -648,8 +655,67 @@
     ]);
 
     const timeline = el('ol', { className: 'timeline' });
+    const progressText = el('span', { className: 'saga-progress-text' });
+    const progressFill = el('span', { className: 'saga-progress-fill' });
+    const progress = el('div', { className: 'saga-progress' }, [
+      progressText,
+      el('span', { className: 'saga-progress-bar', 'aria-hidden': 'true' }, [progressFill])
+    ]);
     let order = 'release';
-    const draw = () => timeline.replaceChildren(...timelineEntries(data.items, order));
+    let subSaga = null;
+
+    const visibleItems = () => (subSaga ? data.items.filter((item) => item.collection && item.collection.id === subSaga) : data.items);
+    const updateProgress = () => {
+      const items = visibleItems();
+      const seen = items.filter((item) => isWatched(item)).length;
+      const percent = items.length ? Math.round((seen / items.length) * 100) : 0;
+      progressText.textContent = `${seen} de ${items.length} assistidos (${percent}%)`;
+      progressFill.style.width = `${percent}%`;
+    };
+    const draw = () => {
+      timeline.replaceChildren(...timelineEntries(visibleItems(), order, {
+        onWatchedChange: updateProgress,
+        onSubSaga: data.hasStoryOrder ? (id) => selectSubSaga(id) : null,
+        subSagaIds: new Set(subSagas.map((entry) => entry.id)),
+        activeSubSaga: subSaga
+      }));
+      updateProgress();
+    };
+
+    // Sub-sagas are the TMDB collections inside a hand-built saga (e.g. Thor inside Marvel).
+    const subSagas = [...data.items.reduce((map, item) => {
+      if (!item.collection) return map;
+      const entry = map.get(item.collection.id) || { id: item.collection.id, name: item.collection.name, count: 0 };
+      entry.count += 1;
+      return map.set(item.collection.id, entry);
+    }, new Map()).values()]
+      .filter((entry) => entry.count >= 2)
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+    const subSagaFilter = data.hasStoryOrder && subSagas.length
+      ? el('div', { className: 'subsaga-filter', role: 'group', 'aria-label': 'Filtrar por sub-saga' }, [
+        { id: null, name: 'Todas', count: data.items.length },
+        ...subSagas
+      ].map((entry) => el('button', {
+        type: 'button',
+        className: 'subsaga-chip',
+        'data-subsaga': entry.id === null ? 'all' : String(entry.id),
+        'aria-pressed': String(entry.id === subSaga),
+        text: `${entry.id === null ? entry.name : shortCollectionName(entry.name)} (${entry.count})`,
+        onclick: () => selectSubSaga(entry.id)
+      })))
+      : null;
+
+    function selectSubSaga(id) {
+      subSaga = id;
+      if (subSagaFilter) {
+        for (const chip of subSagaFilter.children) {
+          chip.setAttribute('aria-pressed', String(chip.dataset.subsaga === (id === null ? 'all' : String(id))));
+        }
+      }
+      draw();
+    }
+
     draw();
 
     const orderSwitch = data.hasStoryOrder
@@ -678,12 +744,18 @@
         : null,
       el('section', { className: 'details-section' }, [
         el('div', { className: 'section-header' }, [el('h3', { text: 'Linha do tempo' }), orderSwitch]),
+        subSagaFilter,
+        progress,
         timeline
       ])
     ]);
   }
 
-  function timelineEntries(items, order) {
+  function shortCollectionName(name) {
+    return name.replace(/\s*[:-]?\s*Coleção\s*$/i, '').replace(/^Coleção\s+/i, '').trim() || name;
+  }
+
+  function timelineEntries(items, order, { onWatchedChange, onSubSaga, subSagaIds = new Set(), activeSubSaga = null } = {}) {
     const today = localIsoDate();
     const sorted = order === 'story' ? [...items].sort((a, b) => a.storyOrder - b.storyOrder) : items;
     const entries = [];
@@ -700,30 +772,99 @@
       const dateText = item.releaseDate ? formatDate(item.releaseDate) : 'Data a definir';
       const poster = imageUrl('w154', item.poster);
 
+      const marker = el('span', { className: 'timeline-marker', 'data-watched-marker': itemKey(item), text: String(index + 1) });
+      marker.classList.toggle('watched', isWatched(item));
+
       entries.push(el('li', { className: 'timeline-item' }, [
-        el('span', { className: 'timeline-marker', text: String(index + 1) }),
-        el('button', {
-          type: 'button',
-          className: 'timeline-open',
-          onclick: () => openTitle({ type: item.type, id: item.id, title: item.title, poster: item.poster })
-        }, [
-          poster
-            ? el('img', { className: 'timeline-poster', src: poster, alt: '', loading: 'lazy', width: '154', height: '231' })
-            : el('span', { className: 'timeline-poster placeholder', 'aria-hidden': 'true' }),
-          el('span', { className: 'timeline-info' }, [
-            el('span', { className: 'timeline-title', text: item.title }),
-            el('span', { className: 'timeline-meta' }, [
-              el('span', { className: `type-badge ${item.type}`, text: TYPE_LABELS[item.type] }),
-              document.createTextNode(` ${dateText}`),
-              upcoming ? el('span', { className: 'upcoming-badge', text: 'Em breve' }) : null
-            ]),
-            item.overview ? el('span', { className: 'timeline-overview', text: item.overview }) : null
+        marker,
+        el('div', { className: 'timeline-card' }, [
+          el('button', {
+            type: 'button',
+            className: 'timeline-open',
+            onclick: () => openTitle({ type: item.type, id: item.id, title: item.title, poster: item.poster })
+          }, [
+            poster
+              ? el('img', { className: 'timeline-poster', src: poster, alt: '', loading: 'lazy', width: '154', height: '231' })
+              : el('span', { className: 'timeline-poster placeholder', 'aria-hidden': 'true' }),
+            el('span', { className: 'timeline-info' }, [
+              el('span', { className: 'timeline-title', text: item.title }),
+              el('span', { className: 'timeline-meta' }, [
+                el('span', { className: `type-badge ${item.type}`, text: TYPE_LABELS[item.type] }),
+                document.createTextNode(` ${dateText}`),
+                upcoming ? el('span', { className: 'upcoming-badge', text: 'Em breve' }) : null
+              ]),
+              item.overview ? el('span', { className: 'timeline-overview', text: item.overview }) : null
+            ])
+          ]),
+          el('div', { className: 'timeline-actions' }, [
+            watchedButton(item, onWatchedChange),
+            onSubSaga && item.collection && subSagaIds.has(item.collection.id) && item.collection.id !== activeSubSaga
+              ? el('button', {
+                type: 'button',
+                className: 'link-button subsaga-link',
+                text: `Ver só ${shortCollectionName(item.collection.name)}`,
+                onclick: () => onSubSaga(item.collection.id)
+              })
+              : null
           ])
         ])
       ]));
     });
 
     return entries;
+  }
+
+  // ---------- Já assisti ----------
+
+  function loadWatched() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(WATCHED_KEY));
+      return new Set(Array.isArray(parsed) ? parsed.filter((key) => /^(movie|tv)-\d+$/.test(key)) : []);
+    } catch {
+      return new Set();
+    }
+  }
+
+  function isWatched(item) {
+    return watched.has(itemKey(item));
+  }
+
+  function toggleWatched(item) {
+    const key = itemKey(item);
+    if (watched.has(key)) watched.delete(key);
+    else watched.add(key);
+
+    try {
+      localStorage.setItem(WATCHED_KEY, JSON.stringify([...watched]));
+    } catch {
+      showToast('Não foi possível salvar neste navegador.');
+    }
+
+    // The same title can appear in several sagas and in its details; keep every copy in sync.
+    for (const button of document.querySelectorAll(`[data-watched-key="${key}"]`)) renderWatchedButton(button, item);
+    for (const marker of document.querySelectorAll(`[data-watched-marker="${key}"]`)) marker.classList.toggle('watched', watched.has(key));
+  }
+
+  function watchedButton(item, onChange, variant = 'compact') {
+    const button = el('button', {
+      type: 'button',
+      className: `watched-button ${variant}`,
+      'data-watched-key': itemKey(item),
+      onclick: (event) => {
+        event.stopPropagation();
+        toggleWatched(item);
+        if (onChange) onChange();
+      }
+    });
+    renderWatchedButton(button, item);
+    return button;
+  }
+
+  function renderWatchedButton(button, item) {
+    const seen = isWatched(item);
+    button.setAttribute('aria-pressed', String(seen));
+    button.setAttribute('aria-label', seen ? `Desmarcar ${item.title} como assistido` : `Marcar ${item.title} como assistido`);
+    button.textContent = seen ? '✓ Assisti' : 'Marcar como assistido';
   }
 
   function renderSagaLinks(sagas) {
@@ -1356,6 +1497,7 @@
         el('div', { className: 'details-actions' }, [
           favoriteButton(data, 'full'),
           reminderButton(data, 'full'),
+          watchedButton(data, null, 'full'),
           el('button', { type: 'button', className: 'action-button', text: 'Copiar link', onclick: () => copyLink(data) }),
           ...calendarActions(data)
         ])

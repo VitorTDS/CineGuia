@@ -14,6 +14,10 @@
           "releaseDate": "2011-07-22",
           "poster": "/19wxfSXHhuJBRbbfUweCsfXFhpv.jpg",
           "overview": "Durante a Segunda Guerra Mundial, Steve Rogers é um homem doente, do Brooklyn, que se transforma no super soldado Capitão América para ajudar nos esforços de guerra. Rogers deve parar o Caveira Vermelha, o implacável chefe de armas de Adolf Hitler e líder de uma organização que pretende usar um misterioso mecanismo de incalculáveis poderes para dominar o mundo.",
+          "collection": {
+            "id": 131295,
+            "name": "Capitão América: Coleção"
+          },
           "storyOrder": 1
         },
         {
@@ -24,6 +28,10 @@
           "releaseDate": "2019-03-06",
           "poster": "/n3BisLdTMceUWcdP1ooP5VwN9JF.jpg",
           "overview": "Capitã Marvel, parte do exército de elite dos Kree, uma raça alienígena, encontra-se no meio de uma batalha entre seu povo e os Skrulls. Ao tentar impedir uma invasão de larga escala na Terra, em 1995, ela tem memórias recorrentes de uma outra vida, como Carol Danvers, agente da Força Aérea norte-americana. Com a ajuda de Nick Fury, Capitã Marvel precisa descobrir os segredos de seu passado e pôr um fim ao conflito intergalático com os Skrulls.",
+          "collection": {
+            "id": 623911,
+            "name": "Capitã Marvel: Coleção"
+          },
           "storyOrder": 2
         },
         {
@@ -34,6 +42,10 @@
           "releaseDate": "2008-04-30",
           "poster": "/mqN7RxojEiPoh3FTSTwOtwg7KAu.jpg",
           "overview": "Tony Stark é um industrial bilionário, que também é um brilhante inventor. Ao ser sequestrado ele é obrigado por terroristas a construir uma arma devastadora mas, ao invés disto, constrói uma armadura de alta tecnologia que permite que fuja de seu cativeiro. A partir de então ele passa a usá-la para combater o crime, sob o alter ego do Homem de Ferro.",
+          "collection": {
+            "id": 131292,
+            "name": "Homem de Ferro: Coleção"
+          },
           "storyOrder": 3
         },
         {
@@ -44,6 +56,10 @@
           "releaseDate": "2010-04-28",
           "poster": "/vzROjQbgKWMVf2EldXipCcjpuBL.jpg",
           "overview": "Em um mundo ciente da existência do Homem de Ferro, o inventor bilionário Tony Stark sofre pressão de todos os lados para compartilhar sua tecnologia com as forças armadas. Ele resiste para divulgar os segredos de sua inigualável armadura, com medo de que estas informações caiam nas mãos erradas.",
+          "collection": {
+            "id": 131292,
+            "name": "Homem de Ferro: Coleção"
+          },
           "storyOrder": 4
         },
         {
@@ -54,6 +70,7 @@
           "releaseDate": "2008-06-12",
           "poster": "/v1UXe9WlwkkZ5YrffUSPdYNeJz3.jpg",
           "overview": "Vivendo escondido e longe de Betty Ross, a mulher que ama, o cientista Bruce Banner busca um meio de retirar a radiação gama que está em seu sangue. Ao mesmo tempo ele precisa fugir da perseguição do general Ross, seu grande inimigo, e da máquina militar que tenta capturá-lo, na intenção de explorar o poder que faz com que Banner se transforme no Hulk.",
+          "collection": null,
           "storyOrder": 5
         },
         {
@@ -64,6 +81,10 @@
           "releaseDate": "2011-04-21",
           "poster": "/aEV9QmgBqjRTdjsvdCgdK89tavQ.jpg",
           "overview": "Como filho de Odin, rei dos deuses nórdicos, Thor logo herdará o trono de Asgard de seu idoso pai. Porém, no dia de sua coroação, Thor reage com brutalidade quando os inimigos dos deuses entram no palácio violando o tratado. Como punição, Odin manda Thor para a Terra. Enquanto seu irmão Loki conspira em Asgard, Thor, agora sem seus poderes, enfrenta sua maior ameaça.",
+          "collection": {
+            "id": 131296,
+            "name": "Thor: Coleção"
+          },
           "storyOrder": 6
         },
         {
@@ -74,6 +95,10 @@
           "releaseDate": "2012-04-25",
           "poster": "/PtSapjHdDjlVcsqdEo0u7rDE6i.jpg",
           "overview": "Loki, o irmão de Thor, ganha acesso ao poder ilimitado do cubo cósmico ao roubá-lo de dentro das instalações da S.H.I.E.L.D. Nick Fury, o diretor desta agência internacional que mantém a paz, logo reúne os únicos super-heróis que serão capazes de defender a Terra de ameaças sem precedentes. Homem de Ferro, Capitão América, Hulk, Thor, Viúva Negra e Gavião Arqueiro formam o time dos sonhos de Fury, mas eles precisam aprender a colocar os egos de lado e agir como um grupo em prol da humanidade.",
+          "collection": {
+            "id": 86311,
+            "name": "Vingadores: Coleção"
+          },
           "storyOrder": 7
         },
         {
@@ -84,6 +109,10 @@
           "releaseDate": "2013-10-30",
           "poster": "/9qdqXIx2neypuT1kWKCTI2vsO4q.jpg",
           "overview": "Thor precisa contar com a ajuda de seus companheiros e até de seu traiçoeiro irmão Loki em um plano audacioso para salvar o universo. Entretanto, os caminhos de Thor se cruzam com Jane Foster e, dessa vez, a vida dela está realmente em perigo.",
+          "collection": {
+            "id": 131296,
+            "name": "Thor: Coleção"
+          },
           "storyOrder": 8
         },
         {
@@ -94,6 +123,10 @@
           "releaseDate": "2013-04-18",
           "poster": "/C7MZwRTjvEy7gkWcLJeBGZFE1w.jpg",
           "overview": "Depois de um inimigo reduzir o mundo de Tony Stark a destroços, o Homem de Ferro precisa aprender a confiar em seus instintos para proteger aqueles que ama, especialmente sua namorada, e lutar contra seu maior medo: o fracasso.",
+          "collection": {
+            "id": 131292,
+            "name": "Homem de Ferro: Coleção"
+          },
           "storyOrder": 9
         },
         {
@@ -104,6 +137,10 @@
           "releaseDate": "2014-03-20",
           "poster": "/9sTDXtIIfHza1rAbmHU2djyzEXA.jpg",
           "overview": "Após os eventos catastróficos em Nova York com Os Vingadores, Steve Rogers segue tentando se ajustar ao mundo moderno. Porém, quando um colega da agência S.H.I.E.L.D. é atacado, Steve se vê preso em uma rede de intrigas que ameaça colocar o mundo em risco. Em parceria com a Viúva Negra e Falcão, seu novo aliado, o Capitão América tem que enfrentar um misterioso e inesperado inimigo, o Soldado Invernal.",
+          "collection": {
+            "id": 131295,
+            "name": "Capitão América: Coleção"
+          },
           "storyOrder": 10
         },
         {
@@ -114,6 +151,10 @@
           "releaseDate": "2014-07-30",
           "poster": "/xaY92XMToaSnBuvCui3LHzNGqZB.jpg",
           "overview": "Abduzido da Terra quando ainda era criança, Peter Quill fez carreira como saqueador e se auto denominou \"Senhor das Estrelas\". Quando rouba uma esfera, na qual o poderoso vilão Ronan, da raça kree, está interessado, passa a ser procurado por vários caçadores de recompensas. Para escapar do perigo, Quill une forças com quatro personagens fora do sistema: Groot, uma árvore humanóide (Vin Diesel), a sombria e perigosa Gamora, o guaxinim rápido no gatilho Rocket Racoon e o vingativo Drax, o Destruidor. A esfera roubada é capaz de mudar o destino de todo o universo.",
+          "collection": {
+            "id": 284433,
+            "name": "Guardiões da Galáxia: Coleção"
+          },
           "storyOrder": 11
         },
         {
@@ -124,6 +165,10 @@
           "releaseDate": "2017-04-25",
           "poster": "/jGtBLu0JAKf5JxhWgmF68HROzCA.jpg",
           "overview": "Os Guardiões precisam lutar para manter sua recém descoberta família unida, enquanto descobrem os mistérios sobre o verdadeiro pai de Peter Quill.",
+          "collection": {
+            "id": 284433,
+            "name": "Guardiões da Galáxia: Coleção"
+          },
           "storyOrder": 12
         },
         {
@@ -134,6 +179,10 @@
           "releaseDate": "2015-04-22",
           "poster": "/uvzqTsRmUzk9mJVzX8cMSWMyM5l.jpg",
           "overview": "Ao tentar proteger o planeta de ameaças, Tony Stark constrói um sistema de inteligência artificial que cuidaria da paz mundial. O projeto acaba dando errado e gera o nascimento do Ultron. Com o destino da Terra em jogo, os Vingadores terão que se unir para mais uma vez salvar a raça humana da extinção.",
+          "collection": {
+            "id": 86311,
+            "name": "Vingadores: Coleção"
+          },
           "storyOrder": 13
         },
         {
@@ -144,6 +193,10 @@
           "releaseDate": "2015-07-14",
           "poster": "/lsiy4IcnbtChkayPMxLda2fq4xM.jpg",
           "overview": "Dr. Hank Pym, o inventor da fórmula/traje que permite o encolhimento, precisa impedir que seu ex-pupilo Darren Cross consiga replicar o feito e vender a tecnologia para uma organização do mal. Depois de sair da cadeia, o trambiqueiro Scott Lang está disposto a reconquistar o respeito da ex-mulher, Maggie e, principalmente, da filha. Com dificuldades de arrumar um emprego honesto, ele aceita praticar um último golpe. O que ele não sabia era que tudo não passava de um plano do Dr. Pym que, depois de anos observando o hábil ladrão, o escolhe para vestir o traje do Homem-Formiga.",
+          "collection": {
+            "id": 422834,
+            "name": "Homem-Formiga: Coleção"
+          },
           "storyOrder": 14
         },
         {
@@ -154,6 +207,10 @@
           "releaseDate": "2016-04-27",
           "poster": "/dsvUR5aEVSkB1Sro7nT6Khqik71.jpg",
           "overview": "Depois do ataque de Ultron, os políticos decidem controlar os Vingadores, já que suas ações afetam toda a humanidade. A decisão coloca o Capitão América em rota de colisão com o Homem de Ferro.",
+          "collection": {
+            "id": 131295,
+            "name": "Capitão América: Coleção"
+          },
           "storyOrder": 15
         },
         {
@@ -164,6 +221,7 @@
           "releaseDate": "2021-07-07",
           "poster": "/lrJ9QI2HMbO8N2S2r2v7fjtou5c.jpg",
           "overview": "Natasha Romanoff, também conhecida como Viúva Negra, confronta o lado mais sombrio de sua história quando surge uma perigosa conspiração ligada ao seu passado. Perseguida por uma força implacável disposta a tudo para destruí-la, Natasha precisa agora lidar com seu passado como espiã e com as relações que deixou para trás muito antes de se tornar uma Vingadora.",
+          "collection": null,
           "storyOrder": 16
         },
         {
@@ -174,6 +232,10 @@
           "releaseDate": "2018-02-13",
           "poster": "/ubXNpxL2ASSzY0f8Hxv08pOsV2L.jpg",
           "overview": "O príncipe T'Challa retorna a Wakanda para ser coroado rei. Assumindo o manto de Pantera Negra, ele vai à caça de um vilão que roubou um precioso metal de seu país.",
+          "collection": {
+            "id": 529892,
+            "name": "Pantera Negra: Coleção"
+          },
           "storyOrder": 17
         },
         {
@@ -184,6 +246,10 @@
           "releaseDate": "2017-07-05",
           "poster": "/1nkwRL17cAGO8A1yu3miRBdvOsl.jpg",
           "overview": "Depois de atuar ao lado dos Vingadores, chegou a hora de Peter Parker voltar para casa e para a sua vida, já não mais tão normal.",
+          "collection": {
+            "id": 531241,
+            "name": "Homem-Aranha (Vingadores) Coleção"
+          },
           "storyOrder": 18
         },
         {
@@ -194,6 +260,10 @@
           "releaseDate": "2016-10-25",
           "poster": "/pb4clPWRJ5AKlSFu1HrrHdt5uAw.jpg",
           "overview": "Após sua carreira ser destruída, um brilhante, porém arrogante, cirurgião ganha uma nova chance em sua vida quando um feiticeiro o treina para se tornar o Mago Supremo.",
+          "collection": {
+            "id": 618529,
+            "name": "Doutor Estranho: Coleção"
+          },
           "storyOrder": 19
         },
         {
@@ -204,6 +274,10 @@
           "releaseDate": "2017-10-02",
           "poster": "/2K45Fp6koAVoeeYS6aMb9BeNt4F.jpg",
           "overview": "Thor está preso do outro lado do universo. Ele precisa correr contra o tempo para voltar a Asgard e parar Ragnarok, a destruição de seu mundo, que está nas mãos da poderosa e implacável vilã Hela.",
+          "collection": {
+            "id": 131296,
+            "name": "Thor: Coleção"
+          },
           "storyOrder": 20
         },
         {
@@ -214,6 +288,10 @@
           "releaseDate": "2018-07-04",
           "poster": "/5BKRuGVxx8qsB7WGSJ0oWRCHsgN.jpg",
           "overview": "Scott Lang lida com as consequências de suas escolhas tanto como super-herói quanto como pai. Enquanto tenta reequilibrar sua vida com suas responsabilidades como o Homem-Formiga, ele é confrontado por Hope van Dyne e Dr. Hank Pym com uma nova missão urgente. Scott deve mais uma vez vestir o uniforme e aprender a lutar ao lado da Vespa, trabalhando em conjunto para descobrir segredos do passado.",
+          "collection": {
+            "id": 422834,
+            "name": "Homem-Formiga: Coleção"
+          },
           "storyOrder": 21
         },
         {
@@ -224,6 +302,10 @@
           "releaseDate": "2018-04-25",
           "poster": "/A4kvp7vY1BDLrrQIagRCffLKj1t.jpg",
           "overview": "Homem de Ferro, Thor, Hulk e os Vingadores se unem para combater seu inimigo mais poderoso, o maligno Thanos. Em uma missão para coletar todas as seis pedras infinitas, Thanos planeja usá-las para infligir sua vontade maléfica sobre a realidade.",
+          "collection": {
+            "id": 86311,
+            "name": "Vingadores: Coleção"
+          },
           "storyOrder": 22
         },
         {
@@ -234,6 +316,10 @@
           "releaseDate": "2019-04-24",
           "poster": "/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg",
           "overview": "Após os eventos devastadores de \"Vingadores: Guerra Infinita\", o universo está em ruínas devido aos esforços do Titã Louco, Thanos. Com a ajuda de aliados remanescentes, os Vingadores devem se reunir mais uma vez a fim de desfazer as ações de Thanos e restaurar a ordem no universo de uma vez por todas, não importando as consequências.",
+          "collection": {
+            "id": 86311,
+            "name": "Vingadores: Coleção"
+          },
           "storyOrder": 23
         },
         {
@@ -244,6 +330,7 @@
           "releaseDate": "2021-06-09",
           "poster": "/2TwPJfPiBI2lVrofggw3H0b4cDC.jpg",
           "overview": "Começando imediatamente depois que Loki rouba o Tesseract (de novo), ele se encontra diante da Autoridade de Variação Temporal, uma organização burocrática que existe fora do tempo e espaço. Forçado a responder por seus crimes contra a linha do tempo, ele recebe uma escolha: Ser deletado da realidade ou ajudar a capturar uma ameaça ainda maior.",
+          "collection": null,
           "storyOrder": 24
         },
         {
@@ -254,6 +341,7 @@
           "releaseDate": "2021-08-11",
           "poster": "/kJQWrrwtu0TAsIKq8Adgzeg4bFt.jpg",
           "overview": "\"What If…?\" reinventa os acontecimentos do UCM, mudando a história de forma surpreendente.",
+          "collection": null,
           "storyOrder": 25
         },
         {
@@ -264,6 +352,7 @@
           "releaseDate": "2021-01-15",
           "poster": "/8mAyDNSCZDiejPTm4lwgbztut7y.jpg",
           "overview": "Wanda Maximoff  e Visão, um casal de super-heróis com uma vida perfeita, que começa a suspeitar que nem tudo é o que parece.",
+          "collection": null,
           "storyOrder": 26
         },
         {
@@ -274,6 +363,7 @@
           "releaseDate": "2021-03-19",
           "poster": "/oF9njYCN6lBdrsi6wfulcxTggvn.jpg",
           "overview": "Após os eventos de \"Vingadores: Ultimato\", Sam Wilson/Falcão e Bucky Barnes/Soldado Invernal se unem em uma aventura que testa suas habilidades - e a paciência.",
+          "collection": null,
           "storyOrder": 27
         },
         {
@@ -284,6 +374,7 @@
           "releaseDate": "2021-09-01",
           "poster": "/d3wNegI8XJF8Kto6KhlqPicBRAp.jpg",
           "overview": "Shang-Chi precisa confrontar o passado que pensou ter deixado para trás. Ao mesmo tempo, ele é envolvido em uma teia de mistérios da organização conhecida como Dez Anéis.",
+          "collection": null,
           "storyOrder": 28
         },
         {
@@ -294,6 +385,7 @@
           "releaseDate": "2021-11-03",
           "poster": "/2IgZIYa8iTQuLNIcVERwXmh8pUj.jpg",
           "overview": "Após os eventos de \"Vingadores: Ultimato\", os Eternos, uma raça alienígena imortal criada pelos Celestiais que vivem em segredo na Terra há mais de 7000 anos, se reúnem após uma tragédia inesperada para proteger a humanidade de seus colegas malignos: os Deviantes.",
+          "collection": null,
           "storyOrder": 29
         },
         {
@@ -304,6 +396,10 @@
           "releaseDate": "2019-06-28",
           "poster": "/tX0o4AdHpidgniTWwfzK0dNTKrc.jpg",
           "overview": "Peter Parker está em uma viagem de duas semanas pela Europa, ao lado de seus amigos de colégio, quando é surpreendido pela visita de Nick Fury. Convocado para mais uma missão heroica, ele precisa enfrentar vários vilões que surgem em cidades-símbolo do continente, como Londres, Paris e Veneza, e também a aparição do enigmático Mysterio.",
+          "collection": {
+            "id": 531241,
+            "name": "Homem-Aranha (Vingadores) Coleção"
+          },
           "storyOrder": 30
         },
         {
@@ -314,6 +410,10 @@
           "releaseDate": "2021-12-15",
           "poster": "/xaKydnMw6wR1MBAjS5seGPVusbs.jpg",
           "overview": "Peter Parker é desmascarado e não consegue mais separar sua vida normal dos grandes riscos de ser um super-herói. Quando ele pede ajuda ao Doutor Estranho, os riscos se tornam ainda mais perigosos, e o forçam a descobrir o que realmente significa ser o Homem-Aranha...",
+          "collection": {
+            "id": 531241,
+            "name": "Homem-Aranha (Vingadores) Coleção"
+          },
           "storyOrder": 31
         },
         {
@@ -324,6 +424,7 @@
           "releaseDate": "2021-11-24",
           "poster": "/yPRl1dvc0FHi8Syy1XhsoMumw9J.jpg",
           "overview": "O ex-vingador Clint Barton tem uma missão aparentemente simples: voltar para sua família no Natal. Será possível? Talvez com a ajuda de Kate Bishop, uma arqueira de 22 anos que sonha em se tornar uma super-heroína. Os dois são forçados a trabalhar juntos quando uma presença do passado de Barton ameaça descarrilar muito mais do que o espírito festivo.",
+          "collection": null,
           "storyOrder": 32
         },
         {
@@ -334,6 +435,10 @@
           "releaseDate": "2022-05-04",
           "poster": "/7pLIVfovuIf2KQOOvMsKx3Lanrg.jpg",
           "overview": "Doutor Estranho, com a ajuda de aliados místicos antigos e novos, atravessa as perigosas realidades alternativas e alucinantes do Multiverso para enfrentar um novo adversário misterioso.",
+          "collection": {
+            "id": 618529,
+            "name": "Doutor Estranho: Coleção"
+          },
           "storyOrder": 33
         },
         {
@@ -344,6 +449,7 @@
           "releaseDate": "2022-03-30",
           "poster": "/tkc7AVyUoG9VEeDvukN0TVqa24C.jpg",
           "overview": "A série acompanha Steven Grant, um gentil e educado funcionário de uma loja de souvenir, que é atormentado com apagões e memórias de outra vida. Steven descobre que tem transtorno dissociativo de identidade e divide o corpo com o mercenário Marc Spector. À medida que os inimigos de Steven/Marc se voltam para eles, ambos devem navegar em suas complexas identidades enquanto mergulham em um mistério mortal entre os poderosos deuses do Egito.",
+          "collection": null,
           "storyOrder": 34
         },
         {
@@ -354,6 +460,10 @@
           "releaseDate": "2022-11-09",
           "poster": "/cryEN3sWlgB2wTzcUNVtDGI8bkM.jpg",
           "overview": "A rainha Ramonda, Shuri, M'Baku, Okoye e as poderosas Dora Milaje lutam para proteger sua nação após a morte do rei T'Challa. Com a ajuda da Cão de Guerra Nakia e de Everett Ross, eles tentam encontrar um novo caminho para Wakanda.",
+          "collection": {
+            "id": 529892,
+            "name": "Pantera Negra: Coleção"
+          },
           "storyOrder": 35
         },
         {
@@ -364,6 +474,7 @@
           "releaseDate": "2024-01-09",
           "poster": "/sxjbIAIPKB8sPQ9s1yBPsANf8tj.jpg",
           "overview": "Perseguida pelo criminoso Fisk, Maya volta para casa, onde confrontará sua família e seu legado.",
+          "collection": null,
           "storyOrder": 36
         },
         {
@@ -374,6 +485,7 @@
           "releaseDate": "2022-08-18",
           "poster": "/5o8Nw4mBCqyO5dtfpPAZXjv5XJ2.jpg",
           "overview": "Jennifer Walters — uma advogada especializada em casos envolvendo super-humanos — deve lidar com a complicada vida de uma mulher solteira de trinta e poucos anos que, por acaso, é uma hulk superpoderosa de 2 metros.",
+          "collection": null,
           "storyOrder": 37
         },
         {
@@ -384,6 +496,7 @@
           "releaseDate": "2022-06-08",
           "poster": "/8Rzkt43GnMyTN0srvn3Z4u7C7VU.jpg",
           "overview": "Kamala Khan é uma adolescente muçulmana de Jersey City. Ela adora jogar videogames e escrever fanfictions, além de ser fã de super-heróis e ter uma imaginação sem limites – especialmente quando se trata da Capitã Marvel. Kamala sente que não se encaixa na escola e, às vezes, nem mesmo em casa. Mas um dia ela descobre que tem superpoderes como os heróis que sempre admirou... e a vida fica bem melhor com superpoderes, não é?",
+          "collection": null,
           "storyOrder": 38
         },
         {
@@ -394,6 +507,10 @@
           "releaseDate": "2022-07-06",
           "poster": "/8gdBMIYwPPxp3b9FjY9yCxme5Rs.jpg",
           "overview": "Thor parte em uma jornada de autodescoberta, diferente de tudo que ele já enfrentou. Mas seus esforços são interrompidos por um assassino galáctico conhecido como Gorr, o Carniceiro dos Deuses, que busca a extinção dos deuses. Para combater esta ameaça, Thor pede a ajuda da Rei Valquíria, Korg e da ex-namorada Jane Foster, que, para a surpresa de Thor, inexplicavelmente empunha seu mágico martelo, Mjolnir, como a Poderosa Thor. Juntos, eles embarcam em uma angustiante aventura cósmica para descobrir o mistério da vingança do Carniceiro dos Deuses e detê-lo antes que seja tarde demais.",
+          "collection": {
+            "id": 131296,
+            "name": "Thor: Coleção"
+          },
           "storyOrder": 39
         },
         {
@@ -404,6 +521,7 @@
           "releaseDate": "2022-09-25",
           "poster": "/qakD0XF0OPrOq8ghvZ1ZlYfNMEN.jpg",
           "overview": "Em uma noite escura e sombria, uma cabala secreta de caçadores de monstros emerge das sombras e se reúne no templo de Bloodstone após a morte de seu líder.  Em um estranho e macabro memorial à vida do líder, os participantes são lançados em uma misteriosa e mortal competição por uma poderosa relíquia – uma caçada que acabará por colocá-los cara a cara com um monstro perigoso.",
+          "collection": null,
           "storyOrder": 40
         },
         {
@@ -414,6 +532,7 @@
           "releaseDate": "2022-11-24",
           "poster": "/uXuSnbuS215XeFnOkAdWMrADfDX.jpg",
           "overview": "Com a missão de tornar o Natal inesquecível para Quill, os Guardiões vão à Terra em busca do presente perfeito.",
+          "collection": null,
           "storyOrder": 41
         },
         {
@@ -424,6 +543,10 @@
           "releaseDate": "2023-02-15",
           "poster": "/qZDafbofrZn46MmDwJS8fCSCe6l.jpg",
           "overview": "Scott Lang e Hope van Dyne em suas jornadas como super-heróis. Scott e sua família são puxados para o Reino Quântico, onde eles precisarão enfrentar um novo e terrível vilão: Kang, o Conquistador e M.O.D.O.K..",
+          "collection": {
+            "id": 422834,
+            "name": "Homem-Formiga: Coleção"
+          },
           "storyOrder": 42
         },
         {
@@ -434,6 +557,10 @@
           "releaseDate": "2023-05-03",
           "poster": "/4yycSPnchdNAZirGkmCYQwTd3cr.jpg",
           "overview": "Peter Quill, que ainda está se recuperando da perda de Gamora, tem que reunir a sua equipe para defender o universo e proteger um dos seus. Uma missão que, se não for concluída com sucesso, pode levar ao fim dos Guardiões como os conhecemos.",
+          "collection": {
+            "id": 284433,
+            "name": "Guardiões da Galáxia: Coleção"
+          },
           "storyOrder": 43
         },
         {
@@ -444,6 +571,7 @@
           "releaseDate": "2023-06-21",
           "poster": "/2N892H3CirkrFC4vulZfMVSUbAZ.jpg",
           "overview": "Nick Fury descobre que uma facção de metamorfos Skrulls pretende invadir a Terra. Fury se junta a aliados incluindo Everett Ross, Maria Hill e o Skrull Talos, que estava vivendo na Terra. Juntos eles correm contra o tempo para impedir a invasão Skrull iminente e salvar a humanidade.",
+          "collection": null,
           "storyOrder": 44
         },
         {
@@ -454,6 +582,10 @@
           "releaseDate": "2023-11-08",
           "poster": "/wpp5KIwjtrKoWj5H0TSsJdqsDx7.jpg",
           "overview": "Quando suas obrigações a levam a uma fenda espacial anômala ligada a um revolucionário Kree, os poderes de Carol Danvers, a Capitã Marvel, se entrelaçam aos de Kamala Khan, a Ms. Marvel, e aos da sobrinha de Carol, astronauta da S.A.B.E.R., Capitã Monica Rambeau. Juntas, esse trio improvável deve ser unir para salvar o universo como \"As Marvels\".",
+          "collection": {
+            "id": 623911,
+            "name": "Capitã Marvel: Coleção"
+          },
           "storyOrder": 45
         },
         {
@@ -464,6 +596,7 @@
           "releaseDate": "2024-09-18",
           "poster": "/4TnWiIc9VFqX1HKU4HJ8vNWKHvX.jpg",
           "overview": "A infame Agatha Harkness encontra-se sem poderes depois de um jovem gótico suspeito ajudá-la a se libertar de um feitiço distorcido. Ela se mostra interessada quando ele pede que seja levado ao lendário Caminho das Bruxas, um caminho mágico de provações que recompensará a bruxa sobrevivente com o que lhe falta. Juntos, Agatha e esse misterioso Jovem reúnem um coven desesperado e partem para o Caminho...",
+          "collection": null,
           "storyOrder": 46
         },
         {
@@ -474,6 +607,10 @@
           "releaseDate": "2024-07-24",
           "poster": "/cJFqqiDYprqExaXatu4AaoMzDG2.jpg",
           "overview": "Um apático Wade Wilson trabalha duro na vida civil. Seus dias como mercenário moralmente flexível, Deadpool, ficaram para trás. Quando seu planeta enfrenta uma ameaça, Wade deve relutantemente vestir-se novamente com um ainda mais relutante... relutante? Mais relutante? Ele deve convencer um Wolverine relutante em... Porra. As sinopses são tão estúpidas.",
+          "collection": {
+            "id": 448150,
+            "name": "Deadpool: Coleção"
+          },
           "storyOrder": 47
         },
         {
@@ -484,6 +621,10 @@
           "releaseDate": "2025-02-12",
           "poster": "/5nbSgP8f5LMCI0PwVRRaHJaUmR3.jpg",
           "overview": "Após se encontrar com o recém-eleito presidente dos EUA, Thaddeus Ross, Sam se vê no meio de um incidente internacional. Ele deve descobrir o motivo por trás de uma conspiração global nefasta antes que o verdadeiro gênio faça o mundo inteiro ser dominado pelo vermelho.",
+          "collection": {
+            "id": 131295,
+            "name": "Capitão América: Coleção"
+          },
           "storyOrder": 48
         },
         {
@@ -494,6 +635,7 @@
           "releaseDate": "2025-03-04",
           "poster": "/r5hNFtkNAauxc2G4VUlnJOaVIb0.jpg",
           "overview": "Matt Murdock, um advogado cego com habilidades fantásticas, luta por justiça através de seu agitado escritório de advocacia, enquanto o ex-chefe do crime Wilson Fisk busca seus próprios empreendimentos políticos em Nova Iorque. Quando suas identidades passadas começam a emergir, seus caminhos se cruzam perigosamente.",
+          "collection": null,
           "storyOrder": 49
         },
         {
@@ -504,6 +646,7 @@
           "releaseDate": "2025-04-30",
           "poster": "/zkysYSX51ddSPQuiDTjkGCS6vyh.jpg",
           "overview": "Depois de se verem presos em uma armadilha mortal, uma equipe não convencional de sete anti-heróis deve embarcar em uma missão perigosa que os forçará a confrontar os cantos mais sombrios de seus passados.",
+          "collection": null,
           "storyOrder": 50
         },
         {
@@ -514,6 +657,7 @@
           "releaseDate": "2025-06-24",
           "poster": "/yRanvKZhy5NdF64amF0WNOAIuQu.jpg",
           "overview": "A inventora genial Riri Williams volta a Chicago e conhece Parker Robbins, conhecido como \"O Capuz\".",
+          "collection": null,
           "storyOrder": 51
         },
         {
@@ -524,6 +668,10 @@
           "releaseDate": "2026-07-29",
           "poster": "/x0nvYzQpyJc5pdT9lMnkMuYAg0O.jpg",
           "overview": "É um novo dia para Peter Parker. Combatendo o crime em tempo integral como Homem-Aranha em um mundo que não se lembra mais dele e lidando com a pressão de ver seus antigos amigos seguirem em frente sem sua presença, Peter passa por uma mudança que talvez nem ele tenha o poder de controlar. Mas essa transformação também pode ser a única coisa capaz de deter uma surpreendente nova ameaça à cidade e às pessoas que ele ama: um poderoso vilão que ninguém sequer consegue enxergar.",
+          "collection": {
+            "id": 531241,
+            "name": "Homem-Aranha (Vingadores) Coleção"
+          },
           "storyOrder": 52
         },
         {
@@ -534,6 +682,10 @@
           "releaseDate": "2026-12-15",
           "poster": "/j8ThEXgdGWYg1uWdSqygOSnlIA2.jpg",
           "overview": "Heróis icônicos de três universos diferentes são colocados em rota de colisão mortal e enfrentam uma ameaça existencial sem precedentes, diferente de tudo que já vivenciaram antes.",
+          "collection": {
+            "id": 86311,
+            "name": "Vingadores: Coleção"
+          },
           "storyOrder": 53
         },
         {
@@ -544,6 +696,7 @@
           "releaseDate": "2025-07-23",
           "poster": "/8F2vIxWycANHW763lnx2hJVtjDC.jpg",
           "overview": "No vibrante cenário de um mundo retrofuturista inspirado nos anos 1960, a Primeira Família da Marvel é forçada a equilibrar seus papéis como heróis com a força de seus laços familiares, enquanto defendem a Terra de um deus espacial voraz chamado Galactus e sua enigmática arauta, a Surfista Prateada.",
+          "collection": null,
           "storyOrder": 54
         }
       ]
@@ -561,6 +714,7 @@
           "releaseDate": "2024-06-04",
           "poster": "/kD2Usltm0kmwj5R5ZjQHrdYk6By.jpg",
           "overview": "Cem anos antes da ascensão do Império, a Ordem Jedi e a República Galáctica prosperaram sem guerras durante séculos. Durante esse tempo, uma investigação sobre uma terrível onda de crimes coloca uma Mestra Jedi contra uma perigosa guerreira de seu passado.",
+          "collection": null,
           "storyOrder": 1
         },
         {
@@ -571,6 +725,10 @@
           "releaseDate": "1999-05-19",
           "poster": "/gNk8UNAumXlfCdtaxDqsQe7ZGlt.jpg",
           "overview": "Enquanto resgatam a Rainha Amidala, governante de um planeta pacífico invadido por forças ameaçadoras, os Cavaleiros Jedi Obi-Wan Kenobi e Qui-Gon Jinn descobrem Anakin Skywalker, uma criança prodígio de 9 anos excepcionalmente poderosa na Força.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 2
         },
         {
@@ -581,6 +739,10 @@
           "releaseDate": "2002-05-15",
           "poster": "/9m1nJ2MfTG5QEmjOCg0b4YCo4W8.jpg",
           "overview": "Com a missão de proteger a Senadora Amidala, Anakin Skywalker descobre o seu amor por ela, do mesmo modo que vai conhecendo seu lado sombrio. Obi-Wan Kenobi descobre um exército de clones à medida que a Galáxia caminha para uma grande guerra.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 3
         },
         {
@@ -591,6 +753,7 @@
           "releaseDate": "2008-08-05",
           "poster": "/cOPlN7s32Unwh0ZveLB54z6glBQ.jpg",
           "overview": "Enquanto as Guerras Clônicas varrem a galáxia, Anakin Skywalker e sua nova Padawan, Ahsoka Tano, embarcam em uma missão para resgatar o filho de Jabba, o Hutt. O renegado Conde Dookan, contudo, está determinado a garantir que eles falhem.",
+          "collection": null,
           "storyOrder": 4
         },
         {
@@ -601,6 +764,7 @@
           "releaseDate": "2008-10-03",
           "poster": "/pvDFqSHSdyWiPu0ihJJkDXxnBM9.jpg",
           "overview": "A guerra dos clones se expande por toda a galáxia, e os heróis Jedi lutam desesperadamente a fim de manter a ordem e a paz. Sistemas sucumbem perante o lado negro da força e a República Galáctica está sofrendo contínua pressão dos Separatistas e seu infinito exército de dróides.",
+          "collection": null,
           "storyOrder": 5
         },
         {
@@ -611,6 +775,10 @@
           "releaseDate": "2005-05-17",
           "poster": "/nuF5yWtTJEEAd4Qa6cVkYz1XCST.jpg",
           "overview": "As Guerras Clônicas estão em pleno andamento e Anakin Skywalker mantém um elo de lealdade com Palpatine, ao mesmo tempo em que luta para que seu casamento com Padmé Amidala não seja afetado por esta situação. Seduzido por promessas de poder, Anakin se aproxima cada vez mais de Darth Sidious até se tornar o temível Darth Vader. Juntos eles tramam um plano para aniquilar de uma vez por todas com os cavaleiros jedi.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 6
         },
         {
@@ -621,6 +789,7 @@
           "releaseDate": "2021-05-04",
           "poster": "/mMDYVkdrhTqpLSnmzF4MQ5pmrU4.jpg",
           "overview": "Meses depois dos acontecimentos em Kamino, os Mal Feitos continuam sua jornada, navegando pelo Império após a queda da República. Eles encontrarão amigos e inimigos, alguns novos, outros conhecidos, em diferentes missões mercenárias e eletrizantes que os levarão a lugares novos e perigosos.",
+          "collection": null,
           "storyOrder": 7
         },
         {
@@ -631,6 +800,7 @@
           "releaseDate": "2018-05-15",
           "poster": "/jAMEX0syUh6sbjBiysibzrFpbo.jpg",
           "overview": "Embarque na Millennium Falcon e viaje para uma galáxia distante em uma nova aventura com o mais amado canalha da galáxia. Através de uma série de ousadas aventuras no obscuro e perigoso submundo do crime, Han Solo encontra seu poderoso futuro copiloto Chewbacca e encontra o famoso jogador Lando Calrissian, em uma jornada que definirá o curso de um dos heróis mais improváveis da saga Star Wars.",
+          "collection": null,
           "storyOrder": 8
         },
         {
@@ -641,6 +811,7 @@
           "releaseDate": "2022-05-26",
           "poster": "/dnHP6MdJ4jMZgKvNrOYTjrgqn9l.jpg",
           "overview": "Durante o reinado do Império Galáctico, o antigo Mestre Jedi Obi-Wan Kenobi embarca em uma missão crucial. Kenobi deve confrontar aliados que se tornaram inimigos e enfrentar a fúria do Império.",
+          "collection": null,
           "storyOrder": 9
         },
         {
@@ -651,6 +822,7 @@
           "releaseDate": "2022-09-21",
           "poster": "/yX8c3bXKzAquEKQ75eQslnodskK.jpg",
           "overview": "Numa era repleta de perigos, enganos e intriga, Cassian Andor vai descobrir a diferença que pode fazer na luta contra o tirânico Império Galático. Embarca numa jornada destinada a torná-lo um herói da Rebelião.",
+          "collection": null,
           "storyOrder": 10
         },
         {
@@ -661,6 +833,7 @@
           "releaseDate": "2014-10-13",
           "poster": "/eLrScs6Bs26JMcS8hiZhf7YRROr.jpg",
           "overview": "Os Jedi foram exterminados e o Império espalha tirania pela galáxia. A  esperança é quase inexistente. Mas no pequeno planeta de Lothal uma  grande mudança está próxima. Um grupo de rebeldes encontram um garoto de  14 anos de idade chamado Ezra e logo fica claro que os seus destinos  estão ligados. A bordo de sua nave, Ghost, Ezra e os rebeldes embarcam  em uma aventura para iniciar uma rebelião e contra-atacar o Império.",
+          "collection": null,
           "storyOrder": 11
         },
         {
@@ -671,6 +844,7 @@
           "releaseDate": "2016-12-14",
           "poster": "/74C2YX0NLWnozVMRS56d5CKDdEv.jpg",
           "overview": "Ainda criança, Jyn Erso foi afastada de seu pai, devido à exigência do diretor Krennic de que ele trabalhasse na construção da arma mais poderosa do Império, a Estrela da Morte. Criada por Saw Gerrera, ela teve que aprender a sobreviver por conta própria ao completar 16 anos. Já adulta, Jyn é resgatada da prisão pela Aliança Rebelde, que deseja ter acesso a uma mensagem enviada por seu pai a Gerrera. Com a promessa de liberdade ao término da missão, ela aceita trabalhar para os rebeldes ao lado do capitão Cassian Andor e do robô K-2SO.",
+          "collection": null,
           "storyOrder": 12
         },
         {
@@ -681,6 +855,10 @@
           "releaseDate": "1977-05-25",
           "poster": "/dw7X9YPjjAfIxKHW04V64Bb9TB0.jpg",
           "overview": "A princesa Leia é mantida refém pelas forças imperiais comandadas por Darth Vader. Luke Skywalker e Han Solo precisam libertá-la e restaurar a liberdade e a justiça na galáxia.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 13
         },
         {
@@ -691,6 +869,10 @@
           "releaseDate": "1980-05-20",
           "poster": "/dLGT8b4Ut10z44uYLaip4QiwKta.jpg",
           "overview": "As forças imperais comandadas por Darth Vader lançam um ataque contra os membros da resistência, que são obrigados a fugir. Enquanto isso Luke Skywalker tenta encontrar o Mestre Yoda, que poderá ensiná-lo a dominar a \"Força\" e torná-lo um cavaleiro jedi. No entanto, Darth Vader planeja levá-lo para o lado negro da \"Força\".",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 14
         },
         {
@@ -701,6 +883,10 @@
           "releaseDate": "1983-05-25",
           "poster": "/llaJ35p5e23ygDbqd0H3otJLWsA.jpg",
           "overview": "O imperador está supervisionando a construção de uma nova Estrela da Morte. Enquanto isso Luke Skywalker liberta Han Solo e a Princesa Leia das mãos de Jaba. Luke só se tornará um cavaleiro jedi quando destruir Darth Vader, que ainda pretende atraí-lo para o lado sombrio da Força.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 15
         },
         {
@@ -711,6 +897,7 @@
           "releaseDate": "2019-11-12",
           "poster": "/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
           "overview": "A saga de um guerreiro solitário, que também é um mercenário e pistoleiro, viajando pelos territórios esquecidos e marginais do espaço, logo após a queda do Império e antes da criação da temida Primeira Ordem.",
+          "collection": null,
           "storyOrder": 16
         },
         {
@@ -721,6 +908,7 @@
           "releaseDate": "2021-12-29",
           "poster": "/ptSA0gnrXuJSa5YRqn7Gj5SwFFR.jpg",
           "overview": "Uma emocionante aventura Star Wars que encontra o lendário caçador de recompensas Boba Fett e o mercenário Fennec Shand explorando o submundo da Galáxia quando retornam às areias de Tatooine para reivindicar o território antes governado por Jabba, o Hutt e seu sindicato do crime.",
+          "collection": null,
           "storyOrder": 17
         },
         {
@@ -731,6 +919,7 @@
           "releaseDate": "2023-08-22",
           "poster": "/eiJeWeCAEZAmRppnXHiTWDcCd3Q.jpg",
           "overview": "Situada após a queda do Império, a série segue a ex-cavaleira Jedi Ahsoka Tano enquanto ela investiga uma ameaça emergente a uma galáxia vulnerável.",
+          "collection": null,
           "storyOrder": 18
         },
         {
@@ -741,6 +930,7 @@
           "releaseDate": "2024-12-02",
           "poster": "/4Dr8mPDBhuSsrGBSx5n8cL1gSki.jpg",
           "overview": "Quatro crianças comuns buscam seu planeta natal após se perderem na galáxia de Star Wars.",
+          "collection": null,
           "storyOrder": 19
         },
         {
@@ -751,6 +941,7 @@
           "releaseDate": "2026-05-20",
           "poster": "/dNwaS0tnwgQRaQFPY5MbGxdmYXr.jpg",
           "overview": "O maligno Império caiu e os senhores da guerra Imperiais ainda estão espalhados pela galáxia. Enquanto a jovem Nova República luta para proteger tudo pelo que a Rebelião batalhou, ela conta com a ajuda do lendário caçador de recompensas Mandaloriano Din Djarin e seu jovem aprendiz Grogu.",
+          "collection": null,
           "storyOrder": 20
         },
         {
@@ -761,6 +952,7 @@
           "releaseDate": "2018-10-07",
           "poster": "/niZVXIW40V6lzWgy4mPfFq9ooKz.jpg",
           "overview": "Poe Dameron recruta o jovem piloto Kazuda Xiono para se tornar um espião da Resistência e acompanhar a crescente ameaça da Primeira Ordem.",
+          "collection": null,
           "storyOrder": 21
         },
         {
@@ -771,6 +963,10 @@
           "releaseDate": "2015-12-15",
           "poster": "/lqMDbo4rXnakFgc4C6LzPv6pG7F.jpg",
           "overview": "A queda de Darth Vader e do Império levou ao surgimento de uma nova força sombria: a Primeira Ordem. Eles procuram o jedi Luke Skywalker, desaparecido. A resistência tenta desesperadamente encontrá-lo antes para salvar a galáxia.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 22
         },
         {
@@ -781,6 +977,10 @@
           "releaseDate": "2017-12-13",
           "poster": "/5dGufuaIG5vNcxPm8QPij5MSPeQ.jpg",
           "overview": "A tranquila e solitária vida de Luke Skywalker sofre uma reviravolta quando ele conhece Rey, uma jovem que mostra fortes sinais da Força. O desejo dela de aprender o estilo dos Jedi força Luke a tomar uma decisão que mudará sua vida para sempre. Enquanto isso, Kylo Ren e o General Hux lideram a Primeira Ordem para um ataque total contra Leia e a Resistência pela supremacia da galáxia.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 23
         },
         {
@@ -791,6 +991,10 @@
           "releaseDate": "2019-12-18",
           "poster": "/uLlrDUtFG2tKtDcJN6kBznlqqsp.jpg",
           "overview": "Com o retorno do Imperador Palpatine, todos voltam a temer seu poder e, com isso, a Resistência toma a frente da batalha que ditará os rumos da galáxia. Treinando para ser uma completa Jedi, Rey ainda se encontra em conflito com seu passado e futuro, mas teme pelas respostas que pode conseguir a partir de sua complexa ligação com Kylo Ren, que também se encontra em conflito pela Força.",
+          "collection": {
+            "id": 10,
+            "name": "Star Wars: Coleção"
+          },
           "storyOrder": 24
         }
       ]
@@ -798,100 +1002,956 @@
   ],
   "featured": [
     {
-      "id": 1241,
-      "name": "Harry Potter: Coleção",
-      "poster": "/5m8RGRYDhnR6TQANkePx9lrv8fG.jpg",
-      "backdrop": "/4gV0rKUjB1nLUdZB4zIltLvNZZr.jpg"
+      "category": "Super-heróis",
+      "collections": [
+        {
+          "id": 86311,
+          "name": "Vingadores: Coleção",
+          "poster": "/e0b4aKia9WnnUmPwH1vxseuDFXW.jpg",
+          "backdrop": "/2UNUv4NJdC36E5myDHACBJ99EwL.jpg"
+        },
+        {
+          "id": 131292,
+          "name": "Homem de Ferro: Coleção",
+          "poster": "/kOhdPgiKCgnZixjpTxBag5Sxr4J.jpg",
+          "backdrop": "/rI8zOWkRQJdlAyQ6WJOSlYK6JxZ.jpg"
+        },
+        {
+          "id": 131296,
+          "name": "Thor: Coleção",
+          "poster": "/uTa1QeqQkVKrUJClzyD91QBU5Re.jpg",
+          "backdrop": "/3KL8UNKFWgIKXzLHjwY0uwgjzYl.jpg"
+        },
+        {
+          "id": 131295,
+          "name": "Capitão América: Coleção",
+          "poster": "/9Az8phwtTIQ4THpizQ54Xa6dB7x.jpg",
+          "backdrop": "/7kVucUYqz8fZkOmFtA8opDwJFXM.jpg"
+        },
+        {
+          "id": 284433,
+          "name": "Guardiões da Galáxia: Coleção",
+          "poster": "/t1ZKE0vM6InTBOwXmLwPL8yNTS4.jpg",
+          "backdrop": "/sxyF4lVkEvOLVzr8jOF5K5nrMh3.jpg"
+        },
+        {
+          "id": 422834,
+          "name": "Homem-Formiga: Coleção",
+          "poster": "/2qLClBBrJY00940MqkNBCQZ83qv.jpg",
+          "backdrop": "/2KjtWUBiksmN8LsUouaZnxocu5N.jpg"
+        },
+        {
+          "id": 529892,
+          "name": "Pantera Negra: Coleção",
+          "poster": "/yljRsAA2TPAdtHcH0q0TweG36bz.jpg",
+          "backdrop": "/nsiBzWsmmerBMuD8TKHpYBTnfhD.jpg"
+        },
+        {
+          "id": 618529,
+          "name": "Doutor Estranho: Coleção",
+          "poster": "/opxpWZnJtRZQ0q6OtZNW4AJbRK3.jpg",
+          "backdrop": "/t7Xl8fNVuETzrbpmf6dGosjIHPN.jpg"
+        },
+        {
+          "id": 531241,
+          "name": "Homem-Aranha (Vingadores) Coleção",
+          "poster": "/dRedUPyBaPxPBNKJTsSr3qkdA9j.jpg",
+          "backdrop": "/AvnqpRwlEaYNVL6wzC4RN94EdSd.jpg"
+        },
+        {
+          "id": 556,
+          "name": "Homem-Aranha: Coleção",
+          "poster": "/if5xIGg503peo157ZtQY8fIzMEl.jpg",
+          "backdrop": "/waZqriYTuBE3WqXI3SDGi3kfDQE.jpg"
+        },
+        {
+          "id": 125574,
+          "name": "O Espetacular Homem-Aranha: Coleção",
+          "poster": "/jtbAOm7lrzCT8HUBzie3KJwL3vW.jpg",
+          "backdrop": "/yFGBYtzbvSKKI5qSvyUBWeq1uiJ.jpg"
+        },
+        {
+          "id": 748,
+          "name": "X-Men: Coleção",
+          "poster": "/hKJq5iJStRDZd1Emfar7wAp6oD2.jpg",
+          "backdrop": "/ykVHlrE3aSvHYeIXOrWDsYZ18vv.jpg"
+        },
+        {
+          "id": 453993,
+          "name": "Wolverine: Coleção",
+          "poster": "/4Bm8bx63pZ9BIuImMGYCRe6VJ1F.jpg",
+          "backdrop": "/1RCXCJzxCiw95qpZWaHHc4ctU1u.jpg"
+        },
+        {
+          "id": 448150,
+          "name": "Deadpool: Coleção",
+          "poster": "/sG79t0CRVzZd7BnHGVfD5daTpGQ.jpg",
+          "backdrop": "/dTq7mGyAR5eAydR532feWfjJjzm.jpg"
+        },
+        {
+          "id": 558216,
+          "name": "Venom: Coleção",
+          "poster": "/rI2YudAWcVdKu9D4rXg1qmcNuG3.jpg",
+          "backdrop": "/vq340s8DxA5Q209FT8PHA6CXYOx.jpg"
+        },
+        {
+          "id": 263,
+          "name": "O Cavaleiro das Trevas: Coleção",
+          "poster": "/8MVxLLn4MSA3pKsWtrmz3a5hwb5.jpg",
+          "backdrop": "/xyhrCEdB4XRkelfVsqXeUZ6rLHi.jpg"
+        },
+        {
+          "id": 8537,
+          "name": "Superman: Coleção",
+          "poster": "/eH0siT7KCrQIr6vaP9st61jDrmC.jpg",
+          "backdrop": "/la0EhOrgVAiY8sf3ILz3wgoaNXH.jpg"
+        },
+        {
+          "id": 17235,
+          "name": "Hellboy: Coleção",
+          "poster": "/omwjOWsE7sv5KjuAwhotF68jNac.jpg",
+          "backdrop": "/qpFCHvjPCEGDW6RPBCdV9iq1yI4.jpg"
+        },
+        {
+          "id": 735,
+          "name": "Blade: Coleção",
+          "poster": "/1KIFzQO4BTyMTwGe7Jzm8dHIkqG.jpg",
+          "backdrop": "/d7h60yRgP6US9VYenEPzFGW9saY.jpg"
+        }
+      ]
     },
     {
-      "id": 119,
-      "name": "O Senhor dos Anéis: Coleção",
-      "poster": "/9x5456lykdCQTbwN6cVoU3gQsZp.jpg",
-      "backdrop": "/bccR2CGTWVVSZAG0yqmy3DIvhTX.jpg"
+      "category": "Fantasia e ficção científica",
+      "collections": [
+        {
+          "id": 1241,
+          "name": "Harry Potter: Coleção",
+          "poster": "/5m8RGRYDhnR6TQANkePx9lrv8fG.jpg",
+          "backdrop": "/4gV0rKUjB1nLUdZB4zIltLvNZZr.jpg"
+        },
+        {
+          "id": 435259,
+          "name": "Animais Fantásticos: Coleção",
+          "poster": "/7Us9APkGAskqv2ozle7pzVPC2bN.jpg",
+          "backdrop": "/oTAuBBcUiUBNKxurftOmEAoye0a.jpg"
+        },
+        {
+          "id": 119,
+          "name": "O Senhor dos Anéis: Coleção",
+          "poster": "/9x5456lykdCQTbwN6cVoU3gQsZp.jpg",
+          "backdrop": "/bccR2CGTWVVSZAG0yqmy3DIvhTX.jpg"
+        },
+        {
+          "id": 121938,
+          "name": "O Hobbit: Coleção",
+          "poster": "/oXbLMPP9ALGKdOOFi3fNnjBT4z8.jpg",
+          "backdrop": "/7wO7MSnP5UcwR2cTHdJFF1vP4Ie.jpg"
+        },
+        {
+          "id": 420,
+          "name": "As Crônicas de Nárnia: Coleção",
+          "poster": "/eyX7Zr8C85RdVegYClv94KcOi36.jpg",
+          "backdrop": "/ojjzZUQlqKTsN1T7s5OAVZSjYMH.jpg"
+        },
+        {
+          "id": 179919,
+          "name": "Percy Jackson: Coleção",
+          "poster": "/c84fnMsdDYxYRFhmGiTf3qWMF3.jpg",
+          "backdrop": "/oO0GV9c75uIY42hw8JnOKYBfOek.jpg"
+        },
+        {
+          "id": 87096,
+          "name": "Avatar: Coleção",
+          "poster": "/xpkoYMAmAoEl9FOn0fRgaUlHrFY.jpg",
+          "backdrop": "/4uwX70EzaWVcGUXMtXPoexlNAff.jpg"
+        },
+        {
+          "id": 726871,
+          "name": "Duna: Coleção",
+          "poster": "/wSvsy0TwSg6u47CHqEcax194AGk.jpg",
+          "backdrop": "/fahk0Fu7VUUfK6IkTt1R3waOD9F.jpg"
+        },
+        {
+          "id": 2344,
+          "name": "Matrix: Coleção",
+          "poster": "/kP1M00dSffxGqzXir9ITgaSNxcK.jpg",
+          "backdrop": "/bRm2DEgUiYciDw3myHuYFInD7la.jpg"
+        },
+        {
+          "id": 264,
+          "name": "De Volta para o Futuro: Coleção",
+          "poster": "/wTn5lOW5OvYANXjsHXE44Zsk43x.jpg",
+          "backdrop": "/c9C9Pg2QctyjZHRmS0P8rZg1OTA.jpg"
+        },
+        {
+          "id": 328,
+          "name": "Jurassic Park: Coleção",
+          "poster": "/63S4L7p7ljvKFFUuuaWKo8mHxBY.jpg",
+          "backdrop": "/njFixYzIxX8jsn6KMSEtAzi4avi.jpg"
+        },
+        {
+          "id": 173710,
+          "name": "Planeta dos Macacos (Reboot) Coleção",
+          "poster": "/qZKePs11s5lP4dfVmsI97NTvbQ2.jpg",
+          "backdrop": "/iMhm0g555HgQNIXAMvnlgOiW5Rz.jpg"
+        },
+        {
+          "id": 1709,
+          "name": "Planeta dos Macacos (Original) Coleção",
+          "poster": "/9C3pYqN24KH3PbuKKlXwy9R0uWc.jpg",
+          "backdrop": "/wBiFfCAuYzuSOl0sFnkQMB5BEZx.jpg"
+        },
+        {
+          "id": 151,
+          "name": "Jornada nas Estrelas: A Série Original - Coleção",
+          "poster": "/rR6ibgQdcFlMuekRztyefADKdYc.jpg",
+          "backdrop": "/qM8q2gWAeQF0XUpZ4XZc4CMX87a.jpg"
+        },
+        {
+          "id": 115575,
+          "name": "Star Trek: Realidade Alternativa - Coleção",
+          "poster": "/v6ktLScPnUKTSdLZ6TUe5cfOArM.jpg",
+          "backdrop": "/gWl5pN2FplE709aVtA4lakwsE6t.jpg"
+        },
+        {
+          "id": 8650,
+          "name": "Transformers: Coleção",
+          "poster": "/edbu1FVKEuTO3FgJemKJhn0In53.jpg",
+          "backdrop": "/zvZBNNDWd5LcsIBpDhJyCB2MDT7.jpg"
+        },
+        {
+          "id": 86055,
+          "name": "Coleção MIB: Homens de Preto",
+          "poster": "/1n1SduNkZ92m9gTlf4BhSqJoZf9.jpg",
+          "backdrop": "/xKz6YaOvmnIJQ3MYIpnaa7FBaAB.jpg"
+        },
+        {
+          "id": 2980,
+          "name": "Os Caça-Fantasmas: Coleção",
+          "poster": "/tWsc6LzQxxMiMEp1xI6KJ0sDWuZ.jpg",
+          "backdrop": "/guigdRPHN65fsgZHmvVvBOyiArf.jpg"
+        },
+        {
+          "id": 8091,
+          "name": "Alien: Coleção",
+          "poster": "/AgyQCf3kUqWgCZifYkFYeZN1ddC.jpg",
+          "backdrop": "/6X42JnSMdo3dPAswOHUuvebdTq7.jpg"
+        },
+        {
+          "id": 399,
+          "name": "Predador: Coleção",
+          "poster": "/A1Z5lNbRCv9hsI2Fv6muUE9XbdM.jpg",
+          "backdrop": "/u1CTqTYRUVyLwlEd1z1VJrVBp0J.jpg"
+        },
+        {
+          "id": 528,
+          "name": "O Exterminador do Futuro: Coleção",
+          "poster": "/dsG8knF5VSeIsO8cPJtBZgABOBF.jpg",
+          "backdrop": "/sCnBEw2Yu6foEjs4Xb4eMddYHRo.jpg"
+        },
+        {
+          "id": 8945,
+          "name": "Mad Max: Coleção",
+          "poster": "/1uaQAFbYJJFFOMrDnAUGPyPyAse.jpg",
+          "backdrop": "/zI0q2ENcQOLECbe0gAEGlncVh2j.jpg"
+        },
+        {
+          "id": 63043,
+          "name": "TRON: Coleção",
+          "poster": "/hPAQoGlsfDAEeCGDeDvSRG7IU6b.jpg",
+          "backdrop": "/4INQEOQ96EvYmANsCZaad9VvRWW.jpg"
+        },
+        {
+          "id": 495527,
+          "name": "Jumanji: Coleção",
+          "poster": "/AetcZzB9dcbzEWmnvvTF74HjCOU.jpg",
+          "backdrop": "/lk1rUYIZZ8yBIfkPhr0Llwdda28.jpg"
+        }
+      ]
     },
     {
-      "id": 121938,
-      "name": "O Hobbit: Coleção",
-      "poster": "/oXbLMPP9ALGKdOOFi3fNnjBT4z8.jpg",
-      "backdrop": "/7wO7MSnP5UcwR2cTHdJFF1vP4Ie.jpg"
+      "category": "Distopias e aventuras jovens",
+      "collections": [
+        {
+          "id": 131635,
+          "name": "Jogos Vorazes: Coleção",
+          "poster": "/xZe2DbrTVpAnZ7VLHEW5G0mIynK.jpg",
+          "backdrop": "/Ipp7cegtub4t0mu7xaKLQkYoGc.jpg"
+        },
+        {
+          "id": 33514,
+          "name": "Crepúsculo: Coleção",
+          "poster": "/zj8uKOYL6q7wZ2TqT162hDot7ef.jpg",
+          "backdrop": "/3be0BffeZTyMbj4Ndzo6Y877SBQ.jpg"
+        },
+        {
+          "id": 283579,
+          "name": "Divergente: Coleção",
+          "poster": "/kjjh0v8FuSPOmIWlWXnwJUsksNS.jpg",
+          "backdrop": "/51XPQ6WXQDRUu9YoujqSc10OQp2.jpg"
+        },
+        {
+          "id": 295130,
+          "name": "Maze Runner: Coleção",
+          "poster": "/cNGErzNuuL1wYM6e7kYNlsHtvmu.jpg",
+          "backdrop": "/9BX8MUXmOa9i7oyTMx9OmbzkLev.jpg"
+        },
+        {
+          "id": 8580,
+          "name": "Karatê Kid: Coleção",
+          "poster": "/1N4MK8ehPdmmPpI4g7619cgdiYH.jpg",
+          "backdrop": "/vG9eCvIfSoucQZ9EFEOrSXhesws.jpg"
+        },
+        {
+          "id": 86486,
+          "name": "Pequenos Espiões: Coleção",
+          "poster": "/yqpS8N5w7VYo3gmFtHsGwHTV4Td.jpg",
+          "backdrop": "/oxjNAfQJ1OrySttZSeLayky6T9k.jpg"
+        },
+        {
+          "id": 52984,
+          "name": "A Lenda do Tesouro Perdido: Coleção",
+          "poster": "/44Wi0XjgMfRVW1NhVbQOatfNXtU.jpg",
+          "backdrop": "/a0GLVfaDSf5GNZKK5H4FgGCD2VW.jpg"
+        }
+      ]
     },
     {
-      "id": 131635,
-      "name": "Jogos Vorazes: Coleção",
-      "poster": "/xZe2DbrTVpAnZ7VLHEW5G0mIynK.jpg",
-      "backdrop": "/Ipp7cegtub4t0mu7xaKLQkYoGc.jpg"
+      "category": "Ação e aventura",
+      "collections": [
+        {
+          "id": 9485,
+          "name": "Velozes & Furiosos: Coleção",
+          "poster": "/bj2y7PABBBzrI1POZFtqPwYJA4m.jpg",
+          "backdrop": "/z5A5W3WYJc3UVEWljSGwdjDgQ0j.jpg"
+        },
+        {
+          "id": 87359,
+          "name": "Missão: Impossível - Coleção",
+          "poster": "/Ya1vCmFpvdmf351wTjjGlgnP4b.jpg",
+          "backdrop": "/mroWh717g0Ah2c0rrPGW6f3EWMM.jpg"
+        },
+        {
+          "id": 645,
+          "name": "James Bond: Coleção",
+          "poster": "/w8bCt5sBqIMxhQh2eQViNLb4Ykd.jpg",
+          "backdrop": "/dOSECZImeyZldoq0ObieBE0lwie.jpg"
+        },
+        {
+          "id": 31562,
+          "name": "Bourne: Coleção",
+          "poster": "/thFWPY7SKIzosuOSgNabCqIWhPn.jpg",
+          "backdrop": "/vA5xMglyZv7yzDTj1qUTU4OvelV.jpg"
+        },
+        {
+          "id": 404609,
+          "name": "John Wick: Coleção",
+          "poster": "/k0rO6VY5VRAw25jDBlNUmfFEG9B.jpg",
+          "backdrop": "/fSwYa5q2xRkBoOOjueLpkLf3N1m.jpg"
+        },
+        {
+          "id": 295,
+          "name": "Piratas do Caribe: Coleção",
+          "poster": "/oGEenSmUimQcZyMjkpPilPweaPF.jpg",
+          "backdrop": "/wxgD3fB5lQ2sGJLog0rvXW049Pf.jpg"
+        },
+        {
+          "id": 84,
+          "name": "Indiana Jones: Coleção",
+          "poster": "/o6SLel2QCfc94RTHe4LJucMez1Z.jpg",
+          "backdrop": "/s4xWmz9PEjPERSRcd7H7xMJpYvE.jpg"
+        },
+        {
+          "id": 1570,
+          "name": "Duro de Matar: Coleção",
+          "poster": "/rVFG3l7dZhmvvJJOQfRsAfVq2AY.jpg",
+          "backdrop": "/nKShbIW0wJnSbl3t8uPje0QhTb7.jpg"
+        },
+        {
+          "id": 945,
+          "name": "Máquina Mortífera: Coleção",
+          "poster": "/vze6qerKNdGdpIHBLsNpLvQui9y.jpg",
+          "backdrop": "/jSslTHuJS86fp4SVJKP9oBhE4s6.jpg"
+        },
+        {
+          "id": 5039,
+          "name": "Rambo: Coleção",
+          "poster": "/sYeBbEYNRL2SgSpr97lhuHU6OqT.jpg",
+          "backdrop": "/ecvVwlK75evrAlsEE96V14KN6MN.jpg"
+        },
+        {
+          "id": 1575,
+          "name": "Rocky: Coleção",
+          "poster": "/zabK4aLJxaXahDBrRbYbpaMdqxM.jpg",
+          "backdrop": "/yaXXemxz3ePNSrqNtc4ZAbuxJRv.jpg"
+        },
+        {
+          "id": 553717,
+          "name": "Creed: Coleção",
+          "poster": "/oLINxkqf0QrYXT3znpZCFTOenAf.jpg",
+          "backdrop": "/2hscwDISGOGGcHgn2ttogcnlWvl.jpg"
+        },
+        {
+          "id": 126125,
+          "name": "Os Mercenários: Coleção",
+          "poster": "/xgXSo9tPwWnu1acFlZLuIIyK0xb.jpg",
+          "backdrop": "/bNMIrbzIIkGfkdNbMrCUuVYZGNp.jpg"
+        },
+        {
+          "id": 135483,
+          "name": "Busca Implacável: Coleção",
+          "poster": "/kh24qZ1w2dStGL1LbOHDddh7cOK.jpg",
+          "backdrop": "/kv2zhXfePOrk5fKrkYn38MoBCUg.jpg"
+        },
+        {
+          "id": 523855,
+          "name": "O Protetor: Coleção",
+          "poster": "/zHeI0E9pXrBU6hhTlwdd0Q3QT6P.jpg",
+          "backdrop": "/wac5llYhh0lC24yNWljrcOe4sR9.jpg"
+        },
+        {
+          "id": 391860,
+          "name": "Kingsman: Coleção",
+          "poster": "/rgwEWVSXrYWhzSdxBGViZk7xQTe.jpg",
+          "backdrop": "/i8SLS8XFbjiUheIObBxZDvk0MtJ.jpg"
+        },
+        {
+          "id": 531330,
+          "name": "Top Gun: Coleção",
+          "poster": "/x9L5i4RSoix3QfIQuEZcGN10tpC.jpg",
+          "backdrop": "/10PdtglnvJM2bAv5qeyezzrgUTH.jpg"
+        },
+        {
+          "id": 14890,
+          "name": "Bad Boys: Coleção",
+          "poster": "/cTGvYsEwk4nFzSUIGPLlwWrNH11.jpg",
+          "backdrop": "/r8kZJbi6UNhilLhM5WhauYELIR8.jpg"
+        },
+        {
+          "id": 90863,
+          "name": "A Hora do Rush: Coleção",
+          "poster": "/sQASRY3ay7cFFPXN6IlxGEfYMA9.jpg",
+          "backdrop": "/Atik4QqBg8IrTPiCzaj9AcI9p1i.jpg"
+        },
+        {
+          "id": 2883,
+          "name": "Kill Bill: Coleção",
+          "poster": "/zDNpntu73tz9zzFlP0VhLn2FZ5z.jpg",
+          "backdrop": "/voSMLsbi3f0YMGuC8DvflOEB3lo.jpg"
+        },
+        {
+          "id": 304,
+          "name": "Onze, Doze, Treze Homens e Um Segredo: Coleção",
+          "poster": "/oHUHccvraYF8lYp6BxRoujRtH8Q.jpg",
+          "backdrop": "/7WUSrq8DqSkVgv1vmhBvav5bPoB.jpg"
+        },
+        {
+          "id": 382685,
+          "name": "Truque De Mestre: Coleção",
+          "poster": "/6FTSRQEhvfCmfJPHiparILJ4OkM.jpg",
+          "backdrop": "/scBzORmLqP00h8hPKS19TLtyRQm.jpg"
+        },
+        {
+          "id": 1733,
+          "name": "A Múmia: Coleção",
+          "poster": "/kiG1bxrI7V4J7mc3ukh2JmPspPJ.jpg",
+          "backdrop": "/nm2pU4RJ2vR61vYh93QmqeMPpr1.jpg"
+        },
+        {
+          "id": 2467,
+          "name": "Tomb Raider: Coleção",
+          "poster": "/k9RukPk7pd3V4yl3ehEC6qDoG7w.jpg",
+          "backdrop": "/dY55rtfQMOMGHJXGDNfSEyuHPGG.jpg"
+        },
+        {
+          "id": 102322,
+          "name": "Sherlock Holmes: Coleção",
+          "poster": "/bisSkfXuQ3pHgpruEr84gJpo9Bc.jpg",
+          "backdrop": "/ub7gaxUghGF0r4INAy0Upx9gMCa.jpg"
+        },
+        {
+          "id": 2326,
+          "name": "Anjos da Noite: Coleção",
+          "poster": "/kIcfI7EHAffmzkaZKX2haPFDOaV.jpg",
+          "backdrop": "/9UUkl9kZKuNUHrN9ni9ojgmcPFe.jpg"
+        },
+        {
+          "id": 17255,
+          "name": "Resident Evil: Coleção",
+          "poster": "/5ETUTjVmac01MkWHH5xi05z7ifi.jpg",
+          "backdrop": "/3hqSP5YGsbOjNZ4ymcg3wnGPgSW.jpg"
+        },
+        {
+          "id": 9518,
+          "name": "Carga Explosiva: Coleção",
+          "poster": "/ndKbPht3VWTxrW3hyIrnHKDUnYn.jpg",
+          "backdrop": "/zCblZYRAIwNcXx3WxtO0iOyTl8o.jpg"
+        },
+        {
+          "id": 2794,
+          "name": "As Crônicas de Riddick: Coleção",
+          "poster": "/pBjtc1KOkaIUTue4Lu3yx2Cg1ah.jpg",
+          "backdrop": "/n5jED8ITkX9VgFCZXsznhk9ERbA.jpg"
+        },
+        {
+          "id": 230,
+          "name": "O Poderoso Chefão: Coleção",
+          "poster": "/n3Wvwp62AzmfjrNmpRkGaC4L2xa.jpg",
+          "backdrop": "/28eqCQ51SuLfkbzhQE7jCmTfYfy.jpg"
+        }
+      ]
     },
     {
-      "id": 9485,
-      "name": "Velozes & Furiosos: Coleção",
-      "poster": "/bj2y7PABBBzrI1POZFtqPwYJA4m.jpg",
-      "backdrop": "/z5A5W3WYJc3UVEWljSGwdjDgQ0j.jpg"
+      "category": "Animação",
+      "collections": [
+        {
+          "id": 10194,
+          "name": "Toy Story: Coleção",
+          "poster": "/vgloOQGIDJJkIq1nTv9y3n2TokC.jpg",
+          "backdrop": "/hApclyB9NEZEQujAVajzi5iWE4a.jpg"
+        },
+        {
+          "id": 2150,
+          "name": "Shrek: Coleção",
+          "poster": "/FlCOvuibrkww69JUcXLy3pOCBw.jpg",
+          "backdrop": "/lhsd1zCsq5UquvcNalmhuddV3tI.jpg"
+        },
+        {
+          "id": 8354,
+          "name": "A Era do Gelo: Coleção",
+          "poster": "/f5PM3zXVhd8O1YnPqbkI3gHsWe4.jpg",
+          "backdrop": "/2aMEn3wawIXva2xFFlQ2NClLEeW.jpg"
+        },
+        {
+          "id": 14740,
+          "name": "Madagascar: Coleção",
+          "poster": "/jehSFsO0ViCSrGmQeRXo9mjenVp.jpg",
+          "backdrop": "/lzTIAbvMeGWB7PUrmBZXulGA28M.jpg"
+        },
+        {
+          "id": 86066,
+          "name": "Meu Malvado Favorito: Coleção",
+          "poster": "/vCXbRZwV09KChsc0MoQbMUHkRK1.jpg",
+          "backdrop": "/37xamYKRUGCRux532lKcZdVGYuR.jpg"
+        },
+        {
+          "id": 77816,
+          "name": "Kung Fu Panda: Coleção",
+          "poster": "/2niOAGSPxhdcRfbcXGDg4doNp9z.jpg",
+          "backdrop": "/2nbtv33hEk2CTnuMhTGZgsFdi3K.jpg"
+        },
+        {
+          "id": 89137,
+          "name": "Como Treinar o Seu Dragão: Coleção",
+          "poster": "/cUBgJx9G4CdKhOlj7R7kWbEQMAY.jpg",
+          "backdrop": "/mvcfPkOvgDJG2lEAxTz0NKqoQLo.jpg"
+        },
+        {
+          "id": 87118,
+          "name": "Carros: Coleção",
+          "poster": "/3xgI2de9NV3HdvVKq2HBjS7uQRx.jpg",
+          "backdrop": "/A8DqaTGwZ8iCEjWMNRsZumzfKLw.jpg"
+        },
+        {
+          "id": 386382,
+          "name": "Frozen: Coleção",
+          "poster": "/xibZTW6FdC9Nd8sJQks95rYa6JV.jpg",
+          "backdrop": "/s3vdRkK7KZFUDC8HEJo2GRKyVhW.jpg"
+        },
+        {
+          "id": 137697,
+          "name": "Procurando Nemo: Coleção",
+          "poster": "/cCovtlN16ykvyFYnzKyv3dFtceG.jpg",
+          "backdrop": "/yzqaKAhglTrkeOfuIXYYArf0WnA.jpg"
+        },
+        {
+          "id": 468222,
+          "name": "Os Incríveis: Coleção",
+          "poster": "/l7GqbzkJwowYRIXAtUz2iCPi64a.jpg",
+          "backdrop": "/6oi6V1O9MJRNnfV8E9JMntmFqBD.jpg"
+        },
+        {
+          "id": 137696,
+          "name": "Monstros S.A. Coleção",
+          "poster": "/vdCXiJl9jJlwa0YlOL8qHjL0hy6.jpg",
+          "backdrop": "/x4Mq7gDRhbqDjw4SkemLvd1yzF3.jpg"
+        },
+        {
+          "id": 185103,
+          "name": "Hotel Transilvânia: Coleção",
+          "poster": "/hmBT5J6rWZaYA8qbbZkcSJnivHe.jpg",
+          "backdrop": "/5MJt6g7k9gADQH4xHn5mOEMa3Vr.jpg"
+        },
+        {
+          "id": 325470,
+          "name": "Uma Aventura Lego: Coleção",
+          "poster": "/h5QkbvuLl6R1g9ugn8QfL48Zj49.jpg",
+          "backdrop": "/vAyMNou7M2SOXjPIzLhltTvAqD1.jpg"
+        },
+        {
+          "id": 229932,
+          "name": "Rio: Coleção",
+          "poster": "/gce6X5C3us7PGQsTHCqsmIopwkS.jpg",
+          "backdrop": "/kiugUedTheHifkqWyD55IF6I5Zp.jpg"
+        },
+        {
+          "id": 94602,
+          "name": "Gato de Botas: Coleção",
+          "poster": "/wp3xJbPvYv2OgBW5usUwNRsXLB7.jpg",
+          "backdrop": "/eCeLuBBdXLh1LguQ0f73LZ5KWgV.jpg"
+        },
+        {
+          "id": 1022790,
+          "name": "Divertida Mente: Coleção",
+          "poster": "/c0nfNHqGUYFwQXZdH6OGCYVcOgo.jpg",
+          "backdrop": "/7hYG0v6BEErqqwnU7vWJjWgYJJp.jpg"
+        },
+        {
+          "id": 1241984,
+          "name": "Moana: Coleção",
+          "poster": "/jjlmK4jA7XCFztNlmYkO4u0Mqv4.jpg",
+          "backdrop": "/4OgaftFNqtE1UvfDDb2Eov7A5Rz.jpg"
+        },
+        {
+          "id": 1084247,
+          "name": "Zootopia: Coleção",
+          "poster": "/aRncM2jhVFKxz7TDFAIdIpt2rst.jpg",
+          "backdrop": "/uYQHCOzdCZTK1Q99KIekQqf7ESM.jpg"
+        },
+        {
+          "id": 720879,
+          "name": "Sonic: Coleção",
+          "poster": "/l02V7ms9ljjPEDKYn5kWMlOki0c.jpg",
+          "backdrop": "/ggDVF2DhqIQjJI0zUqsWMS2WTcF.jpg"
+        },
+        {
+          "id": 488924,
+          "name": "As Aventuras de Paddington: Coleção",
+          "poster": "/mhyPC0LWbtY4hJDcYsbJvqi0a19.jpg",
+          "backdrop": "/cpmSe7SerOiI1dRgQG328OaHNBl.jpg"
+        },
+        {
+          "id": 427084,
+          "name": "Pets:  A Vida Secreta dos Bichos - Coleção",
+          "poster": "/d83LVydlQonKdshwQyLYx48D3LH.jpg",
+          "backdrop": "/fAibj0DIT8gk5jQtsEor66QKCsR.jpg"
+        },
+        {
+          "id": 544670,
+          "name": "Sing: Coleção",
+          "poster": "/xFOCVD2s5sAI210cFzGap1Ke0bj.jpg",
+          "backdrop": "/z9ft5HYHzWcasR6SGcgeluxTznB.jpg"
+        },
+        {
+          "id": 489724,
+          "name": "Trolls: Coleção",
+          "poster": "/i4aII37O184x7K3dC7fpF9CAfS4.jpg",
+          "backdrop": "/xtgonS6wcxK5RfnWWohYZF3mhjM.jpg"
+        },
+        {
+          "id": 404825,
+          "name": "Detona Ralph: Coleção",
+          "poster": "/17ABjEaLLyH8ZzLeaAjxmn12MGz.jpg",
+          "backdrop": "/8eow0LLABdSYBPIge9TOQgINfT9.jpg"
+        },
+        {
+          "id": 94032,
+          "name": "O Rei Leão: Coleção",
+          "poster": "/oG1heUs503GV6xBnFhgyYTGWm05.jpg",
+          "backdrop": "/A9IEaj9cPAwEgFnTmteB70oxgJY.jpg"
+        }
+      ]
     },
     {
-      "id": 295,
-      "name": "Piratas do Caribe: Coleção",
-      "poster": "/oGEenSmUimQcZyMjkpPilPweaPF.jpg",
-      "backdrop": "/wxgD3fB5lQ2sGJLog0rvXW049Pf.jpg"
+      "category": "Terror e suspense",
+      "collections": [
+        {
+          "id": 313086,
+          "name": "Invocação do Mal: Coleção",
+          "poster": "/cE9XgHWwYaX5KysU7NS43LtFqxw.jpg",
+          "backdrop": "/kHZaX0vuhZdbuq0WKU3BpA9WIQ0.jpg"
+        },
+        {
+          "id": 402074,
+          "name": "Annabelle: Coleção",
+          "poster": "/c1bbNd77VPI61FaTUkEMJceBT9r.jpg",
+          "backdrop": "/9e4RfbKBCrQIPKL8Ix8OgibxwJa.jpg"
+        },
+        {
+          "id": 228446,
+          "name": "Sobrenatural: Coleção",
+          "poster": "/fct5wsWu6niDIGRIC4aWEsN5Npa.jpg",
+          "backdrop": "/5FrPZHgbbmTIq0oxpwSGqu5HyXC.jpg"
+        },
+        {
+          "id": 2602,
+          "name": "Pânico: Coleção",
+          "poster": "/glmWNyOkoXMqltWJJhQelAvIVxk.jpg",
+          "backdrop": "/fG6GzZAwtsW3v2mhB4EyQLMRjUV.jpg"
+        },
+        {
+          "id": 91361,
+          "name": "Halloween: Coleção",
+          "poster": "/asnsgF4r31uqWwfIvz7vqUMJ0RU.jpg",
+          "backdrop": "/hUa3JDVZ1L0U7jSfFu4uvzoCJxs.jpg"
+        },
+        {
+          "id": 9735,
+          "name": "Sexta-Feira 13: Coleção",
+          "poster": "/qVykp46OGeLlt5FQl10MMUz2z6O.jpg",
+          "backdrop": "/yz9EdlfKU8bpN0hbdJMy6QkFBoN.jpg"
+        },
+        {
+          "id": 8581,
+          "name": "A Hora do Pesadelo: Coleção",
+          "poster": "/7i3FATsCl8MSYW4IurarIUAmpog.jpg",
+          "backdrop": "/7UcPLgNneoemYmZcyUo5r3nwBbE.jpg"
+        },
+        {
+          "id": 656,
+          "name": "Jogos Mortais: Coleção",
+          "poster": "/9ADSHtuBTRL3P0pUmZJGnQtwmSH.jpg",
+          "backdrop": "/q6XF2qbrxdv3OwZPnXgecDRft1O.jpg"
+        },
+        {
+          "id": 8864,
+          "name": "Premonição: Coleção",
+          "poster": "/mu8JSWvoxAj80gLBpBuXVi4bsa0.jpg",
+          "backdrop": "/y3aWOInifbGKXM34KjtcMITrZRZ.jpg"
+        },
+        {
+          "id": 256322,
+          "name": "Uma Noite de Crime: Coleção",
+          "poster": "/cGZ5IudFwI11Sv5N4WxqkiQK6gD.jpg",
+          "backdrop": "/zLx0VxpzJt3E0cb4GodV10Wp0Lt.jpg"
+        },
+        {
+          "id": 41437,
+          "name": "Atividade Paranormal: Coleção",
+          "poster": "/1ZIOIsr3GJn2d0grVlFfLKxmGA3.jpg",
+          "backdrop": "/hqKCM2q3ceEzFQJSDUcDmMvd9VS.jpg"
+        },
+        {
+          "id": 111751,
+          "name": "O Massacre da Serra Elétrica: Coleção",
+          "poster": "/fzIAo3btVnHSvi4D8s5ub9MouRt.jpg",
+          "backdrop": "/wvBx1Q1FcQE1BPLfBbgA3y9aaS1.jpg"
+        },
+        {
+          "id": 1960,
+          "name": "Uma Noite Alucinante: Coleção",
+          "poster": "/lH2hbbOkf1MB9quzjvta5qtQgo9.jpg",
+          "backdrop": "/377E9KSoUGxKWuvyR1Zu9aXcU4I.jpg"
+        },
+        {
+          "id": 477962,
+          "name": "Coleção IT: A Coisa",
+          "poster": "/tZ55C7gPExwzvBLCsZMqFZMbB2I.jpg",
+          "backdrop": "/zTlvziOLzdUqUqQ3KZ4W9ex4sBD.jpg"
+        },
+        {
+          "id": 10455,
+          "name": "Brinquedo Assassino: Coleção",
+          "poster": "/dusNcX8NXYCuCGY3leTfbQPqHsM.jpg",
+          "backdrop": "/x8rEmL5lmMKcBFcYa1FgAv25PHr.jpg"
+        },
+        {
+          "id": 521226,
+          "name": "Um Lugar Silencioso: Coleção",
+          "poster": "/7WkFgOFJ6kKpqfEUo78zS3gjDlm.jpg",
+          "backdrop": "/aYIWZ8SmnZt6rDCuIvXzzcnxjWC.jpg"
+        },
+        {
+          "id": 357173,
+          "name": "A Entidade: Coleção",
+          "poster": "/6nrJ7blyL4fwPnZULpRXL0hdJ4U.jpg",
+          "backdrop": "/4JASyGk5suaz4xwMp6irzg334k6.jpg"
+        },
+        {
+          "id": 14563,
+          "name": "O Chamado: Coleção",
+          "poster": "/xFniggN9BzzY2aXMVxj2bKfN2QA.jpg",
+          "backdrop": "/jXlFymc442CEMB5h3d62GeJefnW.jpg"
+        },
+        {
+          "id": 1565,
+          "name": "Extermínio: Coleção",
+          "poster": "/5PmzzDkwvejA9bJoKgKumAkcc91.jpg",
+          "backdrop": "/liImaqVpPGo3ddLWkJPeJxvaqCI.jpg"
+        },
+        {
+          "id": 537982,
+          "name": "Zumbilândia: Coleção",
+          "poster": "/1lVolc1bNNdiwuRPLNk56ViIPQL.jpg",
+          "backdrop": "/xND97nArZixB25GxyKtYN7gCpk7.jpg"
+        },
+        {
+          "id": 2366,
+          "name": "Tubarão: Coleção",
+          "poster": "/92ZEnjJi3c9rYT0AmeVIDmHd5k5.jpg",
+          "backdrop": "/1e2QvI2u7Q4d2admK6Xw0AjLjVp.jpg"
+        }
+      ]
     },
     {
-      "id": 87359,
-      "name": "Missão: Impossível - Coleção",
-      "poster": "/Ya1vCmFpvdmf351wTjjGlgnP4b.jpg",
-      "backdrop": "/mroWh717g0Ah2c0rrPGW6f3EWMM.jpg"
+      "category": "Comédia",
+      "collections": [
+        {
+          "id": 86119,
+          "name": "Coleção Se Beber, Não Case!",
+          "poster": "/dcHYkUiqZeVNDo1PDop5Zur4U5V.jpg",
+          "backdrop": "/9tpB49XNPEvxEkdsIkJWP0sZWtf.jpg"
+        },
+        {
+          "id": 2806,
+          "name": "American Pie: Coleção",
+          "poster": "/rJzYNoyXBNmjmWWUD4rKTJZITm9.jpg",
+          "backdrop": "/cshrhPYDGfyZz2EcN0HgFklaKdB.jpg"
+        },
+        {
+          "id": 51509,
+          "name": "Entrando Numa Fria: Coleção",
+          "poster": "/mz68RB0Ca3bcqveqFkUoOfrBGLw.jpg",
+          "backdrop": "/9mNfoET5NlXDVqW2UhJAJp6DR7k.jpg"
+        },
+        {
+          "id": 85943,
+          "name": "Uma Noite no Museu: Coleção",
+          "poster": "/xBNOxkCICkQReUarpIuph6jlWBZ.jpg",
+          "backdrop": "/9YJLEgVVzEvGRJ0IzYf7RBnYx1k.jpg"
+        },
+        {
+          "id": 9888,
+          "name": "Esqueceram de Mim: Coleção",
+          "poster": "/oOR7BNzyYdkl3ugSAkcFYJXOID5.jpg",
+          "backdrop": "/tpmfRWL1ecFxFOOeqvp6hDf41ac.jpg"
+        },
+        {
+          "id": 306031,
+          "name": "A Escolha Perfeita: Coleção",
+          "poster": "/grsi6lzIayJ3YlRIyyPIM7RiSPq.jpg",
+          "backdrop": "/wHrrrxGosHAyPqRZyghyN8pz2dv.jpg"
+        },
+        {
+          "id": 9338,
+          "name": "Loucademia de Polícia: Coleção",
+          "poster": "/3XuxDmsBcdFLjD6rhb24VS5WwpE.jpg",
+          "backdrop": "/dEkJGGXnUlH6xEOjE4NYpgf378H.jpg"
+        },
+        {
+          "id": 85861,
+          "name": "Um Tira da Pesada: Coleção",
+          "poster": "/6GZA6Mla1lKccVVUuhLU1LQoZAe.jpg",
+          "backdrop": "/k0DEUZqbB9bVcm2NsVaMkdd4Vs8.jpg"
+        },
+        {
+          "id": 1006,
+          "name": "Austin Powers: Coleção",
+          "poster": "/i9pKCKTSKZALFN8NvZQyVgaCGyV.jpg",
+          "backdrop": "/2YHoBMDWa2IwEssDlUs6G2qWVpR.jpg"
+        },
+        {
+          "id": 4246,
+          "name": "Todo Mundo em Pânico: Coleção",
+          "poster": "/945zp0V1CMmgMOqy0GNEBdDjokg.jpg",
+          "backdrop": "/4YFCPV5KXWgIfQ8oTEeIJvtuxVj.jpg"
+        },
+        {
+          "id": 86024,
+          "name": "Legalmente Loira: Coleção",
+          "poster": "/6crEyDi1SbXuN3brjyrCCV2uOy2.jpg",
+          "backdrop": "/aabPyPAA6E8hJ7tUipwunr3Itzb.jpg"
+        },
+        {
+          "id": 8936,
+          "name": "Bridget Jones: Coleção",
+          "poster": "/9VUsbuTMFoRgUgK0z3pEWmkujFe.jpg",
+          "backdrop": "/9WuJ3iHkCEm5jtxIRwRAp45QZjL.jpg"
+        },
+        {
+          "id": 266672,
+          "name": "Ted: Coleção",
+          "poster": "/byyIOLolJek05l4d1QAmLwtuyDO.jpg",
+          "backdrop": "/dGrNuWhapf8T0WH98xTC4LXgk1G.jpg"
+        },
+        {
+          "id": 212562,
+          "name": "Anjos da Lei: Coleção",
+          "poster": "/8cT5XcWXJ650zggxFosNzEsJISv.jpg",
+          "backdrop": "/3fkhNqG2i6dlWZmjg100PFEpbWW.jpg"
+        },
+        {
+          "id": 180546,
+          "name": "Gente Grande: Coleção",
+          "poster": "/dSuqR6Df1XaDHBhQ4MCCr5k4TbP.jpg",
+          "backdrop": "/ahlmYgIHI6oye76bgoUtC01mcrC.jpg"
+        },
+        {
+          "id": 328372,
+          "name": "Segurança de Shopping: Coleção",
+          "poster": "/1JfnJvS5e1gGcUUZoQkIqVCBS4.jpg",
+          "backdrop": "/29gIFb0wzsl2ArW9HZ2S2ERdDp4.jpg"
+        }
+      ]
     },
     {
-      "id": 328,
-      "name": "Jurassic Park: Coleção",
-      "poster": "/63S4L7p7ljvKFFUuuaWKo8mHxBY.jpg",
-      "backdrop": "/njFixYzIxX8jsn6KMSEtAzi4avi.jpg"
-    },
-    {
-      "id": 404609,
-      "name": "John Wick: Coleção",
-      "poster": "/k0rO6VY5VRAw25jDBlNUmfFEG9B.jpg",
-      "backdrop": "/fSwYa5q2xRkBoOOjueLpkLf3N1m.jpg"
-    },
-    {
-      "id": 2344,
-      "name": "Matrix: Coleção",
-      "poster": "/kP1M00dSffxGqzXir9ITgaSNxcK.jpg",
-      "backdrop": "/bRm2DEgUiYciDw3myHuYFInD7la.jpg"
-    },
-    {
-      "id": 264,
-      "name": "De Volta para o Futuro: Coleção",
-      "poster": "/wTn5lOW5OvYANXjsHXE44Zsk43x.jpg",
-      "backdrop": "/c9C9Pg2QctyjZHRmS0P8rZg1OTA.jpg"
-    },
-    {
-      "id": 84,
-      "name": "Indiana Jones: Coleção",
-      "poster": "/o6SLel2QCfc94RTHe4LJucMez1Z.jpg",
-      "backdrop": "/s4xWmz9PEjPERSRcd7H7xMJpYvE.jpg"
-    },
-    {
-      "id": 10194,
-      "name": "Toy Story: Coleção",
-      "poster": "/vgloOQGIDJJkIq1nTv9y3n2TokC.jpg",
-      "backdrop": "/hApclyB9NEZEQujAVajzi5iWE4a.jpg"
-    },
-    {
-      "id": 2150,
-      "name": "Shrek: Coleção",
-      "poster": "/FlCOvuibrkww69JUcXLy3pOCBw.jpg",
-      "backdrop": "/lhsd1zCsq5UquvcNalmhuddV3tI.jpg"
-    },
-    {
-      "id": 8091,
-      "name": "Alien: Coleção",
-      "poster": "/AgyQCf3kUqWgCZifYkFYeZN1ddC.jpg",
-      "backdrop": "/6X42JnSMdo3dPAswOHUuvebdTq7.jpg"
-    },
-    {
-      "id": 1575,
-      "name": "Rocky: Coleção",
-      "poster": "/zabK4aLJxaXahDBrRbYbpaMdqxM.jpg",
-      "backdrop": "/yaXXemxz3ePNSrqNtc4ZAbuxJRv.jpg"
+      "category": "Brasileiros",
+      "collections": [
+        {
+          "id": 119581,
+          "name": "Tropa de Elite: Coleção",
+          "poster": "/bN5otj6cr0DH3lbwkty0qjbm5NQ.jpg",
+          "backdrop": "/nNUFlXdj8JIV6HnjVS58r0qCvE7.jpg"
+        },
+        {
+          "id": 455278,
+          "name": "Minha Mãe é uma Peça: Coleção",
+          "poster": "/vH37BsIhlQyU2frTyxXUOTQQTEl.jpg",
+          "backdrop": "/w7zPAsAU94CxcYlyO68W2C83rbE.jpg"
+        },
+        {
+          "id": 369380,
+          "name": "Se Eu Fosse Você: Coleção",
+          "poster": "/vFH5SmHa7dJbRd5jDIVDBOylJXC.jpg",
+          "backdrop": null
+        },
+        {
+          "id": 743415,
+          "name": "De Pernas pro Ar: Coleção",
+          "poster": "/gDKuxtKi24sWSq0EqKpdMLpodAG.jpg",
+          "backdrop": "/uz8N8X1VWFhgeehODV5PkD3M0mh.jpg"
+        },
+        {
+          "id": 646622,
+          "name": "Os Normais: Coleção",
+          "poster": "/s1FlmLqHdIYNVEYPUuEsOmG4F8j.jpg",
+          "backdrop": "/gGKzHdKtd715ssXOePOSp81wiO2.jpg"
+        },
+        {
+          "id": 1161210,
+          "name": "Cine Holliúdy: Coleção",
+          "poster": null,
+          "backdrop": null
+        },
+        {
+          "id": 1505843,
+          "name": "Coleção Muita Calma Nessa Hora",
+          "poster": "/cgJ3aimOdstHc46x4NOO0KL17Zh.jpg",
+          "backdrop": "/vDKmUcHq89IMBAOs2OD4q4izhdp.jpg"
+        },
+        {
+          "id": 342577,
+          "name": "Até que a Sorte Nos Separe: Coleção",
+          "poster": "/cajZAqsGmryqPyOBFkWeAWCMkL3.jpg",
+          "backdrop": "/2nJUB5HMYZwqfz5FP2nmeHk2jqR.jpg"
+        },
+        {
+          "id": 809460,
+          "name": "Turma da Mônica: Coleção",
+          "poster": "/yJK7jJ0YSFPozLwHZa8OgU9xjNN.jpg",
+          "backdrop": "/tB1Qv8FATYt8suVsWhEUSl4pyEQ.jpg"
+        }
+      ]
     }
   ]
 }

@@ -44,6 +44,15 @@ async function resolveItem(item) {
   const match = exact || results[0];
   if (!match) return { problem: 'não encontrado' };
 
+  // Movies record their TMDB collection, used to filter a saga by sub-saga (e.g. only Thor).
+  let collection = null;
+  if (isMovie) {
+    const details = await tmdb(`/movie/${match.id}`, {});
+    if (details.belongs_to_collection) {
+      collection = { id: details.belongs_to_collection.id, name: details.belongs_to_collection.name };
+    }
+  }
+
   return {
     problem: exact ? null : `sem correspondência exata, usando "${isMovie ? match.original_title : match.original_name}"`,
     entry: {
@@ -53,9 +62,27 @@ async function resolveItem(item) {
       originalTitle: isMovie ? match.original_title : match.original_name,
       releaseDate: (isMovie ? match.release_date : match.first_air_date) || null,
       poster: match.poster_path || null,
-      overview: match.overview || ''
+      overview: match.overview || '',
+      collection
     }
   };
+}
+
+async function resolveCollection(name) {
+  const base = name.replace(/\s+Collection$/i, '');
+  const wanted = [normalize(name), normalize(base)];
+  const seen = [];
+
+  for (const query of [name, base]) {
+    const results = (await tmdb('/search/collection', { query })).results || [];
+    seen.push(...results.map((result) => result.original_name || result.name));
+    const exact = results.find((result) => wanted.includes(normalize(result.original_name || result.name)));
+    if (exact) return { match: exact };
+    // Brazilian collections are often named in Portuguese ("... - Coleção"); accept them for review.
+    const close = results.find((result) => normalize(result.original_name || result.name).startsWith(normalize(base)));
+    if (close) return { match: close, approximate: true };
+  }
+  return { seen: [...new Set(seen)].slice(0, 5) };
 }
 
 async function main() {
@@ -77,17 +104,23 @@ async function main() {
   }
 
   const featured = [];
-  for (const name of featuredCollections) {
-    const data = await tmdb('/search/collection', { query: name });
-    // The first result is often a spin-off ("The Making of..."), so require the exact original name.
-    const match = (data.results || []).find((result) => normalize(result.original_name || result.name) === normalize(name));
-    if (!match) {
-      const seen = (data.results || []).slice(0, 5).map((result) => result.original_name || result.name).join(' | ');
-      problems.push(`coleção "${name}" sem correspondência exata (resultados: ${seen || 'nenhum'})`);
-      continue;
+  const usedIds = new Set();
+  for (const group of featuredCollections) {
+    const collections = [];
+    for (const name of group.names) {
+      // The first search result is often a spin-off ("The Making of..."), so only exact names are taken as-is.
+      const { match, approximate, seen } = await resolveCollection(name);
+      if (!match) {
+        problems.push(`coleção "${name}" não encontrada (resultados: ${seen.join(' | ') || 'nenhum'})`);
+        continue;
+      }
+      if (usedIds.has(match.id)) continue;
+      usedIds.add(match.id);
+      if (approximate) problems.push(`coleção "${name}" aproximada -> "${match.original_name || match.name}" (${match.id})`);
+      collections.push({ id: match.id, name: match.name, poster: match.poster_path || null, backdrop: match.backdrop_path || null });
+      console.log(`${approximate ? '??' : 'ok'} coleção "${name}" -> ${match.id} "${match.name}"`);
     }
-    featured.push({ id: match.id, name: match.name, poster: match.poster_path || null, backdrop: match.backdrop_path || null });
-    console.log(`ok coleção "${name}" -> ${match.id} "${match.name}"`);
+    featured.push({ category: group.category, collections });
   }
 
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });

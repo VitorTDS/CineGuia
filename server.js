@@ -35,6 +35,7 @@ for (const saga of sagaData.curated) {
 function loadSagaData() {
   try {
     const parsed = JSON.parse(fs.readFileSync(SAGAS_FILE, 'utf8'));
+    // featured is a list of { category, collections } groups.
     return { curated: parsed.curated || [], featured: parsed.featured || [] };
   } catch {
     console.warn('Aviso: data/sagas.json não encontrado. Rode "npm run sagas" para gerar as sagas.');

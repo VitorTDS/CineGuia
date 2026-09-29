@@ -98,24 +98,87 @@ const curated = [
   }
 ];
 
-// Featured TMDB collections (movies only), found by name when the data file is built.
+// Featured TMDB collections (movies only), grouped by category.
+// Names are the collection's original (English) name on TMDB; the build script requires an exact match.
 const featuredCollections = [
-  'Harry Potter Collection',
-  'The Lord of the Rings Collection',
-  'The Hobbit Collection',
-  'The Hunger Games Collection',
-  'The Fast and the Furious Collection',
-  'Pirates of the Caribbean Collection',
-  'Mission: Impossible Collection',
-  'Jurassic Park Collection',
-  'John Wick Collection',
-  'The Matrix Collection',
-  'Back to the Future Collection',
-  'Indiana Jones Collection',
-  'Toy Story Collection',
-  'Shrek Collection',
-  'Alien Collection',
-  'Rocky Collection'
+  {
+    category: 'Super-heróis',
+    names: [
+      'The Avengers Collection', 'Iron Man Collection', 'Thor Collection', 'Captain America Collection',
+      'Guardians of the Galaxy Collection', 'Ant-Man Collection', 'Black Panther Collection', 'Doctor Strange Collection',
+      'Spider-Man (MCU) Collection', 'Spider-Man Collection', 'The Amazing Spider-Man Collection',
+      'X-Men Collection', 'The Wolverine Collection', 'Deadpool Collection', 'Venom Collection',
+      'The Dark Knight Collection', 'Superman Collection', 'Hellboy Collection', 'Blade Collection'
+    ]
+  },
+  {
+    category: 'Fantasia e ficção científica',
+    names: [
+      'Harry Potter Collection', 'Fantastic Beasts Collection', 'The Lord of the Rings Collection', 'The Hobbit Collection',
+      'The Chronicles of Narnia Collection', 'Percy Jackson Collection', 'Avatar Collection', 'Dune Collection',
+      'The Matrix Collection', 'Back to the Future Collection', 'Jurassic Park Collection', 'Planet of the Apes (Reboot) Collection',
+      'Planet of the Apes (Original) Collection', 'Star Trek: The Original Series Collection', 'Star Trek: Alternate Reality Collection',
+      'Transformers Collection', 'Men in Black Collection', 'Ghostbusters Collection', 'Alien Collection', 'Predator Collection',
+      'The Terminator Collection', 'Mad Max Collection', 'Tron Collection', 'Jumanji Collection'
+    ]
+  },
+  {
+    category: 'Distopias e aventuras jovens',
+    names: [
+      'The Hunger Games Collection', 'Twilight Collection', 'Divergent Collection', 'The Maze Runner Collection',
+      'The Karate Kid Collection', 'Spy Kids Collection', 'National Treasure Collection'
+    ]
+  },
+  {
+    category: 'Ação e aventura',
+    names: [
+      'The Fast and the Furious Collection', 'Mission: Impossible Collection', 'James Bond Collection', 'The Bourne Collection',
+      'John Wick Collection', 'Pirates of the Caribbean Collection', 'Indiana Jones Collection', 'Die Hard Collection',
+      'Lethal Weapon Collection', 'Rambo Collection', 'Rocky Collection', 'Creed Collection', 'The Expendables Collection',
+      'Taken Collection', 'The Equalizer Collection', 'Kingsman Collection', 'Top Gun Collection', 'Bad Boys Collection',
+      'Rush Hour Collection', 'Kill Bill Collection', 'Ocean\'s Collection', 'Now You See Me Collection', 'The Mummy Collection',
+      'Tomb Raider Collection', 'Sherlock Holmes Collection', 'Underworld Collection', 'Resident Evil Collection',
+      'The Transporter Collection', 'The Chronicles of Riddick Collection', 'The Godfather Collection'
+    ]
+  },
+  {
+    category: 'Animação',
+    names: [
+      'Toy Story Collection', 'Shrek Collection', 'Ice Age Collection', 'Madagascar Collection', 'Despicable Me Collection',
+      'Kung Fu Panda Collection', 'How to Train Your Dragon Collection', 'Cars Collection', 'Frozen Collection',
+      'Finding Nemo Collection', 'The Incredibles Collection', 'Monsters, Inc. Collection', 'Hotel Transylvania Collection',
+      'The Lego Movie Collection', 'Rio Collection', 'Puss in Boots Collection', 'Inside Out Collection', 'Moana Collection',
+      'Zootopia Collection', 'Sonic the Hedgehog Collection', 'Paddington Collection', 'The Secret Life of Pets Collection',
+      'Sing Collection', 'The Trolls Collection', 'Wreck-It Ralph Collection', 'The Lion King Collection'
+    ]
+  },
+  {
+    category: 'Terror e suspense',
+    names: [
+      'The Conjuring Collection', 'Annabelle Collection', 'Insidious Collection', 'Scream Collection', 'Halloween Collection',
+      'Friday the 13th Collection', 'A Nightmare on Elm Street Collection', 'Saw Collection', 'Final Destination Collection',
+      'The Purge Collection', 'Paranormal Activity Collection', 'Texas Chainsaw Massacre Collection', 'Evil Dead Collection',
+      'It Collection', 'Child\'s Play Collection', 'A Quiet Place Collection', 'Sinister Collection', 'The Ring Collection',
+      '28 Days/Weeks/Years Later Collection', 'Zombieland Collection', 'Jaws Collection'
+    ]
+  },
+  {
+    category: 'Comédia',
+    names: [
+      'The Hangover Collection', 'American Pie Collection', 'Meet the Parents Collection', 'Night at the Museum Collection',
+      'Home Alone Collection', 'Pitch Perfect Collection', 'Police Academy Collection', 'Beverly Hills Cop Collection',
+      'Austin Powers Collection', 'Scary Movie Collection', 'Legally Blonde Collection', 'Bridget Jones Collection',
+      'Ted Collection', 'Jump Street Collection', 'Grown Ups Collection', 'Mall Cop Collection'
+    ]
+  },
+  {
+    category: 'Brasileiros',
+    names: [
+      'Elite Squad Collection', 'Minha Mãe é uma Peça: Coleção', 'Se Eu Fosse Você: Coleção', 'De Pernas pro Ar: Coleção',
+      'Os Normais Collection', 'Cine Holliúdy: Coleção', 'Coleção Muita Calma Nessa Hora',
+      'Até que a Sorte Nos Separe: Coleção', 'Turma da Mônica: Coleção'
+    ]
+  }
 ];
 
 module.exports = { curated, featuredCollections };

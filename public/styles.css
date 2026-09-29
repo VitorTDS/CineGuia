@@ -639,6 +639,124 @@ a {
   margin-bottom: 10px;
 }
 
+.timeline-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.timeline-card:hover {
+  border-color: var(--muted);
+}
+
+.timeline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  padding: 0 8px 8px 84px;
+}
+
+.timeline-marker.watched {
+  border-color: #2e9e5b;
+  background: #2e9e5b;
+  color: #fff;
+}
+
+.watched-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.watched-button.full {
+  min-height: auto;
+  padding: 8px 16px;
+  font-size: inherit;
+}
+
+.watched-button[aria-pressed="true"] {
+  border-color: #2e9e5b;
+  background: rgba(46, 158, 91, 0.16);
+  color: #4cc27f;
+  font-weight: 600;
+}
+
+.subsaga-link {
+  min-height: 34px;
+  font-size: 13px;
+}
+
+.subsaga-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.subsaga-chip {
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.subsaga-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.saga-progress {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 16px;
+  font-size: 14px;
+}
+
+.saga-progress-text {
+  color: var(--muted);
+}
+
+.saga-progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.saga-progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: #2e9e5b;
+  transition: width 200ms ease;
+}
+
+.saga-category {
+  margin-bottom: 8px;
+}
+
+.saga-category-title {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .timeline-marker {
   position: absolute;
   top: 12px;
@@ -660,15 +778,10 @@ a {
   gap: 12px;
   width: 100%;
   padding: 8px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface-2);
+  border: 0;
+  background: none;
   text-align: left;
   cursor: pointer;
-}
-
-.timeline-open:hover {
-  border-color: var(--muted);
 }
 
 .timeline-poster {
@@ -1452,7 +1565,10 @@ a {
     height: 40px;
   }
 
-  .reminder-button.full {
+  .reminder-button.full,
+  .watched-button,
+  .subsaga-chip,
+  .subsaga-link {
     min-height: 44px;
   }
 }
@@ -1582,6 +1698,27 @@ a {
   .timeline-poster {
     width: 52px;
     height: 78px;
+  }
+
+  .timeline-actions {
+    padding-left: 72px;
+  }
+
+  /* On phones the sub-saga chips scroll sideways instead of stacking into many rows. */
+  .subsaga-filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .subsaga-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .subsaga-chip {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .saga-order {
