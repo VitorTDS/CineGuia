@@ -29,6 +29,7 @@
       <button type="button" class="tab active" data-category="trending" aria-pressed="true">Em alta</button>
       <button type="button" class="tab" data-category="movies" aria-pressed="false">Filmes</button>
       <button type="button" class="tab" data-category="series" aria-pressed="false">Séries</button>
+      <button type="button" class="tab" data-category="platforms" aria-pressed="false">Top 10</button>
       <button type="button" class="tab" data-category="favorites" aria-pressed="false">♥ Minha lista</button>
     </nav>
 
@@ -68,6 +69,16 @@
   <main class="content">
     <h1 class="section-title" id="sectionTitle">Em alta nesta semana</h1>
     <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="platforms-view hidden" id="platformsView">
+      <div class="platform-picker" id="platformPicker" role="group" aria-label="Escolher plataforma"></div>
+      <div id="platformTop"></div>
+      <p class="platforms-note">
+        Ranking com base na popularidade no TMDB entre os títulos disponíveis por assinatura em cada plataforma no Brasil.
+        As plataformas não divulgam a audiência real, então a lista pode incluir títulos populares em outros países.
+      </p>
+    </div>
+
     <div class="grid" id="grid"></div>
     <div class="sentinel" id="sentinel" aria-hidden="true"></div>
     <button type="button" class="load-more hidden" id="loadMore">Tentar novamente</button>

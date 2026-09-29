@@ -39,6 +39,23 @@ const CREDITS_KEYS = { movie: 'credits', tv: 'aggregate_credits' };
 const MIN_VOTES_FOR_RATING_FILTER = 100;
 const CAST_LIMIT = 15;
 const RECOMMENDATIONS_LIMIT = 12;
+const TOP_LIMIT = 10;
+const IN_THEATERS_DAYS = 90;
+const ABROAD_PROVIDERS_LIMIT = 6;
+// Countries listed first when a title is only available abroad.
+const PREFERRED_COUNTRIES = ['PT', 'US', 'GB', 'ES', 'CA', 'MX', 'AR', 'FR', 'IT', 'DE', 'JP'];
+
+// Main subscription services in Brazil, matched by name because TMDB ids are not documented as stable.
+const FEATURED_PLATFORMS = [
+  { label: 'Netflix', match: /^netflix$/i },
+  { label: 'Prime Video', match: /^amazon prime video$/i },
+  { label: 'Disney+', match: /^disney plus$/i },
+  { label: 'HBO Max', match: /^(hbo )?max$/i },
+  { label: 'Globoplay', match: /^globoplay$/i },
+  { label: 'Apple TV+', match: /^apple tv\+?$/i },
+  { label: 'Paramount+', match: /^paramount (plus|\+)$/i },
+  { label: 'Crunchyroll', match: /^crunchyroll$/i }
+];
 
 class HttpError extends Error {
   constructor(status, message) {
@@ -154,6 +171,44 @@ async function handleList(searchParams) {
   return toPageResult(data, data.results.map((item) => toSummary(item, type)));
 }
 
+async function handlePlatforms() {
+  const [movies, tv] = await Promise.all([
+    tmdbGet('/watch/providers/movie', { watch_region: REGION }),
+    tmdbGet('/watch/providers/tv', { watch_region: REGION })
+  ]);
+  const all = [...(movies.results || []), ...(tv.results || [])];
+
+  const platforms = FEATURED_PLATFORMS.map((platform) => {
+    const found = all.find((provider) => platform.match.test(provider.provider_name));
+    return found ? { id: found.provider_id, name: platform.label, logo: found.logo_path || null } : null;
+  }).filter(Boolean);
+
+  return { platforms };
+}
+
+async function handlePlatformTop(searchParams) {
+  const providerId = searchParams.get('provider') || '';
+  if (!/^\d{1,7}$/.test(providerId)) throw new HttpError(400, 'Plataforma inválida.');
+
+  const params = {
+    watch_region: REGION,
+    with_watch_providers: providerId,
+    with_watch_monetization_types: 'flatrate',
+    sort_by: 'popularity.desc',
+    include_adult: 'false',
+    page: '1'
+  };
+  const [movies, tv] = await Promise.all([
+    tmdbGet('/discover/movie', params),
+    tmdbGet('/discover/tv', params)
+  ]);
+
+  return {
+    movies: movies.results.slice(0, TOP_LIMIT).map((item) => toSummary(item, 'movie')),
+    series: tv.results.slice(0, TOP_LIMIT).map((item) => toSummary(item, 'tv'))
+  };
+}
+
 async function handleGenres(type) {
   const data = await tmdbGet(`/genre/${type}/list`);
   return { genres: (data.genres || []).map((genre) => ({ id: genre.id, name: genre.name })) };
@@ -251,10 +306,73 @@ async function handleSeason(id, seasonNumber) {
   };
 }
 
+function isoDate(daysFromToday = 0) {
+  const date = new Date();
+  date.setUTCDate(date.getUTCDate() + daysFromToday);
+  return date.toISOString().slice(0, 10);
+}
+
+function brazilTheatricalDate(releaseDates) {
+  const brazil = ((releaseDates && releaseDates.results) || []).find((entry) => entry.iso_3166_1 === REGION);
+  // TMDB release types 2 and 3 are limited and wide theatrical releases.
+  const dates = ((brazil && brazil.release_dates) || [])
+    .filter((release) => release.type === 2 || release.type === 3)
+    .map((release) => (release.release_date || '').slice(0, 10))
+    .filter(Boolean)
+    .sort();
+  return dates[0] || null;
+}
+
+function releaseStatus(type, data) {
+  const today = isoDate();
+
+  if (type === 'movie') {
+    const theatrical = brazilTheatricalDate(data.release_dates);
+    if (theatrical && theatrical > today) return { kind: 'upcoming_theaters', date: theatrical };
+    if (theatrical && theatrical >= isoDate(-IN_THEATERS_DAYS)) return { kind: 'in_theaters', date: theatrical };
+    if (!theatrical && data.release_date && data.release_date > today) return { kind: 'upcoming', date: data.release_date };
+    return null;
+  }
+
+  if (data.first_air_date && data.first_air_date > today) return { kind: 'upcoming', date: data.first_air_date };
+  if (!data.first_air_date && ['In Production', 'Planned', 'Post Production'].includes(data.status)) {
+    return { kind: 'in_production' };
+  }
+  return null;
+}
+
+function mapAbroad(resultsByCountry) {
+  const byProvider = new Map();
+  for (const [country, info] of Object.entries(resultsByCountry || {})) {
+    if (country === REGION) continue;
+    for (const provider of [...(info.flatrate || []), ...(info.free || []), ...(info.ads || [])]) {
+      const entry = byProvider.get(provider.provider_name) ||
+        { name: provider.provider_name, logo: provider.logo_path || null, countries: new Set() };
+      entry.countries.add(country);
+      byProvider.set(provider.provider_name, entry);
+    }
+  }
+
+  const rank = (country) => {
+    const index = PREFERRED_COUNTRIES.indexOf(country);
+    return index === -1 ? PREFERRED_COUNTRIES.length : index;
+  };
+
+  return [...byProvider.values()]
+    .map((entry) => ({
+      name: entry.name,
+      logo: entry.logo,
+      countries: [...entry.countries].sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
+    }))
+    .sort((a, b) => b.countries.length - a.countries.length)
+    .slice(0, ABROAD_PROVIDERS_LIMIT);
+}
+
 async function handleTitle(type, id) {
   const creditsKey = CREDITS_KEYS[type];
+  const extras = type === 'movie' ? ',release_dates' : '';
   const data = await tmdbGet(`/${type}/${id}`, {
-    append_to_response: `videos,watch/providers,${creditsKey},recommendations`,
+    append_to_response: `videos,watch/providers,${creditsKey},recommendations${extras}`,
     include_video_language: 'pt,en,null'
   });
 
@@ -264,9 +382,18 @@ async function handleTitle(type, id) {
     overview = english.overview;
   }
 
-  const brazil = (data['watch/providers'] && data['watch/providers'].results && data['watch/providers'].results[REGION]) || {};
+  const providersByCountry = (data['watch/providers'] && data['watch/providers'].results) || {};
+  const brazil = providersByCountry[REGION] || {};
   const title = data.title || data.name;
   const watchLink = brazil.link || null;
+  const providers = {
+    link: watchLink,
+    streaming: mapProviders(brazil.flatrate, title, watchLink),
+    free: mapProviders([...(brazil.free || []), ...(brazil.ads || [])], title, watchLink),
+    rent: mapProviders(brazil.rent, title, watchLink),
+    buy: mapProviders(brazil.buy, title, watchLink)
+  };
+  const availableInBrazil = ['streaming', 'free', 'rent', 'buy'].some((key) => providers[key].length);
 
   return {
     id: data.id,
@@ -287,12 +414,10 @@ async function handleTitle(type, id) {
       .filter((item) => !item.media_type || item.media_type === 'movie' || item.media_type === 'tv')
       .slice(0, RECOMMENDATIONS_LIMIT)
       .map((item) => toSummary(item, item.media_type || type)),
-    providers: {
-      link: watchLink,
-      streaming: mapProviders(brazil.flatrate, title, watchLink),
-      free: mapProviders([...(brazil.free || []), ...(brazil.ads || [])], title, watchLink),
-      rent: mapProviders(brazil.rent, title, watchLink),
-      buy: mapProviders(brazil.buy, title, watchLink)
+    providers,
+    availability: {
+      release: releaseStatus(type, data),
+      abroad: availableInBrazil ? [] : mapAbroad(providersByCountry)
     }
   };
 }
@@ -300,6 +425,8 @@ async function handleTitle(type, id) {
 async function handleApi(url) {
   if (url.pathname === '/api/list') return handleList(url.searchParams);
   if (url.pathname === '/api/search') return handleSearch(url.searchParams);
+  if (url.pathname === '/api/platforms') return handlePlatforms();
+  if (url.pathname === '/api/platform-top') return handlePlatformTop(url.searchParams);
 
   const genres = url.pathname.match(/^\/api\/genres\/(movie|tv)$/);
   if (genres) return handleGenres(genres[1]);

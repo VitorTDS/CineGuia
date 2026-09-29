@@ -7,12 +7,14 @@
   const INFINITE_SCROLL_MARGIN_PX = 600;
   const FAVORITES_KEY = 'cineguia-favoritos';
   const THEME_KEY = 'cineguia-theme';
+  const PLATFORM_KEY = 'cineguia-plataforma';
   const APP_TITLE = document.title;
 
   const CATEGORY_TITLES = {
     trending: 'Em alta nesta semana',
     movies: 'Filmes populares',
     series: 'Séries populares',
+    platforms: 'Top 10 por plataforma',
     favorites: 'Minha lista'
   };
   const CATEGORY_TYPES = { movies: 'movie', series: 'tv' };
@@ -41,6 +43,9 @@
     grid: document.getElementById('grid'),
     sentinel: document.getElementById('sentinel'),
     loadMore: document.getElementById('loadMore'),
+    platformsView: document.getElementById('platformsView'),
+    platformPicker: document.getElementById('platformPicker'),
+    platformTop: document.getElementById('platformTop'),
     details: document.getElementById('details'),
     detailsBody: document.getElementById('detailsBody'),
     closeDetails: document.getElementById('closeDetails'),
@@ -59,6 +64,10 @@
   };
 
   const genreCache = {};
+  const platformTopCache = {};
+  let platforms = null;
+  let selectedPlatformId = readStoredPlatform();
+  let platformRequestId = 0;
   let favorites = loadFavorites();
   let shownIds = new Set();
   let listRequestId = 0;
@@ -142,7 +151,7 @@
     if (!CATEGORY_TITLES[category]) return;
     window.clearTimeout(searchTimer);
     els.searchInput.value = '';
-    view.mode = category === 'favorites' ? 'favorites' : 'category';
+    view.mode = category === 'favorites' || category === 'platforms' ? category : 'category';
     view.category = category;
     view.filters = { genre: '', decade: '', rating: '' };
     els.filters.reset();
@@ -186,6 +195,7 @@
 
     const type = view.mode === 'category' ? CATEGORY_TYPES[view.category] : null;
     els.filters.classList.toggle('hidden', !type);
+    els.platformsView.classList.toggle('hidden', view.mode !== 'platforms');
     if (type) loadGenres(type);
 
     if (view.mode === 'search') {
@@ -249,6 +259,13 @@
       return;
     }
 
+    if (view.mode === 'platforms') {
+      view.loading = false;
+      els.loadMore.classList.add('hidden');
+      renderPlatforms();
+      return;
+    }
+
     view.loading = true;
     setStatus(els.grid.children.length ? '' : 'Carregando...');
     els.loadMore.classList.add('hidden');
@@ -290,7 +307,7 @@
   }
 
   function maybeLoadMore() {
-    if (view.mode === 'favorites' || view.loading || view.failed || view.page >= view.totalPages) return;
+    if (view.mode === 'favorites' || view.mode === 'platforms' || view.loading || view.failed || view.page >= view.totalPages) return;
     loadPage(false);
   }
 
@@ -304,6 +321,103 @@
     els.loadMore.classList.add('hidden');
     els.grid.replaceChildren(...favorites.map((item) => createCard(item)));
     setStatus(favorites.length ? '' : 'Sua lista está vazia. Toque no ♡ de um filme ou série para salvar aqui.');
+  }
+
+  // ---------- Top 10 por plataforma ----------
+
+  function readStoredPlatform() {
+    try {
+      return Number(localStorage.getItem(PLATFORM_KEY)) || null;
+    } catch {
+      return null;
+    }
+  }
+
+  async function renderPlatforms() {
+    const requestId = ++platformRequestId;
+
+    if (!platforms) {
+      setStatus('Carregando plataformas...');
+      try {
+        platforms = (await fetchJson('/api/platforms')).platforms;
+      } catch (error) {
+        if (requestId === platformRequestId) setStatus(error.message, true);
+        return;
+      }
+      if (requestId !== platformRequestId) return;
+      setStatus(platforms.length ? '' : 'Nenhuma plataforma encontrada.');
+    }
+
+    if (!platforms.some((platform) => platform.id === selectedPlatformId)) {
+      selectedPlatformId = platforms.length ? platforms[0].id : null;
+    }
+
+    els.platformPicker.replaceChildren(...platforms.map((platform) => {
+      const logo = imageUrl('w92', platform.logo);
+      return el('button', {
+        type: 'button',
+        className: 'platform-chip',
+        'aria-pressed': String(platform.id === selectedPlatformId),
+        onclick: () => selectPlatform(platform.id)
+      }, [
+        logo ? el('img', { src: logo, alt: '', width: '28', height: '28' }) : null,
+        el('span', { text: platform.name })
+      ]);
+    }));
+
+    if (selectedPlatformId) loadPlatformTop(selectedPlatformId);
+  }
+
+  function selectPlatform(id) {
+    selectedPlatformId = id;
+    try {
+      localStorage.setItem(PLATFORM_KEY, String(id));
+    } catch {
+      // Storage blocked: the choice lasts only for this visit.
+    }
+    for (const chip of els.platformPicker.children) chip.setAttribute('aria-pressed', 'false');
+    const index = platforms.findIndex((platform) => platform.id === id);
+    if (index >= 0) els.platformPicker.children[index].setAttribute('aria-pressed', 'true');
+    loadPlatformTop(id);
+  }
+
+  async function loadPlatformTop(id) {
+    const requestId = ++platformRequestId;
+    const platform = platforms.find((item) => item.id === id);
+
+    if (!platformTopCache[id]) {
+      els.platformTop.replaceChildren(el('p', { className: 'muted', text: `Carregando o Top 10 de ${platform.name}...` }));
+      try {
+        platformTopCache[id] = await fetchJson(`/api/platform-top?provider=${id}`);
+      } catch (error) {
+        if (requestId === platformRequestId) {
+          els.platformTop.replaceChildren(el('p', { className: 'muted error', text: error.message }));
+        }
+        return;
+      }
+      if (requestId !== platformRequestId) return;
+    }
+
+    const top = platformTopCache[id];
+    els.platformTop.replaceChildren(
+      renderRanking(`Top 10 filmes em alta na ${platform.name}`, top.movies),
+      renderRanking(`Top 10 séries em alta na ${platform.name}`, top.series)
+    );
+  }
+
+  function renderRanking(title, items) {
+    return el('section', { className: 'ranking' }, [
+      el('h2', { className: 'ranking-title', text: title }),
+      items.length
+        ? el('ol', { className: 'ranking-list' }, items.map((item, index) =>
+          el('li', { className: 'ranking-item' }, [
+            el('span', { className: 'rank', 'aria-hidden': 'true', text: String(index + 1) }),
+            el('span', { className: 'visually-hidden', text: `${index + 1}º lugar: ` }),
+            createCard(item, 'compact')
+          ])
+        ))
+        : el('p', { className: 'muted', text: 'Nenhum título encontrado nesta plataforma.' })
+    ]);
   }
 
   function createCard(item, extraClass = '') {
@@ -531,7 +645,7 @@
         el('h3', { text: 'Sinopse' }),
         el('p', { className: 'overview', text: data.overview || 'Sinopse não disponível.' })
       ]),
-      renderProviders(data.providers, data.title),
+      renderProviders(data.providers, data.title, data.availability),
       renderTrailer(data.trailer, data.title),
       renderCast(data.cast),
       renderSeasons(data),
@@ -553,12 +667,12 @@
     }
   }
 
-  function renderProviders(providers, title) {
+  function renderProviders(providers, title, availability) {
     const section = el('section', { className: 'details-section' }, [el('h3', { text: 'Onde assistir no Brasil' })]);
     const groups = PROVIDER_GROUPS.filter(([key]) => providers[key].length);
 
     if (!groups.length) {
-      section.append(el('p', { className: 'muted', text: 'Não encontramos onde assistir este título no Brasil no momento.' }));
+      appendChildren(section, renderUnavailable(availability));
       return section;
     }
 
@@ -585,6 +699,63 @@
       );
     }
     return section;
+  }
+
+  function describeRelease(release) {
+    if (!release) return null;
+    const date = formatDate(release.date);
+    switch (release.kind) {
+      case 'upcoming_theaters': return `Estreia nos cinemas em ${date}.`;
+      case 'in_theaters': return `Em cartaz nos cinemas (estreou em ${date}).`;
+      case 'upcoming': return `Lançamento previsto para ${date}.`;
+      case 'in_production': return 'Em produção, ainda sem data de estreia.';
+      default: return null;
+    }
+  }
+
+  function renderUnavailable(availability) {
+    const release = describeRelease(availability && availability.release);
+    const abroad = (availability && availability.abroad) || [];
+
+    return [
+      release ? el('p', { className: 'release-status', text: release }) : null,
+      el('p', {
+        className: 'muted',
+        text: release
+          ? 'Quando chegar a alguma plataforma no Brasil, ela aparece aqui.'
+          : 'Ainda não está disponível em nenhuma plataforma no Brasil.'
+      }),
+      abroad.length
+        ? el('div', { className: 'provider-group' }, [
+          el('h4', { text: 'Disponível em outros países' }),
+          el('ul', { className: 'providers' }, abroad.map((provider) => {
+            const logo = imageUrl('w92', provider.logo);
+            return el('li', {}, [
+              el('span', { className: 'provider abroad' }, [
+                logo ? el('img', { src: logo, alt: '', width: '40', height: '40', loading: 'lazy' }) : null,
+                el('span', { className: 'abroad-text' }, [
+                  el('span', { text: provider.name }),
+                  el('span', { className: 'abroad-countries', text: formatCountries(provider.countries) })
+                ])
+              ])
+            ]);
+          }))
+        ])
+        : null
+    ];
+  }
+
+  function formatCountries(codes) {
+    let names;
+    try {
+      const display = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
+      names = codes.map((code) => display.of(code) || code);
+    } catch {
+      names = codes;
+    }
+    const shown = names.slice(0, 3).join(', ');
+    const rest = names.length - 3;
+    return rest > 0 ? `${shown} e mais ${formatCount(rest, 'país', 'países')}` : shown;
   }
 
   function renderProvider(provider, title) {
