@@ -15,6 +15,7 @@ Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações 
 - **Filtros** por gênero, época e nota mínima
 - **Cinema**: filmes **em cartaz** e **em breve** nos cinemas do Brasil, com a data de estreia brasileira
 - **Lembretes**: toque no sino de um título para ser avisado. Ao abrir o site, o CineGuia confere e avisa o que estreou, o que chegou a uma plataforma e se a estreia foi remarcada. Para estreias futuras, dá para adicionar ao Google Agenda ou baixar o evento (.ics) com alarme no dia
+- **Sagas**: linha do tempo de franquias ao longo dos anos. As coleções de filmes do TMDB (ex.: Harry Potter, Velozes e Furiosos) aparecem automaticamente e dá para buscar qualquer uma; **Marvel** e **Star Wars** reúnem filmes e séries e podem ser vistas em **ordem de lançamento** ou **ordem da história**. Nos detalhes de cada título aparece a saga da qual ele faz parte
 - **Assistir grátis**: clássicos em **domínio público** que tocam dentro do próprio site (acervo do [Internet Archive](https://archive.org/details/feature_films)). Só entram filmes marcados como domínio público, com vídeo compatível e sem conteúdo adulto; filmes em partes ganham botões para trocar de parte
 - **Top 10 por plataforma**: filmes e séries em alta na Netflix, Prime Video, Disney+, HBO Max, Globoplay, Apple TV+, Paramount+ e Crunchyroll (pela popularidade no TMDB entre os títulos de cada plataforma no Brasil)
 - **Detalhes** de cada título: sinopse, onde assistir, trailer, elenco, temporadas e episódios, e títulos semelhantes
@@ -83,6 +84,8 @@ filmes-series/
 │   ├── app.js         # Lógica da interface
 │   ├── theme.js       # Aplica o tema salvo antes de a página aparecer
 │   └── favicon.svg
+├── data/sagas.json    # Sagas geradas por "npm run sagas"
+├── scripts/           # Lista das sagas e o script que as monta a partir do TMDB
 ├── .env.example       # Modelo de configuração
 └── package.json
 ```
@@ -98,6 +101,10 @@ O navegador nunca fala direto com o TMDB. Ele chama o `server.js`, que adiciona 
 | `GET /api/genres/movie\|tv` | Lista de gêneros |
 | `GET /api/cinema?section=now_playing\|upcoming&page=N` | Filmes em cartaz ou em breve nos cinemas do Brasil |
 | `GET /api/reminders/check?items=movie:ID,tv:ID` | Situação atual dos títulos com lembrete (estreia e plataformas) |
+| `GET /api/sagas` | Sagas completas e coleções em destaque |
+| `GET /api/sagas/search?q=texto` | Busca de coleções de filmes no TMDB |
+| `GET /api/saga/collection/ID` | Linha do tempo de uma coleção do TMDB |
+| `GET /api/saga/curated/marvel\|star-wars` | Linha do tempo de uma saga completa (filmes + séries) |
 | `GET /api/public-domain?page=N&q=texto` | Clássicos em domínio público do Internet Archive |
 | `GET /api/public-domain/ID` | Detalhes e arquivos de vídeo de um clássico |
 | `GET /api/platforms` | Plataformas de streaming em destaque no Brasil |
@@ -116,6 +123,14 @@ O site é publicado no [Render](https://render.com/) como **Web Service** gratui
 | Variável de ambiente | `TMDB_API_KEY` com a chave do TMDB |
 
 Cada envio para o branch `main` publica uma nova versão automaticamente. Não defina `PORT` no Render: ele informa a porta sozinho.
+
+## Atualizar as sagas (Marvel, Star Wars e coleções em destaque)
+
+As sagas montadas à mão ficam em `scripts/sagas-source.js`, com os títulos listados na **ordem da história**. Quando sair um filme ou série novo:
+
+1. Adicione o título original em inglês e o ano de lançamento na posição certa da lista.
+2. Rode `npm run sagas`. O script procura cada título no TMDB e gera `data/sagas.json`, avisando se algum não teve correspondência exata.
+3. Confira os avisos, faça o commit de `data/sagas.json` e envie.
 
 ## Verificação de sintaxe
 

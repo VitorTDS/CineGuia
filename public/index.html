@@ -30,6 +30,7 @@
       <button type="button" class="tab" data-category="movies" aria-pressed="false">Filmes</button>
       <button type="button" class="tab" data-category="series" aria-pressed="false">Séries</button>
       <button type="button" class="tab" data-category="cinema" aria-pressed="false">Cinema</button>
+      <button type="button" class="tab" data-category="sagas" aria-pressed="false">Sagas</button>
       <button type="button" class="tab" data-category="platforms" aria-pressed="false">Top 10</button>
       <button type="button" class="tab" data-category="public" aria-pressed="false">▶ Assistir grátis</button>
       <button type="button" class="tab" data-category="favorites" aria-pressed="false">♥ Minha lista<span class="tab-badge hidden" id="alertsBadge"></span></button>
@@ -82,6 +83,24 @@
     <div class="segmented hidden" id="cinemaSwitch" role="group" aria-label="Seção de cinema">
       <button type="button" class="segment" data-section="now_playing" aria-pressed="true">Em cartaz</button>
       <button type="button" class="segment" data-section="upcoming" aria-pressed="false">Em breve</button>
+    </div>
+
+    <div class="sagas-view hidden" id="sagasView">
+      <p class="public-intro">Veja a ordem de todos os filmes e séries de uma franquia ao longo dos anos. Nas sagas completas, dá para alternar entre a ordem de lançamento e a ordem da história.</p>
+      <form class="public-search" id="sagaSearchForm" role="search">
+        <label class="visually-hidden" for="sagaSearchInput">Buscar saga ou franquia</label>
+        <input id="sagaSearchInput" type="search" placeholder="Buscar saga (ex.: Crepúsculo, Batman)..." autocomplete="off" maxlength="100">
+        <button type="submit" class="action-button">Buscar</button>
+      </form>
+      <section id="sagaCuratedSection">
+        <h2 class="subsection-title">Sagas completas (filmes + séries)</h2>
+        <div class="grid saga-grid" id="sagaCurated"></div>
+      </section>
+      <section>
+        <h2 class="subsection-title" id="sagaCollectionsTitle">Coleções de filmes</h2>
+        <p class="status" id="sagaStatus" role="status" aria-live="polite"></p>
+        <div class="grid saga-grid" id="sagaCollections"></div>
+      </section>
     </div>
 
     <div class="public-view hidden" id="publicView">

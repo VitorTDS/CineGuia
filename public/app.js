@@ -19,14 +19,15 @@
     movies: 'Filmes populares',
     series: 'Séries populares',
     cinema: 'Cinema',
+    sagas: 'Sagas e franquias',
     platforms: 'Top 10 por plataforma',
     public: 'Assistir grátis: clássicos em domínio público',
     favorites: 'Minha lista'
   };
   const CATEGORY_TYPES = { movies: 'movie', series: 'tv' };
   const TYPE_LABELS = { movie: 'Filme', tv: 'Série' };
-  const TYPE_TO_HASH = { movie: 'filme', tv: 'serie', public: 'dominio' };
-  const HASH_TO_TYPE = { filme: 'movie', serie: 'tv', dominio: 'public' };
+  const TYPE_TO_HASH = { movie: 'filme', tv: 'serie', public: 'dominio', saga: 'saga' };
+  const HASH_TO_TYPE = { filme: 'movie', serie: 'tv', dominio: 'public', saga: 'saga' };
   const PROVIDER_GROUPS = [
     ['streaming', 'Streaming (assinatura)'],
     ['free', 'Grátis'],
@@ -51,6 +52,14 @@
     loadMore: document.getElementById('loadMore'),
     platformsView: document.getElementById('platformsView'),
     cinemaSwitch: document.getElementById('cinemaSwitch'),
+    sagasView: document.getElementById('sagasView'),
+    sagaSearchForm: document.getElementById('sagaSearchForm'),
+    sagaSearchInput: document.getElementById('sagaSearchInput'),
+    sagaCuratedSection: document.getElementById('sagaCuratedSection'),
+    sagaCurated: document.getElementById('sagaCurated'),
+    sagaCollections: document.getElementById('sagaCollections'),
+    sagaCollectionsTitle: document.getElementById('sagaCollectionsTitle'),
+    sagaStatus: document.getElementById('sagaStatus'),
     publicView: document.getElementById('publicView'),
     publicSearchForm: document.getElementById('publicSearchForm'),
     publicSearchInput: document.getElementById('publicSearchInput'),
@@ -84,6 +93,8 @@
 
   const genreCache = {};
   const platformTopCache = {};
+  let sagaList = null;
+  let sagaRequestId = 0;
   let platforms = null;
   let selectedPlatformId = readStoredPlatform();
   let platformRequestId = 0;
@@ -120,6 +131,11 @@
       view.cinemaSection = segment.dataset.section;
       updateChrome();
       loadPage(true);
+    });
+
+    els.sagaSearchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      searchSagas(els.sagaSearchInput.value.trim());
     });
 
     els.publicSearchForm.addEventListener('submit', (event) => {
@@ -207,7 +223,7 @@
     if (!CATEGORY_TITLES[category]) return;
     window.clearTimeout(searchTimer);
     els.searchInput.value = '';
-    view.mode = category === 'favorites' || category === 'platforms' ? category : 'category';
+    view.mode = ['favorites', 'platforms', 'sagas'].includes(category) ? category : 'category';
     view.category = category;
     view.filters = { genre: '', decade: '', rating: '' };
     view.publicQuery = '';
@@ -257,6 +273,7 @@
     els.filters.classList.toggle('hidden', !type);
     els.publicView.classList.toggle('hidden', !inPublic);
     els.platformsView.classList.toggle('hidden', view.mode !== 'platforms');
+    els.sagasView.classList.toggle('hidden', view.mode !== 'sagas');
     els.remindersView.classList.toggle('hidden', view.mode !== 'favorites');
     els.cinemaSwitch.classList.toggle('hidden', !inCinema);
     for (const segment of els.cinemaSwitch.querySelectorAll('[data-section]')) {
@@ -342,6 +359,14 @@
       return;
     }
 
+    if (view.mode === 'sagas') {
+      view.loading = false;
+      els.loadMore.classList.add('hidden');
+      setStatus('');
+      renderSagaList();
+      return;
+    }
+
     view.loading = true;
     setStatus(els.grid.children.length ? '' : 'Carregando...');
     els.loadMore.classList.add('hidden');
@@ -387,7 +412,7 @@
   }
 
   function maybeLoadMore() {
-    if (view.mode === 'favorites' || view.mode === 'platforms' || view.loading || view.failed || view.page >= view.totalPages) return;
+    if (view.mode === 'favorites' || view.mode === 'platforms' || view.mode === 'sagas' || view.loading || view.failed || view.page >= view.totalPages) return;
     loadPage(false);
   }
 
@@ -530,6 +555,194 @@
       ]),
       favoriteButton(item, 'icon'),
       options.reminder ? reminderButton(item, 'icon') : null
+    ]);
+  }
+
+  // ---------- Sagas ----------
+
+  async function renderSagaList() {
+    const requestId = ++sagaRequestId;
+    els.sagaSearchInput.value = '';
+
+    if (!sagaList) {
+      els.sagaStatus.textContent = 'Carregando sagas...';
+      try {
+        sagaList = await fetchJson('/api/sagas');
+      } catch (error) {
+        if (requestId === sagaRequestId) els.sagaStatus.textContent = error.message;
+        return;
+      }
+      if (requestId !== sagaRequestId) return;
+    }
+
+    els.sagaStatus.textContent = '';
+    els.sagaCuratedSection.classList.toggle('hidden', !sagaList.curated.length);
+    els.sagaCurated.replaceChildren(...sagaList.curated.map((saga) => createSagaCard({
+      id: saga.id,
+      name: saga.name,
+      poster: saga.poster,
+      meta: [formatCount(saga.movies, 'filme', 'filmes'), formatCount(saga.series, 'série', 'séries'), saga.years].join(' · '),
+      badge: 'Filmes + séries'
+    })));
+    els.sagaCollectionsTitle.textContent = 'Coleções de filmes';
+    els.sagaCollections.replaceChildren(...sagaList.featured.map((collection) =>
+      createSagaCard({ id: collection.id, name: collection.name, poster: collection.poster, meta: 'Coleção de filmes' })
+    ));
+  }
+
+  async function searchSagas(query) {
+    const requestId = ++sagaRequestId;
+    if (!query) {
+      renderSagaList();
+      return;
+    }
+
+    els.sagaCuratedSection.classList.add('hidden');
+    els.sagaCollectionsTitle.textContent = `Sagas encontradas para "${query}"`;
+    els.sagaCollections.replaceChildren();
+    els.sagaStatus.textContent = 'Buscando...';
+
+    try {
+      const data = await fetchJson(`/api/sagas/search?q=${encodeURIComponent(query)}`);
+      if (requestId !== sagaRequestId) return;
+      els.sagaStatus.textContent = data.results.length ? '' : `Nenhuma saga encontrada para "${query}".`;
+      els.sagaCollections.replaceChildren(...data.results.map((collection) =>
+        createSagaCard({ id: collection.id, name: collection.name, poster: collection.poster, meta: 'Coleção de filmes' })
+      ));
+    } catch (error) {
+      if (requestId === sagaRequestId) els.sagaStatus.textContent = error.message;
+    }
+  }
+
+  function createSagaCard(saga) {
+    return el('article', { className: 'card saga-card' }, [
+      el('button', { type: 'button', className: 'card-open', onclick: () => openTitle({ type: 'saga', id: saga.id, title: saga.name }) }, [
+        posterImage(saga.poster, '', 'card-poster', '(max-width: 600px) 34vw, 200px') ||
+          el('div', { className: 'card-poster placeholder', text: saga.name }),
+        saga.badge ? el('span', { className: 'saga-badge', text: saga.badge }) : null,
+        el('span', { className: 'card-title', text: saga.name }),
+        el('span', { className: 'card-meta', text: saga.meta })
+      ])
+    ]);
+  }
+
+  function renderSaga(data) {
+    const movies = data.items.filter((item) => item.type === 'movie').length;
+    const series = data.items.filter((item) => item.type === 'tv').length;
+    const years = data.items.map((item) => (item.releaseDate || '').slice(0, 4)).filter(Boolean);
+    const meta = [
+      formatCount(movies, 'filme', 'filmes'),
+      series ? formatCount(series, 'série', 'séries') : null,
+      years.length ? `${years[0]}–${years[years.length - 1]}` : null
+    ].filter(Boolean).join(' · ');
+
+    const hero = el('div', { className: 'details-hero saga-hero' });
+    const backdrop = imageUrl('w1280', data.backdrop);
+    if (backdrop) hero.style.setProperty('--backdrop', `url("${backdrop}")`);
+    appendChildren(hero, [
+      posterImage(data.poster || (data.items.find((item) => item.poster) || {}).poster, `Pôster de ${data.name}`, 'details-poster', '(max-width: 600px) 110px, 150px'),
+      el('div', { className: 'details-heading' }, [
+        el('h2', { id: 'detailsTitle', text: data.name }),
+        el('p', { className: 'details-meta', text: meta })
+      ])
+    ]);
+
+    const timeline = el('ol', { className: 'timeline' });
+    let order = 'release';
+    const draw = () => timeline.replaceChildren(...timelineEntries(data.items, order));
+    draw();
+
+    const orderSwitch = data.hasStoryOrder
+      ? el('div', { className: 'segmented saga-order', role: 'group', 'aria-label': 'Ordem da linha do tempo' }, [
+        ['release', 'Ordem de lançamento'],
+        ['story', 'Ordem da história']
+      ].map(([value, label]) => el('button', {
+        type: 'button',
+        className: 'segment',
+        'aria-pressed': String(value === order),
+        text: label,
+        onclick: (event) => {
+          if (order === value) return;
+          order = value;
+          for (const button of event.currentTarget.parentElement.children) button.setAttribute('aria-pressed', 'false');
+          event.currentTarget.setAttribute('aria-pressed', 'true');
+          draw();
+        }
+      })))
+      : null;
+
+    return el('div', { className: 'details-content' }, [
+      hero,
+      data.description
+        ? el('section', { className: 'details-section' }, [el('p', { className: 'overview', text: data.description })])
+        : null,
+      el('section', { className: 'details-section' }, [
+        el('div', { className: 'section-header' }, [el('h3', { text: 'Linha do tempo' }), orderSwitch]),
+        timeline
+      ])
+    ]);
+  }
+
+  function timelineEntries(items, order) {
+    const today = localIsoDate();
+    const sorted = order === 'story' ? [...items].sort((a, b) => a.storyOrder - b.storyOrder) : items;
+    const entries = [];
+    let lastYear = null;
+
+    sorted.forEach((item, index) => {
+      const year = item.releaseDate ? item.releaseDate.slice(0, 4) : 'Sem data';
+      if (order === 'release' && year !== lastYear) {
+        entries.push(el('li', { className: 'timeline-year', 'aria-hidden': 'true', text: year }));
+        lastYear = year;
+      }
+
+      const upcoming = !item.releaseDate || item.releaseDate > today;
+      const dateText = item.releaseDate ? formatDate(item.releaseDate) : 'Data a definir';
+      const poster = imageUrl('w154', item.poster);
+
+      entries.push(el('li', { className: 'timeline-item' }, [
+        el('span', { className: 'timeline-marker', text: String(index + 1) }),
+        el('button', {
+          type: 'button',
+          className: 'timeline-open',
+          onclick: () => openTitle({ type: item.type, id: item.id, title: item.title, poster: item.poster })
+        }, [
+          poster
+            ? el('img', { className: 'timeline-poster', src: poster, alt: '', loading: 'lazy', width: '154', height: '231' })
+            : el('span', { className: 'timeline-poster placeholder', 'aria-hidden': 'true' }),
+          el('span', { className: 'timeline-info' }, [
+            el('span', { className: 'timeline-title', text: item.title }),
+            el('span', { className: 'timeline-meta' }, [
+              el('span', { className: `type-badge ${item.type}`, text: TYPE_LABELS[item.type] }),
+              document.createTextNode(` ${dateText}`),
+              upcoming ? el('span', { className: 'upcoming-badge', text: 'Em breve' }) : null
+            ]),
+            item.overview ? el('span', { className: 'timeline-overview', text: item.overview }) : null
+          ])
+        ])
+      ]));
+    });
+
+    return entries;
+  }
+
+  function renderSagaLinks(sagas) {
+    if (!sagas || !sagas.length) return null;
+    return el('section', { className: 'details-section' }, [
+      el('h3', { text: 'Faz parte de' }),
+      el('ul', { className: 'saga-links' }, sagas.map((saga) => el('li', {}, [
+        el('button', {
+          type: 'button',
+          className: 'saga-link',
+          onclick: () => openTitle({ type: 'saga', id: saga.id, title: saga.name })
+        }, [
+          el('span', { className: 'saga-link-name', text: saga.name }),
+          el('span', {
+            className: 'saga-link-meta',
+            text: saga.position ? `${saga.position}º de ${saga.total} na ordem da história · Ver linha do tempo →` : 'Ver linha do tempo →'
+          })
+        ])
+      ])))
     ]);
   }
 
@@ -1021,7 +1234,10 @@
     const title = window.location.hash.match(/^#(filme|serie)\/(\d{1,10})$/);
     if (title) return { type: HASH_TO_TYPE[title[1]], id: Number(title[2]) };
     const publicDomain = window.location.hash.match(/^#dominio\/([A-Za-z0-9._-]{1,100})$/);
-    return publicDomain ? { type: 'public', id: publicDomain[1] } : null;
+    if (publicDomain) return { type: 'public', id: publicDomain[1] };
+    // Numeric ids are TMDB collections; slugs are the hand-built sagas.
+    const saga = window.location.hash.match(/^#saga\/([a-z0-9-]{1,40})$/);
+    return saga ? { type: 'saga', id: /^\d+$/.test(saga[1]) ? Number(saga[1]) : saga[1] } : null;
   }
 
   function openTitle(item) {
@@ -1096,13 +1312,18 @@
 
     try {
       const isPublic = target.type === 'public';
-      const data = await fetchJson(isPublic
-        ? `/api/public-domain/${encodeURIComponent(target.id)}`
-        : `/api/title/${target.type}/${target.id}`);
+      const isSaga = target.type === 'saga';
+      let url = `/api/title/${target.type}/${target.id}`;
+      if (isPublic) url = `/api/public-domain/${encodeURIComponent(target.id)}`;
+      if (isSaga) url = typeof target.id === 'number' ? `/api/saga/collection/${target.id}` : `/api/saga/curated/${target.id}`;
+      const data = await fetchJson(url);
       if (requestId !== detailsRequestId) return;
-      els.detailsBody.replaceChildren(isPublic ? renderPublicDetails(data) : renderDetails(data));
+      let content = renderDetails;
+      if (isPublic) content = renderPublicDetails;
+      if (isSaga) content = renderSaga;
+      els.detailsBody.replaceChildren(content(data));
       els.details.scrollTop = 0;
-      document.title = `${data.title} · CineGuia`;
+      document.title = `${data.title || data.name} · CineGuia`;
     } catch (error) {
       if (requestId !== detailsRequestId) return;
       els.detailsBody.replaceChildren(el('p', { className: 'details-loading error', text: error.message }));
@@ -1147,6 +1368,7 @@
         el('h3', { text: 'Sinopse' }),
         el('p', { className: 'overview', text: data.overview || 'Sinopse não disponível.' })
       ]),
+      renderSagaLinks(data.sagas),
       renderProviders(data.providers, data.title, data.availability),
       renderTrailer(data.trailer, data.title),
       renderCast(data.cast),

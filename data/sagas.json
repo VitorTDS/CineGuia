@@ -1,0 +1,897 @@
+{
+  "generatedAt": "2026-09-29",
+  "curated": [
+    {
+      "slug": "marvel",
+      "name": "Universo Cinematográfico Marvel",
+      "description": "Filmes e séries do MCU. A ordem da história segue a linha do tempo oficial divulgada pela Marvel/Disney, com Quarteto Fantástico, de outro universo, no fim.",
+      "items": [
+        {
+          "type": "movie",
+          "id": 1771,
+          "title": "Capitão América: O Primeiro Vingador",
+          "originalTitle": "Captain America: The First Avenger",
+          "releaseDate": "2011-07-22",
+          "poster": "/19wxfSXHhuJBRbbfUweCsfXFhpv.jpg",
+          "overview": "Durante a Segunda Guerra Mundial, Steve Rogers é um homem doente, do Brooklyn, que se transforma no super soldado Capitão América para ajudar nos esforços de guerra. Rogers deve parar o Caveira Vermelha, o implacável chefe de armas de Adolf Hitler e líder de uma organização que pretende usar um misterioso mecanismo de incalculáveis poderes para dominar o mundo.",
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 299537,
+          "title": "Capitã Marvel",
+          "originalTitle": "Captain Marvel",
+          "releaseDate": "2019-03-06",
+          "poster": "/n3BisLdTMceUWcdP1ooP5VwN9JF.jpg",
+          "overview": "Capitã Marvel, parte do exército de elite dos Kree, uma raça alienígena, encontra-se no meio de uma batalha entre seu povo e os Skrulls. Ao tentar impedir uma invasão de larga escala na Terra, em 1995, ela tem memórias recorrentes de uma outra vida, como Carol Danvers, agente da Força Aérea norte-americana. Com a ajuda de Nick Fury, Capitã Marvel precisa descobrir os segredos de seu passado e pôr um fim ao conflito intergalático com os Skrulls.",
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 1726,
+          "title": "Homem de Ferro",
+          "originalTitle": "Iron Man",
+          "releaseDate": "2008-04-30",
+          "poster": "/mqN7RxojEiPoh3FTSTwOtwg7KAu.jpg",
+          "overview": "Tony Stark é um industrial bilionário, que também é um brilhante inventor. Ao ser sequestrado ele é obrigado por terroristas a construir uma arma devastadora mas, ao invés disto, constrói uma armadura de alta tecnologia que permite que fuja de seu cativeiro. A partir de então ele passa a usá-la para combater o crime, sob o alter ego do Homem de Ferro.",
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 10138,
+          "title": "Homem de Ferro 2",
+          "originalTitle": "Iron Man 2",
+          "releaseDate": "2010-04-28",
+          "poster": "/vzROjQbgKWMVf2EldXipCcjpuBL.jpg",
+          "overview": "Em um mundo ciente da existência do Homem de Ferro, o inventor bilionário Tony Stark sofre pressão de todos os lados para compartilhar sua tecnologia com as forças armadas. Ele resiste para divulgar os segredos de sua inigualável armadura, com medo de que estas informações caiam nas mãos erradas.",
+          "storyOrder": 4
+        },
+        {
+          "type": "movie",
+          "id": 1724,
+          "title": "O Incrível Hulk",
+          "originalTitle": "The Incredible Hulk",
+          "releaseDate": "2008-06-12",
+          "poster": "/v1UXe9WlwkkZ5YrffUSPdYNeJz3.jpg",
+          "overview": "Vivendo escondido e longe de Betty Ross, a mulher que ama, o cientista Bruce Banner busca um meio de retirar a radiação gama que está em seu sangue. Ao mesmo tempo ele precisa fugir da perseguição do general Ross, seu grande inimigo, e da máquina militar que tenta capturá-lo, na intenção de explorar o poder que faz com que Banner se transforme no Hulk.",
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 10195,
+          "title": "Thor",
+          "originalTitle": "Thor",
+          "releaseDate": "2011-04-21",
+          "poster": "/aEV9QmgBqjRTdjsvdCgdK89tavQ.jpg",
+          "overview": "Como filho de Odin, rei dos deuses nórdicos, Thor logo herdará o trono de Asgard de seu idoso pai. Porém, no dia de sua coroação, Thor reage com brutalidade quando os inimigos dos deuses entram no palácio violando o tratado. Como punição, Odin manda Thor para a Terra. Enquanto seu irmão Loki conspira em Asgard, Thor, agora sem seus poderes, enfrenta sua maior ameaça.",
+          "storyOrder": 6
+        },
+        {
+          "type": "movie",
+          "id": 24428,
+          "title": "Os Vingadores: The Avengers",
+          "originalTitle": "The Avengers",
+          "releaseDate": "2012-04-25",
+          "poster": "/PtSapjHdDjlVcsqdEo0u7rDE6i.jpg",
+          "overview": "Loki, o irmão de Thor, ganha acesso ao poder ilimitado do cubo cósmico ao roubá-lo de dentro das instalações da S.H.I.E.L.D. Nick Fury, o diretor desta agência internacional que mantém a paz, logo reúne os únicos super-heróis que serão capazes de defender a Terra de ameaças sem precedentes. Homem de Ferro, Capitão América, Hulk, Thor, Viúva Negra e Gavião Arqueiro formam o time dos sonhos de Fury, mas eles precisam aprender a colocar os egos de lado e agir como um grupo em prol da humanidade.",
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 76338,
+          "title": "Thor: O Mundo Sombrio",
+          "originalTitle": "Thor: The Dark World",
+          "releaseDate": "2013-10-30",
+          "poster": "/9qdqXIx2neypuT1kWKCTI2vsO4q.jpg",
+          "overview": "Thor precisa contar com a ajuda de seus companheiros e até de seu traiçoeiro irmão Loki em um plano audacioso para salvar o universo. Entretanto, os caminhos de Thor se cruzam com Jane Foster e, dessa vez, a vida dela está realmente em perigo.",
+          "storyOrder": 8
+        },
+        {
+          "type": "movie",
+          "id": 68721,
+          "title": "Homem de Ferro 3",
+          "originalTitle": "Iron Man 3",
+          "releaseDate": "2013-04-18",
+          "poster": "/C7MZwRTjvEy7gkWcLJeBGZFE1w.jpg",
+          "overview": "Depois de um inimigo reduzir o mundo de Tony Stark a destroços, o Homem de Ferro precisa aprender a confiar em seus instintos para proteger aqueles que ama, especialmente sua namorada, e lutar contra seu maior medo: o fracasso.",
+          "storyOrder": 9
+        },
+        {
+          "type": "movie",
+          "id": 100402,
+          "title": "Capitão América: O Soldado Invernal",
+          "originalTitle": "Captain America: The Winter Soldier",
+          "releaseDate": "2014-03-20",
+          "poster": "/9sTDXtIIfHza1rAbmHU2djyzEXA.jpg",
+          "overview": "Após os eventos catastróficos em Nova York com Os Vingadores, Steve Rogers segue tentando se ajustar ao mundo moderno. Porém, quando um colega da agência S.H.I.E.L.D. é atacado, Steve se vê preso em uma rede de intrigas que ameaça colocar o mundo em risco. Em parceria com a Viúva Negra e Falcão, seu novo aliado, o Capitão América tem que enfrentar um misterioso e inesperado inimigo, o Soldado Invernal.",
+          "storyOrder": 10
+        },
+        {
+          "type": "movie",
+          "id": 118340,
+          "title": "Guardiões da Galáxia",
+          "originalTitle": "Guardians of the Galaxy",
+          "releaseDate": "2014-07-30",
+          "poster": "/xaY92XMToaSnBuvCui3LHzNGqZB.jpg",
+          "overview": "Abduzido da Terra quando ainda era criança, Peter Quill fez carreira como saqueador e se auto denominou \"Senhor das Estrelas\". Quando rouba uma esfera, na qual o poderoso vilão Ronan, da raça kree, está interessado, passa a ser procurado por vários caçadores de recompensas. Para escapar do perigo, Quill une forças com quatro personagens fora do sistema: Groot, uma árvore humanóide (Vin Diesel), a sombria e perigosa Gamora, o guaxinim rápido no gatilho Rocket Racoon e o vingativo Drax, o Destruidor. A esfera roubada é capaz de mudar o destino de todo o universo.",
+          "storyOrder": 11
+        },
+        {
+          "type": "movie",
+          "id": 283995,
+          "title": "Guardiões da Galáxia - Vol. 2",
+          "originalTitle": "Guardians of the Galaxy Vol. 2",
+          "releaseDate": "2017-04-25",
+          "poster": "/jGtBLu0JAKf5JxhWgmF68HROzCA.jpg",
+          "overview": "Os Guardiões precisam lutar para manter sua recém descoberta família unida, enquanto descobrem os mistérios sobre o verdadeiro pai de Peter Quill.",
+          "storyOrder": 12
+        },
+        {
+          "type": "movie",
+          "id": 99861,
+          "title": "Vingadores: Era de Ultron",
+          "originalTitle": "Avengers: Age of Ultron",
+          "releaseDate": "2015-04-22",
+          "poster": "/uvzqTsRmUzk9mJVzX8cMSWMyM5l.jpg",
+          "overview": "Ao tentar proteger o planeta de ameaças, Tony Stark constrói um sistema de inteligência artificial que cuidaria da paz mundial. O projeto acaba dando errado e gera o nascimento do Ultron. Com o destino da Terra em jogo, os Vingadores terão que se unir para mais uma vez salvar a raça humana da extinção.",
+          "storyOrder": 13
+        },
+        {
+          "type": "movie",
+          "id": 102899,
+          "title": "Homem-Formiga",
+          "originalTitle": "Ant-Man",
+          "releaseDate": "2015-07-14",
+          "poster": "/lsiy4IcnbtChkayPMxLda2fq4xM.jpg",
+          "overview": "Dr. Hank Pym, o inventor da fórmula/traje que permite o encolhimento, precisa impedir que seu ex-pupilo Darren Cross consiga replicar o feito e vender a tecnologia para uma organização do mal. Depois de sair da cadeia, o trambiqueiro Scott Lang está disposto a reconquistar o respeito da ex-mulher, Maggie e, principalmente, da filha. Com dificuldades de arrumar um emprego honesto, ele aceita praticar um último golpe. O que ele não sabia era que tudo não passava de um plano do Dr. Pym que, depois de anos observando o hábil ladrão, o escolhe para vestir o traje do Homem-Formiga.",
+          "storyOrder": 14
+        },
+        {
+          "type": "movie",
+          "id": 271110,
+          "title": "Capitão América: Guerra Civil",
+          "originalTitle": "Captain America: Civil War",
+          "releaseDate": "2016-04-27",
+          "poster": "/dsvUR5aEVSkB1Sro7nT6Khqik71.jpg",
+          "overview": "Depois do ataque de Ultron, os políticos decidem controlar os Vingadores, já que suas ações afetam toda a humanidade. A decisão coloca o Capitão América em rota de colisão com o Homem de Ferro.",
+          "storyOrder": 15
+        },
+        {
+          "type": "movie",
+          "id": 497698,
+          "title": "Viúva Negra",
+          "originalTitle": "Black Widow",
+          "releaseDate": "2021-07-07",
+          "poster": "/lrJ9QI2HMbO8N2S2r2v7fjtou5c.jpg",
+          "overview": "Natasha Romanoff, também conhecida como Viúva Negra, confronta o lado mais sombrio de sua história quando surge uma perigosa conspiração ligada ao seu passado. Perseguida por uma força implacável disposta a tudo para destruí-la, Natasha precisa agora lidar com seu passado como espiã e com as relações que deixou para trás muito antes de se tornar uma Vingadora.",
+          "storyOrder": 16
+        },
+        {
+          "type": "movie",
+          "id": 284054,
+          "title": "Pantera Negra",
+          "originalTitle": "Black Panther",
+          "releaseDate": "2018-02-13",
+          "poster": "/ubXNpxL2ASSzY0f8Hxv08pOsV2L.jpg",
+          "overview": "O príncipe T'Challa retorna a Wakanda para ser coroado rei. Assumindo o manto de Pantera Negra, ele vai à caça de um vilão que roubou um precioso metal de seu país.",
+          "storyOrder": 17
+        },
+        {
+          "type": "movie",
+          "id": 315635,
+          "title": "Homem-Aranha: De Volta ao Lar",
+          "originalTitle": "Spider-Man: Homecoming",
+          "releaseDate": "2017-07-05",
+          "poster": "/1nkwRL17cAGO8A1yu3miRBdvOsl.jpg",
+          "overview": "Depois de atuar ao lado dos Vingadores, chegou a hora de Peter Parker voltar para casa e para a sua vida, já não mais tão normal.",
+          "storyOrder": 18
+        },
+        {
+          "type": "movie",
+          "id": 284052,
+          "title": "Doutor Estranho",
+          "originalTitle": "Doctor Strange",
+          "releaseDate": "2016-10-25",
+          "poster": "/pb4clPWRJ5AKlSFu1HrrHdt5uAw.jpg",
+          "overview": "Após sua carreira ser destruída, um brilhante, porém arrogante, cirurgião ganha uma nova chance em sua vida quando um feiticeiro o treina para se tornar o Mago Supremo.",
+          "storyOrder": 19
+        },
+        {
+          "type": "movie",
+          "id": 284053,
+          "title": "Thor: Ragnarok",
+          "originalTitle": "Thor: Ragnarok",
+          "releaseDate": "2017-10-02",
+          "poster": "/2K45Fp6koAVoeeYS6aMb9BeNt4F.jpg",
+          "overview": "Thor está preso do outro lado do universo. Ele precisa correr contra o tempo para voltar a Asgard e parar Ragnarok, a destruição de seu mundo, que está nas mãos da poderosa e implacável vilã Hela.",
+          "storyOrder": 20
+        },
+        {
+          "type": "movie",
+          "id": 363088,
+          "title": "Homem-Formiga e a Vespa",
+          "originalTitle": "Ant-Man and the Wasp",
+          "releaseDate": "2018-07-04",
+          "poster": "/5BKRuGVxx8qsB7WGSJ0oWRCHsgN.jpg",
+          "overview": "Scott Lang lida com as consequências de suas escolhas tanto como super-herói quanto como pai. Enquanto tenta reequilibrar sua vida com suas responsabilidades como o Homem-Formiga, ele é confrontado por Hope van Dyne e Dr. Hank Pym com uma nova missão urgente. Scott deve mais uma vez vestir o uniforme e aprender a lutar ao lado da Vespa, trabalhando em conjunto para descobrir segredos do passado.",
+          "storyOrder": 21
+        },
+        {
+          "type": "movie",
+          "id": 299536,
+          "title": "Vingadores: Guerra Infinita",
+          "originalTitle": "Avengers: Infinity War",
+          "releaseDate": "2018-04-25",
+          "poster": "/A4kvp7vY1BDLrrQIagRCffLKj1t.jpg",
+          "overview": "Homem de Ferro, Thor, Hulk e os Vingadores se unem para combater seu inimigo mais poderoso, o maligno Thanos. Em uma missão para coletar todas as seis pedras infinitas, Thanos planeja usá-las para infligir sua vontade maléfica sobre a realidade.",
+          "storyOrder": 22
+        },
+        {
+          "type": "movie",
+          "id": 299534,
+          "title": "Vingadores: Ultimato",
+          "originalTitle": "Avengers: Endgame",
+          "releaseDate": "2019-04-24",
+          "poster": "/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg",
+          "overview": "Após os eventos devastadores de \"Vingadores: Guerra Infinita\", o universo está em ruínas devido aos esforços do Titã Louco, Thanos. Com a ajuda de aliados remanescentes, os Vingadores devem se reunir mais uma vez a fim de desfazer as ações de Thanos e restaurar a ordem no universo de uma vez por todas, não importando as consequências.",
+          "storyOrder": 23
+        },
+        {
+          "type": "tv",
+          "id": 84958,
+          "title": "Loki",
+          "originalTitle": "Loki",
+          "releaseDate": "2021-06-09",
+          "poster": "/2TwPJfPiBI2lVrofggw3H0b4cDC.jpg",
+          "overview": "Começando imediatamente depois que Loki rouba o Tesseract (de novo), ele se encontra diante da Autoridade de Variação Temporal, uma organização burocrática que existe fora do tempo e espaço. Forçado a responder por seus crimes contra a linha do tempo, ele recebe uma escolha: Ser deletado da realidade ou ajudar a capturar uma ameaça ainda maior.",
+          "storyOrder": 24
+        },
+        {
+          "type": "tv",
+          "id": 91363,
+          "title": "What If...?",
+          "originalTitle": "What If...?",
+          "releaseDate": "2021-08-11",
+          "poster": "/kJQWrrwtu0TAsIKq8Adgzeg4bFt.jpg",
+          "overview": "\"What If…?\" reinventa os acontecimentos do UCM, mudando a história de forma surpreendente.",
+          "storyOrder": 25
+        },
+        {
+          "type": "tv",
+          "id": 85271,
+          "title": "WandaVision",
+          "originalTitle": "WandaVision",
+          "releaseDate": "2021-01-15",
+          "poster": "/8mAyDNSCZDiejPTm4lwgbztut7y.jpg",
+          "overview": "Wanda Maximoff  e Visão, um casal de super-heróis com uma vida perfeita, que começa a suspeitar que nem tudo é o que parece.",
+          "storyOrder": 26
+        },
+        {
+          "type": "tv",
+          "id": 88396,
+          "title": "Falcão e o Soldado Invernal",
+          "originalTitle": "The Falcon and the Winter Soldier",
+          "releaseDate": "2021-03-19",
+          "poster": "/oF9njYCN6lBdrsi6wfulcxTggvn.jpg",
+          "overview": "Após os eventos de \"Vingadores: Ultimato\", Sam Wilson/Falcão e Bucky Barnes/Soldado Invernal se unem em uma aventura que testa suas habilidades - e a paciência.",
+          "storyOrder": 27
+        },
+        {
+          "type": "movie",
+          "id": 566525,
+          "title": "Shang-Chi e a Lenda dos Dez Anéis",
+          "originalTitle": "Shang-Chi and the Legend of the Ten Rings",
+          "releaseDate": "2021-09-01",
+          "poster": "/d3wNegI8XJF8Kto6KhlqPicBRAp.jpg",
+          "overview": "Shang-Chi precisa confrontar o passado que pensou ter deixado para trás. Ao mesmo tempo, ele é envolvido em uma teia de mistérios da organização conhecida como Dez Anéis.",
+          "storyOrder": 28
+        },
+        {
+          "type": "movie",
+          "id": 524434,
+          "title": "Eternos",
+          "originalTitle": "Eternals",
+          "releaseDate": "2021-11-03",
+          "poster": "/2IgZIYa8iTQuLNIcVERwXmh8pUj.jpg",
+          "overview": "Após os eventos de \"Vingadores: Ultimato\", os Eternos, uma raça alienígena imortal criada pelos Celestiais que vivem em segredo na Terra há mais de 7000 anos, se reúnem após uma tragédia inesperada para proteger a humanidade de seus colegas malignos: os Deviantes.",
+          "storyOrder": 29
+        },
+        {
+          "type": "movie",
+          "id": 429617,
+          "title": "Homem-Aranha: Longe de Casa",
+          "originalTitle": "Spider-Man: Far From Home",
+          "releaseDate": "2019-06-28",
+          "poster": "/tX0o4AdHpidgniTWwfzK0dNTKrc.jpg",
+          "overview": "Peter Parker está em uma viagem de duas semanas pela Europa, ao lado de seus amigos de colégio, quando é surpreendido pela visita de Nick Fury. Convocado para mais uma missão heroica, ele precisa enfrentar vários vilões que surgem em cidades-símbolo do continente, como Londres, Paris e Veneza, e também a aparição do enigmático Mysterio.",
+          "storyOrder": 30
+        },
+        {
+          "type": "movie",
+          "id": 634649,
+          "title": "Homem-Aranha: Sem Volta Para Casa",
+          "originalTitle": "Spider-Man: No Way Home",
+          "releaseDate": "2021-12-15",
+          "poster": "/xaKydnMw6wR1MBAjS5seGPVusbs.jpg",
+          "overview": "Peter Parker é desmascarado e não consegue mais separar sua vida normal dos grandes riscos de ser um super-herói. Quando ele pede ajuda ao Doutor Estranho, os riscos se tornam ainda mais perigosos, e o forçam a descobrir o que realmente significa ser o Homem-Aranha...",
+          "storyOrder": 31
+        },
+        {
+          "type": "tv",
+          "id": 88329,
+          "title": "Gavião Arqueiro",
+          "originalTitle": "Hawkeye",
+          "releaseDate": "2021-11-24",
+          "poster": "/yPRl1dvc0FHi8Syy1XhsoMumw9J.jpg",
+          "overview": "O ex-vingador Clint Barton tem uma missão aparentemente simples: voltar para sua família no Natal. Será possível? Talvez com a ajuda de Kate Bishop, uma arqueira de 22 anos que sonha em se tornar uma super-heroína. Os dois são forçados a trabalhar juntos quando uma presença do passado de Barton ameaça descarrilar muito mais do que o espírito festivo.",
+          "storyOrder": 32
+        },
+        {
+          "type": "movie",
+          "id": 453395,
+          "title": "Doutor Estranho no Multiverso da Loucura",
+          "originalTitle": "Doctor Strange in the Multiverse of Madness",
+          "releaseDate": "2022-05-04",
+          "poster": "/7pLIVfovuIf2KQOOvMsKx3Lanrg.jpg",
+          "overview": "Doutor Estranho, com a ajuda de aliados místicos antigos e novos, atravessa as perigosas realidades alternativas e alucinantes do Multiverso para enfrentar um novo adversário misterioso.",
+          "storyOrder": 33
+        },
+        {
+          "type": "tv",
+          "id": 92749,
+          "title": "Cavaleiro da Lua",
+          "originalTitle": "Moon Knight",
+          "releaseDate": "2022-03-30",
+          "poster": "/tkc7AVyUoG9VEeDvukN0TVqa24C.jpg",
+          "overview": "A série acompanha Steven Grant, um gentil e educado funcionário de uma loja de souvenir, que é atormentado com apagões e memórias de outra vida. Steven descobre que tem transtorno dissociativo de identidade e divide o corpo com o mercenário Marc Spector. À medida que os inimigos de Steven/Marc se voltam para eles, ambos devem navegar em suas complexas identidades enquanto mergulham em um mistério mortal entre os poderosos deuses do Egito.",
+          "storyOrder": 34
+        },
+        {
+          "type": "movie",
+          "id": 505642,
+          "title": "Pantera Negra: Wakanda para Sempre",
+          "originalTitle": "Black Panther: Wakanda Forever",
+          "releaseDate": "2022-11-09",
+          "poster": "/cryEN3sWlgB2wTzcUNVtDGI8bkM.jpg",
+          "overview": "A rainha Ramonda, Shuri, M'Baku, Okoye e as poderosas Dora Milaje lutam para proteger sua nação após a morte do rei T'Challa. Com a ajuda da Cão de Guerra Nakia e de Everett Ross, eles tentam encontrar um novo caminho para Wakanda.",
+          "storyOrder": 35
+        },
+        {
+          "type": "tv",
+          "id": 122226,
+          "title": "Eco",
+          "originalTitle": "Echo",
+          "releaseDate": "2024-01-09",
+          "poster": "/sxjbIAIPKB8sPQ9s1yBPsANf8tj.jpg",
+          "overview": "Perseguida pelo criminoso Fisk, Maya volta para casa, onde confrontará sua família e seu legado.",
+          "storyOrder": 36
+        },
+        {
+          "type": "tv",
+          "id": 92783,
+          "title": "Mulher-Hulk: Defensora de Heróis",
+          "originalTitle": "She-Hulk: Attorney at Law",
+          "releaseDate": "2022-08-18",
+          "poster": "/5o8Nw4mBCqyO5dtfpPAZXjv5XJ2.jpg",
+          "overview": "Jennifer Walters — uma advogada especializada em casos envolvendo super-humanos — deve lidar com a complicada vida de uma mulher solteira de trinta e poucos anos que, por acaso, é uma hulk superpoderosa de 2 metros.",
+          "storyOrder": 37
+        },
+        {
+          "type": "tv",
+          "id": 92782,
+          "title": "Ms. Marvel",
+          "originalTitle": "Ms. Marvel",
+          "releaseDate": "2022-06-08",
+          "poster": "/8Rzkt43GnMyTN0srvn3Z4u7C7VU.jpg",
+          "overview": "Kamala Khan é uma adolescente muçulmana de Jersey City. Ela adora jogar videogames e escrever fanfictions, além de ser fã de super-heróis e ter uma imaginação sem limites – especialmente quando se trata da Capitã Marvel. Kamala sente que não se encaixa na escola e, às vezes, nem mesmo em casa. Mas um dia ela descobre que tem superpoderes como os heróis que sempre admirou... e a vida fica bem melhor com superpoderes, não é?",
+          "storyOrder": 38
+        },
+        {
+          "type": "movie",
+          "id": 616037,
+          "title": "Thor: Amor e Trovão",
+          "originalTitle": "Thor: Love and Thunder",
+          "releaseDate": "2022-07-06",
+          "poster": "/8gdBMIYwPPxp3b9FjY9yCxme5Rs.jpg",
+          "overview": "Thor parte em uma jornada de autodescoberta, diferente de tudo que ele já enfrentou. Mas seus esforços são interrompidos por um assassino galáctico conhecido como Gorr, o Carniceiro dos Deuses, que busca a extinção dos deuses. Para combater esta ameaça, Thor pede a ajuda da Rei Valquíria, Korg e da ex-namorada Jane Foster, que, para a surpresa de Thor, inexplicavelmente empunha seu mágico martelo, Mjolnir, como a Poderosa Thor. Juntos, eles embarcam em uma angustiante aventura cósmica para descobrir o mistério da vingança do Carniceiro dos Deuses e detê-lo antes que seja tarde demais.",
+          "storyOrder": 39
+        },
+        {
+          "type": "movie",
+          "id": 894205,
+          "title": "Lobisomem na Noite",
+          "originalTitle": "Werewolf by Night",
+          "releaseDate": "2022-09-25",
+          "poster": "/qakD0XF0OPrOq8ghvZ1ZlYfNMEN.jpg",
+          "overview": "Em uma noite escura e sombria, uma cabala secreta de caçadores de monstros emerge das sombras e se reúne no templo de Bloodstone após a morte de seu líder.  Em um estranho e macabro memorial à vida do líder, os participantes são lançados em uma misteriosa e mortal competição por uma poderosa relíquia – uma caçada que acabará por colocá-los cara a cara com um monstro perigoso.",
+          "storyOrder": 40
+        },
+        {
+          "type": "movie",
+          "id": 774752,
+          "title": "Guardiões da Galáxia: Especial de Festas",
+          "originalTitle": "The Guardians of the Galaxy Holiday Special",
+          "releaseDate": "2022-11-24",
+          "poster": "/uXuSnbuS215XeFnOkAdWMrADfDX.jpg",
+          "overview": "Com a missão de tornar o Natal inesquecível para Quill, os Guardiões vão à Terra em busca do presente perfeito.",
+          "storyOrder": 41
+        },
+        {
+          "type": "movie",
+          "id": 640146,
+          "title": "Homem-Formiga e a Vespa: Quantumania",
+          "originalTitle": "Ant-Man and the Wasp: Quantumania",
+          "releaseDate": "2023-02-15",
+          "poster": "/qZDafbofrZn46MmDwJS8fCSCe6l.jpg",
+          "overview": "Scott Lang e Hope van Dyne em suas jornadas como super-heróis. Scott e sua família são puxados para o Reino Quântico, onde eles precisarão enfrentar um novo e terrível vilão: Kang, o Conquistador e M.O.D.O.K..",
+          "storyOrder": 42
+        },
+        {
+          "type": "movie",
+          "id": 447365,
+          "title": "Guardiões da Galáxia: Vol. 3",
+          "originalTitle": "Guardians of the Galaxy Vol. 3",
+          "releaseDate": "2023-05-03",
+          "poster": "/4yycSPnchdNAZirGkmCYQwTd3cr.jpg",
+          "overview": "Peter Quill, que ainda está se recuperando da perda de Gamora, tem que reunir a sua equipe para defender o universo e proteger um dos seus. Uma missão que, se não for concluída com sucesso, pode levar ao fim dos Guardiões como os conhecemos.",
+          "storyOrder": 43
+        },
+        {
+          "type": "tv",
+          "id": 114472,
+          "title": "Invasão Secreta",
+          "originalTitle": "Secret Invasion",
+          "releaseDate": "2023-06-21",
+          "poster": "/2N892H3CirkrFC4vulZfMVSUbAZ.jpg",
+          "overview": "Nick Fury descobre que uma facção de metamorfos Skrulls pretende invadir a Terra. Fury se junta a aliados incluindo Everett Ross, Maria Hill e o Skrull Talos, que estava vivendo na Terra. Juntos eles correm contra o tempo para impedir a invasão Skrull iminente e salvar a humanidade.",
+          "storyOrder": 44
+        },
+        {
+          "type": "movie",
+          "id": 609681,
+          "title": "As Marvels",
+          "originalTitle": "The Marvels",
+          "releaseDate": "2023-11-08",
+          "poster": "/wpp5KIwjtrKoWj5H0TSsJdqsDx7.jpg",
+          "overview": "Quando suas obrigações a levam a uma fenda espacial anômala ligada a um revolucionário Kree, os poderes de Carol Danvers, a Capitã Marvel, se entrelaçam aos de Kamala Khan, a Ms. Marvel, e aos da sobrinha de Carol, astronauta da S.A.B.E.R., Capitã Monica Rambeau. Juntas, esse trio improvável deve ser unir para salvar o universo como \"As Marvels\".",
+          "storyOrder": 45
+        },
+        {
+          "type": "tv",
+          "id": 138501,
+          "title": "Agatha Desde Sempre",
+          "originalTitle": "Agatha All Along",
+          "releaseDate": "2024-09-18",
+          "poster": "/4TnWiIc9VFqX1HKU4HJ8vNWKHvX.jpg",
+          "overview": "A infame Agatha Harkness encontra-se sem poderes depois de um jovem gótico suspeito ajudá-la a se libertar de um feitiço distorcido. Ela se mostra interessada quando ele pede que seja levado ao lendário Caminho das Bruxas, um caminho mágico de provações que recompensará a bruxa sobrevivente com o que lhe falta. Juntos, Agatha e esse misterioso Jovem reúnem um coven desesperado e partem para o Caminho...",
+          "storyOrder": 46
+        },
+        {
+          "type": "movie",
+          "id": 533535,
+          "title": "Deadpool & Wolverine",
+          "originalTitle": "Deadpool & Wolverine",
+          "releaseDate": "2024-07-24",
+          "poster": "/cJFqqiDYprqExaXatu4AaoMzDG2.jpg",
+          "overview": "Um apático Wade Wilson trabalha duro na vida civil. Seus dias como mercenário moralmente flexível, Deadpool, ficaram para trás. Quando seu planeta enfrenta uma ameaça, Wade deve relutantemente vestir-se novamente com um ainda mais relutante... relutante? Mais relutante? Ele deve convencer um Wolverine relutante em... Porra. As sinopses são tão estúpidas.",
+          "storyOrder": 47
+        },
+        {
+          "type": "movie",
+          "id": 822119,
+          "title": "Capitão América: Admirável Mundo Novo",
+          "originalTitle": "Captain America: Brave New World",
+          "releaseDate": "2025-02-12",
+          "poster": "/5nbSgP8f5LMCI0PwVRRaHJaUmR3.jpg",
+          "overview": "Após se encontrar com o recém-eleito presidente dos EUA, Thaddeus Ross, Sam se vê no meio de um incidente internacional. Ele deve descobrir o motivo por trás de uma conspiração global nefasta antes que o verdadeiro gênio faça o mundo inteiro ser dominado pelo vermelho.",
+          "storyOrder": 48
+        },
+        {
+          "type": "tv",
+          "id": 202555,
+          "title": "Demolidor: Renascido",
+          "originalTitle": "Daredevil: Born Again",
+          "releaseDate": "2025-03-04",
+          "poster": "/r5hNFtkNAauxc2G4VUlnJOaVIb0.jpg",
+          "overview": "Matt Murdock, um advogado cego com habilidades fantásticas, luta por justiça através de seu agitado escritório de advocacia, enquanto o ex-chefe do crime Wilson Fisk busca seus próprios empreendimentos políticos em Nova Iorque. Quando suas identidades passadas começam a emergir, seus caminhos se cruzam perigosamente.",
+          "storyOrder": 49
+        },
+        {
+          "type": "movie",
+          "id": 986056,
+          "title": "Thunderbolts*",
+          "originalTitle": "Thunderbolts*",
+          "releaseDate": "2025-04-30",
+          "poster": "/zkysYSX51ddSPQuiDTjkGCS6vyh.jpg",
+          "overview": "Depois de se verem presos em uma armadilha mortal, uma equipe não convencional de sete anti-heróis deve embarcar em uma missão perigosa que os forçará a confrontar os cantos mais sombrios de seus passados.",
+          "storyOrder": 50
+        },
+        {
+          "type": "tv",
+          "id": 114471,
+          "title": "Coração de Ferro",
+          "originalTitle": "Ironheart",
+          "releaseDate": "2025-06-24",
+          "poster": "/yRanvKZhy5NdF64amF0WNOAIuQu.jpg",
+          "overview": "A inventora genial Riri Williams volta a Chicago e conhece Parker Robbins, conhecido como \"O Capuz\".",
+          "storyOrder": 51
+        },
+        {
+          "type": "movie",
+          "id": 969681,
+          "title": "Homem-Aranha: Um Novo Dia",
+          "originalTitle": "Spider-Man: Brand New Day",
+          "releaseDate": "2026-07-29",
+          "poster": "/x0nvYzQpyJc5pdT9lMnkMuYAg0O.jpg",
+          "overview": "É um novo dia para Peter Parker. Combatendo o crime em tempo integral como Homem-Aranha em um mundo que não se lembra mais dele e lidando com a pressão de ver seus antigos amigos seguirem em frente sem sua presença, Peter passa por uma mudança que talvez nem ele tenha o poder de controlar. Mas essa transformação também pode ser a única coisa capaz de deter uma surpreendente nova ameaça à cidade e às pessoas que ele ama: um poderoso vilão que ninguém sequer consegue enxergar.",
+          "storyOrder": 52
+        },
+        {
+          "type": "movie",
+          "id": 1003596,
+          "title": "Vingadores: Doutor Destino",
+          "originalTitle": "Avengers: Doomsday",
+          "releaseDate": "2026-12-15",
+          "poster": "/j8ThEXgdGWYg1uWdSqygOSnlIA2.jpg",
+          "overview": "Heróis icônicos de três universos diferentes são colocados em rota de colisão mortal e enfrentam uma ameaça existencial sem precedentes, diferente de tudo que já vivenciaram antes.",
+          "storyOrder": 53
+        },
+        {
+          "type": "movie",
+          "id": 617126,
+          "title": "Quarteto Fantástico: Primeiros Passos",
+          "originalTitle": "The Fantastic 4: First Steps",
+          "releaseDate": "2025-07-23",
+          "poster": "/8F2vIxWycANHW763lnx2hJVtjDC.jpg",
+          "overview": "No vibrante cenário de um mundo retrofuturista inspirado nos anos 1960, a Primeira Família da Marvel é forçada a equilibrar seus papéis como heróis com a força de seus laços familiares, enquanto defendem a Terra de um deus espacial voraz chamado Galactus e sua enigmática arauta, a Surfista Prateada.",
+          "storyOrder": 54
+        }
+      ]
+    },
+    {
+      "slug": "star-wars",
+      "name": "Star Wars",
+      "description": "Filmes e séries da linha do tempo oficial (cânone) de Star Wars, da Alta República à Ascensão Skywalker.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 114479,
+          "title": "The Acolyte",
+          "originalTitle": "The Acolyte",
+          "releaseDate": "2024-06-04",
+          "poster": "/kD2Usltm0kmwj5R5ZjQHrdYk6By.jpg",
+          "overview": "Cem anos antes da ascensão do Império, a Ordem Jedi e a República Galáctica prosperaram sem guerras durante séculos. Durante esse tempo, uma investigação sobre uma terrível onda de crimes coloca uma Mestra Jedi contra uma perigosa guerreira de seu passado.",
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 1893,
+          "title": "Star Wars: Episódio I - A Ameaça Fantasma",
+          "originalTitle": "Star Wars: Episode I - The Phantom Menace",
+          "releaseDate": "1999-05-19",
+          "poster": "/gNk8UNAumXlfCdtaxDqsQe7ZGlt.jpg",
+          "overview": "Enquanto resgatam a Rainha Amidala, governante de um planeta pacífico invadido por forças ameaçadoras, os Cavaleiros Jedi Obi-Wan Kenobi e Qui-Gon Jinn descobrem Anakin Skywalker, uma criança prodígio de 9 anos excepcionalmente poderosa na Força.",
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 1894,
+          "title": "Star Wars: Episódio II - Ataque dos Clones",
+          "originalTitle": "Star Wars: Episode II - Attack of the Clones",
+          "releaseDate": "2002-05-15",
+          "poster": "/9m1nJ2MfTG5QEmjOCg0b4YCo4W8.jpg",
+          "overview": "Com a missão de proteger a Senadora Amidala, Anakin Skywalker descobre o seu amor por ela, do mesmo modo que vai conhecendo seu lado sombrio. Obi-Wan Kenobi descobre um exército de clones à medida que a Galáxia caminha para uma grande guerra.",
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 12180,
+          "title": "Star Wars: A Guerra dos Clones",
+          "originalTitle": "Star Wars: The Clone Wars",
+          "releaseDate": "2008-08-05",
+          "poster": "/cOPlN7s32Unwh0ZveLB54z6glBQ.jpg",
+          "overview": "Enquanto as Guerras Clônicas varrem a galáxia, Anakin Skywalker e sua nova Padawan, Ahsoka Tano, embarcam em uma missão para resgatar o filho de Jabba, o Hutt. O renegado Conde Dookan, contudo, está determinado a garantir que eles falhem.",
+          "storyOrder": 4
+        },
+        {
+          "type": "tv",
+          "id": 4194,
+          "title": "Star Wars: The Clone Wars",
+          "originalTitle": "Star Wars: The Clone Wars",
+          "releaseDate": "2008-10-03",
+          "poster": "/pvDFqSHSdyWiPu0ihJJkDXxnBM9.jpg",
+          "overview": "A guerra dos clones se expande por toda a galáxia, e os heróis Jedi lutam desesperadamente a fim de manter a ordem e a paz. Sistemas sucumbem perante o lado negro da força e a República Galáctica está sofrendo contínua pressão dos Separatistas e seu infinito exército de dróides.",
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 1895,
+          "title": "Star Wars: Episódio III - A Vingança dos Sith",
+          "originalTitle": "Star Wars: Episode III - Revenge of the Sith",
+          "releaseDate": "2005-05-17",
+          "poster": "/nuF5yWtTJEEAd4Qa6cVkYz1XCST.jpg",
+          "overview": "As Guerras Clônicas estão em pleno andamento e Anakin Skywalker mantém um elo de lealdade com Palpatine, ao mesmo tempo em que luta para que seu casamento com Padmé Amidala não seja afetado por esta situação. Seduzido por promessas de poder, Anakin se aproxima cada vez mais de Darth Sidious até se tornar o temível Darth Vader. Juntos eles tramam um plano para aniquilar de uma vez por todas com os cavaleiros jedi.",
+          "storyOrder": 6
+        },
+        {
+          "type": "tv",
+          "id": 105971,
+          "title": "Star Wars: The Bad Batch",
+          "originalTitle": "Star Wars: The Bad Batch",
+          "releaseDate": "2021-05-04",
+          "poster": "/mMDYVkdrhTqpLSnmzF4MQ5pmrU4.jpg",
+          "overview": "Meses depois dos acontecimentos em Kamino, os Mal Feitos continuam sua jornada, navegando pelo Império após a queda da República. Eles encontrarão amigos e inimigos, alguns novos, outros conhecidos, em diferentes missões mercenárias e eletrizantes que os levarão a lugares novos e perigosos.",
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 348350,
+          "title": "Han Solo: Uma História Star Wars",
+          "originalTitle": "Solo: A Star Wars Story",
+          "releaseDate": "2018-05-15",
+          "poster": "/jAMEX0syUh6sbjBiysibzrFpbo.jpg",
+          "overview": "Embarque na Millennium Falcon e viaje para uma galáxia distante em uma nova aventura com o mais amado canalha da galáxia. Através de uma série de ousadas aventuras no obscuro e perigoso submundo do crime, Han Solo encontra seu poderoso futuro copiloto Chewbacca e encontra o famoso jogador Lando Calrissian, em uma jornada que definirá o curso de um dos heróis mais improváveis da saga Star Wars.",
+          "storyOrder": 8
+        },
+        {
+          "type": "tv",
+          "id": 92830,
+          "title": "Obi-Wan Kenobi",
+          "originalTitle": "Obi-Wan Kenobi",
+          "releaseDate": "2022-05-26",
+          "poster": "/dnHP6MdJ4jMZgKvNrOYTjrgqn9l.jpg",
+          "overview": "Durante o reinado do Império Galáctico, o antigo Mestre Jedi Obi-Wan Kenobi embarca em uma missão crucial. Kenobi deve confrontar aliados que se tornaram inimigos e enfrentar a fúria do Império.",
+          "storyOrder": 9
+        },
+        {
+          "type": "tv",
+          "id": 83867,
+          "title": "Andor",
+          "originalTitle": "Andor",
+          "releaseDate": "2022-09-21",
+          "poster": "/yX8c3bXKzAquEKQ75eQslnodskK.jpg",
+          "overview": "Numa era repleta de perigos, enganos e intriga, Cassian Andor vai descobrir a diferença que pode fazer na luta contra o tirânico Império Galático. Embarca numa jornada destinada a torná-lo um herói da Rebelião.",
+          "storyOrder": 10
+        },
+        {
+          "type": "tv",
+          "id": 60554,
+          "title": "Star Wars: Rebels",
+          "originalTitle": "Star Wars Rebels",
+          "releaseDate": "2014-10-13",
+          "poster": "/eLrScs6Bs26JMcS8hiZhf7YRROr.jpg",
+          "overview": "Os Jedi foram exterminados e o Império espalha tirania pela galáxia. A  esperança é quase inexistente. Mas no pequeno planeta de Lothal uma  grande mudança está próxima. Um grupo de rebeldes encontram um garoto de  14 anos de idade chamado Ezra e logo fica claro que os seus destinos  estão ligados. A bordo de sua nave, Ghost, Ezra e os rebeldes embarcam  em uma aventura para iniciar uma rebelião e contra-atacar o Império.",
+          "storyOrder": 11
+        },
+        {
+          "type": "movie",
+          "id": 330459,
+          "title": "Rogue One: Uma História Star Wars",
+          "originalTitle": "Rogue One: A Star Wars Story",
+          "releaseDate": "2016-12-14",
+          "poster": "/74C2YX0NLWnozVMRS56d5CKDdEv.jpg",
+          "overview": "Ainda criança, Jyn Erso foi afastada de seu pai, devido à exigência do diretor Krennic de que ele trabalhasse na construção da arma mais poderosa do Império, a Estrela da Morte. Criada por Saw Gerrera, ela teve que aprender a sobreviver por conta própria ao completar 16 anos. Já adulta, Jyn é resgatada da prisão pela Aliança Rebelde, que deseja ter acesso a uma mensagem enviada por seu pai a Gerrera. Com a promessa de liberdade ao término da missão, ela aceita trabalhar para os rebeldes ao lado do capitão Cassian Andor e do robô K-2SO.",
+          "storyOrder": 12
+        },
+        {
+          "type": "movie",
+          "id": 11,
+          "title": "Guerra nas Estrelas",
+          "originalTitle": "Star Wars",
+          "releaseDate": "1977-05-25",
+          "poster": "/dw7X9YPjjAfIxKHW04V64Bb9TB0.jpg",
+          "overview": "A princesa Leia é mantida refém pelas forças imperiais comandadas por Darth Vader. Luke Skywalker e Han Solo precisam libertá-la e restaurar a liberdade e a justiça na galáxia.",
+          "storyOrder": 13
+        },
+        {
+          "type": "movie",
+          "id": 1891,
+          "title": "Guerra nas Estrelas: O Império Contra-Ataca",
+          "originalTitle": "The Empire Strikes Back",
+          "releaseDate": "1980-05-20",
+          "poster": "/dLGT8b4Ut10z44uYLaip4QiwKta.jpg",
+          "overview": "As forças imperais comandadas por Darth Vader lançam um ataque contra os membros da resistência, que são obrigados a fugir. Enquanto isso Luke Skywalker tenta encontrar o Mestre Yoda, que poderá ensiná-lo a dominar a \"Força\" e torná-lo um cavaleiro jedi. No entanto, Darth Vader planeja levá-lo para o lado negro da \"Força\".",
+          "storyOrder": 14
+        },
+        {
+          "type": "movie",
+          "id": 1892,
+          "title": "Guerra nas Estrelas: O Retorno de Jedi",
+          "originalTitle": "Return of the Jedi",
+          "releaseDate": "1983-05-25",
+          "poster": "/llaJ35p5e23ygDbqd0H3otJLWsA.jpg",
+          "overview": "O imperador está supervisionando a construção de uma nova Estrela da Morte. Enquanto isso Luke Skywalker liberta Han Solo e a Princesa Leia das mãos de Jaba. Luke só se tornará um cavaleiro jedi quando destruir Darth Vader, que ainda pretende atraí-lo para o lado sombrio da Força.",
+          "storyOrder": 15
+        },
+        {
+          "type": "tv",
+          "id": 82856,
+          "title": "The Mandalorian",
+          "originalTitle": "The Mandalorian",
+          "releaseDate": "2019-11-12",
+          "poster": "/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
+          "overview": "A saga de um guerreiro solitário, que também é um mercenário e pistoleiro, viajando pelos territórios esquecidos e marginais do espaço, logo após a queda do Império e antes da criação da temida Primeira Ordem.",
+          "storyOrder": 16
+        },
+        {
+          "type": "tv",
+          "id": 115036,
+          "title": "O Livro de Boba Fett",
+          "originalTitle": "The Book of Boba Fett",
+          "releaseDate": "2021-12-29",
+          "poster": "/ptSA0gnrXuJSa5YRqn7Gj5SwFFR.jpg",
+          "overview": "Uma emocionante aventura Star Wars que encontra o lendário caçador de recompensas Boba Fett e o mercenário Fennec Shand explorando o submundo da Galáxia quando retornam às areias de Tatooine para reivindicar o território antes governado por Jabba, o Hutt e seu sindicato do crime.",
+          "storyOrder": 17
+        },
+        {
+          "type": "tv",
+          "id": 114461,
+          "title": "Ahsoka",
+          "originalTitle": "Ahsoka",
+          "releaseDate": "2023-08-22",
+          "poster": "/eiJeWeCAEZAmRppnXHiTWDcCd3Q.jpg",
+          "overview": "Situada após a queda do Império, a série segue a ex-cavaleira Jedi Ahsoka Tano enquanto ela investiga uma ameaça emergente a uma galáxia vulnerável.",
+          "storyOrder": 18
+        },
+        {
+          "type": "tv",
+          "id": 202879,
+          "title": "Star Wars: Skeleton Crew",
+          "originalTitle": "Star Wars: Skeleton Crew",
+          "releaseDate": "2024-12-02",
+          "poster": "/4Dr8mPDBhuSsrGBSx5n8cL1gSki.jpg",
+          "overview": "Quatro crianças comuns buscam seu planeta natal após se perderem na galáxia de Star Wars.",
+          "storyOrder": 19
+        },
+        {
+          "type": "movie",
+          "id": 1228710,
+          "title": "Star Wars: O Mandaloriano e Grogu",
+          "originalTitle": "The Mandalorian and Grogu",
+          "releaseDate": "2026-05-20",
+          "poster": "/dNwaS0tnwgQRaQFPY5MbGxdmYXr.jpg",
+          "overview": "O maligno Império caiu e os senhores da guerra Imperiais ainda estão espalhados pela galáxia. Enquanto a jovem Nova República luta para proteger tudo pelo que a Rebelião batalhou, ela conta com a ajuda do lendário caçador de recompensas Mandaloriano Din Djarin e seu jovem aprendiz Grogu.",
+          "storyOrder": 20
+        },
+        {
+          "type": "tv",
+          "id": 79093,
+          "title": "Star Wars: A Resistência",
+          "originalTitle": "Star Wars Resistance",
+          "releaseDate": "2018-10-07",
+          "poster": "/niZVXIW40V6lzWgy4mPfFq9ooKz.jpg",
+          "overview": "Poe Dameron recruta o jovem piloto Kazuda Xiono para se tornar um espião da Resistência e acompanhar a crescente ameaça da Primeira Ordem.",
+          "storyOrder": 21
+        },
+        {
+          "type": "movie",
+          "id": 140607,
+          "title": "Star Wars: O Despertar da Força",
+          "originalTitle": "Star Wars: The Force Awakens",
+          "releaseDate": "2015-12-15",
+          "poster": "/lqMDbo4rXnakFgc4C6LzPv6pG7F.jpg",
+          "overview": "A queda de Darth Vader e do Império levou ao surgimento de uma nova força sombria: a Primeira Ordem. Eles procuram o jedi Luke Skywalker, desaparecido. A resistência tenta desesperadamente encontrá-lo antes para salvar a galáxia.",
+          "storyOrder": 22
+        },
+        {
+          "type": "movie",
+          "id": 181808,
+          "title": "Star Wars: Os Últimos Jedi",
+          "originalTitle": "Star Wars: The Last Jedi",
+          "releaseDate": "2017-12-13",
+          "poster": "/5dGufuaIG5vNcxPm8QPij5MSPeQ.jpg",
+          "overview": "A tranquila e solitária vida de Luke Skywalker sofre uma reviravolta quando ele conhece Rey, uma jovem que mostra fortes sinais da Força. O desejo dela de aprender o estilo dos Jedi força Luke a tomar uma decisão que mudará sua vida para sempre. Enquanto isso, Kylo Ren e o General Hux lideram a Primeira Ordem para um ataque total contra Leia e a Resistência pela supremacia da galáxia.",
+          "storyOrder": 23
+        },
+        {
+          "type": "movie",
+          "id": 181812,
+          "title": "Star Wars: A Ascensão Skywalker",
+          "originalTitle": "Star Wars: The Rise of Skywalker",
+          "releaseDate": "2019-12-18",
+          "poster": "/uLlrDUtFG2tKtDcJN6kBznlqqsp.jpg",
+          "overview": "Com o retorno do Imperador Palpatine, todos voltam a temer seu poder e, com isso, a Resistência toma a frente da batalha que ditará os rumos da galáxia. Treinando para ser uma completa Jedi, Rey ainda se encontra em conflito com seu passado e futuro, mas teme pelas respostas que pode conseguir a partir de sua complexa ligação com Kylo Ren, que também se encontra em conflito pela Força.",
+          "storyOrder": 24
+        }
+      ]
+    }
+  ],
+  "featured": [
+    {
+      "id": 1241,
+      "name": "Harry Potter: Coleção",
+      "poster": "/5m8RGRYDhnR6TQANkePx9lrv8fG.jpg",
+      "backdrop": "/4gV0rKUjB1nLUdZB4zIltLvNZZr.jpg"
+    },
+    {
+      "id": 119,
+      "name": "O Senhor dos Anéis: Coleção",
+      "poster": "/9x5456lykdCQTbwN6cVoU3gQsZp.jpg",
+      "backdrop": "/bccR2CGTWVVSZAG0yqmy3DIvhTX.jpg"
+    },
+    {
+      "id": 121938,
+      "name": "O Hobbit: Coleção",
+      "poster": "/oXbLMPP9ALGKdOOFi3fNnjBT4z8.jpg",
+      "backdrop": "/7wO7MSnP5UcwR2cTHdJFF1vP4Ie.jpg"
+    },
+    {
+      "id": 131635,
+      "name": "Jogos Vorazes: Coleção",
+      "poster": "/xZe2DbrTVpAnZ7VLHEW5G0mIynK.jpg",
+      "backdrop": "/Ipp7cegtub4t0mu7xaKLQkYoGc.jpg"
+    },
+    {
+      "id": 9485,
+      "name": "Velozes & Furiosos: Coleção",
+      "poster": "/bj2y7PABBBzrI1POZFtqPwYJA4m.jpg",
+      "backdrop": "/z5A5W3WYJc3UVEWljSGwdjDgQ0j.jpg"
+    },
+    {
+      "id": 295,
+      "name": "Piratas do Caribe: Coleção",
+      "poster": "/oGEenSmUimQcZyMjkpPilPweaPF.jpg",
+      "backdrop": "/wxgD3fB5lQ2sGJLog0rvXW049Pf.jpg"
+    },
+    {
+      "id": 87359,
+      "name": "Missão: Impossível - Coleção",
+      "poster": "/Ya1vCmFpvdmf351wTjjGlgnP4b.jpg",
+      "backdrop": "/mroWh717g0Ah2c0rrPGW6f3EWMM.jpg"
+    },
+    {
+      "id": 328,
+      "name": "Jurassic Park: Coleção",
+      "poster": "/63S4L7p7ljvKFFUuuaWKo8mHxBY.jpg",
+      "backdrop": "/njFixYzIxX8jsn6KMSEtAzi4avi.jpg"
+    },
+    {
+      "id": 404609,
+      "name": "John Wick: Coleção",
+      "poster": "/k0rO6VY5VRAw25jDBlNUmfFEG9B.jpg",
+      "backdrop": "/fSwYa5q2xRkBoOOjueLpkLf3N1m.jpg"
+    },
+    {
+      "id": 2344,
+      "name": "Matrix: Coleção",
+      "poster": "/kP1M00dSffxGqzXir9ITgaSNxcK.jpg",
+      "backdrop": "/bRm2DEgUiYciDw3myHuYFInD7la.jpg"
+    },
+    {
+      "id": 264,
+      "name": "De Volta para o Futuro: Coleção",
+      "poster": "/wTn5lOW5OvYANXjsHXE44Zsk43x.jpg",
+      "backdrop": "/c9C9Pg2QctyjZHRmS0P8rZg1OTA.jpg"
+    },
+    {
+      "id": 84,
+      "name": "Indiana Jones: Coleção",
+      "poster": "/o6SLel2QCfc94RTHe4LJucMez1Z.jpg",
+      "backdrop": "/s4xWmz9PEjPERSRcd7H7xMJpYvE.jpg"
+    },
+    {
+      "id": 10194,
+      "name": "Toy Story: Coleção",
+      "poster": "/vgloOQGIDJJkIq1nTv9y3n2TokC.jpg",
+      "backdrop": "/hApclyB9NEZEQujAVajzi5iWE4a.jpg"
+    },
+    {
+      "id": 2150,
+      "name": "Shrek: Coleção",
+      "poster": "/FlCOvuibrkww69JUcXLy3pOCBw.jpg",
+      "backdrop": "/lhsd1zCsq5UquvcNalmhuddV3tI.jpg"
+    },
+    {
+      "id": 8091,
+      "name": "Alien: Coleção",
+      "poster": "/AgyQCf3kUqWgCZifYkFYeZN1ddC.jpg",
+      "backdrop": "/6X42JnSMdo3dPAswOHUuvebdTq7.jpg"
+    },
+    {
+      "id": 1575,
+      "name": "Rocky: Coleção",
+      "poster": "/zabK4aLJxaXahDBrRbYbpaMdqxM.jpg",
+      "backdrop": "/yaXXemxz3ePNSrqNtc4ZAbuxJRv.jpg"
+    }
+  ]
+}
