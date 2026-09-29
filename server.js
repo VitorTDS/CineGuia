@@ -43,15 +43,38 @@ const TOP_LIMIT = 10;
 const REMINDER_CHECK_LIMIT = 40;
 const ARCHIVE_BASE = 'https://archive.org';
 const PUBLIC_DOMAIN_PAGE_SIZE = 24;
-// Only items that declare a public-domain license, have an MP4 the browser can play, and no adult content.
+// Genre "exploitation" films (B horror, crime, action) are allowed; sexual content and nudity are not.
+const BLOCKED_SUBJECTS = ['sex', 'sexploitation', 'nudity', 'nudist', 'erotic', 'adult', 'striptease'];
+const BLOCKED_TITLE_WORDS = ['sex', 'nude', 'nudist', 'naked', 'erotic', 'striptease'];
+// Ethnographic "exploitation" documentaries and Maniac (1934) are tagged loosely but contain nudity.
+const BLOCKED_SUBJECT_PHRASES = ['ethno-exploitation'];
+const BLOCKED_TITLE_YEARS = [{ title: 'maniac', year: '1934' }];
+
+// Only items that declare a public-domain license, have an MP4 the browser can play, and pass the content rules.
 const PUBLIC_DOMAIN_QUERY = [
   'collection:(feature_films)',
   'mediatype:(movies)',
   'licenseurl:(*publicdomain*)',
   'format:("h.264" OR "512Kb MPEG4")',
-  '-subject:(sex OR sexploitation OR nudity OR nudist OR erotic OR adult OR exploitation OR striptease)',
-  '-title:(sex OR nude OR nudist OR naked OR erotic OR striptease)'
+  `-subject:(${BLOCKED_SUBJECTS.join(' OR ')})`,
+  `-title:(${BLOCKED_TITLE_WORDS.join(' OR ')})`,
+  ...BLOCKED_SUBJECT_PHRASES.map((phrase) => `-subject:("${phrase}")`),
+  ...BLOCKED_TITLE_YEARS.map((entry) => `NOT (title:(${entry.title}) AND year:(${entry.year}))`)
 ].join(' AND ');
+
+// The same rules applied to a single item, so a direct link cannot open something the list hides.
+function isBlockedContent(meta) {
+  const words = (value) => [].concat(value || []).join(' ').toLowerCase();
+  const subjects = words(meta.subject);
+  const title = words(meta.title);
+  const year = String([].concat(meta.year || meta.date || [])[0] || '').slice(0, 4);
+  const hasWord = (text, word) => new RegExp(`(^|[^a-z])${word}([^a-z]|$)`).test(text);
+
+  return BLOCKED_SUBJECTS.some((word) => hasWord(subjects, word)) ||
+    BLOCKED_TITLE_WORDS.some((word) => hasWord(title, word)) ||
+    BLOCKED_SUBJECT_PHRASES.some((phrase) => subjects.includes(phrase)) ||
+    BLOCKED_TITLE_YEARS.some((entry) => hasWord(title, entry.title) && year === entry.year);
+}
 const IN_THEATERS_DAYS = 90;
 const ABROAD_PROVIDERS_LIMIT = 6;
 // Countries listed first when a title is only available abroad.
@@ -392,6 +415,7 @@ async function handlePublicDomainItem(identifier) {
 
   const license = String(firstValue(meta.licenseurl) || '');
   if (!/publicdomain/i.test(license)) throw new HttpError(404, 'Este filme não está marcado como domínio público.');
+  if (isBlockedContent(meta)) throw new HttpError(404, 'Este filme não está disponível no CineGuia.');
 
   return {
     id: identifier,
