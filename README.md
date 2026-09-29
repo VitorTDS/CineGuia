@@ -13,13 +13,15 @@ Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações 
 - Listas **Em alta**, **Filmes** e **Séries**, com rolagem infinita
 - **Busca** por qualquer filme ou série
 - **Filtros** por gênero, época e nota mínima
+- **Cinema**: filmes **em cartaz** e **em breve** nos cinemas do Brasil, com a data de estreia brasileira
+- **Lembretes**: toque no sino de um título para ser avisado. Ao abrir o site, o CineGuia confere e avisa o que estreou, o que chegou a uma plataforma e se a estreia foi remarcada. Para estreias futuras, dá para adicionar ao Google Agenda ou baixar o evento (.ics) com alarme no dia
 - **Top 10 por plataforma**: filmes e séries em alta na Netflix, Prime Video, Disney+, HBO Max, Globoplay, Apple TV+, Paramount+ e Crunchyroll (pela popularidade no TMDB entre os títulos de cada plataforma no Brasil)
 - **Detalhes** de cada título: sinopse, onde assistir, trailer, elenco, temporadas e episódios, e títulos semelhantes
 - **Links para as plataformas**: tocar num serviço abre o título nele (Netflix, Prime Video, Apple TV, Google Play, YouTube e Crunchyroll abrem a busca do título; os demais abrem a página de onde assistir do TMDB)
 - **Sem plataforma no Brasil**: mostra se o filme está em cartaz ou vai estrear nos cinemas, e onde está disponível em outros países
 - **Responsivo**: funciona em celulares (em pé e deitados), tablets, notebooks e monitores grandes
 - **Link direto** para cada título (ex.: `http://localhost:3000/#serie/1396`)
-- **Minha lista** para salvar favoritos no navegador
+- **Minha lista** com lembretes e favoritos, salvos no navegador de cada pessoa
 - **Tema claro e escuro**
 
 ## Requisitos
@@ -93,6 +95,8 @@ O navegador nunca fala direto com o TMDB. Ele chama o `server.js`, que adiciona 
 | `GET /api/list?category=trending\|movies\|series&page=N` | Lista de títulos. Filmes e séries aceitam `genre`, `from`, `to` e `rating` |
 | `GET /api/search?q=texto&page=N` | Resultado da busca |
 | `GET /api/genres/movie\|tv` | Lista de gêneros |
+| `GET /api/cinema?section=now_playing\|upcoming&page=N` | Filmes em cartaz ou em breve nos cinemas do Brasil |
+| `GET /api/reminders/check?items=movie:ID,tv:ID` | Situação atual dos títulos com lembrete (estreia e plataformas) |
 | `GET /api/platforms` | Plataformas de streaming em destaque no Brasil |
 | `GET /api/platform-top?provider=ID` | Top 10 filmes e Top 10 séries de uma plataforma |
 | `GET /api/title/movie\|tv/ID` | Detalhes completos do título |

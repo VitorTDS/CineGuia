@@ -8,12 +8,17 @@
   const FAVORITES_KEY = 'cineguia-favoritos';
   const THEME_KEY = 'cineguia-theme';
   const PLATFORM_KEY = 'cineguia-plataforma';
+  const REMINDERS_KEY = 'cineguia-lembretes';
+  const ALERTS_KEY = 'cineguia-avisos';
+  const REMINDER_RECHECK_MS = 30 * 60 * 1000;
+  const CINEMA_TITLES = { now_playing: 'Em cartaz nos cinemas', upcoming: 'Em breve nos cinemas' };
   const APP_TITLE = document.title;
 
   const CATEGORY_TITLES = {
     trending: 'Em alta nesta semana',
     movies: 'Filmes populares',
     series: 'Séries populares',
+    cinema: 'Cinema',
     platforms: 'Top 10 por plataforma',
     favorites: 'Minha lista'
   };
@@ -44,6 +49,14 @@
     sentinel: document.getElementById('sentinel'),
     loadMore: document.getElementById('loadMore'),
     platformsView: document.getElementById('platformsView'),
+    cinemaSwitch: document.getElementById('cinemaSwitch'),
+    remindersView: document.getElementById('remindersView'),
+    remindersGrid: document.getElementById('remindersGrid'),
+    remindersEmpty: document.getElementById('remindersEmpty'),
+    alerts: document.getElementById('alerts'),
+    alertsList: document.getElementById('alertsList'),
+    alertsClear: document.getElementById('alertsClear'),
+    alertsBadge: document.getElementById('alertsBadge'),
     platformPicker: document.getElementById('platformPicker'),
     platformTop: document.getElementById('platformTop'),
     details: document.getElementById('details'),
@@ -60,6 +73,7 @@
     totalPages: 1,
     loading: false,
     failed: false,
+    cinemaSection: 'now_playing',
     filters: { genre: '', decade: '', rating: '' }
   };
 
@@ -69,6 +83,11 @@
   let selectedPlatformId = readStoredPlatform();
   let platformRequestId = 0;
   let favorites = loadFavorites();
+  let reminders = loadStoredList(REMINDERS_KEY);
+  let alerts = loadStoredList(ALERTS_KEY);
+  let lastReminderCheck = 0;
+  let checkingReminders = false;
+  let recheckQueued = false;
   let shownIds = new Set();
   let listRequestId = 0;
   let detailsRequestId = 0;
@@ -81,11 +100,34 @@
   updateChrome();
   loadPage(true);
   openTitleFromInitialUrl();
+  renderAlerts();
+  checkReminders();
 
   function wireEvents() {
     els.tabs.addEventListener('click', (event) => {
       const tab = event.target.closest('[data-category]');
       if (tab) showCategory(tab.dataset.category);
+    });
+
+    els.cinemaSwitch.addEventListener('click', (event) => {
+      const segment = event.target.closest('[data-section]');
+      if (!segment || segment.dataset.section === view.cinemaSection) return;
+      view.cinemaSection = segment.dataset.section;
+      updateChrome();
+      loadPage(true);
+    });
+
+    els.alertsClear.addEventListener('click', () => {
+      alerts = [];
+      saveStoredList(ALERTS_KEY, alerts);
+      renderAlerts();
+    });
+
+    // Someone who leaves the tab open still gets fresh reminder checks when coming back to it.
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && Date.now() - lastReminderCheck > REMINDER_RECHECK_MS) {
+        checkReminders();
+      }
     });
 
     els.searchInput.addEventListener('input', () => {
@@ -194,12 +236,20 @@
     }
 
     const type = view.mode === 'category' ? CATEGORY_TYPES[view.category] : null;
+    const inCinema = view.mode === 'category' && view.category === 'cinema';
     els.filters.classList.toggle('hidden', !type);
     els.platformsView.classList.toggle('hidden', view.mode !== 'platforms');
+    els.remindersView.classList.toggle('hidden', view.mode !== 'favorites');
+    els.cinemaSwitch.classList.toggle('hidden', !inCinema);
+    for (const segment of els.cinemaSwitch.querySelectorAll('[data-section]')) {
+      segment.setAttribute('aria-pressed', String(segment.dataset.section === view.cinemaSection));
+    }
     if (type) loadGenres(type);
 
     if (view.mode === 'search') {
       els.sectionTitle.textContent = `Resultados para "${view.query}"`;
+    } else if (inCinema) {
+      els.sectionTitle.textContent = CINEMA_TITLES[view.cinemaSection];
     } else if (type && hasFilters()) {
       els.sectionTitle.textContent = type === 'movie' ? 'Filmes filtrados' : 'Séries filtradas';
     } else {
@@ -228,6 +278,9 @@
   function buildListUrl(page) {
     if (view.mode === 'search') {
       return `/api/search?q=${encodeURIComponent(view.query)}&page=${page}`;
+    }
+    if (view.category === 'cinema') {
+      return `/api/cinema?section=${view.cinemaSection}&page=${page}`;
     }
     const params = new URLSearchParams({ category: view.category, page: String(page) });
     if (CATEGORY_TYPES[view.category]) {
@@ -284,7 +337,9 @@
         shownIds.add(key);
         return true;
       });
-      els.grid.append(...fresh.map((item) => createCard(item)));
+      const inCinema = view.mode === 'category' && view.category === 'cinema';
+      const cardOptions = { reminder: inCinema, showRelease: inCinema && view.cinemaSection === 'upcoming' };
+      els.grid.append(...fresh.map((item) => createCard(item, '', cardOptions)));
 
       if (els.grid.children.length) {
         setStatus('');
@@ -319,8 +374,19 @@
 
   function renderFavorites() {
     els.loadMore.classList.add('hidden');
-    els.grid.replaceChildren(...favorites.map((item) => createCard(item)));
-    setStatus(favorites.length ? '' : 'Sua lista está vazia. Toque no ♡ de um filme ou série para salvar aqui.');
+    setStatus('');
+    els.remindersEmpty.classList.toggle('hidden', reminders.length > 0);
+    els.remindersGrid.replaceChildren(...reminders.map((item) =>
+      createCard(item, '', { reminder: true, status: reminderStatus(item) })
+    ));
+    if (favorites.length) {
+      els.grid.replaceChildren(...favorites.map((item) => createCard(item)));
+    } else {
+      els.grid.replaceChildren(el('p', {
+        className: 'muted grid-empty',
+        text: 'Nenhum favorito ainda. Toque no ♡ de um filme ou série para salvar aqui.'
+      }));
+    }
   }
 
   // ---------- Top 10 por plataforma ----------
@@ -420,17 +486,25 @@
     ]);
   }
 
-  function createCard(item, extraClass = '') {
-    const meta = [TYPE_LABELS[item.type], item.year, formatRating(item.rating)].filter(Boolean).join(' · ');
+  function createCard(item, extraClass = '', options = {}) {
+    let meta;
+    if (options.status) {
+      meta = options.status;
+    } else if (options.showRelease && item.releaseDate) {
+      meta = `Estreia ${formatDate(item.releaseDate)}`;
+    } else {
+      meta = [TYPE_LABELS[item.type], item.year, formatRating(item.rating)].filter(Boolean).join(' · ');
+    }
 
     return el('article', { className: `card ${extraClass}`.trim() }, [
       el('button', { type: 'button', className: 'card-open', onclick: () => openTitle(item) }, [
         posterImage(item.poster, '', 'card-poster', '(max-width: 600px) 34vw, 200px') ||
           el('div', { className: 'card-poster placeholder', text: item.title }),
         el('span', { className: 'card-title', text: item.title }),
-        el('span', { className: 'card-meta', text: meta })
+        el('span', { className: `card-meta${options.status || options.showRelease ? ' highlight' : ''}`, text: meta })
       ]),
-      favoriteButton(item, 'icon')
+      favoriteButton(item, 'icon'),
+      options.reminder ? reminderButton(item, 'icon') : null
     ]);
   }
 
@@ -466,8 +540,8 @@
     return favorites.some((favorite) => itemKey(favorite) === itemKey(item));
   }
 
-  function toggleFavorite(item) {
-    const summary = {
+  function summarize(item) {
+    return {
       id: item.id,
       type: item.type,
       title: item.title,
@@ -475,6 +549,10 @@
       poster: item.poster || null,
       rating: typeof item.rating === 'number' ? item.rating : null
     };
+  }
+
+  function toggleFavorite(item) {
+    const summary = summarize(item);
 
     if (isFavorite(summary)) {
       favorites = favorites.filter((favorite) => itemKey(favorite) !== itemKey(summary));
@@ -514,6 +592,292 @@
     } else {
       button.textContent = saved ? '♥ Na minha lista' : '♡ Adicionar à lista';
     }
+  }
+
+  // ---------- Lembretes ----------
+
+  function loadStoredList(key) {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(key));
+      if (!Array.isArray(parsed)) return [];
+      return parsed.filter(
+        (item) =>
+          item && (item.type === 'movie' || item.type === 'tv') &&
+          Number.isInteger(item.id) && typeof item.title === 'string'
+      );
+    } catch {
+      return [];
+    }
+  }
+
+  function saveStoredList(key, list) {
+    try {
+      localStorage.setItem(key, JSON.stringify(list));
+    } catch {
+      showToast('Não foi possível salvar neste navegador.');
+    }
+  }
+
+  function isReminded(item) {
+    return reminders.some((reminder) => itemKey(reminder) === itemKey(item));
+  }
+
+  function toggleReminder(item) {
+    const summary = summarize(item);
+    const adding = !isReminded(summary);
+
+    if (adding) {
+      const releaseDate = item.releaseDate || (item.availability && item.availability.release && item.availability.release.date) || null;
+      // known stays null until the first check, which records the current state as the baseline.
+      reminders = [{ ...summary, releaseDate, known: null }, ...reminders];
+      showToast(`Pronto! Vamos avisar aqui quando ${summary.title} estrear ou chegar a uma plataforma.`);
+    } else {
+      reminders = reminders.filter((reminder) => itemKey(reminder) !== itemKey(summary));
+      showToast(`Lembrete de ${summary.title} removido.`);
+    }
+
+    saveStoredList(REMINDERS_KEY, reminders);
+    for (const button of document.querySelectorAll(`[data-reminder-key="${itemKey(summary)}"]`)) {
+      renderReminderButton(button, summary);
+    }
+    if (view.mode === 'favorites') renderFavorites();
+    if (adding) checkReminders();
+  }
+
+  function reminderButton(item, variant) {
+    const button = el('button', {
+      type: 'button',
+      className: variant === 'icon' ? 'reminder-button icon' : 'reminder-button full',
+      'data-reminder-key': itemKey(item),
+      onclick: (event) => {
+        event.stopPropagation();
+        toggleReminder(item);
+      }
+    });
+    renderReminderButton(button, item);
+    return button;
+  }
+
+  function renderReminderButton(button, item) {
+    const active = isReminded(item);
+    button.setAttribute('aria-pressed', String(active));
+    button.setAttribute('aria-label', active ? `Remover lembrete de ${item.title}` : `Lembrar de ${item.title}`);
+    button.replaceChildren(bellIcon(active));
+    if (button.classList.contains('full')) {
+      button.append(el('span', { text: active ? 'Lembrete ativado' : 'Lembrar' }));
+    }
+  }
+
+  function bellIcon(filled) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '18');
+    svg.setAttribute('height', '18');
+    svg.setAttribute('aria-hidden', 'true');
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', 'M12 2a6 6 0 0 0-6 6v3.5L4 15v1h16v-1l-2-3.5V8a6 6 0 0 0-6-6zm0 20a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22z');
+    path.setAttribute('fill', filled ? 'currentColor' : 'none');
+    path.setAttribute('stroke', 'currentColor');
+    path.setAttribute('stroke-width', '1.8');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.append(path);
+    return svg;
+  }
+
+  function reminderStatus(reminder) {
+    const known = reminder.known;
+    if (!known) return 'Verificando...';
+    if (known.streaming && known.streaming.length) {
+      const extra = known.streaming.length - 1;
+      return `Disponível em ${known.streaming[0]}${extra > 0 ? ` e mais ${extra}` : ''}`;
+    }
+    if (!known.released && known.releaseDate) return `Estreia ${formatDate(known.releaseDate)}`;
+    if (known.released && known.theatrical && known.releaseDate >= localIsoDate(-90)) return 'Nos cinemas agora';
+    if (known.store && known.store.length) return 'Disponível para alugar ou comprar';
+    return known.released ? 'Aguardando chegar ao streaming' : 'Aguardando data de estreia';
+  }
+
+  async function checkReminders() {
+    if (!reminders.length) return;
+    if (checkingReminders) {
+      recheckQueued = true;
+      return;
+    }
+    checkingReminders = true;
+    lastReminderCheck = Date.now();
+
+    try {
+      const keys = reminders.map((reminder) => `${reminder.type}:${reminder.id}`).join(',');
+      const data = await fetchJson(`/api/reminders/check?items=${encodeURIComponent(keys)}`);
+      const newAlerts = [];
+
+      for (const result of data.results) {
+        if (result.error) continue;
+        const reminder = reminders.find((item) => `${item.type}:${item.id}` === result.key);
+        if (!reminder) continue;
+        if (reminder.known) newAlerts.push(...reminderChanges(reminder, reminder.known, result));
+        reminder.known = {
+          released: result.released,
+          theatrical: result.theatrical,
+          releaseDate: result.releaseDate,
+          streaming: result.streaming,
+          store: result.store
+        };
+        reminder.releaseDate = result.releaseDate;
+      }
+
+      saveStoredList(REMINDERS_KEY, reminders);
+      if (newAlerts.length) {
+        alerts = [...newAlerts, ...alerts].slice(0, 30);
+        saveStoredList(ALERTS_KEY, alerts);
+        renderAlerts();
+        showToast(newAlerts.length === 1
+          ? `${newAlerts[0].title} ${newAlerts[0].message}`
+          : `${newAlerts.length} novidades nos seus lembretes!`);
+      }
+      if (view.mode === 'favorites') renderFavorites();
+    } catch {
+      // Offline or server asleep: the next visit checks again.
+    } finally {
+      checkingReminders = false;
+      if (recheckQueued) {
+        recheckQueued = false;
+        checkReminders();
+      }
+    }
+  }
+
+  function reminderChanges(reminder, known, result) {
+    const base = { id: reminder.id, type: reminder.type, title: reminder.title, poster: reminder.poster, at: Date.now() };
+    const changes = [];
+
+    if (result.released && !known.released) {
+      changes.push({ ...base, message: reminder.type === 'movie' && result.theatrical ? 'estreou nos cinemas!' : 'estreou!' });
+    } else if (!result.released && result.releaseDate && known.releaseDate && result.releaseDate !== known.releaseDate) {
+      changes.push({ ...base, message: `teve a estreia remarcada para ${formatDate(result.releaseDate)}.` });
+    }
+
+    const newStreaming = result.streaming.filter((name) => !(known.streaming || []).includes(name));
+    if (newStreaming.length) {
+      changes.push({ ...base, message: `chegou em ${joinNames(newStreaming)}!` });
+    } else {
+      const newStore = result.store.filter((name) => !(known.store || []).includes(name));
+      if (newStore.length) changes.push({ ...base, message: `já pode ser alugado ou comprado em ${joinNames(newStore)}.` });
+    }
+    return changes;
+  }
+
+  function renderAlerts() {
+    els.alerts.classList.toggle('hidden', !alerts.length);
+    els.alertsBadge.classList.toggle('hidden', !alerts.length);
+    els.alertsBadge.textContent = alerts.length ? String(alerts.length) : '';
+    els.alertsBadge.setAttribute('aria-label', `${formatCount(alerts.length, 'novidade', 'novidades')}`);
+
+    els.alertsList.replaceChildren(...alerts.map((alert, index) => {
+      const poster = imageUrl('w92', alert.poster);
+      return el('li', { className: 'alert' }, [
+        el('button', { type: 'button', className: 'alert-open', onclick: () => openTitle(alert) }, [
+          poster
+            ? el('img', { className: 'alert-poster', src: poster, alt: '', width: '40', height: '60' })
+            : el('span', { className: 'alert-poster placeholder', 'aria-hidden': 'true' }),
+          el('span', { className: 'alert-text' }, [el('strong', { text: alert.title }), document.createTextNode(` ${alert.message}`)])
+        ]),
+        el('button', {
+          type: 'button',
+          className: 'alert-dismiss',
+          'aria-label': `Dispensar aviso de ${alert.title}`,
+          text: '×',
+          onclick: () => {
+            alerts.splice(index, 1);
+            saveStoredList(ALERTS_KEY, alerts);
+            renderAlerts();
+          }
+        })
+      ]);
+    }));
+  }
+
+  // ---------- Agenda ----------
+
+  function calendarActions(data) {
+    const release = data.availability && data.availability.release;
+    if (!release || !release.date || release.date <= localIsoDate()) return [];
+    const where = release.kind === 'upcoming_theaters' ? ' nos cinemas' : '';
+
+    return [
+      el('a', {
+        className: 'action-button',
+        href: googleCalendarUrl(data, release.date, where),
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        text: 'Adicionar ao Google Agenda'
+      }),
+      el('button', {
+        type: 'button',
+        className: 'action-button',
+        text: 'Baixar para a agenda (.ics)',
+        onclick: () => downloadCalendarFile(data, release.date, where)
+      })
+    ];
+  }
+
+  function allDayRange(isoDate) {
+    const next = new Date(`${isoDate}T00:00:00Z`);
+    next.setUTCDate(next.getUTCDate() + 1);
+    return [isoDate.replaceAll('-', ''), next.toISOString().slice(0, 10).replaceAll('-', '')];
+  }
+
+  function titleLink(item) {
+    return `${window.location.origin}${window.location.pathname}${titleHash(item)}`;
+  }
+
+  function googleCalendarUrl(item, isoDate, where) {
+    const [start, end] = allDayRange(isoDate);
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: `Estreia${where}: ${item.title}`,
+      dates: `${start}/${end}`,
+      details: `${item.title} estreia${where} hoje. Veja onde assistir no CineGuia: ${titleLink(item)}`
+    });
+    return `https://calendar.google.com/calendar/render?${params}`;
+  }
+
+  function escapeIcs(text) {
+    return text.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+  }
+
+  function downloadCalendarFile(item, isoDate, where) {
+    const [start, end] = allDayRange(isoDate);
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    const summary = escapeIcs(`Estreia${where}: ${item.title}`);
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//CineGuia//PT-BR',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:${item.type}-${item.id}-${start}@cineguia`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${start}`,
+      `DTEND;VALUE=DATE:${end}`,
+      `SUMMARY:${summary}`,
+      `DESCRIPTION:${escapeIcs(`Veja onde assistir no CineGuia: ${titleLink(item)}`)}`,
+      'BEGIN:VALARM',
+      'TRIGGER:PT9H',
+      'ACTION:DISPLAY',
+      `DESCRIPTION:${summary}`,
+      'END:VALARM',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ];
+    const url = URL.createObjectURL(new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' }));
+    const link = el('a', { href: url, download: `estreia-${item.type}-${item.id}.ics` });
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast('Evento baixado. Abra o arquivo para adicionar à sua agenda.');
   }
 
   // ---------- Detalhes e link direto ----------
@@ -634,7 +998,9 @@
         el('div', { className: 'genres' }, data.genres.map((genre) => el('span', { className: 'genre', text: genre }))),
         el('div', { className: 'details-actions' }, [
           favoriteButton(data, 'full'),
-          el('button', { type: 'button', className: 'action-button', text: 'Copiar link', onclick: () => copyLink(data) })
+          reminderButton(data, 'full'),
+          el('button', { type: 'button', className: 'action-button', text: 'Copiar link', onclick: () => copyLink(data) }),
+          ...calendarActions(data)
         ])
       ])
     ]);
@@ -976,6 +1342,17 @@
 
   function formatCount(count, singular, plural) {
     return `${count} ${count === 1 ? singular : plural}`;
+  }
+
+  function localIsoDate(offsetDays = 0) {
+    const date = new Date();
+    date.setDate(date.getDate() + offsetDays);
+    const pad = (value) => String(value).padStart(2, '0');
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+
+  function joinNames(names) {
+    return names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} e ${names[names.length - 1]}`;
   }
 
   function formatDate(isoDate) {

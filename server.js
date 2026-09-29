@@ -14,7 +14,7 @@ const TMDB_API_BASE = process.env.TMDB_API_BASE || 'https://api.themoviedb.org/3
 const LANGUAGE = 'pt-BR';
 const REGION = 'BR';
 const MAX_PAGE = 500;
-const CACHE_TTL_MS = 10 * 60 * 1000;
+const CACHE_TTL_MS = Number(process.env.CACHE_TTL_MS) || 10 * 60 * 1000;
 const CACHE_MAX_ENTRIES = 500;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
@@ -40,6 +40,7 @@ const MIN_VOTES_FOR_RATING_FILTER = 100;
 const CAST_LIMIT = 15;
 const RECOMMENDATIONS_LIMIT = 12;
 const TOP_LIMIT = 10;
+const REMINDER_CHECK_LIMIT = 40;
 const IN_THEATERS_DAYS = 90;
 const ABROAD_PROVIDERS_LIMIT = 6;
 // Countries listed first when a title is only available abroad.
@@ -117,6 +118,7 @@ function toSummary(item, type) {
     type,
     title: item.title || item.name || 'Sem título',
     year: (item.release_date || item.first_air_date || '').slice(0, 4),
+    releaseDate: item.release_date || item.first_air_date || null,
     poster: item.poster_path || null,
     rating: typeof item.vote_average === 'number' ? item.vote_average : null
   };
@@ -207,6 +209,79 @@ async function handlePlatformTop(searchParams) {
     movies: movies.results.slice(0, TOP_LIMIT).map((item) => toSummary(item, 'movie')),
     series: tv.results.slice(0, TOP_LIMIT).map((item) => toSummary(item, 'tv'))
   };
+}
+
+async function handleCinema(searchParams) {
+  const section = searchParams.get('section');
+  const page = parsePage(searchParams.get('page'));
+
+  if (section === 'now_playing') {
+    const data = await tmdbGet('/movie/now_playing', { region: REGION, page });
+    return toPageResult(data, data.results.map((item) => toSummary(item, 'movie')));
+  }
+
+  if (section !== 'upcoming') throw new HttpError(400, 'Seção de cinema inválida.');
+
+  // With region set, TMDB filters release_date by the Brazilian release, not the worldwide one.
+  const today = isoDate();
+  const data = await tmdbGet('/discover/movie', {
+    region: REGION,
+    with_release_type: '2|3',
+    'release_date.gte': today,
+    sort_by: 'popularity.desc',
+    include_adult: 'false',
+    page
+  });
+
+  // List items only carry the worldwide date; the Brazilian one comes from each movie's release dates.
+  const items = await Promise.all(data.results.map(async (item) => {
+    const summary = toSummary(item, 'movie');
+    try {
+      const brazilDate = brazilTheatricalDate(await tmdbGet(`/movie/${item.id}/release_dates`));
+      if (brazilDate) summary.releaseDate = brazilDate;
+    } catch {
+      // Keep the worldwide date if the lookup fails.
+    }
+    return summary;
+  }));
+
+  return toPageResult(data, items.filter((item) => item.releaseDate && item.releaseDate >= today));
+}
+
+function providerNames(list) {
+  return [...new Set((list || []).map((provider) => provider.provider_name))];
+}
+
+async function handleReminderCheck(searchParams) {
+  const keys = (searchParams.get('items') || '')
+    .split(',')
+    .map((key) => key.match(/^(movie|tv):(\d{1,10})$/))
+    .filter(Boolean)
+    .slice(0, REMINDER_CHECK_LIMIT);
+  const today = isoDate();
+
+  const results = await Promise.all(keys.map(async ([key, type, id]) => {
+    try {
+      const data = await tmdbGet(`/${type}/${id}`, {
+        append_to_response: type === 'movie' ? 'watch/providers,release_dates' : 'watch/providers'
+      });
+      const brazil = (data['watch/providers'] && data['watch/providers'].results && data['watch/providers'].results[REGION]) || {};
+      const theatrical = type === 'movie' ? brazilTheatricalDate(data.release_dates) : null;
+      const releaseDate = theatrical || data.release_date || data.first_air_date || null;
+      return {
+        key,
+        releaseDate,
+        theatrical: Boolean(theatrical),
+        released: Boolean(releaseDate && releaseDate <= today),
+        streaming: providerNames([...(brazil.flatrate || []), ...(brazil.free || []), ...(brazil.ads || [])]),
+        store: providerNames([...(brazil.rent || []), ...(brazil.buy || [])])
+      };
+    } catch {
+      return { key, error: true };
+    }
+  }));
+
+  return { results };
 }
 
 async function handleGenres(type) {
@@ -425,6 +500,8 @@ async function handleTitle(type, id) {
 async function handleApi(url) {
   if (url.pathname === '/api/list') return handleList(url.searchParams);
   if (url.pathname === '/api/search') return handleSearch(url.searchParams);
+  if (url.pathname === '/api/cinema') return handleCinema(url.searchParams);
+  if (url.pathname === '/api/reminders/check') return handleReminderCheck(url.searchParams);
   if (url.pathname === '/api/platforms') return handlePlatforms();
   if (url.pathname === '/api/platform-top') return handlePlatformTop(url.searchParams);
 

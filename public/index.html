@@ -29,8 +29,9 @@
       <button type="button" class="tab active" data-category="trending" aria-pressed="true">Em alta</button>
       <button type="button" class="tab" data-category="movies" aria-pressed="false">Filmes</button>
       <button type="button" class="tab" data-category="series" aria-pressed="false">Séries</button>
+      <button type="button" class="tab" data-category="cinema" aria-pressed="false">Cinema</button>
       <button type="button" class="tab" data-category="platforms" aria-pressed="false">Top 10</button>
-      <button type="button" class="tab" data-category="favorites" aria-pressed="false">♥ Minha lista</button>
+      <button type="button" class="tab" data-category="favorites" aria-pressed="false">♥ Minha lista<span class="tab-badge hidden" id="alertsBadge"></span></button>
     </nav>
 
     <form class="filters hidden" id="filters" aria-label="Filtros">
@@ -67,8 +68,31 @@
   </header>
 
   <main class="content">
+    <section class="alerts hidden" id="alerts" aria-labelledby="alertsTitle">
+      <div class="alerts-header">
+        <h2 id="alertsTitle">Novidades dos seus lembretes</h2>
+        <button type="button" class="link-button" id="alertsClear">Limpar tudo</button>
+      </div>
+      <ul class="alerts-list" id="alertsList"></ul>
+    </section>
+
     <h1 class="section-title" id="sectionTitle">Em alta nesta semana</h1>
+
+    <div class="segmented hidden" id="cinemaSwitch" role="group" aria-label="Seção de cinema">
+      <button type="button" class="segment" data-section="now_playing" aria-pressed="true">Em cartaz</button>
+      <button type="button" class="segment" data-section="upcoming" aria-pressed="false">Em breve</button>
+    </div>
+
     <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="reminders-view hidden" id="remindersView">
+      <h2 class="subsection-title">Lembretes</h2>
+      <p class="muted reminders-empty hidden" id="remindersEmpty">
+        Nenhum lembrete ainda. Toque no sino de um filme ou série para ser avisado quando ele estrear ou chegar a uma plataforma.
+      </p>
+      <div class="grid" id="remindersGrid"></div>
+      <h2 class="subsection-title">Favoritos</h2>
+    </div>
 
     <div class="platforms-view hidden" id="platformsView">
       <div class="platform-picker" id="platformPicker" role="group" aria-label="Escolher plataforma"></div>
