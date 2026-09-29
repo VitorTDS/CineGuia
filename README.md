@@ -23,7 +23,7 @@ Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações 
 - **Sem plataforma no Brasil**: mostra se o filme está em cartaz ou vai estrear nos cinemas, e onde está disponível em outros países
 - **Responsivo**: funciona em celulares (em pé e deitados), tablets, notebooks e monitores grandes
 - **Link direto** para cada título (ex.: `http://localhost:3000/#serie/1396`)
-- **Minha lista** com lembretes e favoritos, salvos no navegador de cada pessoa
+- **Minha lista** com lembretes, favoritos e tudo que foi marcado como **"Já assisti"** (do mais recente para o mais antigo, com a data), salvos no navegador de cada pessoa
 - **Tema claro e escuro**
 
 ## Requisitos

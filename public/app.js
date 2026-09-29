@@ -10,6 +10,7 @@
   const PLATFORM_KEY = 'cineguia-plataforma';
   const REMINDERS_KEY = 'cineguia-lembretes';
   const WATCHED_KEY = 'cineguia-assistidos';
+  const WATCHED_DATA_KEY = 'cineguia-assistidos-dados';
   const ALERTS_KEY = 'cineguia-avisos';
   const REMINDER_RECHECK_MS = 30 * 60 * 1000;
   const CINEMA_TITLES = { now_playing: 'Em cartaz nos cinemas', upcoming: 'Em breve nos cinemas' };
@@ -71,6 +72,10 @@
     alertsList: document.getElementById('alertsList'),
     alertsClear: document.getElementById('alertsClear'),
     alertsBadge: document.getElementById('alertsBadge'),
+    watchedView: document.getElementById('watchedView'),
+    watchedSummary: document.getElementById('watchedSummary'),
+    watchedEmpty: document.getElementById('watchedEmpty'),
+    watchedGrid: document.getElementById('watchedGrid'),
     platformPicker: document.getElementById('platformPicker'),
     platformTop: document.getElementById('platformTop'),
     details: document.getElementById('details'),
@@ -102,6 +107,9 @@
   let favorites = loadFavorites();
   let reminders = loadStoredList(REMINDERS_KEY);
   const watched = loadWatched();
+  const watchedData = loadWatchedData();
+  let watchedFetchRunning = false;
+  const watchedFetchAttempted = new Set();
   let alerts = loadStoredList(ALERTS_KEY);
   let lastReminderCheck = 0;
   let checkingReminders = false;
@@ -277,6 +285,7 @@
     els.platformsView.classList.toggle('hidden', view.mode !== 'platforms');
     els.sagasView.classList.toggle('hidden', view.mode !== 'sagas');
     els.remindersView.classList.toggle('hidden', view.mode !== 'favorites');
+    els.watchedView.classList.toggle('hidden', view.mode !== 'favorites');
     els.cinemaSwitch.classList.toggle('hidden', !inCinema);
     for (const segment of els.cinemaSwitch.querySelectorAll('[data-section]')) {
       segment.setAttribute('aria-pressed', String(segment.dataset.section === view.cinemaSection));
@@ -439,6 +448,7 @@
         text: 'Nenhum favorito ainda. Toque no ♡ de um filme ou série para salvar aqui.'
       }));
     }
+    renderWatchedSection();
   }
 
   // ---------- Top 10 por plataforma ----------
@@ -829,20 +839,87 @@
     return watched.has(itemKey(item));
   }
 
-  function toggleWatched(item) {
-    const key = itemKey(item);
-    if (watched.has(key)) watched.delete(key);
-    else watched.add(key);
+  // Title, poster and date for each watched key, so the "Já assisti" list can be shown without extra requests.
+  function loadWatchedData() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(WATCHED_DATA_KEY));
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch {
+      return {};
+    }
+  }
 
+  function saveWatched() {
     try {
       localStorage.setItem(WATCHED_KEY, JSON.stringify([...watched]));
+      localStorage.setItem(WATCHED_DATA_KEY, JSON.stringify(watchedData));
     } catch {
       showToast('Não foi possível salvar neste navegador.');
     }
+  }
+
+  function toggleWatched(item) {
+    const key = itemKey(item);
+    if (watched.has(key)) {
+      watched.delete(key);
+      delete watchedData[key];
+    } else {
+      watched.add(key);
+      // Strictly increasing, so titles marked in quick succession keep their order in the list.
+      const latest = Math.max(0, ...Object.values(watchedData).map((entry) => entry.watchedAt || 0));
+      watchedData[key] = { ...summarize(item), watchedAt: Math.max(Date.now(), latest + 1) };
+    }
+    saveWatched();
 
     // The same title can appear in several sagas and in its details; keep every copy in sync.
     for (const button of document.querySelectorAll(`[data-watched-key="${key}"]`)) renderWatchedButton(button, item);
     for (const marker of document.querySelectorAll(`[data-watched-marker="${key}"]`)) marker.classList.toggle('watched', watched.has(key));
+    if (view.mode === 'favorites') renderWatchedSection();
+  }
+
+  function renderWatchedSection() {
+    const items = [...watched]
+      .map((key) => watchedData[key])
+      .filter((item) => item && typeof item.title === 'string')
+      .sort((a, b) => (b.watchedAt || 0) - (a.watchedAt || 0));
+    const movies = items.filter((item) => item.type === 'movie').length;
+    const series = items.filter((item) => item.type === 'tv').length;
+
+    els.watchedEmpty.classList.toggle('hidden', watched.size > 0);
+    els.watchedSummary.textContent = watched.size
+      ? [formatCount(movies, 'filme', 'filmes'), formatCount(series, 'série', 'séries')].join(' · ')
+      : '';
+    els.watchedGrid.replaceChildren(...items.map((item) => createCard(item, '', {
+      status: item.watchedAt ? `Assistido em ${new Date(item.watchedAt).toLocaleDateString('pt-BR')}` : 'Assistido'
+    })));
+
+    // Keys marked before titles were stored have no data yet; fetch it once per visit and redraw.
+    if ([...watched].some((key) => !watchedData[key] && !watchedFetchAttempted.has(key))) fillMissingWatchedData();
+  }
+
+  async function fillMissingWatchedData() {
+    if (watchedFetchRunning) return;
+    watchedFetchRunning = true;
+    els.watchedSummary.textContent = 'Carregando títulos marcados...';
+
+    try {
+      const missing = [...watched].filter((key) => !watchedData[key] && !watchedFetchAttempted.has(key));
+      for (const key of missing) {
+        watchedFetchAttempted.add(key);
+        const [, type, id] = key.match(/^(movie|tv)-(\d+)$/) || [];
+        if (!type) continue;
+        try {
+          const data = await fetchJson(`/api/title/${type}/${id}`);
+          if (watched.has(key)) watchedData[key] = summarize(data);
+        } catch {
+          // Leave it missing; the next visit tries again.
+        }
+      }
+      saveWatched();
+    } finally {
+      watchedFetchRunning = false;
+    }
+    if (view.mode === 'favorites') renderWatchedSection();
   }
 
   function watchedButton(item, onChange, variant = 'compact') {
@@ -1030,7 +1107,7 @@
       id: item.id,
       type: item.type,
       title: item.title,
-      year: item.year || '',
+      year: item.year || (item.releaseDate || '').slice(0, 4),
       poster: item.poster || null,
       rating: typeof item.rating === 'number' ? item.rating : null
     };

@@ -480,6 +480,14 @@ a {
   margin-bottom: 28px;
 }
 
+.watched-view {
+  margin-top: 36px;
+}
+
+.watched-summary {
+  margin: -6px 0 14px;
+}
+
 /* Avisos dos lembretes */
 
 .alerts {
