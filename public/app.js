@@ -20,12 +20,13 @@
     series: 'Séries populares',
     cinema: 'Cinema',
     platforms: 'Top 10 por plataforma',
+    public: 'Assistir grátis: clássicos em domínio público',
     favorites: 'Minha lista'
   };
   const CATEGORY_TYPES = { movies: 'movie', series: 'tv' };
   const TYPE_LABELS = { movie: 'Filme', tv: 'Série' };
-  const TYPE_TO_HASH = { movie: 'filme', tv: 'serie' };
-  const HASH_TO_TYPE = { filme: 'movie', serie: 'tv' };
+  const TYPE_TO_HASH = { movie: 'filme', tv: 'serie', public: 'dominio' };
+  const HASH_TO_TYPE = { filme: 'movie', serie: 'tv', dominio: 'public' };
   const PROVIDER_GROUPS = [
     ['streaming', 'Streaming (assinatura)'],
     ['free', 'Grátis'],
@@ -50,6 +51,9 @@
     loadMore: document.getElementById('loadMore'),
     platformsView: document.getElementById('platformsView'),
     cinemaSwitch: document.getElementById('cinemaSwitch'),
+    publicView: document.getElementById('publicView'),
+    publicSearchForm: document.getElementById('publicSearchForm'),
+    publicSearchInput: document.getElementById('publicSearchInput'),
     remindersView: document.getElementById('remindersView'),
     remindersGrid: document.getElementById('remindersGrid'),
     remindersEmpty: document.getElementById('remindersEmpty'),
@@ -74,6 +78,7 @@
     loading: false,
     failed: false,
     cinemaSection: 'now_playing',
+    publicQuery: '',
     filters: { genre: '', decade: '', rating: '' }
   };
 
@@ -113,6 +118,15 @@
       const segment = event.target.closest('[data-section]');
       if (!segment || segment.dataset.section === view.cinemaSection) return;
       view.cinemaSection = segment.dataset.section;
+      updateChrome();
+      loadPage(true);
+    });
+
+    els.publicSearchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const query = els.publicSearchInput.value.trim();
+      if (query === view.publicQuery) return;
+      view.publicQuery = query;
       updateChrome();
       loadPage(true);
     });
@@ -196,6 +210,8 @@
     view.mode = category === 'favorites' || category === 'platforms' ? category : 'category';
     view.category = category;
     view.filters = { genre: '', decade: '', rating: '' };
+    view.publicQuery = '';
+    els.publicSearchInput.value = '';
     els.filters.reset();
     updateChrome();
     loadPage(true);
@@ -237,7 +253,9 @@
 
     const type = view.mode === 'category' ? CATEGORY_TYPES[view.category] : null;
     const inCinema = view.mode === 'category' && view.category === 'cinema';
+    const inPublic = view.mode === 'category' && view.category === 'public';
     els.filters.classList.toggle('hidden', !type);
+    els.publicView.classList.toggle('hidden', !inPublic);
     els.platformsView.classList.toggle('hidden', view.mode !== 'platforms');
     els.remindersView.classList.toggle('hidden', view.mode !== 'favorites');
     els.cinemaSwitch.classList.toggle('hidden', !inCinema);
@@ -250,6 +268,8 @@
       els.sectionTitle.textContent = `Resultados para "${view.query}"`;
     } else if (inCinema) {
       els.sectionTitle.textContent = CINEMA_TITLES[view.cinemaSection];
+    } else if (inPublic && view.publicQuery) {
+      els.sectionTitle.textContent = `Clássicos em domínio público: "${view.publicQuery}"`;
     } else if (type && hasFilters()) {
       els.sectionTitle.textContent = type === 'movie' ? 'Filmes filtrados' : 'Séries filtradas';
     } else {
@@ -281,6 +301,9 @@
     }
     if (view.category === 'cinema') {
       return `/api/cinema?section=${view.cinemaSection}&page=${page}`;
+    }
+    if (view.category === 'public') {
+      return `/api/public-domain?page=${page}&q=${encodeURIComponent(view.publicQuery)}`;
     }
     const params = new URLSearchParams({ category: view.category, page: String(page) });
     if (CATEGORY_TYPES[view.category]) {
@@ -339,14 +362,16 @@
       });
       const inCinema = view.mode === 'category' && view.category === 'cinema';
       const cardOptions = { reminder: inCinema, showRelease: inCinema && view.cinemaSection === 'upcoming' };
-      els.grid.append(...fresh.map((item) => createCard(item, '', cardOptions)));
+      els.grid.append(...fresh.map((item) => (item.type === 'public' ? createPublicCard(item) : createCard(item, '', cardOptions))));
 
       if (els.grid.children.length) {
         setStatus('');
       } else if (view.mode === 'search') {
         setStatus(`Nenhum resultado para "${view.query}".`);
       } else {
-        setStatus(hasFilters() ? 'Nenhum título com esses filtros.' : 'Nada encontrado.');
+        setStatus(view.category === 'public'
+          ? `Nenhum clássico em domínio público encontrado${view.publicQuery ? ` para "${view.publicQuery}"` : ''}.`
+          : hasFilters() ? 'Nenhum título com esses filtros.' : 'Nada encontrado.');
       }
     } catch (error) {
       if (requestId !== listRequestId) return;
@@ -506,6 +531,112 @@
       favoriteButton(item, 'icon'),
       options.reminder ? reminderButton(item, 'icon') : null
     ]);
+  }
+
+  // ---------- Domínio público (Internet Archive) ----------
+
+  function archiveThumb(id) {
+    return `https://archive.org/services/img/${encodeURIComponent(id)}`;
+  }
+
+  function createPublicCard(item) {
+    return el('article', { className: 'card public-card' }, [
+      el('button', { type: 'button', className: 'card-open', onclick: () => openTitle(item) }, [
+        el('span', { className: 'public-thumb' }, [
+          el('img', { className: 'card-poster', src: archiveThumb(item.id), alt: '', loading: 'lazy', width: '180', height: '270' }),
+          el('span', { className: 'public-play', 'aria-hidden': 'true', text: '▶' })
+        ]),
+        el('span', { className: 'card-title', text: item.title }),
+        el('span', { className: 'card-meta', text: ['Domínio público', item.year].filter(Boolean).join(' · ') })
+      ])
+    ]);
+  }
+
+  function renderPublicDetails(data) {
+    const item = { ...data, type: 'public' };
+    const meta = [data.year, data.runtime, data.director].filter(Boolean).join(' · ');
+
+    const sources = (data.sources || []).filter((source) => isSafeHttpsUrl(source.url));
+
+    return el('div', { className: 'details-content public-details' }, [
+      renderPublicPlayer(data, sources),
+      el('section', { className: 'details-section' }, [
+        el('h2', { id: 'detailsTitle', className: 'public-title', text: data.title }),
+        meta ? el('p', { className: 'details-meta', text: meta }) : null,
+        sources.length > 1 ? renderPartPicker(sources) : null,
+        el('div', { className: 'details-actions' }, [
+          el('button', { type: 'button', className: 'action-button', text: 'Copiar link', onclick: () => copyLink(item) }),
+          el('a', {
+            className: 'action-button',
+            href: `https://archive.org/details/${encodeURIComponent(data.id)}`,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            text: 'Ver no Internet Archive ↗'
+          })
+        ])
+      ]),
+      data.description
+        ? el('section', { className: 'details-section' }, [
+          el('h3', { text: 'Descrição' }),
+          el('p', { className: 'overview public-description', text: data.description })
+        ])
+        : null,
+      el('section', { className: 'details-section' }, [
+        el('p', { className: 'muted public-legal' }, [
+          document.createTextNode('Filme em domínio público, disponibilizado pelo Internet Archive. '),
+          isSafeHttpsUrl(data.license) || /^http:\/\/creativecommons\.org\//.test(data.license)
+            ? el('a', { href: data.license, target: '_blank', rel: 'noopener noreferrer', text: 'Ver licença' })
+            : null
+        ])
+      ])
+    ]);
+  }
+
+  function renderPublicPlayer(data, sources) {
+    // Native video when the item has an MP4; the Archive's own player covers the rest.
+    if (!sources.length) {
+      return el('div', { className: 'public-player' }, [
+        el('iframe', {
+          src: `https://archive.org/embed/${encodeURIComponent(data.id)}`,
+          title: `Assistir ${data.title}`,
+          allow: 'fullscreen; picture-in-picture',
+          allowfullscreen: '',
+          referrerpolicy: 'strict-origin-when-cross-origin'
+        })
+      ]);
+    }
+
+    return el('div', { className: 'public-player' }, [
+      el('video', {
+        id: 'publicVideo',
+        src: sources[0].url,
+        poster: archiveThumb(data.id),
+        controls: '',
+        preload: 'metadata',
+        playsinline: '',
+        'aria-label': `Assistir ${data.title}`
+      })
+    ]);
+  }
+
+  function renderPartPicker(sources) {
+    return el('div', { className: 'part-picker', role: 'group', 'aria-label': 'Partes do filme' }, sources.map((source, index) =>
+      el('button', {
+        type: 'button',
+        className: 'segment',
+        'aria-pressed': String(index === 0),
+        text: source.label,
+        onclick: (event) => {
+          const video = document.getElementById('publicVideo');
+          if (!video || video.getAttribute('src') === source.url) return;
+          const wasPlaying = !video.paused;
+          video.src = source.url;
+          if (wasPlaying) video.play().catch(() => {});
+          for (const button of event.currentTarget.parentElement.children) button.setAttribute('aria-pressed', 'false');
+          event.currentTarget.setAttribute('aria-pressed', 'true');
+        }
+      })
+    ));
   }
 
   // ---------- Minha lista ----------
@@ -887,8 +1018,10 @@
   }
 
   function parseTitleHash() {
-    const match = window.location.hash.match(/^#(filme|serie)\/(\d{1,10})$/);
-    return match ? { type: HASH_TO_TYPE[match[1]], id: Number(match[2]) } : null;
+    const title = window.location.hash.match(/^#(filme|serie)\/(\d{1,10})$/);
+    if (title) return { type: HASH_TO_TYPE[title[1]], id: Number(title[2]) };
+    const publicDomain = window.location.hash.match(/^#dominio\/([A-Za-z0-9._-]{1,100})$/);
+    return publicDomain ? { type: 'public', id: publicDomain[1] } : null;
   }
 
   function openTitle(item) {
@@ -962,9 +1095,12 @@
     els.details.scrollTop = 0;
 
     try {
-      const data = await fetchJson(`/api/title/${target.type}/${target.id}`);
+      const isPublic = target.type === 'public';
+      const data = await fetchJson(isPublic
+        ? `/api/public-domain/${encodeURIComponent(target.id)}`
+        : `/api/title/${target.type}/${target.id}`);
       if (requestId !== detailsRequestId) return;
-      els.detailsBody.replaceChildren(renderDetails(data));
+      els.detailsBody.replaceChildren(isPublic ? renderPublicDetails(data) : renderDetails(data));
       els.details.scrollTop = 0;
       document.title = `${data.title} · CineGuia`;
     } catch (error) {

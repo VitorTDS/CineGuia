@@ -28,7 +28,7 @@ const MIME_TYPES = {
 
 const SECURITY_HEADERS = {
   'Content-Security-Policy':
-    "default-src 'self'; img-src 'self' https://image.tmdb.org data:; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'none'; form-action 'self'",
+    "default-src 'self'; img-src 'self' https://image.tmdb.org https://archive.org https://*.archive.org data:; media-src https://archive.org https://*.archive.org; frame-src https://www.youtube-nocookie.com https://archive.org; object-src 'none'; base-uri 'none'; form-action 'self'",
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin'
 };
@@ -41,6 +41,17 @@ const CAST_LIMIT = 15;
 const RECOMMENDATIONS_LIMIT = 12;
 const TOP_LIMIT = 10;
 const REMINDER_CHECK_LIMIT = 40;
+const ARCHIVE_BASE = 'https://archive.org';
+const PUBLIC_DOMAIN_PAGE_SIZE = 24;
+// Only items that declare a public-domain license, have an MP4 the browser can play, and no adult content.
+const PUBLIC_DOMAIN_QUERY = [
+  'collection:(feature_films)',
+  'mediatype:(movies)',
+  'licenseurl:(*publicdomain*)',
+  'format:("h.264" OR "512Kb MPEG4")',
+  '-subject:(sex OR sexploitation OR nudity OR nudist OR erotic OR adult OR exploitation OR striptease)',
+  '-title:(sex OR nude OR nudist OR naked OR erotic OR striptease)'
+].join(' AND ');
 const IN_THEATERS_DAYS = 90;
 const ABROAD_PROVIDERS_LIMIT = 6;
 // Countries listed first when a title is only available abroad.
@@ -284,6 +295,116 @@ async function handleReminderCheck(searchParams) {
   return { results };
 }
 
+async function archiveGet(url) {
+  const cached = cache.get(url);
+  if (cached && cached.expiresAt > Date.now()) return cached.data;
+
+  let response;
+  try {
+    response = await fetch(url, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
+  } catch {
+    throw new HttpError(502, 'Não foi possível conectar ao Internet Archive. Tente novamente.');
+  }
+  if (!response.ok) throw new HttpError(502, `O Internet Archive respondeu com erro ${response.status}.`);
+
+  const data = await response.json();
+  if (cache.size >= CACHE_MAX_ENTRIES) cache.delete(cache.keys().next().value);
+  cache.set(url, { data, expiresAt: Date.now() + CACHE_TTL_MS });
+  return data;
+}
+
+function firstValue(value) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+// Archive descriptions are free-form HTML; the page shows them as plain text.
+function plainText(html) {
+  return String(firstValue(html) || '')
+    .replace(/<br\s*\/?>|<\/p>/gi, '\n')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n\s*\n+/g, '\n\n')
+    .trim();
+}
+
+function toPublicSummary(doc) {
+  return {
+    id: doc.identifier,
+    type: 'public',
+    title: firstValue(doc.title) || doc.identifier,
+    year: doc.year ? String(firstValue(doc.year)).slice(0, 4) : ''
+  };
+}
+
+async function handlePublicDomainList(searchParams) {
+  const page = parsePage(searchParams.get('page'));
+  // Keep only letters, digits and spaces so user input cannot alter the search syntax.
+  const text = (searchParams.get('q') || '').replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().slice(0, 80);
+  const query = text ? `${PUBLIC_DOMAIN_QUERY} AND (title:(${text}) OR subject:(${text}))` : PUBLIC_DOMAIN_QUERY;
+
+  const url = new URL(`${ARCHIVE_BASE}/advancedsearch.php`);
+  url.searchParams.set('q', query);
+  for (const field of ['identifier', 'title', 'year']) url.searchParams.append('fl[]', field);
+  url.searchParams.set('sort[]', 'downloads desc');
+  url.searchParams.set('rows', String(PUBLIC_DOMAIN_PAGE_SIZE));
+  url.searchParams.set('page', String(page));
+  url.searchParams.set('output', 'json');
+
+  const data = await archiveGet(url.toString());
+  const total = (data.response && data.response.numFound) || 0;
+  return {
+    page,
+    totalPages: Math.min(Math.ceil(total / PUBLIC_DOMAIN_PAGE_SIZE) || 1, MAX_PAGE),
+    total,
+    results: ((data.response && data.response.docs) || []).map(toPublicSummary)
+  };
+}
+
+// One MP4 per part of the film: the h.264 derivative when it exists, otherwise the 512Kb one.
+function playableSources(identifier, files) {
+  const parts = new Map();
+  for (const file of files || []) {
+    if (!/\.mp4$/i.test(file.name || '')) continue;
+    const part = file.name.replace(/(_512kb)?\.mp4$/i, '');
+    const rank = file.format === 'h.264' ? 2 : 1;
+    const current = parts.get(part);
+    if (!current || rank > current.rank) parts.set(part, { name: file.name, rank });
+  }
+
+  const names = [...parts.values()].map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  return names.map((name, index) => ({
+    label: names.length > 1 ? `Parte ${index + 1}` : 'Filme',
+    url: `${ARCHIVE_BASE}/download/${encodeURIComponent(identifier)}/${name.split('/').map(encodeURIComponent).join('/')}`
+  }));
+}
+
+async function handlePublicDomainItem(identifier) {
+  const data = await archiveGet(`${ARCHIVE_BASE}/metadata/${encodeURIComponent(identifier)}`);
+  const meta = data.metadata;
+  if (!meta) throw new HttpError(404, 'Filme não encontrado no Internet Archive.');
+
+  const license = String(firstValue(meta.licenseurl) || '');
+  if (!/publicdomain/i.test(license)) throw new HttpError(404, 'Este filme não está marcado como domínio público.');
+
+  return {
+    id: identifier,
+    title: firstValue(meta.title) || identifier,
+    year: meta.year ? String(firstValue(meta.year)).slice(0, 4) : (String(firstValue(meta.date) || '').match(/\d{4}/) || [''])[0],
+    runtime: firstValue(meta.runtime) || null,
+    director: firstValue(meta.director) || firstValue(meta.creator) || null,
+    description: plainText(meta.description),
+    license,
+    sources: playableSources(identifier, data.files)
+  };
+}
+
 async function handleGenres(type) {
   const data = await tmdbGet(`/genre/${type}/list`);
   return { genres: (data.genres || []).map((genre) => ({ id: genre.id, name: genre.name })) };
@@ -500,6 +621,9 @@ async function handleTitle(type, id) {
 async function handleApi(url) {
   if (url.pathname === '/api/list') return handleList(url.searchParams);
   if (url.pathname === '/api/search') return handleSearch(url.searchParams);
+  if (url.pathname === '/api/public-domain') return handlePublicDomainList(url.searchParams);
+  const publicItem = url.pathname.match(/^\/api\/public-domain\/([A-Za-z0-9._-]{1,100})$/);
+  if (publicItem) return handlePublicDomainItem(publicItem[1]);
   if (url.pathname === '/api/cinema') return handleCinema(url.searchParams);
   if (url.pathname === '/api/reminders/check') return handleReminderCheck(url.searchParams);
   if (url.pathname === '/api/platforms') return handlePlatforms();

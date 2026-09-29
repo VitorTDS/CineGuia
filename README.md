@@ -2,7 +2,7 @@
 
 Catálogo de filmes e séries para descobrir **onde assistir no Brasil**. O CineGuia não reproduz vídeos: ele mostra sinopse, trailer, elenco e em quais serviços de streaming, aluguel ou compra cada título está disponível.
 
-Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações de onde assistir vêm da [JustWatch](https://www.justwatch.com/br).
+Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações de onde assistir vêm da [JustWatch](https://www.justwatch.com/br). Os clássicos em domínio público vêm do [Internet Archive](https://archive.org/).
 
 **Acesse o site: https://cineguia.onrender.com**
 
@@ -15,6 +15,7 @@ Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações 
 - **Filtros** por gênero, época e nota mínima
 - **Cinema**: filmes **em cartaz** e **em breve** nos cinemas do Brasil, com a data de estreia brasileira
 - **Lembretes**: toque no sino de um título para ser avisado. Ao abrir o site, o CineGuia confere e avisa o que estreou, o que chegou a uma plataforma e se a estreia foi remarcada. Para estreias futuras, dá para adicionar ao Google Agenda ou baixar o evento (.ics) com alarme no dia
+- **Assistir grátis**: clássicos em **domínio público** que tocam dentro do próprio site (acervo do [Internet Archive](https://archive.org/details/feature_films)). Só entram filmes marcados como domínio público, com vídeo compatível e sem conteúdo adulto; filmes em partes ganham botões para trocar de parte
 - **Top 10 por plataforma**: filmes e séries em alta na Netflix, Prime Video, Disney+, HBO Max, Globoplay, Apple TV+, Paramount+ e Crunchyroll (pela popularidade no TMDB entre os títulos de cada plataforma no Brasil)
 - **Detalhes** de cada título: sinopse, onde assistir, trailer, elenco, temporadas e episódios, e títulos semelhantes
 - **Links para as plataformas**: tocar num serviço abre o título nele (Netflix, Prime Video, Apple TV, Google Play, YouTube e Crunchyroll abrem a busca do título; os demais abrem a página de onde assistir do TMDB)
@@ -97,6 +98,8 @@ O navegador nunca fala direto com o TMDB. Ele chama o `server.js`, que adiciona 
 | `GET /api/genres/movie\|tv` | Lista de gêneros |
 | `GET /api/cinema?section=now_playing\|upcoming&page=N` | Filmes em cartaz ou em breve nos cinemas do Brasil |
 | `GET /api/reminders/check?items=movie:ID,tv:ID` | Situação atual dos títulos com lembrete (estreia e plataformas) |
+| `GET /api/public-domain?page=N&q=texto` | Clássicos em domínio público do Internet Archive |
+| `GET /api/public-domain/ID` | Detalhes e arquivos de vídeo de um clássico |
 | `GET /api/platforms` | Plataformas de streaming em destaque no Brasil |
 | `GET /api/platform-top?provider=ID` | Top 10 filmes e Top 10 séries de uma plataforma |
 | `GET /api/title/movie\|tv/ID` | Detalhes completos do título |

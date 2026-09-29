@@ -31,6 +31,7 @@
       <button type="button" class="tab" data-category="series" aria-pressed="false">Séries</button>
       <button type="button" class="tab" data-category="cinema" aria-pressed="false">Cinema</button>
       <button type="button" class="tab" data-category="platforms" aria-pressed="false">Top 10</button>
+      <button type="button" class="tab" data-category="public" aria-pressed="false">▶ Assistir grátis</button>
       <button type="button" class="tab" data-category="favorites" aria-pressed="false">♥ Minha lista<span class="tab-badge hidden" id="alertsBadge"></span></button>
     </nav>
 
@@ -83,6 +84,19 @@
       <button type="button" class="segment" data-section="upcoming" aria-pressed="false">Em breve</button>
     </div>
 
+    <div class="public-view hidden" id="publicView">
+      <p class="public-intro">
+        Filmes clássicos em <strong>domínio público</strong>, que você pode assistir aqui mesmo, de graça e legalmente.
+        O acervo é do <a href="https://archive.org/details/feature_films" target="_blank" rel="noopener noreferrer">Internet Archive</a>
+        e só inclui filmes marcados como domínio público.
+      </p>
+      <form class="public-search" id="publicSearchForm" role="search">
+        <label class="visually-hidden" for="publicSearchInput">Buscar no acervo de domínio público</label>
+        <input id="publicSearchInput" type="search" placeholder="Buscar clássicos (ex.: Chaplin, Nosferatu)..." autocomplete="off" maxlength="80">
+        <button type="submit" class="action-button">Buscar</button>
+      </form>
+    </div>
+
     <p class="status" id="status" role="status" aria-live="polite"></p>
 
     <div class="reminders-view hidden" id="remindersView">
@@ -117,6 +131,10 @@
     <p>
       Informações de onde assistir fornecidas pela
       <a href="https://www.justwatch.com/br" target="_blank" rel="noopener noreferrer">JustWatch</a>.
+    </p>
+    <p>
+      Filmes em domínio público disponibilizados pelo
+      <a href="https://archive.org/" target="_blank" rel="noopener noreferrer">Internet Archive</a>.
     </p>
   </footer>
 
