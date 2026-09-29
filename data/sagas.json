@@ -998,6 +998,1226 @@
           "storyOrder": 24
         }
       ]
+    },
+    {
+      "slug": "terra-media",
+      "name": "Terra-média (O Senhor dos Anéis)",
+      "description": "O mundo de Tolkien, da Segunda Era de Os Anéis de Poder até a Guerra do Anel.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 84773,
+          "title": "O Senhor dos Anéis: Os Anéis de Poder",
+          "originalTitle": "The Lord of the Rings: The Rings of Power",
+          "releaseDate": "2022-09-01",
+          "poster": "/b5pl6GmQmTCHmZKEBhXPN0gmoAq.jpg",
+          "overview": "Tendo início em uma época de relativa paz, a série acompanha um grupo de personagens que enfrenta o ressurgimento do mal na Terra-média. Das profundezas escuras das Montanhas de Névoa, das majestosas florestas de Lindon, do belíssimo reino da ilha de Númenor, até os confins do mapa, esses reinos e personagens criarão legados que permanecerão vivos muito além de suas partidas.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 839033,
+          "title": "O Senhor dos Anéis: A Guerra dos Rohirrim",
+          "originalTitle": "The Lord of the Rings: The War of the Rohirrim",
+          "releaseDate": "2024-12-05",
+          "poster": "/aLOROyUuOum0zztqPiJDCFgFMcw.jpg",
+          "overview": "183 anos antes dos eventos narrados na trilogia original, um ataque repentino de Wulf, um inteligente e implacável lorde Dunlending em busca de vingança pela morte de seu pai, força Helm Hammerhand e seu povo a fazer uma ousada última resistência na antiga fortaleza de Hornburg. Encontrando-se em uma situação cada vez mais desesperadora, Héra, a filha de Helm, deve reunir a vontade de liderar a resistência contra um inimigo mortal que pretende destruí-los totalmente.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 49051,
+          "title": "O Hobbit: Uma Jornada Inesperada",
+          "originalTitle": "The Hobbit: An Unexpected Journey",
+          "releaseDate": "2012-12-12",
+          "poster": "/lZtmn2pLw1kgDYj4Ig4s3DYBQCD.jpg",
+          "overview": "Como a maioria dos hobbits, Bilbo Bolseiro leva uma vida tranquila até o dia em que recebe uma missão do mago Gandalf. Acompanhado por um grupo de anões, ele parte numa jornada até a Montanha Solitária para libertar o Reino de Erebor do dragão Smaug.",
+          "collection": {
+            "id": 121938,
+            "name": "O Hobbit: Coleção"
+          },
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 57158,
+          "title": "O Hobbit: A Desolação de Smaug",
+          "originalTitle": "The Hobbit: The Desolation of Smaug",
+          "releaseDate": "2013-12-11",
+          "poster": "/ws5z2UmmVzRDD8hZtHTHfcqTOAW.jpg",
+          "overview": "Ao lado de um grupo de anões e de Gandalf, Bilbo segue em direção à Montanha Solitária, onde deverá ajudar seus companheiros a retomar a Pedra de Arken. O problema é que o artefato está perdido em meio a um tesouro protegido pelo temido dragão Smaug.",
+          "collection": {
+            "id": 121938,
+            "name": "O Hobbit: Coleção"
+          },
+          "storyOrder": 4
+        },
+        {
+          "type": "movie",
+          "id": 122917,
+          "title": "O Hobbit: A Batalha dos Cinco Exércitos",
+          "originalTitle": "The Hobbit: The Battle of the Five Armies",
+          "releaseDate": "2014-12-10",
+          "poster": "/wRKwrfQ7p0ttrb09G3mcOSyN1pk.jpg",
+          "overview": "O dragão Smaug lança sua fúria ardente contra a Cidade do Lago que fica próxima da montanha de Erebor. Bard consegue derrotá-lo, mas, rapidamente, sem a ameaça do dragão, inicia-se uma batalha pelo controle de Erebor e sua riqueza. Os anões, liderados por Thorin, adentram a montanha e estão dispostos a impedir a entrada de elfos, anões e orcs. Bilbo Bolseiro e Gandalf tentam impedir a guerra.",
+          "collection": {
+            "id": 121938,
+            "name": "O Hobbit: Coleção"
+          },
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 120,
+          "title": "O Senhor dos Anéis: A Sociedade do Anel",
+          "originalTitle": "The Lord of the Rings: The Fellowship of the Ring",
+          "releaseDate": "2001-12-18",
+          "poster": "/tlvsNCwWEIgwAM23aNzTmMIcPEZ.jpg",
+          "overview": "Após herdar um anel de seu tio, o hobbit Frodo participa da missão de salvar a Terra-Média do perverso Sauron. Ele precisa conduzir o Um Anel até a Montanha da Perdição e destruí-lo para sempre e, para isso, conta com a aliança de oito bravos companheiros contando com um mago, três hobbits, um elfo, um anão e dois homens.",
+          "collection": {
+            "id": 119,
+            "name": "O Senhor dos Anéis: Coleção"
+          },
+          "storyOrder": 6
+        },
+        {
+          "type": "movie",
+          "id": 121,
+          "title": "O Senhor dos Anéis: As Duas Torres",
+          "originalTitle": "The Lord of the Rings: The Two Towers",
+          "releaseDate": "2002-12-18",
+          "poster": "/mCs8vxvScCqVM3YFMQIdbrdFEhu.jpg",
+          "overview": "Após a captura de Merry e Pippin pelos orcs, a Sociedade do Anel é dissolvida. Frodo e Sam seguem sua jornada rumo à Montanha da Perdição para destruir o anel e serão obrigados a confiar no misterioso Gollum. Enquanto isso, Aragorn, o elfo e o arqueiro Legolas e o anão Gimli partem para resgatar os hobbits sequestrados e chegam ao reino de Rohan, onde o rei Théoden foi vítima de uma maldição mortal de Saruman.",
+          "collection": {
+            "id": 119,
+            "name": "O Senhor dos Anéis: Coleção"
+          },
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 122,
+          "title": "O Senhor dos Anéis: O Retorno do Rei",
+          "originalTitle": "The Lord of the Rings: The Return of the King",
+          "releaseDate": "2003-12-17",
+          "poster": "/rU4oIKv5I4C59DpcXKmT7kNwGI0.jpg",
+          "overview": "O confronto final entre as forças do bem e do mal que lutam pelo controle do futuro da Terra-Média se aproxima. Sauron planeja um grande ataque a Minas Tirith, capital de Gondor, o que faz com que Gandalf e Pippin partam para o local na intenção de ajudar a resistência. Um exército é reunido por Théoden em Rohan, em mais uma tentativa de deter as forças de Sauron. Enquanto isso, Frodo, Sam e Gollum seguem sua viagem rumo à Montanha da Perdição para destruir o Um Anel.",
+          "collection": {
+            "id": 119,
+            "name": "O Senhor dos Anéis: Coleção"
+          },
+          "storyOrder": 8
+        }
+      ]
+    },
+    {
+      "slug": "star-trek",
+      "name": "Star Trek",
+      "description": "Séries e filmes da linha do tempo principal, ordenados pelo início de cada história (Discovery salta para o século 32 a partir da 3ª temporada). Os filmes de 2009 em diante, da linha do tempo alternativa, ficam no fim.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 314,
+          "title": "Jornada nas Estrelas: Enterprise",
+          "originalTitle": "Star Trek: Enterprise",
+          "releaseDate": "2001-09-26",
+          "poster": "/kevpjmNHEpefhQueXqi0vIlGF6Z.jpg",
+          "overview": "Enterprise é a quinta série televisiva com atores reais situada no universo de Jornada nas Estrelas. Criada por Rick Berman e Brannon Braga e baseada na clássica série de Jornada nas Estrelas de 1966 (e nas outras séries seguintes) de Gene Roddenberry, Enterprise foi uma prequel que se passava um século antes da época de Kirk e Spock. A série mostrava as viagens da primeira nave estelar Enterprise e os primeiros passos da humanidade na fronteira final.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "tv",
+          "id": 67198,
+          "title": "Star Trek: Discovery",
+          "originalTitle": "Star Trek: Discovery",
+          "releaseDate": "2017-09-24",
+          "poster": "/tMM1Kwz6h1ebYSQL5V1hqC1QGCA.jpg",
+          "overview": "Após um século de isolamento, a Federação e o Império Klingon entram em guerra, e as ações de uma oficial da Frota Estelar estão no centro do conflito.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "tv",
+          "id": 103516,
+          "title": "Star Trek: Strange New Worlds",
+          "originalTitle": "Star Trek: Strange New Worlds",
+          "releaseDate": "2022-05-05",
+          "poster": "/bxuUbcM9GqvmQY1EDm5sMtLdcTv.jpg",
+          "overview": "Em Star Trek: Strange New Worlds, o capitão Christopher Pike (Anson Mount) lidera a equipe do USS Enterprise pelos confins do universo em aventuras perigosas e intensas. Passando-se antes da trama da série original, Strange New Worlds explora mais profundamente o universo Star Trek antes da chegada do icônico Capitão Kirk (William Shatner). Pike, ainda inexperiente em liderar toda a Enterprise por conta própria, se apoia na ajuda de seus companheiros da nave, em especial Una Chin-Riley (Rebecca Romjin), segunda em comando depois dele. Além disso, ele conta a inteligência ímpar do popular personagem Spock (Ethan Peck), um alienígena meio humano meio vulcano. Os passageiros da USS Enterprise irão se aventurar por lugares inimagináveis e viverão uma jornada intensa pela galáxica, encontrando aliados fiéis, mas também fazendo inúmeros inimigos perigosos pelo caminho. Mas com o apoio de cada um, poderão completar suas missões com sucesso.",
+          "collection": null,
+          "storyOrder": 3
+        },
+        {
+          "type": "tv",
+          "id": 253,
+          "title": "Jornada nas Estrelas",
+          "originalTitle": "Star Trek",
+          "releaseDate": "1966-09-08",
+          "poster": "/uph0yY3gmPV5ubwTTZvfH5B4up5.jpg",
+          "overview": "Espaço. A Fronteira Final. A U.S.S. Enterprise embarca em uma missão de cinco anos para explorar a galáxia. A Enterprise está sob o comando do Capitão James T. Kirk e do Primeiro Oficial Sr. Spock, do planeta Vulcano. Com uma tripulação determinada, sua missão é explorar novos mundos estranhos, buscar novas formas de vida e ousar ir aonde nenhum homem jamais esteve.",
+          "collection": null,
+          "storyOrder": 4
+        },
+        {
+          "type": "tv",
+          "id": 1992,
+          "title": "Jornada nas Estrelas: A Serie Animada",
+          "originalTitle": "Star Trek",
+          "releaseDate": "1973-09-08",
+          "poster": "/jdgBsYYSYfx6lIo523UaRPyY9wS.jpg",
+          "overview": "Star Trek: A Série Animada é uma série de televisão animada de ficção científica ambientada no universo de Jornada nas Estrelas após os eventos de Jornada nas Estrelas dos anos 1960. Ttornou-se amplamente conhecida sob este nome mais longo para diferenciá-lo do original live-action. O sucesso na sincronização da série original de ação ao vivo e da pressão do fã para um revival, levou a Série Animada de 1973-1974, como a fonte de novas aventuras da equipe da Enterprise. A série foi a primeira a ganhar um Emmy Award.",
+          "collection": null,
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 152,
+          "title": "Jornada nas Estrelas: O Filme",
+          "originalTitle": "Star Trek: The Motion Picture",
+          "releaseDate": "1979-12-07",
+          "poster": "/zxmDbzEfSBQuI2tcxwEhoBPQT9c.jpg",
+          "overview": "Um fenômeno alienígena de poder e tamanho descomunal se aproxima da Terra, destruindo tudo em seu caminho. A única nave que pode enfrentar esta força letal que ameaça a Terra é a U.S.S. Enterprise. O lendário comandante James T. Kirk é convocado para a missão, mas um perigo não previsto pode destruir a U.S.S. Enterprise e toda a sua tripulação.",
+          "collection": {
+            "id": 151,
+            "name": "Jornada nas Estrelas: A Série Original - Coleção"
+          },
+          "storyOrder": 6
+        },
+        {
+          "type": "movie",
+          "id": 154,
+          "title": "Jornada nas Estrelas II: A Ira de Khan",
+          "originalTitle": "Star Trek II: The Wrath of Khan",
+          "releaseDate": "1982-06-04",
+          "poster": "/s4hqeVjhAdVgbdYQRzxcJTEEaJP.jpg",
+          "overview": "Sentido que o futuro em nada se parece com o passado que vivemos, o Almirante James T. Kirk começa a acreditar que cavalgar pelo cosmos é um jogo para os jovens. Até que numa viagem de rotina para inspecionar a U.S.S. Enterprise, a carreira de Kirk na Frota Estelar entra em um novo capítulo quando surge um antigo inimigo, Khan Noonien Singh, um conquistador do século 20 geneticamente alterado. Escapando de sua prisão, Khan planeja capturar o Projeto Genesis, um artefato que pode criar e destruir um planeta num piscar de olhos, e destruir seu velho \"amigo\", Kirk.",
+          "collection": {
+            "id": 151,
+            "name": "Jornada nas Estrelas: A Série Original - Coleção"
+          },
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 157,
+          "title": "Jornada nas Estrelas III: À Procura de Spock",
+          "originalTitle": "Star Trek III: The Search for Spock",
+          "releaseDate": "1984-06-01",
+          "poster": "/oGn1eFPzI35QrjTcN1WFHGbzWKm.jpg",
+          "overview": "Ainda sob o pesar do sacrifício final de Spock, a tripulação da U.S.S. Enterprise volta para a Terra do recém-nascido planeta Genesis. Mas nada vai ser fácil: Scott foi destacado para um outro posto; o Dr. McCoy parece estar vivendo um surto psicótico, e a Enterprise A será desativada.Quando Kirk recebe a visita de Sarek, pai de Spock, descobre que o falecido amigo pode ter a chance de ter uma segunda vida. E para isso, deve retornar a Genesis, onde enfrentará o maior dilema de sua carreira.",
+          "collection": {
+            "id": 151,
+            "name": "Jornada nas Estrelas: A Série Original - Coleção"
+          },
+          "storyOrder": 8
+        },
+        {
+          "type": "movie",
+          "id": 168,
+          "title": "Jornada nas Estrelas IV: A Volta para Casa",
+          "originalTitle": "Star Trek IV: The Voyage Home",
+          "releaseDate": "1986-11-26",
+          "poster": "/6rVwgxf6ngYx9uwdCV7TuRFdL3z.jpg",
+          "overview": "Marcados como fugitivos pela própria Federação que juraram proteger, os tripulantes da Enterprise voltam para a Terra para enfrentar a corte marcial por crimes cometidos ao salvar a vida de Spock. Em seu caminho, contudo, descobrem que o planeta está sendo devastado por uma gigantesca sonda alienígena, que exige uma resposta de uma forma de vida há muito extinta da Terra. Dentro da nave klingon capturada, Kirk e sua tripulação devem voltar no tempo para salvar a Terra e redescobrir o sentido da amizade.",
+          "collection": {
+            "id": 151,
+            "name": "Jornada nas Estrelas: A Série Original - Coleção"
+          },
+          "storyOrder": 9
+        },
+        {
+          "type": "movie",
+          "id": 172,
+          "title": "Jornada nas Estrelas V: A Última Fronteira",
+          "originalTitle": "Star Trek V: The Final Frontier",
+          "releaseDate": "1989-06-09",
+          "poster": "/kfD19dtg83Bnq6GgHcL7nrExhW5.jpg",
+          "overview": "Data estelar: 8454.130. O capitão Kirk, que está de férias, tem que enfrentar dois desafios: escalar o El Capitan, no Yosemite, e ensinar cantigas de acampamento para Spock. Mas o lazer é bruscamente interrompido quando um vulcaniano renegado rapta a Enterprise e a leva para desvendar os mais profundos segredos do universo.",
+          "collection": {
+            "id": 151,
+            "name": "Jornada nas Estrelas: A Série Original - Coleção"
+          },
+          "storyOrder": 10
+        },
+        {
+          "type": "movie",
+          "id": 174,
+          "title": "Jornada nas Estrelas VI: A Terra Desconhecida",
+          "originalTitle": "Star Trek VI: The Undiscovered Country",
+          "releaseDate": "1991-12-06",
+          "poster": "/xOIRuEWq2otcK6pGGntBGIKquC9.jpg",
+          "overview": "Após a explosão da lua Praxis, os klingons são obrigados a propor um acordo de paz para garantir a sobrevivência de sua espécie. A tripulação da Enterprise é convocada a escoltar a missão diplomática klingoniana até o local a reunião, mas a nave klingon é atacada e o seu chanceler acaba sendo morto. E tudo indica que o ataque partiu justamente da Enterprise.",
+          "collection": {
+            "id": 151,
+            "name": "Jornada nas Estrelas: A Série Original - Coleção"
+          },
+          "storyOrder": 11
+        },
+        {
+          "type": "tv",
+          "id": 655,
+          "title": "Jornada nas Estrelas: A Nova Geração",
+          "originalTitle": "Star Trek: The Next Generation",
+          "releaseDate": "1987-09-28",
+          "poster": "/72sME47Jn3cjttpbPn3DU0ci3O1.jpg",
+          "overview": "Um século após a missão de cinco anos do capitão Kirk, a nova geração de oficiais da Frota Estelar começa sua jornada a bordo da nova nave capitânia da Federação. Comandado pelo Capitão Jean-Luc Picard, a nave estelar classe Galaxy Enterprise NCC-1701-D, vai procurar novas vidas e novas civilizações - audaciosamente indo onde ninguém jamais esteve",
+          "collection": null,
+          "storyOrder": 12
+        },
+        {
+          "type": "tv",
+          "id": 580,
+          "title": "Jornada nas Estrelas: A Nova Missão",
+          "originalTitle": "Star Trek: Deep Space Nine",
+          "releaseDate": "1993-01-03",
+          "poster": "/wtraXjUqwVAcFiBEM1BywyrxoF4.jpg",
+          "overview": "Quando a ocupação Cardassiana de Bajor terminou em 2369, a estação espacial mineradora Terok Nor foi deixada abandonado, seus sistemas arrancados. A convite do governo Bajorano provisório, A Frota Estelar veio para supervisionar a reconstrução e as operações do dia-a dia da Deep Space Nine, recém batizada. A DS9 logo se torna um centro de viagem e comércio, graças a um wormhole estável recentemente encontrado, levando ao Quadrante Gama altamente inexplorado.",
+          "collection": null,
+          "storyOrder": 13
+        },
+        {
+          "type": "movie",
+          "id": 193,
+          "title": "Jornada nas Estrelas: Generations",
+          "originalTitle": "Star Trek: Generations",
+          "releaseDate": "1994-11-18",
+          "poster": "/tVyaD651EiuME23UdhoAHHg3BlV.jpg",
+          "overview": "A viagem inaugural da terceira nave Enterprise está ameaçada pelo cientista louco Soren e apenas uma pessoa pode detê-lo, mas ela está morta há 78 anos.",
+          "collection": {
+            "id": 115570,
+            "name": "Jornada nas Estrelas: A Nova Geração - Coleção"
+          },
+          "storyOrder": 14
+        },
+        {
+          "type": "tv",
+          "id": 1855,
+          "title": "Jornada nas Estrelas: Voyager",
+          "originalTitle": "Star Trek: Voyager",
+          "releaseDate": "1995-01-16",
+          "poster": "/6X6NT6e6p0sJzwsZD5LpNk5izVp.jpg",
+          "overview": "A USS Voyager está perseguindo uma nave Maquis quando ambas são puxadas para dentro de um vortex, que os envia direto para o Quadrante Delta a mais de 75.000 anos luz do espaço da Federação. No entanto, após a destruição do aparelho que os transportou para o quadrante, as tripulações das duas naves devem unir forças para tentar voltar ao Quadrante Alfa, que está a dezenas de anos de distância. Apesar dos obstáculos que encontram pelo caminho, eles se unem como uma só equipe, entre Maquis e Frota Estelar.",
+          "collection": null,
+          "storyOrder": 15
+        },
+        {
+          "type": "movie",
+          "id": 199,
+          "title": "Jornada nas Estrelas: Primeiro Contato",
+          "originalTitle": "Star Trek: First Contact",
+          "releaseDate": "1996-11-22",
+          "poster": "/idKfn9XDzVSemYDw7tsohdRNA5b.jpg",
+          "overview": "O capitão da Enterprise volta a encontrar os seus adversários, os Borg. Eles planejam mudar a história e conquistar a Terra no século XXI, através de uma viagem no tempo, que impediria o primeiro voo em dobra da raça humana e o subsequente primeiro contato com uma raça extraterrestre: os Vulcanos.",
+          "collection": {
+            "id": 115570,
+            "name": "Jornada nas Estrelas: A Nova Geração - Coleção"
+          },
+          "storyOrder": 16
+        },
+        {
+          "type": "movie",
+          "id": 200,
+          "title": "Jornada nas Estrelas: Insurreição",
+          "originalTitle": "Star Trek: Insurrection",
+          "releaseDate": "1998-12-11",
+          "poster": "/kQg1M46bIcqozNYfhYPJs93Dd2w.jpg",
+          "overview": "No planeta Ba'ku, com apenas 600 habitantes, uma estação arqueológica da Federação em conjunto com a raça So'na é atacada pelo tenente-comandante Data, enviado para observações. Mandado para investigar, Picard recebe a ordem de atacar o planeta, mas ele se rebela. O motivo do ataque: os So'na e a Federação querem a fonte da juventude que existe em Ba'ku.",
+          "collection": {
+            "id": 115570,
+            "name": "Jornada nas Estrelas: A Nova Geração - Coleção"
+          },
+          "storyOrder": 17
+        },
+        {
+          "type": "movie",
+          "id": 201,
+          "title": "Jornada nas Estrelas: Nêmesis",
+          "originalTitle": "Star Trek: Nemesis",
+          "releaseDate": "2002-12-13",
+          "poster": "/zXp12dqRNk5JPoLN8pbW2VKL6GN.jpg",
+          "overview": "O capitão Jean-Luc Picard e a tripulação da Enterprise são enviados em uma missão diplomática de paz rumo ao planeta Romulus. Lá eles precisam deter uma rebelião liderada por Shinzou que ameaça destruir a Terra, bem como enfrentar um perigoso clone do próprio capitão Picard.",
+          "collection": {
+            "id": 115570,
+            "name": "Jornada nas Estrelas: A Nova Geração - Coleção"
+          },
+          "storyOrder": 18
+        },
+        {
+          "type": "tv",
+          "id": 85948,
+          "title": "Star Trek: Lower Decks",
+          "originalTitle": "Star Trek: Lower Decks",
+          "releaseDate": "2020-08-06",
+          "poster": "/aSS7HofzDe1XDmq2DFdFfmto6rd.jpg",
+          "overview": "As vidas da tripulação de apoio servindo em um dos navios menos importantes da Frota Estelar, os EUA Cerritos, em 2380. Os alferes Mariner, Boimler, Rutherford e Tendi têm de cumprir seus deveres e sua vida social, muitas vezes enquanto o navio é abalado por uma infinidade de anomalias da ficção científica.",
+          "collection": null,
+          "storyOrder": 19
+        },
+        {
+          "type": "tv",
+          "id": 106393,
+          "title": "Star Trek: Prodigy",
+          "originalTitle": "Star Trek: Prodigy",
+          "releaseDate": "2021-10-28",
+          "poster": "/8V5K8NFNVs4OkuS5e5MOVruVWHX.jpg",
+          "overview": "Um grupo de jovens aventureiros encontra uma nave abandonada da Frota Estelar e decide partir em uma viagem para explorar a galáxia.",
+          "collection": null,
+          "storyOrder": 20
+        },
+        {
+          "type": "tv",
+          "id": 85949,
+          "title": "Jornada nas Estrelas: Picard",
+          "originalTitle": "Star Trek: Picard",
+          "releaseDate": "2020-01-23",
+          "poster": "/aiMnGnyNYxp1DSYN0LIPl6UxlWZ.jpg",
+          "overview": "Jornada nas Estrelas: Picard apresenta o Sir Patrick Stewart revivendo seu icônico papel como Jean-Luc Picard, que ele interpretou durante sete temporadas em Jornada nas Estrelas: A Nova Geração. A nova série acompanhará este personagem icônico no capítulo seguinte de sua vida.",
+          "collection": null,
+          "storyOrder": 21
+        },
+        {
+          "type": "movie",
+          "id": 13475,
+          "title": "Star Trek",
+          "originalTitle": "Star Trek",
+          "releaseDate": "2009-05-06",
+          "poster": "/pSAft4hYskVLuTwjaO2bA90K8iP.jpg",
+          "overview": "Está tudo pronto para a viagem inaugural da nave espacial mais moderna já criada: a USS Enterprise. Sua jovem tripulação tem uma missão importante: encontrar uma maneira de deter o malvado Nero que, motivado pela vingança, ameaça toda a humanidade. Mas o destino da galáxia está nas mãos de dois jovens rivais, que nasceram em mundos diferentes. Um deles, Tiberius James Kirk, é humano, em busca de emoções e um líder nato. O outro, Spock, meio humano e meio vulcano, é desprezado pelos vulcanos por suas emoções humanas.",
+          "collection": {
+            "id": 115575,
+            "name": "Star Trek: Realidade Alternativa - Coleção"
+          },
+          "storyOrder": 22
+        },
+        {
+          "type": "movie",
+          "id": 54138,
+          "title": "Além da Escuridão - Star Trek",
+          "originalTitle": "Star Trek Into Darkness",
+          "releaseDate": "2013-05-05",
+          "poster": "/hHUHMuTwYBcQRMYK9z8jHZucnD3.jpg",
+          "overview": "Quando a tripulação da Enterprise é chamada de volta para casa, eles descobrem que uma força de terror imparável vinda de dentro de sua própria organização detonou a frota e tudo o que ela representa, deixando nosso mundo em estado de crise. Com contas pessoais a acertar, o Capitão Kirk lidera uma caçada humana a um mundo em zona de guerra para capturar uma arma de destruição em massa de um homem só.",
+          "collection": {
+            "id": 115575,
+            "name": "Star Trek: Realidade Alternativa - Coleção"
+          },
+          "storyOrder": 23
+        },
+        {
+          "type": "movie",
+          "id": 188927,
+          "title": "Star Trek: Sem Fronteiras",
+          "originalTitle": "Star Trek Beyond",
+          "releaseDate": "2016-07-07",
+          "poster": "/zC2lEQjA4X814UnvekmdkM5hXmk.jpg",
+          "overview": "Desta vez, Kirk, Spock e a tripulação da Enterprise encontram-se no terceiro ano da missão de exploração do espaço prevista para durar cinco anos. Eles recebem um pedido de socorro que acaba os ligando ao maléfico vilão Krall, um insurgente Anti-Frota Estelar interessado em um objeto de posse do líder da nave. A Enterprise é atacada, e eles acabam em um planeta desconhecido, onde o grupo acaba sendo dividido em duplas.",
+          "collection": {
+            "id": 115575,
+            "name": "Star Trek: Realidade Alternativa - Coleção"
+          },
+          "storyOrder": 24
+        }
+      ]
+    },
+    {
+      "slug": "dc",
+      "name": "Universo Estendido DC",
+      "description": "Filmes e séries do DCEU, de Mulher-Maravilha na Primeira Guerra até Aquaman 2.",
+      "items": [
+        {
+          "type": "movie",
+          "id": 297762,
+          "title": "Mulher-Maravilha",
+          "originalTitle": "Wonder Woman",
+          "releaseDate": "2017-05-30",
+          "poster": "/ujQthWB6c0ojlARk28NSTmqidbF.jpg",
+          "overview": "Treinada desde cedo para ser uma guerreira imbatível, Diana Prince nunca saiu da paradisíaca ilha em que é reconhecida como Princesa das Amazonas. Quando o piloto Steve Trevor se acidenta e cai numa praia do local, ela descobre que uma guerra sem precedentes está se espalhando pelo mundo e decide deixar seu lar certa de que pode parar o conflito. Lutando para acabar com todas as lutas, Diana percebe o alcance de seus poderes e sua verdadeira missão na Terra.",
+          "collection": {
+            "id": 468552,
+            "name": "Mulher-Maravilha: Coleção"
+          },
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 464052,
+          "title": "Mulher-Maravilha 1984",
+          "originalTitle": "Wonder Woman 1984",
+          "releaseDate": "2020-12-16",
+          "poster": "/qDA95ebiy3W3m8hTRB3xZNZVVBM.jpg",
+          "overview": "Em 1984, Diana Prince entra em conflito com dois inimigos formidáveis, Maxwell Lord e a Mulher-Leopardo, enquanto reencontra misteriosamente com seu antigo interesse amoroso Steve Trevor.",
+          "collection": {
+            "id": 468552,
+            "name": "Mulher-Maravilha: Coleção"
+          },
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 49521,
+          "title": "O Homem de Aço",
+          "originalTitle": "Man of Steel",
+          "releaseDate": "2013-06-12",
+          "poster": "/cheo9jDPfyW1GevfPjXtnO91KNe.jpg",
+          "overview": "Um garoto descobre que não é deste planeta e que tem poderes extraordinários. Quando se torna adolescente, viaja para descobrir de onde veio e para o quê foi enviado a fazer. Mas o herói nele deve emergir se quiser salvar o mundo da aniquilação e se tornar o símbolo de esperança para toda a humanidade.",
+          "collection": {
+            "id": 209131,
+            "name": "Homem de Aço: Coleção"
+          },
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 209112,
+          "title": "Batman vs Superman: A Origem da Justiça",
+          "originalTitle": "Batman v Superman: Dawn of Justice",
+          "releaseDate": "2016-03-23",
+          "poster": "/vh6pjeGH0GQupLepPCZn5PylcRg.jpg",
+          "overview": "Temendo que as ações de um super-herói divino não tenham sido controladas, o formidável e vigoroso vigilante de Gotham City enfrenta o salvador mais reverenciado e moderno de Metrópolis, enquanto o mundo luta com o tipo de herói que realmente precisa. E com Batman e Superman em guerra um contra o outro, uma nova ameaça rapidamente surge, colocando a humanidade em maior perigo do que nunca antes.",
+          "collection": {
+            "id": 209131,
+            "name": "Homem de Aço: Coleção"
+          },
+          "storyOrder": 4
+        },
+        {
+          "type": "movie",
+          "id": 297761,
+          "title": "Esquadrão Suicida",
+          "originalTitle": "Suicide Squad",
+          "releaseDate": "2016-08-03",
+          "poster": "/6hU2HAUpgBZ295sYzSkr8F5VxbS.jpg",
+          "overview": "Um time dos mais perigosos e encarcerados supervilões são contratados por uma agência secreta do governo, para combater uma poderosa entidade. No entanto, quando eles percebem que não foram escolhidos apenas para ter sucesso, mas também por sua óbvia culpa quando inevitavelmente falharem, terão que decidir se vale a pena ou não continuar correndo risco de morte.",
+          "collection": {
+            "id": 531242,
+            "name": "Esquadrão Suicida: Coleção"
+          },
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 141052,
+          "title": "Liga da Justiça",
+          "originalTitle": "Justice League",
+          "releaseDate": "2017-11-15",
+          "poster": "/vQIwxoGxW46Skq5ipu0pBFKZTKd.jpg",
+          "overview": "Impulsionado pela restauração de sua fé na humanidade e inspirado pelo ato altruísta do Superman, Bruce Wayne convoca sua nova aliada Diana Prince para o combate contra um inimigo ainda maior, recém-despertado. Juntos, Batman e Mulher-Maravilha buscam e recrutam com agilidade um time de meta-humanos, mas mesmo com a formação da liga de heróis sem precedentes, poderá ser tarde demais para salvar o planeta de um catastrófico ataque.",
+          "collection": null,
+          "storyOrder": 6
+        },
+        {
+          "type": "movie",
+          "id": 791373,
+          "title": "Liga da Justiça de Zack Snyder",
+          "originalTitle": "Zack Snyder's Justice League",
+          "releaseDate": "2021-03-18",
+          "poster": "/lsZ5dmMuvZVNMBrkozvJedujbgU.jpg",
+          "overview": "Determinado a garantir que o sacrifício final do Superman não foi em vão, Bruce Wayne alinha forças com Diana Prince com planos de recrutar uma equipe de metahumanos para proteger o mundo de uma ameaça de proporções catastróficas que se aproxima.",
+          "collection": null,
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 297802,
+          "title": "Aquaman",
+          "originalTitle": "Aquaman",
+          "releaseDate": "2018-12-07",
+          "poster": "/wbo0CYG6SOFxFkoe9BiqvivLggN.jpg",
+          "overview": "A cidade de Atlantis, que já foi lar de uma das mais avançadas civilizações do mundo, agora é um reino submerso dominado pelo ganancioso Rei Orm. Com um vasto exército a seu dispor, Orm planeja conquistar tanto os demais reinos do oceano, quanto o mundo da superfície. Em seu caminho está Aquaman, meio-humano e meio-atlante, e verdadeiro herdeiro do trono. Com a ajuda da princesa Mera, Aquaman precisa recuperar o lendário Tridente de Atlan e aceitar seu destino como protetor das profundezas.",
+          "collection": {
+            "id": 573693,
+            "name": "Aquaman: Coleção"
+          },
+          "storyOrder": 8
+        },
+        {
+          "type": "movie",
+          "id": 287947,
+          "title": "Shazam!",
+          "originalTitle": "Shazam!",
+          "releaseDate": "2019-03-29",
+          "poster": "/rwkriXzzP9FoiIF5nTdxBsUcds4.jpg",
+          "overview": "Billy Batson tem apenas 14 anos de idade, mas recebeu de um antigo mago o dom de se transformar num super-herói adulto chamado Shazam. Ao gritar a palavra SHAZAM!, o adolescente se transforma nessa sua poderosa versão adulta para se divertir e testar suas habilidades. Contudo, ele precisa aprender a controlar seus poderes para enfrentar o malvado Dr. Thaddeus Sivana.",
+          "collection": {
+            "id": 724848,
+            "name": "Shazam! Coleção"
+          },
+          "storyOrder": 9
+        },
+        {
+          "type": "movie",
+          "id": 495764,
+          "title": "Aves de Rapina: Arlequina e sua Emancipação Fantabulosa",
+          "originalTitle": "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)",
+          "releaseDate": "2020-02-05",
+          "poster": "/A50Ngq9lh9aCTGHC6kttrppHNoF.jpg",
+          "overview": "Arlequina, Canário Negro, Caçadora, Cassandra Cain e a policial Renée Montoya formam um grupo inusitado de heroínas. Quando um perigoso criminoso começa a causar destruição em Gotham, as cinco mulheres precisam se unir para defender a cidade.",
+          "collection": null,
+          "storyOrder": 10
+        },
+        {
+          "type": "movie",
+          "id": 436969,
+          "title": "O Esquadrão Suicida",
+          "originalTitle": "The Suicide Squad",
+          "releaseDate": "2021-07-28",
+          "poster": "/wTS3dS2DJiMFFgqKDz5fxMTri.jpg",
+          "overview": "Bem-vindos ao inferno: Belle Reve, a prisão com a maior taxa de mortalidade dos Estados Unidos. É aqui que os piores supervilões são mantidos e onde eles fazem de tudo para sair, até mesmo se unir à misteriosa e supersecreta Força-Tarefa X.",
+          "collection": {
+            "id": 531242,
+            "name": "Esquadrão Suicida: Coleção"
+          },
+          "storyOrder": 11
+        },
+        {
+          "type": "tv",
+          "id": 110492,
+          "title": "Pacificador",
+          "originalTitle": "Peacemaker",
+          "releaseDate": "2022-01-13",
+          "poster": "/fbW4ym5rgMRkNjNAzpZQX5vkxMf.jpg",
+          "overview": "A série explorará as origens do Pacificador, um homem que acredita na paz a qualquer custo - não importa quantas pessoas ele tenha que matar para obtê-la.",
+          "collection": null,
+          "storyOrder": 12
+        },
+        {
+          "type": "movie",
+          "id": 436270,
+          "title": "Adão Negro",
+          "originalTitle": "Black Adam",
+          "releaseDate": "2022-10-19",
+          "poster": "/ZTzxi5aKXua2eIlmaMbxxcoW7v.jpg",
+          "overview": "Quase 5.000 anos depois de ter sido concedido com os poderes onipotentes dos deuses egípcios - e de ter sido preso, - Adão Negro se ergue de seu túmulo, pronto para trazer sua justiça ao mundo moderno.",
+          "collection": null,
+          "storyOrder": 13
+        },
+        {
+          "type": "movie",
+          "id": 594767,
+          "title": "Shazam! Fúria dos Deuses",
+          "originalTitle": "Shazam! Fury of the Gods",
+          "releaseDate": "2023-03-15",
+          "poster": "/mTXxYgJ8UE7N6XIxIaesAqvMG4S.jpg",
+          "overview": "Continua a história do adolescente Billy Batson que, ao recitar a palavra mágica “SHAZAM!”, é transformado em seu alto ego adulto de super-herói, Shazam.",
+          "collection": {
+            "id": 724848,
+            "name": "Shazam! Coleção"
+          },
+          "storyOrder": 14
+        },
+        {
+          "type": "movie",
+          "id": 298618,
+          "title": "The Flash",
+          "originalTitle": "The Flash",
+          "releaseDate": "2023-06-13",
+          "poster": "/itYONYDHpJqTuu8BCXAtHxgpglq.jpg",
+          "overview": "Os mundos colidem quando Barry Allen usa seus superpoderes para viajar no tempo e mudar os acontecimentos do passado. Mas a tentativa de salvar sua família altera inadvertidamente o futuro.",
+          "collection": null,
+          "storyOrder": 15
+        },
+        {
+          "type": "movie",
+          "id": 565770,
+          "title": "Besouro Azul",
+          "originalTitle": "Blue Beetle",
+          "releaseDate": "2023-08-16",
+          "poster": "/y5sdkgO4IJMTnkjh9PG7kREPWrP.jpg",
+          "overview": "Jaime Reyes, um adolescente de origem mexicana que encontra um artefato alienígena que lhe dá um exoesqueleto mecanizado e poderes, tornando-o no Besouro Azul.",
+          "collection": null,
+          "storyOrder": 16
+        },
+        {
+          "type": "movie",
+          "id": 572802,
+          "title": "Aquaman 2: O Reino Perdido",
+          "originalTitle": "Aquaman and the Lost Kingdom",
+          "releaseDate": "2023-12-20",
+          "poster": "/2Mys5JCHhUH6DE9YxLFFZaCsOHu.jpg",
+          "overview": "Agora mais temível do que nunca, Arraia Negra detém o poder do mítico Tridente Preto e sua ancestral força malévola. Para derrotá-lo, Aquaman recorrerá a seu irmão Orm, o ex-Rei da Atlântida, ainda na prisão, para forjar uma aliança improvável. Juntos, eles vão ter que deixar de lado suas diferenças para proteger seu reino, salvar a família de Aquaman e o mundo da irreversível destruição.",
+          "collection": {
+            "id": 573693,
+            "name": "Aquaman: Coleção"
+          },
+          "storyOrder": 17
+        }
+      ]
+    },
+    {
+      "slug": "breaking-bad",
+      "name": "Breaking Bad",
+      "description": "A história de Walter White e Jesse Pinkman, com a origem de Saul Goodman em Better Call Saul.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 60059,
+          "title": "Better Call Saul",
+          "originalTitle": "Better Call Saul",
+          "releaseDate": "2015-02-08",
+          "poster": "/tFCPd8nOqrxjKpTs0ZAdPRydQFR.jpg",
+          "overview": "Antes de se transformar no infame Saul Goodman, o advogado de Breaking Bad era mais inocente, mas não era santo.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "tv",
+          "id": 1396,
+          "title": "Breaking Bad",
+          "originalTitle": "Breaking Bad",
+          "releaseDate": "2008-01-20",
+          "poster": "/hGwm9Cj3CdbJIqQWNExQqiYmCd4.jpg",
+          "overview": "Ao saber que tem câncer, um professor passa a fabricar metanfetamina pelo futuro da família, mudando o destino de todos.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 559969,
+          "title": "El Camino: A Breaking Bad Film",
+          "originalTitle": "El Camino: A Breaking Bad Movie",
+          "releaseDate": "2019-10-11",
+          "poster": "/8sOZcIGJ8ihQELnhKS2qStxe1dh.jpg",
+          "overview": "Após sua dramática fuga do cativeiro, Jesse precisa se reconciliar com o passado para que consiga criar algum tipo de futuro. Escrito e dirigido pelo criador de Breaking Bad, Vince Gilligan, e estrelado por Aaron Paul.",
+          "collection": null,
+          "storyOrder": 3
+        }
+      ]
+    },
+    {
+      "slug": "jurassic",
+      "name": "Jurassic Park e Jurassic World",
+      "description": "Os filmes e as séries animadas, que se passam entre Jurassic World e Domínio.",
+      "items": [
+        {
+          "type": "movie",
+          "id": 329,
+          "title": "Jurassic Park: O Parque dos Dinossauros",
+          "originalTitle": "Jurassic Park",
+          "releaseDate": "1993-06-11",
+          "poster": "/mgjJ7FH4V3exsmoHwXrmsUhn0h1.jpg",
+          "overview": "Um parque construído por um milionário tem dinossauros diversos como habitantes, extintos a sessenta e cinco milhões de anos. Isto é possível por ter sido encontrado um inseto fossilizado, que tinha sugado sangue destes dinossauros, de onde pôde-se isolar o DNA, o código químico da vida e, a partir deste ponto, recriá-los em laboratório. Mas, o que parecia ser um sonho se torna um pesadelo, quando a experiência sai do controle de seus criadores.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 330,
+          "title": "O Mundo Perdido: Jurassic Park",
+          "originalTitle": "The Lost World: Jurassic Park",
+          "releaseDate": "1997-05-23",
+          "poster": "/gkF6JPfru2FEIP9du7QyHVLSOzu.jpg",
+          "overview": "Quatro anos após o terrível fiasco de seu Jurassic Park, o multimilionário John Hammond chama o Dr. Ian Malcolm de volta e o choca ao lhe revelar que, em uma ilha deserta próxima ao antigo parque, centenas de dinossauros de todos os tamanhos e espécies vagam livremente. Inicialmente relutante, Ian decide se juntar a uma expedição científica para documentar o comportamento natural dos animais, juntamente com sua namorada paleontóloga Sarah Harding, o documentarista Nick Van Owen e o especialista em tecnologia Eddie Carr.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 331,
+          "title": "Jurassic Park 3",
+          "originalTitle": "Jurassic Park III",
+          "releaseDate": "2001-07-18",
+          "poster": "/1dObEUGvS4cTbVNi8ewvd6gLIv4.jpg",
+          "overview": "Precisando de fundos para pesquisas, o Dr. Alan Grant aceita uma grande quantia em dinheiro para acompanhar Paul e Amanda Kirby em um passeio aéreo pela infame Isla Sorna. Não demora muito para que o inferno comece e os viajantes encalhados tenham que lutar pela sobrevivência enquanto uma série de novos - e ainda mais mortais - dinossauros tentam fazer lanches com eles.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 135397,
+          "title": "Jurassic World: O Mundo dos Dinossauros",
+          "originalTitle": "Jurassic World",
+          "releaseDate": "2015-06-06",
+          "poster": "/mTRLIP4J4iJrVbJplKiaGnc3G93.jpg",
+          "overview": "Vinte e dois anos depois dos acontecimentos em Jurassic Park, a Isla Nublar foi transformada num enorme parque temático bem sucedido, o Jurassic Wold, com versões “domesticadas” de alguns dos dinossauros mais conhecidos. Quando tudo parece correr bem e ser o negócio do século, um novo dinossauro de espécie desconhecida, por ter sido criado através da manipulação genética de seu DNA, e que se revela muito mais inteligente do que se pensava, escapa de seu confinamento e começa a causar estragos entre os visitantes do Parque.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 4
+        },
+        {
+          "type": "tv",
+          "id": 93741,
+          "title": "Jurassic World: Acampamento Jurássico",
+          "originalTitle": "Jurassic World Camp Cretaceous",
+          "releaseDate": "2020-09-18",
+          "poster": "/kClnDGBEXkiiXK5IZ1BY0VgoPhK.jpg",
+          "overview": "Seis jovens participam de um acampamento de última geração na Ilha Nublar. Mas a aventura se torna uma luta pela sobrevivência quando os dinossauros escapam.",
+          "collection": null,
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 351286,
+          "title": "Jurassic World: Reino Ameaçado",
+          "originalTitle": "Jurassic World: Fallen Kingdom",
+          "releaseDate": "2018-06-06",
+          "poster": "/pi23N55j5ezB2wvybgAFuSGrVHB.jpg",
+          "overview": "Quatro anos após o fechamento do Jurassic World, um vulcão prestes a entrar em erupção põe em risco a vida na ilha Nublar. No local não há mais qualquer presença humana, com os dinossauros vivendo livremente. Diante da situação, é preciso tomar uma decisão: deve-se retornar à ilha para salvar os animais ou abandoná-los para uma nova extinção? Decidida a resgatá-los, Claire convoca Owen a retornar à ilha com ela.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 6
+        },
+        {
+          "type": "tv",
+          "id": 237512,
+          "title": "Jurassic World: Teoria do Caos",
+          "originalTitle": "Jurassic World: Chaos Theory",
+          "releaseDate": "2024-05-24",
+          "poster": "/iDkRhCISZNxOC3atAIxEe9S1kTo.jpg",
+          "overview": "A turma do acampamento jurássico se une para desvendar um mistério quando descobrem uma conspiração global que ameaça não apenas os dinossauros, mas também a eles mesmos.",
+          "collection": null,
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 507086,
+          "title": "Jurassic World: Domínio",
+          "originalTitle": "Jurassic World Dominion",
+          "releaseDate": "2022-06-01",
+          "poster": "/7qeiCNSmzrkcEyIWi8sIcsjrOyW.jpg",
+          "overview": "Quatro anos após a destruição da Ilha Nublar, os dinossauros agora vivem – e caçam – ao lado de humanos em todo o mundo. Esse frágil equilíbrio remodelará o futuro e determinará, de uma vez por todas, se os seres humanos continuarão sendo os principais predadores em um planeta que agora compartilham com as criaturas mais temíveis da história.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 8
+        },
+        {
+          "type": "movie",
+          "id": 1234821,
+          "title": "Jurassic World: Recomeço",
+          "originalTitle": "Jurassic World Rebirth",
+          "releaseDate": "2025-06-23",
+          "poster": "/zuEC2i3I2P7QIcLoUJNBwqRYO4S.jpg",
+          "overview": "Cinco anos após os eventos de Jurassic World: Domínio, a ecologia do planeta se mostrou inóspita para os dinossauros, com os poucos sobreviventes vivendo isolados nas regiões equatoriais. Zora Bennett é contratada para liderar uma equipe de especialistas cujo objetivo é obter o material genético das três maiores criaturas, cujo DNA contém a chave para a criação de um medicamento que trará grandes benefícios à humanidade. Mas a operação se cruzará com uma família cujo barco virou, e todos acabarão em uma ilha proibida, ocupada por dinossauros de inúmeras espécies, onde terão que fazer o impossível para sobreviver.",
+          "collection": {
+            "id": 328,
+            "name": "Jurassic Park: Coleção"
+          },
+          "storyOrder": 9
+        }
+      ]
+    },
+    {
+      "slug": "alien",
+      "name": "Alien",
+      "description": "Dos engenheiros de Prometheus à Ripley, passando pela série Alien: Earth.",
+      "items": [
+        {
+          "type": "movie",
+          "id": 70981,
+          "title": "Prometheus",
+          "originalTitle": "Prometheus",
+          "releaseDate": "2012-05-30",
+          "poster": "/k1GZVllOORTiN0XTPdumt9CSAcc.jpg",
+          "overview": "Uma equipe de cientistas embarca em uma jornada espacial para descobrir a verdade sobre a origem da raça humana. No planeta de destino, eles encontram criaturas poderosas e revelações assustadoras.",
+          "collection": {
+            "id": 135416,
+            "name": "Prometheus: Coleção"
+          },
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 126889,
+          "title": "Alien: Covenant",
+          "originalTitle": "Alien: Covenant",
+          "releaseDate": "2017-05-09",
+          "poster": "/wm8L1D3YMT0auLQiPXY3H1CUDg8.jpg",
+          "overview": "Viajando pela galáxia, os tripulantes da nave colonizadora Covenant encontram um planeta remoto com ares de paraíso inexplorado. Encantados, eles acreditam na sorte e ignoram a realidade do local: uma terra sombria que guarda terríveis segredos e tem o sobrevivente David como habitante solitário.",
+          "collection": {
+            "id": 135416,
+            "name": "Prometheus: Coleção"
+          },
+          "storyOrder": 2
+        },
+        {
+          "type": "tv",
+          "id": 157239,
+          "title": "Alien: Earth",
+          "originalTitle": "Alien: Earth",
+          "releaseDate": "2025-08-12",
+          "poster": "/wEMJxkaVw5hIHax9raBLd82TLAR.jpg",
+          "overview": "Quando uma misteriosa nave espacial cai na Terra, uma jovem e um grupo desorganizado de soldados táticos fazem uma descoberta fatídica que os coloca cara a cara com a maior ameaça ao planeta.",
+          "collection": null,
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 348,
+          "title": "Alien: O Oitavo Passageiro",
+          "originalTitle": "Alien",
+          "releaseDate": "1979-05-25",
+          "poster": "/rJEU0u6hvtqBy344z0bpI194LeQ.jpg",
+          "overview": "Quando a tripulação da sonda espacial Nostromo responde a um pedido de socorro vindo de um planeta inóspito, eles descobrem uma forma de vida mortal que se reproduz dentro de humanos. Agora, a tripulação deve lutar para permanecer viva e impedir que a criatura chegue até a Terra.",
+          "collection": {
+            "id": 8091,
+            "name": "Alien: Coleção"
+          },
+          "storyOrder": 4
+        },
+        {
+          "type": "movie",
+          "id": 945961,
+          "title": "Alien: Romulus",
+          "originalTitle": "Alien: Romulus",
+          "releaseDate": "2024-08-13",
+          "poster": "/jB0W9tn4w07MFn7sTfqRTBLVytF.jpg",
+          "overview": "Enquanto vasculham as profundezas de uma estação espacial abandonada, um grupo de jovens colonizadores espaciais se depara com a forma de vida mais aterrorizante do universo.",
+          "collection": {
+            "id": 1434946,
+            "name": "Alien: Romulus Collection"
+          },
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 679,
+          "title": "Aliens: O Resgate",
+          "originalTitle": "Aliens",
+          "releaseDate": "1986-07-18",
+          "poster": "/dopA5H3VYKcTE1lDXkTwRx7uy2G.jpg",
+          "overview": "Cinquenta e quatro anos após escapar da \"Nostromo\", a tenente Ripley é encontrada a flutuar, perdida no espaço, ainda adormecida. De volta ao nosso planeta, ela conta tudo o que lhe aconteceu, mas ninguém acredita realmente nela, ou lhe parece dar crédito, até que uma colônia de humanos, criada no planeta onde ela encontrou o primeiro Alienígena, deixa de emitir comunicações subitamente. Ela então é convocada para auxiliar uma expedição militar ao local, sendo a única aparentemente consciente de que o pesadelo está longe do fim.",
+          "collection": {
+            "id": 8091,
+            "name": "Alien: Coleção"
+          },
+          "storyOrder": 6
+        },
+        {
+          "type": "movie",
+          "id": 8077,
+          "title": "Alien 3",
+          "originalTitle": "Alien³",
+          "releaseDate": "1992-05-22",
+          "poster": "/e0m3kAcurYNmLBI0UVTjWg9J93L.jpg",
+          "overview": "A tenente Ripley é encarregada de ir a um planeta que é usado como colônia penal de segurança máxima. Este é o novo palco de assassinatos do Alien, que está matando tudo o que se move, menos a própria tenente Ripley, que aparentemente não é atacada pelo monstro.",
+          "collection": {
+            "id": 8091,
+            "name": "Alien: Coleção"
+          },
+          "storyOrder": 7
+        },
+        {
+          "type": "movie",
+          "id": 8078,
+          "title": "Alien: A Ressurreição",
+          "originalTitle": "Alien Resurrection",
+          "releaseDate": "1997-11-12",
+          "poster": "/lBQihuqaiRFZEzQh3M5uKXfmW15.jpg",
+          "overview": "Duzentos anos se passaram desde que Ripley sacrificou sua vida em Fiorina 161. Agora, depois de tanto tempo, e após sete pavorosos fracassos, os cientistas finalmente conseguiram clonar uma réplica perfeita de Ripley, o que inclui DNA da Rainha alienígena que se desenvolvia dentro dela quando Ripley morreu. Mas essa nova geração de aliens é muito mais inteligente do que foram seus antecessores - um fato que os cientistas só percebem após a nave The Betty ter chegado com mais hospedeiros humanos.",
+          "collection": {
+            "id": 8091,
+            "name": "Alien: Coleção"
+          },
+          "storyOrder": 8
+        }
+      ]
+    },
+    {
+      "slug": "john-wick",
+      "name": "John Wick",
+      "description": "O mundo dos assassinos do Continental, dos anos 1970 até o Capítulo 4.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 72710,
+          "title": "O Continental: Do Mundo de John Wick",
+          "originalTitle": "The Continental: From the World of John Wick",
+          "releaseDate": "2023-09-22",
+          "poster": "/uRcrRc74ztb1TV5uojRtXqvNQ5y.jpg",
+          "overview": "O jovem Winston Scott é arrastado para o cenário infernal da Nova York dos anos 70 para enfrentar um passado que ele pensava ter deixado para trás. Winston traça um caminho mortal através do misterioso submundo do hotel em uma tentativa angustiante de tomá-lo e finalmente assumir seu trono.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 245891,
+          "title": "John Wick - De Volta ao Jogo",
+          "originalTitle": "John Wick",
+          "releaseDate": "2014-10-16",
+          "poster": "/lBcQGk1ygGM2wYmpypFrPp0YohN.jpg",
+          "overview": "John Wick é um lendário assassino de aluguel aposentado, lidando com o luto após perder o grande amor de sua vida. Quando um gângster invade sua casa, mata seu cachorro e rouba seu carro, ele é forçado a voltar à ativa e inicia sua vingança.",
+          "collection": {
+            "id": 404609,
+            "name": "John Wick: Coleção"
+          },
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 324552,
+          "title": "John Wick: Um Novo Dia para Matar",
+          "originalTitle": "John Wick: Chapter 2",
+          "releaseDate": "2017-02-08",
+          "poster": "/kRAHy9CQnNT16vTvtJtu9pRgjEG.jpg",
+          "overview": "O lendário John Wick é forçado a deixar a aposentadoria em função de um criminoso que conspira para tomar o controle de um clã de assassinos internacionais. Por causa de um pacto de sangue, John Wick viaja para Roma, com o objetivo de ajudar um velho amigo a derrubar a organização internacional secreta, perigosa e mortal de assassinos procurados em todo o mundo.",
+          "collection": {
+            "id": 404609,
+            "name": "John Wick: Coleção"
+          },
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 458156,
+          "title": "John Wick 3: Parabellum",
+          "originalTitle": "John Wick: Chapter 3 - Parabellum",
+          "releaseDate": "2019-05-15",
+          "poster": "/bE6XutmB6tcvzTHBx4JGJLlzouM.jpg",
+          "overview": "Após assassinar o chefe da máfia Santino D'Antonio no Hotel Continental, John Wick passa a ser perseguido pelos membros da Alta Cúpula sob a recompensa de U$14 milhões. Agora, ele precisa unir forças com antigos parceiros que o ajudaram no passado enquanto luta por sua sobrevivência.",
+          "collection": {
+            "id": 404609,
+            "name": "John Wick: Coleção"
+          },
+          "storyOrder": 4
+        },
+        {
+          "type": "movie",
+          "id": 541671,
+          "title": "Bailarina: Do Universo de John Wick",
+          "originalTitle": "Ballerina",
+          "releaseDate": "2025-06-04",
+          "poster": "/by5hjYJp3OJ8GW118kPeURp1rFo.jpg",
+          "overview": "Bailarina  se passa durante os eventos de ‘John Wick 3: Parabellum‘ e acompanha Eve Macarro, que está começando seu treinamento nas tradições da organização Ruska Roma para se tornar uma assassina que buscará vingança contra aqueles que destruíram sua família.",
+          "collection": null,
+          "storyOrder": 5
+        },
+        {
+          "type": "movie",
+          "id": 603692,
+          "title": "John Wick 4: Baba Yaga",
+          "originalTitle": "John Wick: Chapter 4",
+          "releaseDate": "2023-03-21",
+          "poster": "/rXTqhpkpj6E0YilQ49PK1SSqLhm.jpg",
+          "overview": "Com o preço por sua cabeça cada vez maior, John Wick leva sua luta contra a alta mesa global enquanto procura os jogadores mais poderosos do submundo, de Nova York a Paris, de Osaka a Berlim.",
+          "collection": {
+            "id": 404609,
+            "name": "John Wick: Coleção"
+          },
+          "storyOrder": 6
+        }
+      ]
+    },
+    {
+      "slug": "stargate",
+      "name": "Stargate",
+      "description": "Do filme de 1994 às séries SG-1, Atlantis e Universe, com os filmes que encerram SG-1.",
+      "items": [
+        {
+          "type": "movie",
+          "id": 2164,
+          "title": "Stargate - A Chave para o Futuro da Humanidade",
+          "originalTitle": "Stargate",
+          "releaseDate": "1994-10-28",
+          "poster": "/2wk4HYvaROrDJ1AgXo7lWI3c5zs.jpg",
+          "overview": "O egiptólogo Daniel Jackson é convidado a trabalhar em uma base secreta e lá toma contato com um anel de trinta metros coberto de hieróglifos. Ele descobre a chave para se chegar a um novo mundo, pois aquele anel é um portão estelar e, junto com uma pequena tropa de elite, atravessa o portão e se vê diante de uma experiência e uma aventura inimaginável.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "tv",
+          "id": 4629,
+          "title": "Stargate SG-1",
+          "originalTitle": "Stargate SG-1",
+          "releaseDate": "1997-07-27",
+          "poster": "/dQjmI7XxI47v8IM2MUysHG0LuU2.jpg",
+          "overview": "Uma equipe de exploradores composta de soldados e cientistas viajam através do Stargate, um portal que dá acesso a outros planetas. Eles usam a passagem para explorar novos mundos e proteger a Terra contra forças inimigas.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "tv",
+          "id": 2290,
+          "title": "Stargate Atlantis",
+          "originalTitle": "Stargate Atlantis",
+          "releaseDate": "2004-07-15",
+          "poster": "/l0JYr2iqwId6VOmCV8dHzlIM6Wd.jpg",
+          "overview": "Os acontecimentos em Stargate Atlantis seguem-se ao episódio final Lost City da sétima temporada de Stargate SG-1, no qual a equipe SG-1 encontrou um posto avançado na Antártida construído por uma raça conhecida como os Antigos. Com os desdobramentos em New Order, episódio inicial da oitava temporada de Stargate SG-1, o Comando do Stargate envia uma equipe internacional para investigar o posto. O Dr. Jackson descobre a localização da mais grandiosa cidade criada pelos Antigos: Atlântida. A nova série acompanha as aventuras de um grupo de cientistas e militares que embarcam numa viagem sem volta para aquela cidade, na Galáxia Pégasus. Da mesma maneira que as equipes SG de Stargate SG-1, o uso, pela nova equipe, do Stargate coloca a humanidade em contacto com outras culturas, algumas humanas, outras alienígenas, algumas amigáveis, outras profundamente hostis, como os Wraith.",
+          "collection": null,
+          "storyOrder": 3
+        },
+        {
+          "type": "movie",
+          "id": 13001,
+          "title": "Stargate: A Arca da Verdade",
+          "originalTitle": "Stargate: The Ark of Truth",
+          "releaseDate": "2008-03-11",
+          "poster": "/aKVkAOQAcZmvIJapyZtnnx2QdHY.jpg",
+          "overview": "Este emocionante filme de longa-metragem se inicia exatamente onde a equipe Stargate SG-1 composta por Daniel Jackson (Michael Shanks), Vala (Claudia Black), Teal'c (christopher Judge) e Cam (Ben Browder) havia interrompido sua mais eletrizante aventuras de todos os tempos: na busca de um artefato antigo que eles esperam possa derrotar os opressores oris. Porém, a corajosa equipe descobre que há um traidor a bordo da Odyssey e também fica sabendo que os poderosos oris estão prestes a lançar um ataque mortal à Terra.",
+          "collection": {
+            "id": 44215,
+            "name": "Stargate SG-1: Coleção"
+          },
+          "storyOrder": 4
+        },
+        {
+          "type": "movie",
+          "id": 12914,
+          "title": "Stargate: Linha do Tempo",
+          "originalTitle": "Stargate: Continuum",
+          "releaseDate": "2008-07-29",
+          "poster": "/75d7a2HHISANNA46oGsPyLroSOb.jpg",
+          "overview": "Uma equipe militar de elite (SG-1) precisa voltar às pressas para a Terra quando dois de seus membros desaparecem inexplicavelmente. Mas acabam voltando ára um mundo no qual o Stargate - um portal estelar criado pelos Antigos e que permite viagens a centenas de planetas - nunca foi descoberto, e no qual a sua própria história nunca existiu. Agora eles têm que convencer um governo incrédulo que a linha do tempo foi alterada por um poderoso inimigo alienígena (Ba´al) que deseja conquistar a Terra. E precisam fazer isso depressa, pois o tempo não é seu aliado.",
+          "collection": {
+            "id": 44215,
+            "name": "Stargate SG-1: Coleção"
+          },
+          "storyOrder": 5
+        },
+        {
+          "type": "tv",
+          "id": 5148,
+          "title": "Stargate Universe",
+          "originalTitle": "Stargate Universe",
+          "releaseDate": "2009-10-02",
+          "poster": "/dHOaOZGUhnoRXeK9mhYeSRPh59H.jpg",
+          "overview": "A primeira temporada de Stargate Universe é composta por 20 episódios. Brad Wright e Robert C. Cooper escreveram a série começando com o episódio em três partes \"Ar\", que foi originalmente planejado para ser em duas partes. As duas primeiras partes de \"Ar\" estreou no canal Syfy em 2 de outubro de 2009, com exibição regular semanal com início em 9 de outubro de 2009. \"Fogo\" era para ser originalmente o título para o episódio quatro, mas a história e roteiro era muito grande para ser capaz de caber em um episódio, então os produtores mudaram para torna-lo em duas partes chamada \"Escuridão\" e \"Luz\".",
+          "collection": null,
+          "storyOrder": 6
+        }
+      ]
+    },
+    {
+      "slug": "os-normais",
+      "name": "Os Normais",
+      "description": "Rui e Vani, da série da Globo aos dois filmes.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 15166,
+          "title": "Os Normais",
+          "originalTitle": "Os Normais",
+          "releaseDate": "2001-06-01",
+          "poster": "/1ULaMBSsEB3jArOe19jxgJvpW8N.jpg",
+          "overview": "Rui e Vani são um casal de classe média com manias, preconceitos e falhas de caráter. Noivos há anos, têm teorias absurdas e podem tornar qualquer fator da vida a dois em confusão.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 37050,
+          "title": "Os Normais: O Filme",
+          "originalTitle": "Os Normais: O Filme",
+          "releaseDate": "2003-10-24",
+          "poster": "/nurdgMhou91k8cagOvlzre5izIb.jpg",
+          "overview": "Vani e Rui estão prestes a se casar. Ela com Sérgio, ele com Martha. Ambas as cerimônias estão marcadas para a mesma sacristia, sendo uma às 18 hs e outro às 20 hs. É lá que Vani e Rui se conhecem, quando ela lhe pede um pouco de arroz para comemorar o casamento que está para ocorrer.",
+          "collection": {
+            "id": 646622,
+            "name": "Os Normais: Coleção"
+          },
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 34277,
+          "title": "Os Normais 2 - A Noite Mais Maluca de Todas",
+          "originalTitle": "Os Normais 2 - A Noite Mais Maluca de Todas",
+          "releaseDate": "2009-08-28",
+          "poster": "/5nLdwZTklH9aFYpPw819MPZ5M49.jpg",
+          "overview": "Para quem achava que as confusões de Vani e Rui tinham acabado, eis que eles voltarão com toda em Os Normais 2 - A Noite Mais Maluca de Todas. O casal se vê diante da crise dos 13 anos e resolve tomar uma atitude para apimentar a relação: realizar uma de suas fantasias mais loucas - um ménage à trois. Em sua busca na noite carioca por alguém que tope embarcar na aventura eles encontram as mais diferente figuras: uma prima de Vani, uma frequentadora de karaokê, uma bicampeã de kickboxing, uma bissexual uma francesa e uma garota de programa. Até o amanhecer, tudo pode acontecer aos atrapalhados Rui e Vani na noite mais maluca de todas.",
+          "collection": {
+            "id": 646622,
+            "name": "Os Normais: Coleção"
+          },
+          "storyOrder": 3
+        }
+      ]
+    },
+    {
+      "slug": "a-grande-familia",
+      "name": "A Grande Família",
+      "description": "A família Silva, da série da Globo ao filme.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 16183,
+          "title": "A Grande Família",
+          "originalTitle": "A Grande Família",
+          "releaseDate": "2001-03-29",
+          "poster": "/draJzGrnfB8gEqCGJrPhNORu0nz.jpg",
+          "overview": "Um retrato bem-humorado do cotidiano repleto de conflitos, crises conjugais, dificuldades profissionais e financeiras e também de muito amor e união de uma família suburbana.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "movie",
+          "id": 56049,
+          "title": "A Grande Família: O Filme",
+          "originalTitle": "A Grande Família: O Filme",
+          "releaseDate": "2007-01-26",
+          "poster": "/i96FUkPHKnOfeYeEADUIoeLJHSk.jpg",
+          "overview": "Depois de fazer um exame, Lineu tem certeza de que irá morrer e de que a família Silva não sobreviverá. Ele experimenta, então, três chances de refazer suas relações com todos, de forma que eles não sintam a sua partida. Sem entender o porquê, a família é atingida em cheio por estas atitudes, ora cômicas, ora trágicas.",
+          "collection": null,
+          "storyOrder": 2
+        }
+      ]
+    },
+    {
+      "slug": "cidade-de-deus",
+      "name": "Cidade de Deus",
+      "description": "O filme de 2002, o universo de Cidade dos Homens e a continuação em série, 20 anos depois.",
+      "items": [
+        {
+          "type": "movie",
+          "id": 598,
+          "title": "Cidade de Deus",
+          "originalTitle": "Cidade de Deus",
+          "releaseDate": "2002-08-30",
+          "poster": "/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
+          "overview": "Buscapé é um jovem morador da Cidade de Deus que cresce em meio à violência. Com medo de se tornar um bandido, enxerga na fotografia uma oportunidade de ter uma vida digna.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "tv",
+          "id": 3317,
+          "title": "Cidade dos Homens",
+          "originalTitle": "Cidade dos Homens",
+          "releaseDate": "2002-10-15",
+          "poster": "/259wCChpB4RZkrcD5f9quXbMckk.jpg",
+          "overview": "Laranjinha e Acerola são amigos, que cresceram juntos em uma favela do Rio de Janeiro e agora estão com 18 anos. Acerola tem um filho de 2 anos para cuidar, mas sente-se preso pelo casamento e lamenta a paternidade precoce. Já Laranjinha está decidido a encontrar seu próprio pai, que não conhece. Paralelamente o morro em que vivem é sacudido pelo mundo do tráfico, já que Madrugadão, primo de Laranjinha, perdeu o posto de dono do local para Nefasto.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "movie",
+          "id": 7343,
+          "title": "Cidade dos Homens",
+          "originalTitle": "Cidade dos Homens",
+          "releaseDate": "2007-08-31",
+          "poster": "/8wq7tVRXXJcfSGBE2zPBNYw7GRv.jpg",
+          "overview": "Laranjinha e Acerola se preparam para ingressar na vida adulta! Aos 18 anos, cada um dos meninos está às voltas com suas próprias questões: filho, mulheres, família, emprego, sonhos e desejos esquecidos são alguns dos temperos dessa aventura que, pra ficar ainda mais emocionante, conta com uma guerra no morro que expulsará os jovens adultos da comunidade. Será que todas essas mudanças serão mesmo definitivas?",
+          "collection": null,
+          "storyOrder": 3
+        },
+        {
+          "type": "tv",
+          "id": 223397,
+          "title": "Cidade de Deus: A Luta Não Para",
+          "originalTitle": "Cidade de Deus: A Luta Não Para",
+          "releaseDate": "2024-08-25",
+          "poster": "/bROpzy08O9nSyfDgBUlgUoMp9nw.jpg",
+          "overview": "A trama se desenrola no início dos anos 2000, quando a saída de um jovem traficante da prisão coloca a Cidade de Deus novamente em disputa. Os moradores se veem presos entre traficantes, milícias e autoridades públicas, mas a necessidade de escapar desse ciclo faz com que a comunidade se una para enfrentar o opressor.",
+          "collection": null,
+          "storyOrder": 4
+        }
+      ]
     }
   ],
   "featured": [

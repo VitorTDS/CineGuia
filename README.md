@@ -15,7 +15,7 @@ Os dados vêm da API do [TMDB](https://www.themoviedb.org/), e as informações 
 - **Filtros** por gênero, época e nota mínima
 - **Cinema**: filmes **em cartaz** e **em breve** nos cinemas do Brasil, com a data de estreia brasileira
 - **Lembretes**: toque no sino de um título para ser avisado. Ao abrir o site, o CineGuia confere e avisa o que estreou, o que chegou a uma plataforma e se a estreia foi remarcada. Para estreias futuras, dá para adicionar ao Google Agenda ou baixar o evento (.ics) com alarme no dia
-- **Sagas**: linha do tempo de franquias ao longo dos anos. Mais de 150 coleções de filmes do TMDB em 8 categorias (super-heróis, fantasia, ação, animação, terror, comédia, brasileiras...) e busca por qualquer outra; **Marvel** e **Star Wars** reúnem filmes e séries, podem ser vistas em **ordem de lançamento** ou **ordem da história** e filtradas por sub-saga (ex.: só Vingadores ou só Thor). Cada item pode ser marcado como **"Já assisti"**, com barra de progresso da saga. Nos detalhes de cada título aparece a saga da qual ele faz parte
+- **Sagas**: linha do tempo de franquias ao longo dos anos. Mais de 150 coleções de filmes do TMDB em 8 categorias (super-heróis, fantasia, ação, animação, terror, comédia, brasileiras...) e busca por qualquer outra; 13 **sagas completas** reúnem filmes e séries (Marvel, Star Wars, Terra-média, Star Trek, DC, Breaking Bad, Jurassic Park, Alien, John Wick, Stargate, Os Normais, A Grande Família e Cidade de Deus), podem ser vistas em **ordem de lançamento** ou **ordem da história** e filtradas por sub-saga (ex.: só Vingadores ou só Thor). Cada item pode ser marcado como **"Já assisti"**, com barra de progresso da saga. Nos detalhes de cada título aparece a saga da qual ele faz parte
 - **Assistir grátis**: clássicos em **domínio público** que tocam dentro do próprio site (acervo do [Internet Archive](https://archive.org/details/feature_films)). Só entram filmes marcados como domínio público, com vídeo compatível e sem conteúdo adulto; filmes em partes ganham botões para trocar de parte
 - **Top 10 por plataforma**: filmes e séries em alta na Netflix, Prime Video, Disney+, HBO Max, Globoplay, Apple TV+, Paramount+ e Crunchyroll (pela popularidade no TMDB entre os títulos de cada plataforma no Brasil)
 - **Detalhes** de cada título: sinopse, onde assistir, trailer, elenco, temporadas e episódios, e títulos semelhantes
@@ -124,7 +124,7 @@ O site é publicado no [Render](https://render.com/) como **Web Service** gratui
 
 Cada envio para o branch `main` publica uma nova versão automaticamente. Não defina `PORT` no Render: ele informa a porta sozinho.
 
-## Atualizar as sagas (Marvel, Star Wars e coleções em destaque)
+## Atualizar as sagas completas e as coleções em destaque
 
 As sagas montadas à mão ficam em `scripts/sagas-source.js`, com os títulos listados na **ordem da história**. Quando sair um filme ou série novo:
 

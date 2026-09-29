@@ -95,6 +95,173 @@ const curated = [
       { type: 'movie', title: 'Star Wars: The Last Jedi', year: 2017 },
       { type: 'movie', title: 'Star Wars: The Rise of Skywalker', year: 2019 }
     ]
+  },
+  {
+    slug: 'terra-media',
+    name: 'Terra-média (O Senhor dos Anéis)',
+    description: 'O mundo de Tolkien, da Segunda Era de Os Anéis de Poder até a Guerra do Anel.',
+    items: [
+      { type: 'tv', title: 'The Lord of the Rings: The Rings of Power', year: 2022 },
+      { type: 'movie', title: 'The Lord of the Rings: The War of the Rohirrim', year: 2024 },
+      { type: 'movie', title: 'The Hobbit: An Unexpected Journey', year: 2012 },
+      { type: 'movie', title: 'The Hobbit: The Desolation of Smaug', year: 2013 },
+      { type: 'movie', title: 'The Hobbit: The Battle of the Five Armies', year: 2014 },
+      { type: 'movie', title: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001 },
+      { type: 'movie', title: 'The Lord of the Rings: The Two Towers', year: 2002 },
+      { type: 'movie', title: 'The Lord of the Rings: The Return of the King', year: 2003 }
+    ]
+  },
+  {
+    slug: 'star-trek',
+    name: 'Star Trek',
+    description: 'Séries e filmes da linha do tempo principal, ordenados pelo início de cada história (Discovery salta para o século 32 a partir da 3ª temporada). Os filmes de 2009 em diante, da linha do tempo alternativa, ficam no fim.',
+    items: [
+      { type: 'tv', title: 'Star Trek: Enterprise', year: 2001 },
+      { type: 'tv', title: 'Star Trek: Discovery', year: 2017 },
+      { type: 'tv', title: 'Star Trek: Strange New Worlds', year: 2022 },
+      { type: 'tv', title: 'Star Trek', year: 1966 },
+      { type: 'tv', title: 'Star Trek: The Animated Series', year: 1973 },
+      { type: 'movie', title: 'Star Trek: The Motion Picture', year: 1979 },
+      { type: 'movie', title: 'Star Trek II: The Wrath of Khan', year: 1982 },
+      { type: 'movie', title: 'Star Trek III: The Search for Spock', year: 1984 },
+      { type: 'movie', title: 'Star Trek IV: The Voyage Home', year: 1986 },
+      { type: 'movie', title: 'Star Trek V: The Final Frontier', year: 1989 },
+      { type: 'movie', title: 'Star Trek VI: The Undiscovered Country', year: 1991 },
+      { type: 'tv', title: 'Star Trek: The Next Generation', year: 1987 },
+      { type: 'tv', title: 'Star Trek: Deep Space Nine', year: 1993 },
+      { type: 'movie', title: 'Star Trek: Generations', year: 1994 },
+      { type: 'tv', title: 'Star Trek: Voyager', year: 1995 },
+      { type: 'movie', title: 'Star Trek: First Contact', year: 1996 },
+      { type: 'movie', title: 'Star Trek: Insurrection', year: 1998 },
+      { type: 'movie', title: 'Star Trek: Nemesis', year: 2002 },
+      { type: 'tv', title: 'Star Trek: Lower Decks', year: 2020 },
+      { type: 'tv', title: 'Star Trek: Prodigy', year: 2021 },
+      { type: 'tv', title: 'Star Trek: Picard', year: 2020 },
+      { type: 'movie', title: 'Star Trek', year: 2009 },
+      { type: 'movie', title: 'Star Trek Into Darkness', year: 2013 },
+      { type: 'movie', title: 'Star Trek Beyond', year: 2016 }
+    ]
+  },
+  {
+    slug: 'dc',
+    name: 'Universo Estendido DC',
+    description: 'Filmes e séries do DCEU, de Mulher-Maravilha na Primeira Guerra até Aquaman 2.',
+    items: [
+      { type: 'movie', title: 'Wonder Woman', year: 2017 },
+      { type: 'movie', title: 'Wonder Woman 1984', year: 2020 },
+      { type: 'movie', title: 'Man of Steel', year: 2013 },
+      { type: 'movie', title: 'Batman v Superman: Dawn of Justice', year: 2016 },
+      { type: 'movie', title: 'Suicide Squad', year: 2016 },
+      { type: 'movie', title: 'Justice League', year: 2017 },
+      { type: 'movie', title: 'Zack Snyder\'s Justice League', year: 2021 },
+      { type: 'movie', title: 'Aquaman', year: 2018 },
+      { type: 'movie', title: 'Shazam!', year: 2019 },
+      { type: 'movie', title: 'Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)', year: 2020 },
+      { type: 'movie', title: 'The Suicide Squad', year: 2021 },
+      { type: 'tv', title: 'Peacemaker', year: 2022 },
+      { type: 'movie', title: 'Black Adam', year: 2022 },
+      { type: 'movie', title: 'Shazam! Fury of the Gods', year: 2023 },
+      { type: 'movie', title: 'The Flash', year: 2023 },
+      { type: 'movie', title: 'Blue Beetle', year: 2023 },
+      { type: 'movie', title: 'Aquaman and the Lost Kingdom', year: 2023 }
+    ]
+  },
+  {
+    slug: 'breaking-bad',
+    name: 'Breaking Bad',
+    description: 'A história de Walter White e Jesse Pinkman, com a origem de Saul Goodman em Better Call Saul.',
+    items: [
+      { type: 'tv', title: 'Better Call Saul', year: 2015 },
+      { type: 'tv', title: 'Breaking Bad', year: 2008 },
+      { type: 'movie', title: 'El Camino: A Breaking Bad Movie', year: 2019 }
+    ]
+  },
+  {
+    slug: 'jurassic',
+    name: 'Jurassic Park e Jurassic World',
+    description: 'Os filmes e as séries animadas, que se passam entre Jurassic World e Domínio.',
+    items: [
+      { type: 'movie', title: 'Jurassic Park', year: 1993 },
+      { type: 'movie', title: 'The Lost World: Jurassic Park', year: 1997 },
+      { type: 'movie', title: 'Jurassic Park III', year: 2001 },
+      { type: 'movie', title: 'Jurassic World', year: 2015 },
+      { type: 'tv', title: 'Jurassic World: Camp Cretaceous', year: 2020 },
+      { type: 'movie', title: 'Jurassic World: Fallen Kingdom', year: 2018 },
+      { type: 'tv', title: 'Jurassic World: Chaos Theory', year: 2024 },
+      { type: 'movie', title: 'Jurassic World Dominion', year: 2022 },
+      { type: 'movie', title: 'Jurassic World Rebirth', year: 2025 }
+    ]
+  },
+  {
+    slug: 'alien',
+    name: 'Alien',
+    description: 'Dos engenheiros de Prometheus à Ripley, passando pela série Alien: Earth.',
+    items: [
+      { type: 'movie', title: 'Prometheus', year: 2012 },
+      { type: 'movie', title: 'Alien: Covenant', year: 2017 },
+      { type: 'tv', title: 'Alien: Earth', year: 2025 },
+      { type: 'movie', title: 'Alien', year: 1979 },
+      { type: 'movie', title: 'Alien: Romulus', year: 2024 },
+      { type: 'movie', title: 'Aliens', year: 1986 },
+      { type: 'movie', title: 'Alien³', year: 1992 },
+      { type: 'movie', title: 'Alien Resurrection', year: 1997 }
+    ]
+  },
+  {
+    slug: 'john-wick',
+    name: 'John Wick',
+    description: 'O mundo dos assassinos do Continental, dos anos 1970 até o Capítulo 4.',
+    items: [
+      { type: 'tv', title: 'The Continental: From the World of John Wick', year: 2023 },
+      { type: 'movie', title: 'John Wick', year: 2014 },
+      { type: 'movie', title: 'John Wick: Chapter 2', year: 2017 },
+      { type: 'movie', title: 'John Wick: Chapter 3 - Parabellum', year: 2019 },
+      { type: 'movie', title: 'Ballerina', year: 2025 },
+      { type: 'movie', title: 'John Wick: Chapter 4', year: 2023 }
+    ]
+  },
+  {
+    slug: 'stargate',
+    name: 'Stargate',
+    description: 'Do filme de 1994 às séries SG-1, Atlantis e Universe, com os filmes que encerram SG-1.',
+    items: [
+      { type: 'movie', title: 'Stargate', year: 1994 },
+      { type: 'tv', title: 'Stargate SG-1', year: 1997 },
+      { type: 'tv', title: 'Stargate Atlantis', year: 2004 },
+      { type: 'movie', title: 'Stargate: The Ark of Truth', year: 2008 },
+      { type: 'movie', title: 'Stargate: Continuum', year: 2008 },
+      { type: 'tv', title: 'Stargate Universe', year: 2009 }
+    ]
+  },
+  {
+    slug: 'os-normais',
+    name: 'Os Normais',
+    description: 'Rui e Vani, da série da Globo aos dois filmes.',
+    items: [
+      { type: 'tv', title: 'Os Normais', year: 2001 },
+      { type: 'movie', title: 'Os Normais: O Filme', year: 2003 },
+      { type: 'movie', title: 'Os Normais 2: A Noite Mais Maluca de Todas', year: 2009 }
+    ]
+  },
+  {
+    slug: 'a-grande-familia',
+    name: 'A Grande Família',
+    description: 'A família Silva, da série da Globo ao filme.',
+    items: [
+      { type: 'tv', title: 'A Grande Família', year: 2001 },
+      { type: 'movie', title: 'A Grande Família: O Filme', year: 2007 }
+    ]
+  },
+  {
+    slug: 'cidade-de-deus',
+    name: 'Cidade de Deus',
+    description: 'O filme de 2002, o universo de Cidade dos Homens e a continuação em série, 20 anos depois.',
+    items: [
+      { type: 'movie', title: 'Cidade de Deus', year: 2002 },
+      { type: 'tv', title: 'Cidade dos Homens', year: 2002 },
+      { type: 'movie', title: 'Cidade dos Homens', year: 2007 },
+      { type: 'tv', title: 'Cidade de Deus: A Luta Não Para', year: 2024 }
+    ]
   }
 ];
 
