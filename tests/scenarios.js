@@ -405,6 +405,17 @@ module.exports = [
         const keys = (await cache.keys()).map((request) => new URL(request.url).pathname);
         check('Arquivos do app guardados para abrir sem internet', keys.includes('/') && keys.includes('/js/main.js'), `${keys.length} arquivos`);
       }
+    }, {
+      run: async ({ $, waitFor, check }) => {
+        // Headless Chrome never offers its own install prompt, like iPhone or in-app browsers.
+        check('Botão "Instalar app" aparece mesmo sem o convite do navegador', !$('installButton').classList.contains('hidden'));
+        $('installButton').click();
+        await waitFor(() => $('installHelp').open);
+        check('Sem o convite, o botão mostra o passo a passo', $('installHelp').open && $('installHelpSteps').children.length >= 2);
+        $('installHelp').querySelector('button[type="submit"]').click();
+        await waitFor(() => !$('installHelp').open);
+        check('Passo a passo fecha em "Entendi"', !$('installHelp').open);
+      }
     }]
   },
   ...DEVICES.map((device) => ({
