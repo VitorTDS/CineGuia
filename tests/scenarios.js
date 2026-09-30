@@ -392,6 +392,76 @@ module.exports = [
     ]
   },
   {
+    name: 'Episódios e avaliações',
+    steps: [
+      {
+        fresh: true,
+        path: '/serie/42',
+        run: async ({ $, waitFor, tab, check }) => {
+          const body = () => $('detailsBody');
+          const summary = () => body().querySelector('.series-progress').textContent;
+          const episodeButtons = () => [...body().querySelectorAll('.episode-toggle')];
+          await waitFor(() => episodeButtons().length === 3);
+          check('Série mostra como marcar episódios', summary().startsWith('Marque os episódios'));
+
+          episodeButtons()[0].click();
+          episodeButtons()[1].click();
+          check('Marcar episódios mostra o progresso e o próximo', summary() === 'Você viu 2 de 5 episódios · Próximo: T1E3', summary());
+          check('Episódio marcado aparece como visto', episodeButtons()[0].getAttribute('aria-pressed') === 'true' && episodeButtons()[0].closest('.episode').classList.contains('seen'));
+
+          body().querySelector('.season-toggle').click();
+          check('Marcar temporada toda passa para a próxima temporada', summary() === 'Você viu 3 de 5 episódios · Próximo: T2E1', summary());
+          check('Botão da temporada fica marcado', body().querySelector('.season-toggle').textContent === '✓ Temporada vista');
+
+          const review = body().querySelector('.review');
+          check('Avaliação escondida antes de marcar como assistido', review.classList.contains('hidden'));
+          body().querySelector('.watched-button.full').click();
+          check('Avaliação aparece ao marcar como assistido', !review.classList.contains('hidden'));
+          review.querySelectorAll('.star-button')[3].click();
+          check('Nota de 4 estrelas marcada', review.querySelectorAll('.star-button.on').length === 4);
+          const note = review.querySelector('textarea');
+          note.value = 'Muito boa!';
+          note.dispatchEvent(new Event('input'));
+          await waitFor(() => review.querySelector('.review-saved').textContent === 'Salvo');
+          check('Comentário salvo', review.querySelector('.review-saved').textContent === 'Salvo');
+
+          $('closeDetails').click();
+          await waitFor(() => !$('details').open);
+          tab('favorites');
+          await waitFor(() => $('progressGrid').querySelectorAll('.card').length === 1);
+          check('Série aparece em "Continuar assistindo" com o próximo episódio', !$('progressView').classList.contains('hidden') && $('progressGrid').textContent.includes('Próximo: T2E1'));
+          check('Nota aparece no "Já assisti"', $('watchedGrid').textContent.includes('★★★★☆'), $('watchedGrid').textContent);
+        }
+      },
+      {
+        path: '/serie/42',
+        run: async ({ $, waitFor, select, tab, check }) => {
+          const body = () => $('detailsBody');
+          await waitFor(() => body().querySelectorAll('.episode-toggle').length === 3);
+          check('Progresso continua depois de recarregar', body().querySelector('.series-progress').textContent === 'Você viu 3 de 5 episódios · Próximo: T2E1');
+          const review = body().querySelector('.review');
+          check('Nota e comentário continuam depois de recarregar', review.querySelectorAll('.star-button.on').length === 4 && review.querySelector('textarea').value === 'Muito boa!');
+
+          review.querySelectorAll('.star-button')[3].click();
+          check('Tocar na mesma estrela apaga a nota', review.querySelectorAll('.star-button.on').length === 0);
+
+          select(body().querySelector('.season-select').id, '2');
+          await waitFor(() => body().querySelectorAll('.episode-toggle').length === 2);
+          body().querySelector('.season-toggle').click();
+          check('Série terminada fica "Em dia"', body().querySelector('.series-progress').textContent === 'Você viu 5 de 5 episódios · Em dia!', body().querySelector('.series-progress').textContent);
+
+          $('closeDetails').click();
+          await waitFor(() => !$('details').open);
+          tab('favorites');
+          await waitFor(() => $('watchedGrid').querySelectorAll('.card').length === 1);
+          check('Série em dia sai de "Continuar assistindo"', $('progressView').classList.contains('hidden'));
+          const backup = { episodes: JSON.parse(localStorage.getItem('cineguia-episodios')), reviews: JSON.parse(localStorage.getItem('cineguia-avaliacoes')) };
+          check('Episódios e comentário ficam salvos no navegador', backup.episodes['tv-42'].seen['2'].length === 2 && backup.reviews['tv-42'].note === 'Muito boa!');
+        }
+      }
+    ]
+  },
+  {
     name: 'App instalável',
     steps: [{
       fresh: true,
@@ -400,7 +470,7 @@ module.exports = [
         const ready = await waitFor(() => navigator.serviceWorker.controller, 10000) || !!(await navigator.serviceWorker.getRegistration());
         const registration = await navigator.serviceWorker.getRegistration();
         check('Service worker registrado', ready && !!registration && registration.active !== undefined);
-        const cache = await caches.open('cineguia-v1');
+        const cache = await caches.open('cineguia-v2');
         await waitFor(() => true);
         const keys = (await cache.keys()).map((request) => new URL(request.url).pathname);
         check('Arquivos do app guardados para abrir sem internet', keys.includes('/') && keys.includes('/js/main.js'), `${keys.length} arquivos`);

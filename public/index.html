@@ -134,6 +134,11 @@
 
     <p class="status" id="status" role="status" aria-live="polite"></p>
 
+    <section class="progress-view hidden" id="progressView" aria-labelledby="progressTitle">
+      <h2 class="subsection-title" id="progressTitle">Continuar assistindo</h2>
+      <div class="grid" id="progressGrid"></div>
+    </section>
+
     <div class="reminders-view hidden" id="remindersView">
       <h2 class="subsection-title">Lembretes</h2>
       <p class="muted reminders-empty hidden" id="remindersEmpty">
@@ -166,7 +171,7 @@
     <section class="backup-view hidden" id="backupView" aria-labelledby="backupTitle">
       <h2 class="subsection-title" id="backupTitle">Backup da Minha lista</h2>
       <p class="muted">
-        Sua lista fica salva só neste navegador. Exporte um arquivo com favoritos, lembretes e o que já assistiu
+        Sua lista fica salva só neste navegador. Exporte um arquivo com favoritos, lembretes, o que já assistiu, episódios e avaliações
         para guardar ou levar para outro celular ou computador.
       </p>
       <div class="details-actions">
@@ -212,6 +217,9 @@
   </dialog>
 
   <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+  <div class="wake-notice hidden" id="wakeNotice" popover="manual" role="status" aria-live="polite">
+    Ligando o servidor… Quando o site fica um tempo sem visitas, o primeiro acesso pode levar até 1 minuto.
+  </div>
 
   <script type="module" src="/js/main.js"></script>
 </body>

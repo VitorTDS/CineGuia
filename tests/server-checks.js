@@ -62,7 +62,8 @@ module.exports = [
       const sw = await fetch(`${base}/sw.js`);
       const swText = await sw.text();
       check('Service worker nunca fica em cache no navegador', sw.headers.get('cache-control') === 'no-cache');
-      const shell = [...swText.matchAll(/'(\/[^']*)'/g)].map((match) => match[1]);
+      const shellList = swText.slice(swText.indexOf('APP_SHELL = ['), swText.indexOf('];', swText.indexOf('APP_SHELL = [')));
+      const shell = [...shellList.matchAll(/'(\/[^']*)'/g)].map((match) => match[1]);
       const modules = fs.readdirSync(path.join(ROOT, 'public', 'js')).filter((name) => name.endsWith('.js')).map((name) => `/js/${name}`);
       const missing = modules.filter((file) => !shell.includes(file));
       check('Lista do service worker inclui todos os módulos', missing.length === 0, missing.join(', ') || 'ok');

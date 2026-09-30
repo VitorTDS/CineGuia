@@ -3,8 +3,9 @@ import { createCard } from './cards.js';
 import { favorites } from './favorites.js';
 import { reminders, reminderStatus } from './reminders.js';
 import { renderWatchedSection } from './watched.js';
+import { renderProgressSection } from './progress.js';
 
-// The "Minha lista" tab: reminders, favorites and watched titles.
+// The "Minha lista" tab: series in progress, reminders, favorites and watched titles.
 export function renderMyList() {
   els.loadMore.classList.add('hidden');
   setStatus('');
@@ -20,5 +21,6 @@ export function renderMyList() {
       text: 'Nenhum favorito ainda. Toque no ♡ de um filme ou série para salvar aqui.'
     }));
   }
+  renderProgressSection();
   renderWatchedSection();
 }

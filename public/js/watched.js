@@ -3,6 +3,7 @@ import { itemKey, summarize, formatCount } from './utils.js';
 import { view } from './state.js';
 import { fetchJson } from './api.js';
 import { createCard } from './cards.js';
+import { reviews, starsText } from './reviews.js';
 
 const WATCHED_KEY = 'cineguia-assistidos';
 const WATCHED_DATA_KEY = 'cineguia-assistidos-dados';
@@ -60,6 +61,7 @@ function toggleWatched(item) {
   // The same title can appear in several sagas and in its details; keep every copy in sync.
   for (const button of document.querySelectorAll(`[data-watched-key="${key}"]`)) renderWatchedButton(button, item);
   for (const marker of document.querySelectorAll(`[data-watched-marker="${key}"]`)) marker.classList.toggle('watched', watched.has(key));
+  for (const node of document.querySelectorAll(`[data-requires-watched="${key}"]`)) node.classList.toggle('hidden', !watched.has(key));
   if (view.mode === 'favorites') renderWatchedSection();
 }
 
@@ -75,9 +77,11 @@ export function renderWatchedSection() {
   els.watchedSummary.textContent = watched.size
     ? [formatCount(movies, 'filme', 'filmes'), formatCount(series, 'série', 'séries')].join(' · ')
     : '';
-  els.watchedGrid.replaceChildren(...items.map((item) => createCard(item, '', {
-    status: item.watchedAt ? `Assistido em ${new Date(item.watchedAt).toLocaleDateString('pt-BR')}` : 'Assistido'
-  })));
+  els.watchedGrid.replaceChildren(...items.map((item) => {
+    const date = item.watchedAt ? `Assistido em ${new Date(item.watchedAt).toLocaleDateString('pt-BR')}` : 'Assistido';
+    const stars = starsText((reviews[itemKey(item)] || {}).stars);
+    return createCard(item, '', { status: stars ? `${date} · ${stars}` : date });
+  }));
 
   // Keys marked before titles were stored have no data yet; fetch it once per visit and redraw.
   if ([...watched].some((key) => !watchedData[key] && !fetchAttempted.has(key))) fillMissingWatchedData();

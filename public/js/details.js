@@ -6,7 +6,12 @@ import { fetchJson } from './api.js';
 import { createCard } from './cards.js';
 import { favoriteButton } from './favorites.js';
 import { reminderButton } from './reminders.js';
-import { watchedButton } from './watched.js';
+import { watchedButton, isWatched, renderWatchedSection } from './watched.js';
+import { reviewSection } from './reviews.js';
+import {
+  isEpisodeSeen, setEpisodes, refreshSeasonSizes, progressSummary
+} from './progress.js';
+import { view } from './state.js';
 import { calendarActions } from './calendar.js';
 import { renderSagaLinks } from './sagas.js';
 import { titleLink } from './router.js';
@@ -65,6 +70,9 @@ export function renderDetails(data) {
       el('h3', { text: 'Sinopse' }),
       el('p', { className: 'overview', text: data.overview || 'Sinopse não disponível.' })
     ]),
+    reviewSection(data, isWatched(data), () => {
+      if (view.mode === 'favorites') renderWatchedSection();
+    }),
     renderSagaLinks(data.sagas),
     renderProviders(data.providers, data.title, data.availability),
     renderTrailer(data.trailer, data.title),
@@ -239,6 +247,7 @@ function renderCast(cast) {
 
 function renderSeasons(data) {
   if (data.type !== 'tv' || !data.seasons.length) return null;
+  refreshSeasonSizes(data);
 
   const selectId = `season-select-${data.id}`;
   const select = el('select', { id: selectId, className: 'season-select' }, data.seasons.map((season) =>
@@ -247,9 +256,18 @@ function renderSeasons(data) {
       text: `${season.name}${season.episodeCount ? ` (${formatCount(season.episodeCount, 'episódio', 'episódios')})` : ''}`
     })
   ));
+  const summary = el('p', { className: 'series-progress', 'aria-live': 'polite', text: progressSummary(data) });
+  const seasonToggle = el('button', { type: 'button', className: 'watched-button season-toggle hidden' });
   const episodes = el('ol', { className: 'episodes' });
-  select.addEventListener('change', () => loadSeason(data.id, select.value, episodes));
-  loadSeason(data.id, select.value, episodes);
+  const tracker = { data, summary, seasonToggle, episodes, season: Number(select.value), numbers: [] };
+
+  seasonToggle.addEventListener('click', () => {
+    const allSeen = tracker.numbers.every((number) => isEpisodeSeen(data, tracker.season, number));
+    setEpisodes(data, tracker.season, tracker.numbers, !allSeen);
+    renderTracker(tracker);
+  });
+  select.addEventListener('change', () => loadSeason(tracker, Number(select.value)));
+  loadSeason(tracker, tracker.season);
 
   return el('section', { className: 'details-section' }, [
     el('div', { className: 'section-header' }, [
@@ -257,31 +275,65 @@ function renderSeasons(data) {
       el('label', { className: 'visually-hidden', for: selectId, text: 'Escolher temporada' }),
       select
     ]),
+    el('div', { className: 'series-progress-row' }, [summary, seasonToggle]),
     episodes
   ]);
 }
 
-async function loadSeason(tvId, seasonNumber, container) {
+async function loadSeason(tracker, seasonNumber) {
   const requestId = ++seasonRequestId;
+  const container = tracker.episodes;
+  tracker.season = seasonNumber;
+  tracker.numbers = [];
+  renderTracker(tracker);
   container.replaceChildren(el('li', { className: 'muted', text: 'Carregando episódios...' }));
 
   try {
-    const season = await fetchJson(`/api/title/tv/${tvId}/season/${seasonNumber}`);
+    const season = await fetchJson(`/api/title/tv/${tracker.data.id}/season/${seasonNumber}`);
     if (requestId !== seasonRequestId) return;
     if (!season.episodes.length) {
       container.replaceChildren(el('li', { className: 'muted', text: 'Nenhum episódio cadastrado nesta temporada.' }));
       return;
     }
-    container.replaceChildren(...season.episodes.map(renderEpisode));
+    tracker.numbers = season.episodes.map((episode) => episode.number);
+    container.replaceChildren(...season.episodes.map((episode) => renderEpisode(episode, tracker)));
+    renderTracker(tracker);
   } catch (error) {
     if (requestId !== seasonRequestId) return;
     container.replaceChildren(el('li', { className: 'muted error', text: error.message }));
   }
 }
 
-function renderEpisode(episode) {
+// Keeps the summary line, the season button and every episode button in step with what is saved.
+function renderTracker(tracker) {
+  const { data, season, numbers } = tracker;
+  tracker.summary.textContent = progressSummary(data);
+  const allSeen = numbers.length > 0 && numbers.every((number) => isEpisodeSeen(data, season, number));
+  tracker.seasonToggle.classList.toggle('hidden', !numbers.length);
+  tracker.seasonToggle.setAttribute('aria-pressed', String(allSeen));
+  tracker.seasonToggle.textContent = allSeen ? '✓ Temporada vista' : 'Marcar temporada toda';
+  for (const button of tracker.episodes.querySelectorAll('[data-episode]')) {
+    const number = Number(button.dataset.episode);
+    const seen = isEpisodeSeen(data, season, number);
+    button.setAttribute('aria-pressed', String(seen));
+    button.setAttribute('aria-label', seen ? `Desmarcar episódio ${number} como visto` : `Marcar episódio ${number} como visto`);
+    button.textContent = seen ? '✓ Visto' : 'Marcar como visto';
+    button.closest('.episode').classList.toggle('seen', seen);
+  }
+}
+
+function renderEpisode(episode, tracker) {
   const still = imageUrl('w300', episode.still);
   const meta = [formatDate(episode.airDate), episode.runtime ? formatRuntime(episode.runtime) : null].filter(Boolean).join(' · ');
+  const toggle = el('button', {
+    type: 'button',
+    className: 'watched-button episode-toggle',
+    'data-episode': String(episode.number),
+    onclick: () => {
+      setEpisodes(tracker.data, tracker.season, [episode.number], !isEpisodeSeen(tracker.data, tracker.season, episode.number));
+      renderTracker(tracker);
+    }
+  });
 
   return el('li', { className: 'episode' }, [
     still
@@ -290,7 +342,8 @@ function renderEpisode(episode) {
     el('div', { className: 'episode-info' }, [
       el('h4', { text: `${episode.number}. ${episode.name}` }),
       meta ? el('p', { className: 'episode-meta', text: meta }) : null,
-      episode.overview ? el('p', { className: 'episode-overview', text: episode.overview }) : null
+      episode.overview ? el('p', { className: 'episode-overview', text: episode.overview }) : null,
+      toggle
     ])
   ]);
 }

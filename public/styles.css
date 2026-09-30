@@ -1204,6 +1204,24 @@ a {
   overflow-wrap: anywhere;
 }
 
+.wake-notice {
+  position: fixed;
+  inset: auto auto calc(80px + env(safe-area-inset-bottom)) 50%;
+  z-index: 100;
+  margin: 0;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transform: translateX(-50%);
+  font-size: 14px;
+  text-align: center;
+}
+
 /* Detalhes */
 
 .details {
@@ -1569,6 +1587,75 @@ a {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface-2);
+}
+
+.episode.seen {
+  border-color: rgba(46, 158, 91, 0.5);
+}
+
+.episode.seen .episode-still {
+  opacity: 0.6;
+}
+
+.episode-toggle {
+  margin-top: 8px;
+}
+
+.series-progress-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 8px;
+}
+
+.series-progress {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star-button {
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--border);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.star-button.on {
+  color: #f5c518;
+}
+
+.review-note {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+
+.review-saved {
+  display: block;
+  min-height: 1.4em;
+  margin-top: 4px;
+  font-size: 13px;
 }
 
 .episode-still {

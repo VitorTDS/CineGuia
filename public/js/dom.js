@@ -39,6 +39,8 @@ export const els = {
   alertsList: byId('alertsList'),
   alertsClear: byId('alertsClear'),
   alertsBadge: byId('alertsBadge'),
+  progressView: byId('progressView'),
+  progressGrid: byId('progressGrid'),
   watchedView: byId('watchedView'),
   watchedSummary: byId('watchedSummary'),
   watchedEmpty: byId('watchedEmpty'),
@@ -57,7 +59,8 @@ export const els = {
   details: byId('details'),
   detailsBody: byId('detailsBody'),
   closeDetails: byId('closeDetails'),
-  toast: byId('toast')
+  toast: byId('toast'),
+  wakeNotice: byId('wakeNotice')
 };
 
 export function el(tag, props = {}, children = []) {

@@ -4,11 +4,14 @@ import { sanitizeList } from './state.js';
 import { favorites, replaceFavorites } from './favorites.js';
 import { reminders, replaceReminders, checkReminders } from './reminders.js';
 import { watched, watchedData, saveWatched } from './watched.js';
+import { progress, saveProgress, sanitizeProgressEntry } from './progress.js';
+import { reviews, saveReviews, sanitizeReview } from './reviews.js';
 import { renderMyList } from './mylist.js';
 
 const BACKUP_APP = 'cineguia';
 const BACKUP_VERSION = 1;
 const WATCHED_KEY_PATTERN = /^(movie|tv)-\d+$/;
+const SHOW_KEY_PATTERN = /^tv-\d+$/;
 
 export function exportBackup() {
   const backup = {
@@ -18,7 +21,9 @@ export function exportBackup() {
     favorites,
     reminders,
     watched: [...watched],
-    watchedData
+    watchedData,
+    episodes: progress,
+    reviews
   };
   const url = URL.createObjectURL(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }));
   const link = el('a', { href: url, download: `cineguia-backup-${new Date().toISOString().slice(0, 10)}.json` });
@@ -64,11 +69,46 @@ export async function importBackup(file) {
   }
   saveWatched();
 
+  // Episodes: the marks from both sides are kept. Reviews: the one already on this device wins.
+  let newShows = 0;
+  for (const [key, entry] of Object.entries(isObject(backup.episodes) ? backup.episodes : {})) {
+    const incoming = SHOW_KEY_PATTERN.test(key) ? sanitizeProgressEntry(entry) : null;
+    if (!incoming || !Object.keys(incoming.seen).length) continue;
+    const current = progress[key];
+    if (!current) {
+      progress[key] = incoming;
+      newShows += 1;
+      continue;
+    }
+    for (const [season, episodes] of Object.entries(incoming.seen)) {
+      current.seen[season] = [...new Set([...(current.seen[season] || []), ...episodes])].sort((a, b) => a - b);
+    }
+    if (!current.seasons.length) current.seasons = incoming.seasons;
+  }
+  saveProgress();
+
+  let newReviews = 0;
+  for (const [key, review] of Object.entries(isObject(backup.reviews) ? backup.reviews : {})) {
+    const incoming = WATCHED_KEY_PATTERN.test(key) && !reviews[key] ? sanitizeReview(review) : null;
+    if (!incoming) continue;
+    reviews[key] = incoming;
+    newReviews += 1;
+  }
+  saveReviews();
+
   renderMyList();
   if (newReminders.length) checkReminders();
+  const extras = [
+    newShows ? formatCount(newShows, 'série em andamento', 'séries em andamento') : null,
+    newReviews ? formatCount(newReviews, 'avaliação', 'avaliações') : null
+  ].filter(Boolean);
   showToast(`Backup importado: ${[
     formatCount(newFavorites.length, 'favorito', 'favoritos'),
     formatCount(newReminders.length, 'lembrete', 'lembretes'),
     formatCount(newWatched, 'assistido', 'assistidos')
-  ].join(', ')} novos.`);
+  ].join(', ')} novos.${extras.length ? ` Também: ${extras.join(', ')}.` : ''}`);
+}
+
+function isObject(value) {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }

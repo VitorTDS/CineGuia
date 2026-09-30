@@ -83,6 +83,7 @@ export function updateChrome() {
   els.sagasView.classList.toggle('hidden', view.mode !== 'sagas');
   els.remindersView.classList.toggle('hidden', view.mode !== 'favorites');
   els.watchedView.classList.toggle('hidden', view.mode !== 'favorites');
+  if (view.mode !== 'favorites') els.progressView.classList.add('hidden');
   els.backupView.classList.toggle('hidden', view.mode !== 'favorites');
   updateForYou(view.mode === 'category' && view.category === 'trending');
   els.cinemaSwitch.classList.toggle('hidden', !inCinema);
