@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>CineGuia · Onde assistir filmes e séries</title>
   <meta name="description" content="Encontre sinopse, trailer e onde assistir qualquer filme ou série no Brasil.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="theme.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <!-- share-meta -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#0d0f14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="CineGuia">
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="/" aria-label="CineGuia, página inicial">
-        <span class="brand-mark" aria-hidden="true">▶</span>
+        <img class="brand-mark" src="/favicon.svg" alt="" width="32" height="32">
         CineGuia
       </a>
 
@@ -22,7 +28,10 @@
         <input id="searchInput" type="search" placeholder="Buscar filme ou série..." autocomplete="off" maxlength="100">
       </form>
 
-      <button type="button" class="icon-button theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro"></button>
+      <div class="topbar-actions">
+        <button type="button" class="action-button install-button hidden" id="installButton">Instalar app</button>
+        <button type="button" class="icon-button theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro"></button>
+      </div>
     </div>
 
     <nav class="tabs" id="tabs" aria-label="Categorias">
@@ -76,6 +85,13 @@
         <button type="button" class="link-button" id="alertsClear">Limpar tudo</button>
       </div>
       <ul class="alerts-list" id="alertsList"></ul>
+    </section>
+
+    <section class="for-you hidden" id="forYou" aria-labelledby="forYouTitle">
+      <h2 class="subsection-title" id="forYouTitle">Para você</h2>
+      <p class="muted for-you-hint">Recomendações com base no que você assistiu e salvou na Minha lista.</p>
+      <p class="muted" id="forYouStatus" role="status" aria-live="polite"></p>
+      <div class="recommendations for-you-row" id="forYouRow"></div>
     </section>
 
     <h1 class="section-title" id="sectionTitle">Em alta nesta semana</h1>
@@ -146,6 +162,19 @@
       </p>
       <div class="grid" id="watchedGrid"></div>
     </section>
+
+    <section class="backup-view hidden" id="backupView" aria-labelledby="backupTitle">
+      <h2 class="subsection-title" id="backupTitle">Backup da Minha lista</h2>
+      <p class="muted">
+        Sua lista fica salva só neste navegador. Exporte um arquivo com favoritos, lembretes e o que já assistiu
+        para guardar ou levar para outro celular ou computador.
+      </p>
+      <div class="details-actions">
+        <button type="button" class="action-button" id="backupExport">Exportar backup</button>
+        <button type="button" class="action-button" id="backupImport">Importar backup</button>
+        <input type="file" id="backupFile" class="visually-hidden" accept="application/json,.json" tabindex="-1" aria-hidden="true">
+      </div>
+    </section>
     <div class="sentinel" id="sentinel" aria-hidden="true"></div>
     <button type="button" class="load-more hidden" id="loadMore">Tentar novamente</button>
   </main>
@@ -173,6 +202,6 @@
 
   <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
 
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

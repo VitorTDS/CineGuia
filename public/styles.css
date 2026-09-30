@@ -128,14 +128,10 @@ a {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 14px;
 }
 
 .search {
@@ -169,8 +165,47 @@ a {
   cursor: pointer;
 }
 
-.theme-toggle {
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-left: auto;
+}
+
+.install-button {
+  min-height: var(--tap);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Para você (aba Em alta) */
+
+.for-you {
+  margin-bottom: 28px;
+}
+
+.for-you-hint {
+  margin: -8px 0 12px;
+  font-size: 14px;
+}
+
+.for-you-row {
+  grid-auto-columns: 150px;
+}
+
+/* Backup da Minha lista */
+
+.backup-view {
+  margin-top: 36px;
+  padding: 16px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.backup-view .subsection-title {
+  margin-top: 0;
 }
 
 .tabs {

@@ -7,6 +7,7 @@ import { renderMyList } from './mylist.js';
 import { renderPlatforms } from './platforms.js';
 import { renderSagaList } from './sagas.js';
 import { createPublicCard } from './public-domain.js';
+import { updateForYou } from './for-you.js';
 
 const SEARCH_DEBOUNCE_MS = 400;
 const INFINITE_SCROLL_MARGIN_PX = 600;
@@ -82,6 +83,8 @@ export function updateChrome() {
   els.sagasView.classList.toggle('hidden', view.mode !== 'sagas');
   els.remindersView.classList.toggle('hidden', view.mode !== 'favorites');
   els.watchedView.classList.toggle('hidden', view.mode !== 'favorites');
+  els.backupView.classList.toggle('hidden', view.mode !== 'favorites');
+  updateForYou(view.mode === 'category' && view.category === 'trending');
   els.cinemaSwitch.classList.toggle('hidden', !inCinema);
   for (const segment of els.cinemaSwitch.querySelectorAll('[data-section]')) {
     segment.setAttribute('aria-pressed', String(segment.dataset.section === view.cinemaSection));

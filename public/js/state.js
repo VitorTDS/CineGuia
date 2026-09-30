@@ -29,16 +29,19 @@ export const view = {
   filters: { genre: '', decade: '', rating: '' }
 };
 
-// Lists saved in the browser only keep well-formed titles, so a corrupted entry cannot break the page.
+// Saved lists (and imported backups) only keep well-formed titles, so a corrupted entry cannot break the page.
+export function sanitizeList(list) {
+  if (!Array.isArray(list)) return [];
+  return list.filter(
+    (item) =>
+      item && (item.type === 'movie' || item.type === 'tv') &&
+      Number.isInteger(item.id) && typeof item.title === 'string'
+  );
+}
+
 export function loadStoredList(key) {
   try {
-    const parsed = JSON.parse(localStorage.getItem(key));
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item) =>
-        item && (item.type === 'movie' || item.type === 'tv') &&
-        Number.isInteger(item.id) && typeof item.title === 'string'
-    );
+    return sanitizeList(JSON.parse(localStorage.getItem(key)));
   } catch {
     return [];
   }

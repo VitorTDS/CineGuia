@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node server.js",
     "check": "node scripts/check.js",
-    "sagas": "node scripts/build-sagas.js"
+    "test": "node scripts/check.js && node tests/run.js",
+    "sagas": "node scripts/build-sagas.js",
+    "icons": "node scripts/build-icons.js"
   },
   "engines": {
     "node": ">=20.12"

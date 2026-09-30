@@ -47,7 +47,10 @@ const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.png': 'image/png',
   '.ico': 'image/x-icon'
 };
 
@@ -66,7 +69,9 @@ const CAST_LIMIT = 15;
 const RECOMMENDATIONS_LIMIT = 12;
 const TOP_LIMIT = 10;
 const REMINDER_CHECK_LIMIT = 40;
-const ARCHIVE_BASE = 'https://archive.org';
+// Searches and metadata go to ARCHIVE_API (overridable for tests); links handed to the browser always use the public site.
+const ARCHIVE_API = process.env.ARCHIVE_API_BASE || 'https://archive.org';
+const ARCHIVE_PUBLIC = 'https://archive.org';
 const PUBLIC_DOMAIN_PAGE_SIZE = 24;
 // Genre "exploitation" films (B horror, crime, action) are allowed; sexual content and nudity are not.
 const BLOCKED_SUBJECTS = ['sex', 'sexploitation', 'nudity', 'nudist', 'erotic', 'adult', 'striptease'];
@@ -396,7 +401,7 @@ async function handlePublicDomainList(searchParams) {
   const text = (searchParams.get('q') || '').replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().slice(0, 80);
   const query = text ? `${PUBLIC_DOMAIN_QUERY} AND (title:(${text}) OR subject:(${text}))` : PUBLIC_DOMAIN_QUERY;
 
-  const url = new URL(`${ARCHIVE_BASE}/advancedsearch.php`);
+  const url = new URL(`${ARCHIVE_API}/advancedsearch.php`);
   url.searchParams.set('q', query);
   for (const field of ['identifier', 'title', 'year']) url.searchParams.append('fl[]', field);
   url.searchParams.set('sort[]', 'downloads desc');
@@ -429,12 +434,12 @@ function playableSources(identifier, files) {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
   return names.map((name, index) => ({
     label: names.length > 1 ? `Parte ${index + 1}` : 'Filme',
-    url: `${ARCHIVE_BASE}/download/${encodeURIComponent(identifier)}/${name.split('/').map(encodeURIComponent).join('/')}`
+    url: `${ARCHIVE_PUBLIC}/download/${encodeURIComponent(identifier)}/${name.split('/').map(encodeURIComponent).join('/')}`
   }));
 }
 
 async function handlePublicDomainItem(identifier) {
-  const data = await archiveGet(`${ARCHIVE_BASE}/metadata/${encodeURIComponent(identifier)}`);
+  const data = await archiveGet(`${ARCHIVE_API}/metadata/${encodeURIComponent(identifier)}`);
   const meta = data.metadata;
   if (!meta) throw new HttpError(404, 'Filme não encontrado no Internet Archive.');
 
@@ -537,6 +542,60 @@ function sagasForTitle(type, id, collection) {
   const sagas = [...(curatedMembership.get(`${type}:${id}`) || [])];
   if (collection && collection.id) sagas.push({ kind: 'collection', id: collection.id, name: collection.name });
   return sagas;
+}
+
+const FOR_YOU_SEEDS = 8;
+const FOR_YOU_EXCLUDE = 300;
+const FOR_YOU_RESULTS = 20;
+
+function parseTitleKeys(value, limit) {
+  return (value || '')
+    .split(',')
+    .map((key) => key.match(/^(movie|tv):(\d{1,10})$/))
+    .filter(Boolean)
+    .slice(0, limit)
+    .map(([key, type, id]) => ({ key, type, id }));
+}
+
+// Recommendations for the titles someone watched or saved: titles suggested by more of them rank higher.
+async function handleForYou(searchParams) {
+  const seeds = parseTitleKeys(searchParams.get('items'), FOR_YOU_SEEDS);
+  if (!seeds.length) return { results: [] };
+  const exclude = new Set(parseTitleKeys(searchParams.get('exclude'), FOR_YOU_EXCLUDE).map((entry) => entry.key));
+  for (const seed of seeds) exclude.add(seed.key);
+
+  const lists = await Promise.all(seeds.map(async (seed) => {
+    try {
+      const data = await tmdbGet(`/${seed.type}/${seed.id}/recommendations`, { page: '1' });
+      return { seed, results: data.results || [] };
+    } catch {
+      return { seed, results: [] };
+    }
+  }));
+
+  const scores = new Map();
+  for (const { seed, results } of lists) {
+    results.forEach((item, rank) => {
+      const type = item.media_type === 'tv' || (!item.media_type && seed.type === 'tv') ? 'tv' : 'movie';
+      const key = `${type}:${item.id}`;
+      if (exclude.has(key)) return;
+      // Each seed that recommends a title adds a point; earlier positions in its list add a little more.
+      const entry = scores.get(key) || { item: toSummary(item, type), score: 0, because: seed.key, bestRank: rank };
+      entry.score += 1 + (results.length - rank) / (results.length * 10);
+      if (rank < entry.bestRank) {
+        entry.bestRank = rank;
+        entry.because = seed.key;
+      }
+      scores.set(key, entry);
+    });
+  }
+
+  return {
+    results: [...scores.values()]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, FOR_YOU_RESULTS)
+      .map((entry) => ({ ...entry.item, because: entry.because }))
+  };
 }
 
 async function handleGenres(type) {
@@ -756,6 +815,7 @@ async function handleTitle(type, id) {
 async function handleApi(url) {
   if (url.pathname === '/api/list') return handleList(url.searchParams);
   if (url.pathname === '/api/search') return handleSearch(url.searchParams);
+  if (url.pathname === '/api/for-you') return handleForYou(url.searchParams);
   if (url.pathname === '/api/sagas') return handleSagaList();
   if (url.pathname === '/api/sagas/search') return handleSagaSearch(url.searchParams);
   const collectionSaga = url.pathname.match(/^\/api\/saga\/collection\/(\d{1,10})$/);
@@ -782,6 +842,121 @@ async function handleApi(url) {
   throw new HttpError(404, 'Rota não encontrada.');
 }
 
+// ---------- Share pages (link previews in WhatsApp, Telegram, etc.) ----------
+
+// Routes that open a title directly. Crawlers do not run JavaScript, so the server fills in the preview tags.
+const SHARE_ROUTE = /^\/(filme|serie|saga|dominio)\/([A-Za-z0-9._-]{1,100})\/?$/;
+const SHARE_DESCRIPTION_LIMIT = 200;
+const DEFAULT_SHARE = {
+  title: 'CineGuia · Onde assistir filmes e séries',
+  description: 'Encontre sinopse, trailer e onde assistir qualquer filme ou série no Brasil.',
+  image: '/og-image.png',
+  type: 'website'
+};
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function truncate(text, limit) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  return clean.length > limit ? `${clean.slice(0, limit - 1).trimEnd()}…` : clean;
+}
+
+const tmdbImage = (size, filePath) => (filePath ? `https://image.tmdb.org/t/p/${size}${filePath}` : null);
+
+async function shareInfo(kind, id) {
+  if (kind === 'filme' || kind === 'serie') {
+    if (!/^\d{1,10}$/.test(id)) return null;
+    const type = kind === 'filme' ? 'movie' : 'tv';
+    const data = await tmdbGet(`/${type}/${id}`);
+    const year = (data.release_date || data.first_air_date || '').slice(0, 4);
+    return {
+      title: `${data.title || data.name}${year ? ` (${year})` : ''}`,
+      description: data.overview || 'Veja sinopse, trailer e onde assistir no CineGuia.',
+      image: tmdbImage('w780', data.backdrop_path) || tmdbImage('w500', data.poster_path),
+      type: type === 'movie' ? 'video.movie' : 'video.tv_show'
+    };
+  }
+
+  if (kind === 'saga') {
+    if (/^\d+$/.test(id)) {
+      const data = await tmdbGet(`/collection/${id}`);
+      return {
+        title: `${data.name} · linha do tempo`,
+        description: data.overview || `Todos os filmes de ${data.name} em ordem.`,
+        image: tmdbImage('w780', data.backdrop_path) || tmdbImage('w500', data.poster_path),
+        type: 'website'
+      };
+    }
+    const saga = sagaData.curated.find((item) => item.slug === id);
+    if (!saga) return null;
+    const first = [...saga.items].sort(byReleaseDate).find((item) => item.poster);
+    return {
+      title: `${saga.name} · linha do tempo`,
+      description: saga.description,
+      image: first ? tmdbImage('w500', first.poster) : null,
+      type: 'website'
+    };
+  }
+
+  const data = await handlePublicDomainItem(id);
+  return {
+    title: `${data.title} · assista grátis`,
+    description: data.description || 'Filme em domínio público para assistir no CineGuia.',
+    image: `${ARCHIVE_PUBLIC}/services/img/${encodeURIComponent(id)}`,
+    type: 'video.movie'
+  };
+}
+
+function requestOrigin(req) {
+  // Render terminates HTTPS at its proxy and forwards the original protocol in this header.
+  const protocol = String(req.headers['x-forwarded-proto'] || 'http').split(',')[0].trim();
+  return `${protocol === 'https' ? 'https' : 'http'}://${req.headers.host || `localhost:${PORT}`}`;
+}
+
+function renderShell(info, pageUrl, origin) {
+  const share = { ...DEFAULT_SHARE, ...(info || {}) };
+  const image = share.image && share.image.startsWith('/') ? `${origin}${share.image}` : share.image;
+  const title = info ? `${info.title} · CineGuia` : DEFAULT_SHARE.title;
+  const description = truncate(share.description, SHARE_DESCRIPTION_LIMIT);
+  const tags = [
+    ['property', 'og:site_name', 'CineGuia'],
+    ['property', 'og:type', share.type],
+    ['property', 'og:title', share.title],
+    ['property', 'og:description', description],
+    ['property', 'og:url', pageUrl],
+    ['property', 'og:locale', 'pt_BR'],
+    image ? ['property', 'og:image', image] : null,
+    ['name', 'twitter:card', image ? 'summary_large_image' : 'summary']
+  ].filter(Boolean).map(([attr, key, value]) => `<meta ${attr}="${key}" content="${escapeHtml(value)}">`).join('\n  ');
+
+  return fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf8')
+    .replace('<!-- share-meta -->', tags)
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHtml(description)}">`);
+}
+
+async function serveShell(req, res, url) {
+  const origin = requestOrigin(req);
+  const match = url.pathname.match(SHARE_ROUTE);
+  let info = null;
+  if (match) {
+    try {
+      info = await shareInfo(match[1], match[2]);
+    } catch {
+      // Unknown or blocked title: the page still loads and shows the error itself.
+    }
+  }
+  res.writeHead(200, { ...SECURITY_HEADERS, 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
+  res.end(renderShell(info, `${origin}${url.pathname}`, origin));
+}
+
 function sendJson(res, status, body) {
   res.writeHead(status, { ...SECURITY_HEADERS, 'Content-Type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(body));
@@ -804,7 +979,10 @@ function serveStatic(url, res) {
       return;
     }
     const type = MIME_TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream';
-    res.writeHead(200, { ...SECURITY_HEADERS, 'Content-Type': type });
+    // The service worker must always be revalidated, or updates to the site would reach people late.
+    const headers = { ...SECURITY_HEADERS, 'Content-Type': type };
+    if (relative === 'sw.js') headers['Cache-Control'] = 'no-cache';
+    res.writeHead(200, headers);
     res.end(content);
   });
 }
@@ -822,6 +1000,11 @@ const server = http.createServer(async (req, res) => {
   } catch {
     res.writeHead(400, SECURITY_HEADERS);
     res.end();
+    return;
+  }
+
+  if (url.pathname === '/' || url.pathname === '/index.html' || SHARE_ROUTE.test(url.pathname)) {
+    await serveShell(req, res, url);
     return;
   }
 

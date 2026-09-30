@@ -9,6 +9,8 @@ import {
   openTitleFromInitialUrl, syncDetailsWithUrl, closeDetails, resetDetails, leaveTitleUrl
 } from './router.js';
 import { toggleTheme, renderThemeToggle } from './theme-toggle.js';
+import { exportBackup, importBackup } from './backup.js';
+import { setupInstall } from './install.js';
 
 function wireEvents() {
   els.tabs.addEventListener('click', (event) => {
@@ -39,6 +41,14 @@ function wireEvents() {
   });
 
   els.alertsClear.addEventListener('click', clearAlerts);
+
+  els.backupExport.addEventListener('click', exportBackup);
+  els.backupImport.addEventListener('click', () => els.backupFile.click());
+  els.backupFile.addEventListener('change', () => {
+    const [file] = els.backupFile.files;
+    if (file) importBackup(file);
+    els.backupFile.value = '';
+  });
 
   // Someone who leaves the tab open still gets fresh reminder checks when coming back to it.
   document.addEventListener('visibilitychange', () => {
@@ -99,6 +109,7 @@ function wireEvents() {
 
 renderThemeToggle();
 wireEvents();
+setupInstall();
 updateChrome();
 loadPage(true);
 openTitleFromInitialUrl();

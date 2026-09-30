@@ -5,54 +5,70 @@ import { renderDetails, invalidateSeasonLoads } from './details.js';
 import { renderPublicDetails } from './public-domain.js';
 import { renderSaga } from './sagas.js';
 
-const TYPE_TO_HASH = { movie: 'filme', tv: 'serie', public: 'dominio', saga: 'saga' };
-const HASH_TO_TYPE = { filme: 'movie', serie: 'tv', dominio: 'public', saga: 'saga' };
+// Titles open at real paths (/filme/123) so shared links get a preview; the server serves the page for them.
+const TYPE_TO_SEGMENT = { movie: 'filme', tv: 'serie', public: 'dominio', saga: 'saga' };
+const SEGMENT_TO_TYPE = { filme: 'movie', serie: 'tv', dominio: 'public', saga: 'saga' };
+const HOME_PATH = '/';
 
 let detailsRequestId = 0;
 
-function titleHash(item) {
-  return `#${TYPE_TO_HASH[item.type]}/${item.id}`;
+function titlePath(item) {
+  return `/${TYPE_TO_SEGMENT[item.type]}/${encodeURIComponent(item.id)}`;
 }
 
 export function titleLink(item) {
-  return `${window.location.origin}${window.location.pathname}${titleHash(item)}`;
+  return `${window.location.origin}${titlePath(item)}`;
 }
 
-function parseTitleHash() {
-  const title = window.location.hash.match(/^#(filme|serie)\/(\d{1,10})$/);
-  if (title) return { type: HASH_TO_TYPE[title[1]], id: Number(title[2]) };
-  const publicDomain = window.location.hash.match(/^#dominio\/([A-Za-z0-9._-]{1,100})$/);
-  if (publicDomain) return { type: 'public', id: publicDomain[1] };
-  // Numeric ids are TMDB collections; slugs are the hand-built sagas.
-  const saga = window.location.hash.match(/^#saga\/([a-z0-9-]{1,40})$/);
-  return saga ? { type: 'saga', id: /^\d+$/.test(saga[1]) ? Number(saga[1]) : saga[1] } : null;
+function parseRoute(segment, rawId) {
+  const type = SEGMENT_TO_TYPE[segment];
+  if (!type) return null;
+  if (type === 'movie' || type === 'tv') return /^\d{1,10}$/.test(rawId) ? { type, id: Number(rawId) } : null;
+  if (type === 'public') return /^[A-Za-z0-9._-]{1,100}$/.test(rawId) ? { type, id: rawId } : null;
+  // Numeric saga ids are TMDB collections; slugs are the hand-built sagas.
+  if (/^\d{1,10}$/.test(rawId)) return { type, id: Number(rawId) };
+  return /^[a-z0-9-]{1,40}$/.test(rawId) ? { type, id: rawId } : null;
+}
+
+function parseCurrentTitle() {
+  const match = window.location.pathname.match(/^\/(filme|serie|dominio|saga)\/([^/]+)\/?$/);
+  return match ? parseRoute(match[1], decodeURIComponent(match[2])) : null;
+}
+
+// Links shared before the switch to paths look like /#filme/123.
+function parseLegacyHash() {
+  const match = window.location.hash.match(/^#(filme|serie|dominio|saga)\/([^/]+)$/);
+  return match ? parseRoute(match[1], match[2]) : null;
+}
+
+function homeUrl() {
+  return `${HOME_PATH}${window.location.search}`;
 }
 
 export function openTitle(item) {
-  const hash = titleHash(item);
-  if (window.location.hash !== hash) {
+  const path = titlePath(item);
+  if (window.location.pathname !== path) {
     // depth counts titles opened in a row, so closing can step back past all of them at once.
     const depth = els.details.open && history.state && history.state.depth ? history.state.depth + 1 : 1;
-    history.pushState({ depth }, '', hash);
+    history.pushState({ depth }, '', `${path}${window.location.search}`);
   }
   showDetails(item);
 }
 
-// A shared link lands directly on a title. Putting a plain entry behind it means closing stays on the site.
+// A shared link lands directly on a title. Putting the home page behind it means closing stays on the site.
 export function openTitleFromInitialUrl() {
-  const target = parseTitleHash();
+  const target = parseCurrentTitle() || parseLegacyHash();
   if (!target) return;
-  const hash = window.location.hash;
-  history.replaceState(null, '', window.location.pathname + window.location.search);
-  history.pushState({ depth: 1 }, '', hash);
+  history.replaceState(null, '', homeUrl());
+  history.pushState({ depth: 1 }, '', `${titlePath(target)}${window.location.search}`);
   showDetails(target);
 }
 
 export function syncDetailsWithUrl() {
-  const target = parseTitleHash();
+  const target = parseCurrentTitle();
   if (target) {
-    // A hash typed into the address bar has no depth yet; it sits one step above the page behind it.
-    if (!(history.state && history.state.depth)) history.replaceState({ depth: 1 }, '', window.location.hash);
+    // A title path typed into the address bar has no depth yet; it sits one step above the home page.
+    if (!(history.state && history.state.depth)) history.replaceState({ depth: 1 }, '', window.location.href);
     showDetails(target);
   } else if (els.details.open) {
     els.details.close();
@@ -72,12 +88,12 @@ export function closeDetails() {
 }
 
 export function leaveTitleUrl() {
-  if (!parseTitleHash()) return;
+  if (!parseCurrentTitle()) return;
   const depth = history.state && history.state.depth;
   if (depth) {
     history.go(-depth);
   } else {
-    history.replaceState(null, '', window.location.pathname + window.location.search);
+    history.replaceState(null, '', homeUrl());
   }
 }
 
