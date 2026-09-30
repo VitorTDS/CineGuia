@@ -56,9 +56,13 @@ const MIME_TYPES = {
 
 const SECURITY_HEADERS = {
   'Content-Security-Policy':
-    "default-src 'self'; img-src 'self' https://image.tmdb.org https://archive.org https://*.archive.org data:; media-src https://archive.org https://*.archive.org; frame-src https://www.youtube-nocookie.com https://archive.org; object-src 'none'; base-uri 'none'; form-action 'self'",
+    "default-src 'self'; img-src 'self' https://image.tmdb.org https://archive.org https://*.archive.org data:; media-src https://archive.org https://*.archive.org; frame-src https://www.youtube-nocookie.com https://archive.org; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'",
   'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'strict-origin-when-cross-origin'
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  // Older browsers ignore frame-ancestors; this keeps other sites from embedding the page (clickjacking).
+  'X-Frame-Options': 'DENY',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+  'Cross-Origin-Opener-Policy': 'same-origin'
 };
 
 const CATEGORY_TYPES = { movies: 'movie', series: 'tv' };
@@ -963,10 +967,18 @@ function sendJson(res, status, body) {
 }
 
 function serveStatic(url, res) {
-  const relative = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, '');
+  let relative;
+  try {
+    relative = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, '');
+  } catch {
+    // Malformed percent-encoding (e.g. "/%E0%A4%A") would otherwise throw and take the server down.
+    res.writeHead(400, SECURITY_HEADERS);
+    res.end();
+    return;
+  }
   const filePath = path.resolve(PUBLIC_DIR, relative);
 
-  if (!filePath.startsWith(PUBLIC_DIR + path.sep)) {
+  if (relative.includes('\0') || !filePath.startsWith(PUBLIC_DIR + path.sep)) {
     res.writeHead(403, SECURITY_HEADERS);
     res.end();
     return;
@@ -1003,20 +1015,23 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (url.pathname === '/' || url.pathname === '/index.html' || SHARE_ROUTE.test(url.pathname)) {
-    await serveShell(req, res, url);
-    return;
-  }
-
-  if (!url.pathname.startsWith('/api/')) {
-    serveStatic(url, res);
-    return;
-  }
-
   try {
+    if (url.pathname === '/' || url.pathname === '/index.html' || SHARE_ROUTE.test(url.pathname)) {
+      await serveShell(req, res, url);
+      return;
+    }
+
+    if (!url.pathname.startsWith('/api/')) {
+      serveStatic(url, res);
+      return;
+    }
+
     sendJson(res, 200, await handleApi(url));
   } catch (error) {
-    if (error instanceof HttpError) {
+    // Any unexpected error answers this request only; an uncaught rejection would stop the whole server.
+    if (res.headersSent) {
+      res.end();
+    } else if (error instanceof HttpError) {
       sendJson(res, error.status, { error: error.message });
     } else {
       console.error(error);
