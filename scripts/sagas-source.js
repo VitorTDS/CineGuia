@@ -253,6 +253,30 @@ const curated = [
     ]
   },
   {
+    slug: 'game-of-thrones',
+    name: 'Game of Thrones (Westeros)',
+    description: 'As séries de Westeros, da dança dos dragões dos Targaryen até a guerra pelo Trono de Ferro.',
+    items: [
+      { type: 'tv', title: 'House of the Dragon', year: 2022 },
+      { type: 'tv', title: 'A Knight of the Seven Kingdoms', year: 2026 },
+      { type: 'tv', title: 'Game of Thrones', year: 2011 }
+    ]
+  },
+  {
+    slug: 'the-walking-dead',
+    name: 'The Walking Dead',
+    description: 'As séries do universo The Walking Dead. Várias acontecem ao mesmo tempo; a ordem da história segue o início de cada uma, do surto inicial em Fear the Walking Dead aos derivados pós-série principal.',
+    items: [
+      { type: 'tv', title: 'Fear the Walking Dead', year: 2015 },
+      { type: 'tv', title: 'The Walking Dead', year: 2010 },
+      { type: 'tv', title: 'The Walking Dead: World Beyond', year: 2020 },
+      { type: 'tv', title: 'Tales of the Walking Dead', year: 2022 },
+      { type: 'tv', title: 'The Walking Dead: The Ones Who Live', year: 2024 },
+      { type: 'tv', title: 'The Walking Dead: Dead City', year: 2023 },
+      { type: 'tv', title: 'The Walking Dead: Daryl Dixon', year: 2023 }
+    ]
+  },
+  {
     slug: 'cidade-de-deus',
     name: 'Cidade de Deus',
     description: 'O filme de 2002, o universo de Cidade dos Homens e a continuação em série, 20 anos depois.',

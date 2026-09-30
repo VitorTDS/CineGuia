@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29",
+  "generatedAt": "2026-09-30",
   "curated": [
     {
       "slug": "marvel",
@@ -2165,6 +2165,130 @@
           "overview": "Depois de fazer um exame, Lineu tem certeza de que irá morrer e de que a família Silva não sobreviverá. Ele experimenta, então, três chances de refazer suas relações com todos, de forma que eles não sintam a sua partida. Sem entender o porquê, a família é atingida em cheio por estas atitudes, ora cômicas, ora trágicas.",
           "collection": null,
           "storyOrder": 2
+        }
+      ]
+    },
+    {
+      "slug": "game-of-thrones",
+      "name": "Game of Thrones (Westeros)",
+      "description": "As séries de Westeros, da dança dos dragões dos Targaryen até a guerra pelo Trono de Ferro.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 94997,
+          "title": "A Casa do Dragão",
+          "originalTitle": "House of the Dragon",
+          "releaseDate": "2022-08-21",
+          "poster": "/oKJDm4QCKbp6mR4FnxXrFlPJP8Y.jpg",
+          "overview": "200 anos antes dos eventos de \"Game of Thrones\", os Targaryen estavam no ápice de seu poder, tendo inúmeros dragões sob seu comando, mas nem tudo dura para sempre. O início do fim da dinastia Targaryen.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "tv",
+          "id": 224372,
+          "title": "O Cavaleiro dos Sete Reinos",
+          "originalTitle": "A Knight of the Seven Kingdoms",
+          "releaseDate": "2026-01-18",
+          "poster": "/whIZtYminSyVOwjxhjxYcOaCuBg.jpg",
+          "overview": "Ambientado em uma época em que a linhagem Targaryen ainda detém o Trono de Ferro e a memória do último dragão ainda não desapareceu da memória dos vivos, grandes destinos, inimigos poderosos e façanhas perigosas aguardam esses amigos improváveis ​​e incomparáveis.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "tv",
+          "id": 1399,
+          "title": "Game of Thrones",
+          "originalTitle": "Game of Thrones",
+          "releaseDate": "2011-04-17",
+          "poster": "/aqomTRKjNZkmNEeOZnEmWrFTmKU.jpg",
+          "overview": "Em uma terra onde os verões podem durar vários anos e o inverno toda uma vida, sete nobres famílias lutam pelo controle da mítica terra de Westeros, dividida depois de uma guerra. Num cenário que lembra a Europa medieval, reis, rainhas, cavaleiros e renegados usam todos os meios possíveis em um jogo político pela disputa do Trono de Ferro, o símbolo do poder absoluto.",
+          "collection": null,
+          "storyOrder": 3
+        }
+      ]
+    },
+    {
+      "slug": "the-walking-dead",
+      "name": "The Walking Dead",
+      "description": "As séries do universo The Walking Dead. Várias acontecem ao mesmo tempo; a ordem da história segue o início de cada uma, do surto inicial em Fear the Walking Dead aos derivados pós-série principal.",
+      "items": [
+        {
+          "type": "tv",
+          "id": 62286,
+          "title": "Fear the Walking Dead",
+          "originalTitle": "Fear the Walking Dead",
+          "releaseDate": "2015-08-23",
+          "poster": "/lKIhibYjzmpr8KQTYNEcwtUne5S.jpg",
+          "overview": "Ambientada em Los Angeles, a série mostra o começo do apocalipse zumbi e a temível desintegração da sociedade pelos olhos de uma família disfuncional, que precisa se unir para tentar sobreviver ao caos do fim dos tempos.",
+          "collection": null,
+          "storyOrder": 1
+        },
+        {
+          "type": "tv",
+          "id": 1402,
+          "title": "The Walking Dead",
+          "originalTitle": "The Walking Dead",
+          "releaseDate": "2010-10-31",
+          "poster": "/9lb02gTh4LLB17yAEXFd4C3R4JP.jpg",
+          "overview": "Nos Estados Unidos pós-apocalíptico, um pequeno grupo de sobreviventes segue viajando à procura de uma nova casa longe dos mortos-vivos. O desespero por segurança e suprimentos os coloca constantemente à beira da sanidade.",
+          "collection": null,
+          "storyOrder": 2
+        },
+        {
+          "type": "tv",
+          "id": 94305,
+          "title": "The Walking Dead: Um Novo Universo",
+          "originalTitle": "The Walking Dead: World Beyond",
+          "releaseDate": "2020-10-04",
+          "poster": "/iJc0W299BpNyfHVPSVV4goFZ3pq.jpg",
+          "overview": "Um grupo de adolescentes abrigados dos perigos do mundo pós-apocalíptico recebe uma mensagem que os inspira a deixar a segurança do único lar que já conheceram e embarcar em uma jornada pelo país para salvar seu pai.",
+          "collection": null,
+          "storyOrder": 3
+        },
+        {
+          "type": "tv",
+          "id": 136248,
+          "title": "Contos de The Walking Dead",
+          "originalTitle": "Tales of the Walking Dead",
+          "releaseDate": "2022-08-14",
+          "poster": "/jDwjAEQJXP9dkGmh5MWZgbDjFMv.jpg",
+          "overview": "Série Antológica composta de episódios independentes focados em personagens novos e já apresentados do universo The Walking Dead.",
+          "collection": null,
+          "storyOrder": 4
+        },
+        {
+          "type": "tv",
+          "id": 206586,
+          "title": "The Walking Dead: The Ones Who Live",
+          "originalTitle": "The Walking Dead: The Ones Who Live",
+          "releaseDate": "2024-02-25",
+          "poster": "/95pv9daC8yFm1BfaUyCTx7MfOs.jpg",
+          "overview": "Uma história de amor épica de duas pessoas mudadas por um mundo mudado, separadas pela distância e por um poder imparável. Rick e Michonne conseguirão encontrar um ao outro e quem eles eram em um lugar diferente de todos que já conheceram? Sem o outro, eles estão vivos?",
+          "collection": null,
+          "storyOrder": 5
+        },
+        {
+          "type": "tv",
+          "id": 194583,
+          "title": "The Walking Dead: Dead City",
+          "originalTitle": "The Walking Dead: Dead City",
+          "releaseDate": "2023-06-18",
+          "poster": "/oC4SG9TXM0C6KUoAUv76WOvQ103.jpg",
+          "overview": "Maggie e Negan viajam para uma Manhattan pós-apocalíptica há muito isolada do continente. A cidade em ruínas está cheia de mortos e habitantes que fizeram de Nova York seu próprio mundo cheio de anarquia, perigo, beleza e terror.",
+          "collection": null,
+          "storyOrder": 6
+        },
+        {
+          "type": "tv",
+          "id": 211684,
+          "title": "The Walking Dead: Daryl Dixon",
+          "originalTitle": "The Walking Dead: Daryl Dixon",
+          "releaseDate": "2023-09-10",
+          "poster": "/8pQ09TA3FGeptJnHJ1R9rbENPWr.jpg",
+          "overview": "Daryl Dixon chega à costa da França e luta para entender como chegou lá e por quê. A série acompanha a sua jornada por uma França quebrada, mas resiliente, enquanto ele tenta encontrar um caminho de volta para casa. As conexões que ele forma no caminho, no entanto, complicam os seus planos.",
+          "collection": null,
+          "storyOrder": 7
         }
       ]
     },

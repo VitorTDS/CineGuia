@@ -593,8 +593,12 @@
       id: saga.id,
       name: saga.name,
       poster: saga.poster,
-      meta: [formatCount(saga.movies, 'filme', 'filmes'), formatCount(saga.series, 'série', 'séries'), saga.years].join(' · '),
-      badge: 'Filmes + séries'
+      meta: [
+        saga.movies ? formatCount(saga.movies, 'filme', 'filmes') : null,
+        saga.series ? formatCount(saga.series, 'série', 'séries') : null,
+        saga.years
+      ].filter(Boolean).join(' · '),
+      badge: saga.movies && saga.series ? 'Filmes + séries' : saga.movies ? 'Filmes' : 'Séries'
     })));
     els.sagaCollectionsTitle.textContent = 'Coleções de filmes por categoria';
     els.sagaCollections.replaceChildren(...sagaList.featured.map((group) =>
@@ -648,7 +652,7 @@
     const series = data.items.filter((item) => item.type === 'tv').length;
     const years = data.items.map((item) => (item.releaseDate || '').slice(0, 4)).filter(Boolean);
     const meta = [
-      formatCount(movies, 'filme', 'filmes'),
+      movies ? formatCount(movies, 'filme', 'filmes') : null,
       series ? formatCount(series, 'série', 'séries') : null,
       years.length ? `${years[0]}–${years[years.length - 1]}` : null
     ].filter(Boolean).join(' · ');
